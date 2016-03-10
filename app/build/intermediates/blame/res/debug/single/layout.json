@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/activity_list.xml",
+        "source": "/Users/TVANO/Documents/Tingle/app/src/main/res/layout/activity_list.xml"
+    },
+    {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
         "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/abc_screen_simple.xml"
     },
@@ -14,6 +18,10 @@
     {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
         "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/fragment_list.xml",
+        "source": "/Users/TVANO/Documents/Tingle/app/src/main/res/layout/fragment_list.xml"
     },
     {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
@@ -38,6 +46,10 @@
     {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
         "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/fragment_thing.xml",
+        "source": "/Users/TVANO/Documents/Tingle/app/src/main/res/layout/fragment_thing.xml"
     },
     {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
@@ -116,6 +128,10 @@
         "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/select_dialog_item_material.xml"
     },
     {
+        "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/fragment_tingle.xml",
+        "source": "/Users/TVANO/Documents/Tingle/app/src/main/res/layout/fragment_tingle.xml"
+    },
+    {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
         "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/abc_activity_chooser_view.xml"
     },
@@ -142,6 +158,10 @@
     {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
         "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/activity_thing_pager.xml",
+        "source": "/Users/TVANO/Documents/Tingle/app/src/main/res/layout/activity_thing_pager.xml"
     },
     {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
