@@ -1,11 +1,14 @@
 package tvao.mmad.itu.tingle.Model;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
+
+import tvao.mmad.itu.tingle.Database.ThingBaseHelper;
 
 /**
  * ThingDB is an in-memory database implemented using the singleton pattern and is used to hold a list of things.
@@ -15,11 +18,18 @@ public class ThingRepository implements IRepository {
 
     // Fake database
     private List<Thing> mThingsDB;
+    private Context mContext;
+    private SQLiteDatabase mDatabase;
 
     // Private constructor to uphold Singleton pattern
     private ThingRepository(Context context)
     {
+        mContext = context.getApplicationContext();
+        mDatabase = new ThingBaseHelper(mContext)
+                .getWritableDatabase();
+
         mThingsDB = new ArrayList<Thing>();
+
         fillThings(); // Test data
     }
 
