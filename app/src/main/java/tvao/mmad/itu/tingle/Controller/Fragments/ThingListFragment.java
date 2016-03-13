@@ -2,16 +2,22 @@ package tvao.mmad.itu.tingle.Controller.Fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+
+import tvao.mmad.itu.tingle.Controller.Activities.ThingPagerActivity;
 import tvao.mmad.itu.tingle.Controller.Helpers.RecyclerItemClickListener;
 import tvao.mmad.itu.tingle.Controller.Helpers.ThingAdapter;
 import tvao.mmad.itu.tingle.Model.Thing;
@@ -43,8 +49,7 @@ public class ThingListFragment extends Fragment {
      * Interface is encapsulated in fragment to avoid use in other activities.
      * Interface is implemented by host activity determining what happens upon triggering the listener.
      */
-    public interface onBackPressedListener
-    {
+    public interface onBackPressedListener {
         void onBackPressed();
     }
 
@@ -52,21 +57,18 @@ public class ThingListFragment extends Fragment {
      * The fragment captures the interface implementation in the activity TingleActivity during onAttach() lifecycle method.
      * This method calls the interface methods in order to communicate with the activity TingleActivity.
      * The method checks if the container activity has implemented the callback interface, otherwise throws an exception.
+     *
      * @param context - context of host activity
      */
     @Override
-    public void onAttach(Context context)
-    {
+    public void onAttach(Context context) {
         super.onAttach(context);
         Activity activity = null;
 
-        try
-        {
+        try {
             activity = (Activity) context;
             mCallBackToActivity = (onBackPressedListener) activity;
-        }
-        catch (ClassCastException e)
-        {
+        } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement onBackPressedListener");
         }
@@ -74,13 +76,13 @@ public class ThingListFragment extends Fragment {
 
     /**
      * Call to do initial creation of fragment
+     *
      * @param savedInstanceState - fragment rebuilt from saved state if not null
      */
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setHasOptionsMenu(true); // Tell FM that fragment receives menu callbacks
         mThingRepository = ThingRepository.get(getContext());
         //mThings = ThingRepository.get(this.getContext()).getThings();
 
@@ -88,18 +90,18 @@ public class ThingListFragment extends Fragment {
     }
 
     /**
-     *  Creates and returns the view hierarchy associated with the fragment
-     * @param inflater - used to inflate view in fragment
-     * @param container - parent view that fragment is attached to
+     * Creates and returns the view hierarchy associated with the fragment
+     *
+     * @param inflater           - used to inflate view in fragment
+     * @param container          - parent view that fragment is attached to
      * @param savedInstanceState - fragment rebuilt from saved state if not null
      * @return - fragment view
      */
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
-                             Bundle savedInstanceState)
-    {
-        mView = inflater.inflate(R.layout.fragment_list, container, false);
+                             Bundle savedInstanceState) {
+        mView = inflater.inflate(R.layout.fragment_thing_list, container, false);
 
         setButtons();
 
@@ -108,31 +110,78 @@ public class ThingListFragment extends Fragment {
         mThingRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity())); // RecyclerView requires a LayoutManager
 
         mThingRecyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(getContext(), new OnItemClickListener()
-                {
+                new RecyclerItemClickListener(getContext(), new OnItemClickListener() {
                     @Override
-                    public void onItemClick(View view, int position)
-                    {
+                    public void onItemClick(View view, int position) {
                         Thing item = mThingRepository.getThings().get(position);
 
                         boolean isDeleted = mThingRepository.removeThing(item.getId());
                         mAdapter.removeAt(position);
 
-                        if (isDeleted = true)
-                        {
+                        if (isDeleted = true) {
                             Toast.makeText(mThingRecyclerView.getContext(), item.getWhat(), Toast.LENGTH_LONG).show();
-                        }
-                        else
-                        {
+                        } else {
                             Toast.makeText(mThingRecyclerView.getContext(), item.getWhat() + "was not deleted", Toast.LENGTH_LONG).show();
                         }
                     }
                 })
         );
 
-        updateUI();
+        // updateUI();
 
         return mView;
+    }
+
+    /**
+     * This method is called whenever Fragment with list of items is shown to user.
+     * The content of the list is updated each time the user displays the things in the list.
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
+    /**
+     * This method is used to inflate a custom menu with actions bars used to add and delete things.
+     *
+     * @param menu     - toolbar menu in top right corner
+     * @param inflater - instantiate menu layout items into menu objects
+     */
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_thing_list, menu);
+    }
+
+    /**
+     * This method responds to the selection of the menu item.
+     * It creates a new Thing and adds it to the database and then starts an instance of the ThingPagerActivity to edit the new Thing.
+     * @param item - menu item
+     * @return true if menu item has been handled and require no further processing
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.menu_item_new_thing:
+
+                Thing thing = new Thing();
+
+                ThingRepository.get(getActivity()).addThing(thing);
+
+                Intent intent = ThingPagerActivity
+                        .newIntent(getActivity(), thing.getId());
+
+                startActivity(intent);
+
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
     // Update recycler view with items in list
@@ -147,7 +196,7 @@ public class ThingListFragment extends Fragment {
         else
         {
             mAdapter.setThings(mThingRepository.getThings());
-            mAdapter.notifyDataSetChanged(); // Todo expensive use specific notify
+            // mAdapter.notifyDataSetChanged(); // Todo expensive use specific notify already
         }
     }
 

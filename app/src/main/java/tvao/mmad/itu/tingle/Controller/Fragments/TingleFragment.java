@@ -198,7 +198,7 @@ public class TingleFragment extends Fragment {
                 {
                     String searchResult = searchItems(mWhatField.getText().toString());
                     if (searchResult != null) makeToast(getString(R.string.item_locationIs_toast) + " " + searchResult); // Item found
-                    else makeToast(getString(R.string.item_notfound_toast)); // Item not found
+                    else makeToast(getString(R.string.item_notFound_toast)); // Item not found
                 }
                 // makeToast(getString(R.string.item_notSpecified_toast));
             }
@@ -226,7 +226,7 @@ public class TingleFragment extends Fragment {
         {
             mLastAdded.setText(sThingRepository.getThings().get(size - 1).toString()); // Set text to last item added
         }
-        else this.mLastAdded.setText(getString(R.string.item_notfound_toast));
+        else this.mLastAdded.setText(getString(R.string.item_notFound_toast));
     }
 
     private void makeToast(String string)

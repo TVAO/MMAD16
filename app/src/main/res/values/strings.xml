@@ -8,7 +8,7 @@
     <string name="back_button">Back</string>
     <string name="delete_button">Delete</string>
     <string name="heading_showAllItems">See items</string>
-    <string name="item_notfound_toast">Item not found</string>
+    <string name="item_notFound_toast">Item not found</string>
     <string name="item_found_toast">You have selected the item</string>
     <string name="item_deleted_toast">The following item was deleted:</string>
     <string name="heading_search">Search items</string>
@@ -18,4 +18,5 @@
     <string name="item_locationIs_toast">Located in:</string>
     <string name="thing_what_hint">Enter a title for the thing.</string>
     <string name="thing_where_hint">Enter the location of the item.</string>
+    <string name="new_thing">New Thing</string>
 </resources>

@@ -10,6 +10,14 @@ public class Thing {
     private String mWhat, mWhere = null;
     private UUID mId;
 
+    // Used to add empty Things in ThingPager
+    public Thing()
+    {
+        mWhat = "";
+        mWhere = "";
+        mId = UUID.randomUUID();
+    }
+
     public Thing(String what, String where)
     {
         mWhat = what;

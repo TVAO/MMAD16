@@ -17,11 +17,13 @@ import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.R;
 
+import static tvao.mmad.itu.tingle.Controller.Fragments.TingleFragment.*;
+
 /**
  * ViewPager allows users to navigate between list items by swiping across the screen,
  * to “page” forward or backward through the things.
  */
-public class ThingPagerActivity extends FragmentActivity {
+public class ThingPagerActivity extends FragmentActivity implements eventListener {
 
     private static final String EXTRA_THING_ID =
             "com.bignerdranch.android.tingleintent.thing_id";
@@ -65,7 +67,7 @@ public class ThingPagerActivity extends FragmentActivity {
             @Override
             public Fragment getItem (int position){
                 Thing thing = mThings.get(position);
-                return TingleFragment.newInstance(thing.getId());
+                return newInstance(thing.getId());
             }
 
             @Override
@@ -86,4 +88,15 @@ public class ThingPagerActivity extends FragmentActivity {
         }
 
     }
+
+    @Override
+    public void onShowItems() {
+
+    }
+
+    @Override
+    public void onAddItems() {
+
+    }
+
 }

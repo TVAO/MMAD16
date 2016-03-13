@@ -230,8 +230,9 @@
     <string name="item_deleted_toast">The following item was deleted:</string>
     <string name="item_found_toast">You have selected the item</string>
     <string name="item_locationIs_toast">Located in:</string>
+    <string name="item_notFound_toast">Item not found</string>
     <string name="item_notSpecified_toast">Please specify item in what field</string>
-    <string name="item_notfound_toast">Item not found</string>
+    <string name="new_thing">New Thing</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="thing_what_hint">Enter a title for the thing.</string>
     <string name="thing_where_hint">Enter the location of the item.</string>
@@ -245,6 +246,7 @@
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
     <style name="Animation.AppCompat.DropDownUp" parent="Base.Animation.AppCompat.DropDownUp"/>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

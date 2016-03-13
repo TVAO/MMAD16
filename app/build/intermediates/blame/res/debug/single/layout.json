@@ -20,10 +20,6 @@
         "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/abc_list_menu_item_checkbox.xml"
     },
     {
-        "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/fragment_list.xml",
-        "source": "/Users/TVANO/Documents/Tingle/app/src/main/res/layout/fragment_list.xml"
-    },
-    {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
         "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/abc_alert_dialog_button_bar_material.xml"
     },
@@ -150,6 +146,10 @@
     {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
         "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/fragment_thing_list.xml",
+        "source": "/Users/TVANO/Documents/Tingle/app/src/main/res/layout/fragment_thing_list.xml"
     },
     {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/activity_tingle.xml",
