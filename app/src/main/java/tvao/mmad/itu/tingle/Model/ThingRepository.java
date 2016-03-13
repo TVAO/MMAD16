@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -23,7 +25,8 @@ public class ThingRepository implements IRepository {
     // Private constructor to uphold Singleton pattern
     private ThingRepository(Context context)
     {
-        mContext = context.getApplicationContext();
+        mContext = context;
+        //mContext = context.getApplicationContext();
         mDatabase = new ThingBaseHelper(mContext)
                 .getWritableDatabase();
     }
@@ -68,7 +71,19 @@ public class ThingRepository implements IRepository {
     public void addThing(Thing thing)
     {
         ContentValues values = getContentValues(thing);
-        mDatabase.insert(ThingTable.NAME, null, values);
+
+        try
+        {
+            mDatabase.insert(ThingTable.NAME, null, values);
+        }
+        catch (SQLiteException ex)
+        {
+            ex.printStackTrace();
+        }
+        finally
+        {
+            mDatabase.close();
+        }
     }
 
 //    //---deletes a particular title---
@@ -79,9 +94,20 @@ public class ThingRepository implements IRepository {
 
     public void removeThing(Thing thing)
     {
-        mDatabase.delete(ThingTable.NAME,
-                ThingTable.Cols.UUID + " != ?",
-                new String[] { thing.getId().toString() });
+        try
+        {
+            mDatabase.delete(ThingTable.NAME,
+                    ThingTable.Cols.UUID + " != ?",
+                    new String[]{thing.getId().toString()});
+        }
+        catch (SQLiteException ex)
+        {
+            ex.printStackTrace();
+        }
+        finally
+        {
+            mDatabase.close();
+        }
 
     }
 
@@ -91,13 +117,25 @@ public class ThingRepository implements IRepository {
 
         ContentValues values = getContentValues(thing);
 
-        mDatabase.update(ThingTable.NAME, values,
-                ThingTable.Cols.UUID + " = ?",
-                new String[]{uuidString});
+        try
+        {
+            mDatabase.update(ThingTable.NAME, values,
+                    ThingTable.Cols.UUID + " = ?",
+                    new String[]{uuidString});
+        }
+        catch (SQLiteException ex)
+        {
+            ex.printStackTrace();
+        }
+        finally
+        {
+            mDatabase.close();
+        }
     }
 
     // Method used to read data from SQLite database
-    private ThingCursorWrapper queryThings(String whereClause, String[] whereArgs) {
+    private ThingCursorWrapper queryThings(String whereClause, String[] whereArgs)
+    {
 
         Cursor cursor = mDatabase.query(
 
@@ -147,11 +185,13 @@ public class ThingRepository implements IRepository {
     }
 
     // Private method used to shuttle Things
-    private static ContentValues getContentValues(Thing thing) {
+    private static ContentValues getContentValues(Thing thing)
+    {
         ContentValues values = new ContentValues();
         values.put(ThingTable.Cols.UUID, thing.getId().toString());
         values.put(ThingTable.Cols.WHAT, thing.getWhat());
         values.put(ThingTable.Cols.WHERE, thing.getWhere());
+
         return values;
     }
 

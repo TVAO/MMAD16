@@ -31,7 +31,9 @@ public class ThingListFragment extends Fragment {
     private View mView;
     private Button mBackButton; //, mDeleteButton;
 
-    private List<Thing> mThings;
+    // private List<Thing> mThings;
+    private ThingRepository mThingRepository;
+
     private RecyclerView mThingRecyclerView;
     private ThingAdapter mAdapter;
     // private int selectedItemPosition; // Position of selected item used to removeAt
@@ -80,7 +82,8 @@ public class ThingListFragment extends Fragment {
     {
         super.onCreate(savedInstanceState);
 
-        mThings = ThingRepository.get(this.getContext()).getThings();
+        mThingRepository = ThingRepository.get(getContext());
+        //mThings = ThingRepository.get(this.getContext()).getThings();
 
         // selectedItemPosition = -1;
     }
@@ -113,13 +116,16 @@ public class ThingListFragment extends Fragment {
                     {
                         // int itemPosition = mThingRecyclerView.getChildAdapterPosition(view); // used getChildPosition
 
-                        Thing item = mThings.get(position); // itemPosition
+                        Thing item = mThingRepository.getThings().get(position);
+                        //Thing item = mThings.get(position); // itemPosition
 
                         Toast.makeText(mThingRecyclerView.getContext(), item.getWhat(), Toast.LENGTH_LONG).show();
 
                         // mThingRecyclerView.removeViewAt(position);
                         //mThings.remove(item);
+                        mThingRepository.removeThing(item);
                         mAdapter.removeAt(position);
+
                     }
                 })
         );
@@ -134,12 +140,13 @@ public class ThingListFragment extends Fragment {
     {
         if (mAdapter == null)
         {
-            mAdapter = new ThingAdapter(mThings, getContext());
+            mAdapter = new ThingAdapter(mThingRepository.getThings(), getContext());
             mThingRecyclerView.setAdapter(mAdapter);
+            mAdapter.notifyDataSetChanged();
         }
         else
         {
-            mAdapter.setThings(mThings);
+            mAdapter.setThings(mThingRepository.getThings());
             mAdapter.notifyDataSetChanged(); // Todo expensive use specific notify
         }
     }
