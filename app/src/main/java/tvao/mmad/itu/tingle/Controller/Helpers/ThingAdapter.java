@@ -49,13 +49,6 @@ public class ThingAdapter extends Adapter<ThingHolder> implements OnClickListene
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(android.R.layout.simple_list_item_1, parent, false);
 
-//        ThingHolder holder = new ThingHolder(view);
-//        holder.itemView.setOnClickListener(ThingAdapter.this);
-//        holder.itemView.setOnLongClickListener(ThingAdapter.this);
-//        holder.itemView.setTag(holder);
-//        mThingHolder = new ThingHolder(view);
-//        return mThingHolder;
-
         return new ThingHolder(view, mThings);
     }
 
@@ -94,40 +87,37 @@ public class ThingAdapter extends Adapter<ThingHolder> implements OnClickListene
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View view)
+    {
 //            notifyItemChanged(selectedPosition);
 //            selectedPosition = mThingHolder.getLayoutPosition();
 //            notifyItemChanged(selectedPosition);
     }
 
     @Override
-    public boolean onLongClick(View view) {
+    public boolean onLongClick(View view)
+    {
         ThingHolder holder = (ThingHolder) view.getTag();
-        Thing t = holder.getThing();
+        Thing thing = holder.getThing();
 
-
-        //if (view.getId() == holder.itemView.getId()) {
-            // mThings.remove(holder.itemView.getId()); // Todo fix id from list, should be between 0 and 4
-
-            mThings.remove(t.getId());
+            mThings.remove(thing.getId());
 
             // Mark selected item
             if(holder.itemView.getBackground() == null
-                    || holder.itemView.getBackground().equals(Color.TRANSPARENT)) {
+                    || holder.itemView.getBackground().equals(Color.TRANSPARENT))
+            {
                 holder.itemView.setBackgroundColor(Color.CYAN);
             }
-            else {
+            else
+            {
                 holder.itemView.setBackgroundColor(Color.TRANSPARENT);
             }
 
             notifyDataSetChanged();
 
-            // Confirm which item was removed 
-            //Toast.makeText(sContext, "Item " + holder.itemView.getTag().toString() + " has been removed from list",
-             //       Toast.LENGTH_SHORT).show();
-            Toast.makeText(sContext, "Item " + t.getWhat() + " has been removed from list",
+            Toast.makeText(sContext, "Item " + thing.getWhat() + " has been removed from list",
                 Toast.LENGTH_SHORT).show();
-        //}
+
         return false;
     }
 

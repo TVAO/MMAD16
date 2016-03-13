@@ -116,7 +116,7 @@ public class ThingListFragment extends Fragment {
                 new RecyclerItemClickListener(mThingRecyclerView.getContext(), new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        int itemPosition = mThingRecyclerView.getChildPosition(view);
+                        int itemPosition = mThingRecyclerView.getChildPosition(view); // use getChildAdapterPosition
                         Thing item = mThings.get(itemPosition);
                         Toast.makeText(mThingRecyclerView.getContext(), item.getWhat(), Toast.LENGTH_LONG).show();
                         mThings.remove(position);
@@ -196,29 +196,5 @@ public class ThingListFragment extends Fragment {
         Context context = getActivity().getApplicationContext();
         Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
     }
-
-    //    // Bind list and items in
-//    private void setItemListView()
-//    {
-//        mListView = (ListView) mView.findViewById(R.id.list_view);
-//
-//        // Adapter used to bind together list and its items in the ListActivity
-//        // final ArrayAdapter adapter = new ArrayAdapter(getActivity().getApplicationContext(), R.layout.rowitem, R.id.row_item, mThings.getThings().toArray()); // Context, layout and how items should be visualised
-//        adapter = new ArrayAdapter(getActivity().getApplicationContext(), R.layout.rowitem, R.id.row_item, mThings.getThings().toArray()); // Context, layout and how items should be visualised
-//        if (mListView != null)
-//        mListView.setAdapter(adapter);
-//
-//        // Used to select item for deletion
-//        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-//        {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                selectedItemPosition = position;
-//                // mTextView.getChildAt((int)id).setBackgroundColor(Color.CYAN); // Mark selected item
-//                Thing selectedItem = (Thing) adapter.getItem((int)id);
-//                makeToast(getString(R.string.item_found_toast) + " " + selectedItem.getWhat());
-//            }
-//        });
-//    }
 
 }

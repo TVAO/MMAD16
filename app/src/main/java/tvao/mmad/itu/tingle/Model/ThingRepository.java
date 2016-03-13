@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 import tvao.mmad.itu.tingle.Database.ThingBaseHelper;
 import tvao.mmad.itu.tingle.Database.ThingCursorWrapper;
-import tvao.mmad.itu.tingle.Database.ThingDbSchema;
+import tvao.mmad.itu.tingle.Database.ThingDbSchema.ThingTable;
 import static tvao.mmad.itu.tingle.Database.ThingDbSchema.ThingTable.*;
 
 /**
@@ -77,13 +77,13 @@ public class ThingRepository implements IRepository {
 //    //---deletes a particular title---
 //    public boolean deleteThing(UUID id)
 //    {
-//        return mDatabase.delete(NAME, ThingDbSchema.Cols.UUID + "=" + id, null) > 0;
+//        return mDatabase.delete(NAME, ThingTable.Cols.UUID + "=" + id, null) > 0;
 //    }
 
     public void removeThing(Thing thing)
     {
         ContentValues values = getContentValues(thing);
-        mDatabase.delete(NAME, ThingDbSchema.Cols.UUID + "=" + thing.getId(), null); // Delete thing in Thing table
+        mDatabase.delete(NAME, ThingTable.Cols.UUID + "=" + thing.getId(), null); // Delete thing in Thing table
     }
 
     public void updateThing(Thing thing)
@@ -93,8 +93,8 @@ public class ThingRepository implements IRepository {
         ContentValues values = getContentValues(thing);
 
         mDatabase.update(NAME, values,
-                ThingDbSchema.Cols.UUID + " = ?",
-                new String[] { uuidString });
+                ThingTable.Cols.UUID + " = ?",
+                new String[]{uuidString});
     }
 
     // Method used to read data from SQLite database
@@ -102,7 +102,7 @@ public class ThingRepository implements IRepository {
 
         Cursor cursor = mDatabase.query(
 
-        NAME,
+                NAME,
                 null, // Columns - null selects all columns
                 whereClause,
                 whereArgs,
@@ -129,7 +129,7 @@ public class ThingRepository implements IRepository {
 
         ThingCursorWrapper cursor = queryThings(
 
-                ThingDbSchema.Cols.UUID + " = ?",
+                ThingTable.Cols.UUID + " = ?",
                 new String[]{id.toString()}
         );
 
@@ -155,9 +155,9 @@ public class ThingRepository implements IRepository {
     // Private method used to shuttle Things
     private static ContentValues getContentValues(Thing thing) {
         ContentValues values = new ContentValues();
-        values.put(ThingDbSchema.Cols.UUID, thing.getId().toString());
-        values.put(ThingDbSchema.Cols.WHAT, thing.getWhat());
-        values.put(ThingDbSchema.Cols.WHERE, thing.getWhere());
+        values.put(ThingTable.Cols.UUID, thing.getId().toString());
+        values.put(ThingTable.Cols.WHAT, thing.getWhat());
+        values.put(ThingTable.Cols.WHERE, thing.getWhere());
         return values;
     }
 
