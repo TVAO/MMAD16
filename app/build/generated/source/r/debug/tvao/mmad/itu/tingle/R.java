@@ -1708,6 +1708,7 @@ containing a value of this type.
         public static final int list_item=0x7f0c0029;
         public static final int media_actions=0x7f0c0061;
         public static final int menu_item_new_thing=0x7f0c006b;
+        public static final int menu_item_show_subtitle=0x7f0c006c;
         public static final int middle=0x7f0c001c;
         public static final int multiply=0x7f0c0015;
         public static final int never=0x7f0c0020;
@@ -1846,20 +1847,23 @@ containing a value of this type.
         public static final int heading_search=0x7f060018;
         public static final int heading_showAllItems=0x7f060019;
         public static final int headline=0x7f06001a;
-        public static final int item_deleted_toast=0x7f06001b;
-        public static final int item_found_toast=0x7f06001c;
-        public static final int item_locationIs_toast=0x7f06001d;
-        public static final int item_notFound_toast=0x7f06001e;
-        public static final int item_notSpecified_toast=0x7f06001f;
-        public static final int new_thing=0x7f060020;
+        public static final int hide_subtitle=0x7f06001b;
+        public static final int item_deleted_toast=0x7f06001c;
+        public static final int item_found_toast=0x7f06001d;
+        public static final int item_locationIs_toast=0x7f06001e;
+        public static final int item_notFound_toast=0x7f06001f;
+        public static final int item_notSpecified_toast=0x7f060020;
+        public static final int new_thing=0x7f060021;
+        public static final int show_subtitle=0x7f060022;
         public static final int status_bar_notification_info_overflow=0x7f060013;
-        public static final int thing_what_hint=0x7f060021;
-        public static final int thing_where_hint=0x7f060022;
-        public static final int title_activity_list=0x7f060023;
-        public static final int what_hint=0x7f060024;
-        public static final int what_thing=0x7f060025;
-        public static final int where_hint=0x7f060026;
-        public static final int where_thing=0x7f060027;
+        public static final int subtitle_format=0x7f060023;
+        public static final int thing_what_hint=0x7f060024;
+        public static final int thing_where_hint=0x7f060025;
+        public static final int title_activity_list=0x7f060026;
+        public static final int what_hint=0x7f060027;
+        public static final int what_thing=0x7f060028;
+        public static final int where_hint=0x7f060029;
+        public static final int where_thing=0x7f06002a;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f090086;

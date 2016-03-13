@@ -227,13 +227,16 @@
     <string name="heading_search">Search items</string>
     <string name="heading_showAllItems">See items</string>
     <string name="headline">Last thing added</string>
+    <string name="hide_subtitle">Hide Subtitle</string>
     <string name="item_deleted_toast">The following item was deleted:</string>
     <string name="item_found_toast">You have selected the item</string>
     <string name="item_locationIs_toast">Located in:</string>
     <string name="item_notFound_toast">Item not found</string>
     <string name="item_notSpecified_toast">Please specify item in what field</string>
     <string name="new_thing">New Thing</string>
+    <string name="show_subtitle">Show subtitle</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="subtitle_format">%1$s crimes</string>
     <string name="thing_what_hint">Enter a title for the thing.</string>
     <string name="thing_where_hint">Enter the location of the item.</string>
     <string name="title_activity_list">ListActivity</string>

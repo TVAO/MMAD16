@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -34,15 +35,13 @@ import static tvao.mmad.itu.tingle.Controller.Helpers.RecyclerItemClickListener.
 public class ThingListFragment extends Fragment {
 
     private View mView;
-    private Button mBackButton; //, mDeleteButton;
-
-    // private List<Thing> mThings;
+    private Button mBackButton;
     private ThingRepository mThingRepository;
-
     private RecyclerView mThingRecyclerView;
     private ThingAdapter mAdapter;
-    // private int selectedItemPosition; // Position of selected item used to removeAt
     private onBackPressedListener mCallBackToActivity; // Used to call host activity TingleActivity
+    private boolean mSubtitleVisible; // Keep track of subtitle visibility
+    private static final String SAVED_SUBTITLE_VISIBLE = "subtitle"; // Used to save subtitle visibility upon rotation
 
     /**
      * This interface allows TingleFragment to communicate to host TingleActivity.
@@ -100,7 +99,8 @@ public class ThingListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
         mView = inflater.inflate(R.layout.fragment_thing_list, container, false);
 
         setButtons();
@@ -127,7 +127,12 @@ public class ThingListFragment extends Fragment {
                 })
         );
 
-        // updateUI();
+        if (savedInstanceState != null)
+        {
+            mSubtitleVisible = savedInstanceState.getBoolean(SAVED_SUBTITLE_VISIBLE);
+        }
+
+        updateUI();
 
         return mView;
     }
@@ -137,9 +142,22 @@ public class ThingListFragment extends Fragment {
      * The content of the list is updated each time the user displays the things in the list.
      */
     @Override
-    public void onResume() {
+    public void onResume()
+    {
         super.onResume();
         updateUI();
+    }
+
+    /**
+     * This method is used to pass data from saved bundle upon change of device configuration (rotation).
+     * By way of example, the total number of things shown in menu bar subtitle should be transferred in landscape mode.
+     * @param outState
+     */
+    @Override
+    public void onSaveInstanceState(Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(SAVED_SUBTITLE_VISIBLE, mSubtitleVisible);
     }
 
     /**
@@ -149,9 +167,19 @@ public class ThingListFragment extends Fragment {
      * @param inflater - instantiate menu layout items into menu objects
      */
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+    {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_thing_list, menu);
+
+        MenuItem subtitleItem = menu.findItem(R.id.menu_item_show_subtitle);
+        if (mSubtitleVisible)
+        {
+            subtitleItem.setTitle(R.string.hide_subtitle);
+        }
+        else {
+            subtitleItem.setTitle(R.string.show_subtitle);
+        }
     }
 
     /**
@@ -165,7 +193,7 @@ public class ThingListFragment extends Fragment {
     {
         switch (item.getItemId())
         {
-            case R.id.menu_item_new_thing:
+            case R.id.menu_item_new_thing: // Add new thing
 
                 Thing thing = new Thing();
 
@@ -178,10 +206,33 @@ public class ThingListFragment extends Fragment {
 
                 return true;
 
+            case R.id.menu_item_show_subtitle: // Show total items
+                mSubtitleVisible = !mSubtitleVisible;
+                getActivity().invalidateOptionsMenu();
+                updateSubtitle();
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
 
         }
+
+    }
+
+    // Set subtitle in toolbar showing number of things in total
+    private void updateSubtitle()
+    {
+        ThingRepository thingRepository = ThingRepository.get(getActivity());
+        int thingCount = thingRepository.size();
+        String subtitle = getString(R.string.subtitle_format, thingCount);
+
+        if (!mSubtitleVisible)
+        {
+            subtitle = null;
+        }
+
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.getSupportActionBar().setSubtitle(subtitle);
     }
 
     // Update recycler view with items in list
@@ -198,6 +249,8 @@ public class ThingListFragment extends Fragment {
             mAdapter.setThings(mThingRepository.getThings());
             // mAdapter.notifyDataSetChanged(); // Todo expensive use specific notify already
         }
+
+        updateSubtitle(); // Update number of things after going back to main page
     }
 
     // Redirect back to main page (TingleActivity)
@@ -216,27 +269,6 @@ public class ThingListFragment extends Fragment {
                 }
             });
         }
-
-        // Delete button to remove item
-//        mDeleteButton = (Button) mView.findViewById(R.id.delete_button);
-//        mDeleteButton.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View v)
-//            {
-//                if (selectedItemPosition == -1) {
-//                    makeToast(getString(R.string.item_notfound_toast));
-//                }
-//                else
-//                {
-//                    String itemName = mThings.get(selectedItemPosition).getWhat();
-//                    mThings.remove(selectedItemPosition);
-//                    makeToast(getString(R.string.item_deleted_toast) + " " + itemName);
-//                    // setItemListView();
-//                    selectedItemPosition = -1;
-//                }
-//            }
-//        });
 
     }
 

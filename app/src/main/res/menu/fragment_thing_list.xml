@@ -4,11 +4,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Add menu in toolbar -->
     <item
     android:id="@+id/menu_item_new_thing"
     android:icon="@drawable/ic_menu_add"
     android:title="@string/new_thing"
     app:showAsAction="ifRoom|withText"/>
     <!-- showAsAction attribute refers to whether item will appear in toolbar -->
+
+    <!-- Show subtitle for given thing in menu if space -->
+    <item
+        android:id="@+id/menu_item_show_subtitle"
+        android:title="@string/show_subtitle"
+        app:showAsAction="ifRoom"/>
 
 </menu>
