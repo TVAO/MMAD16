@@ -2,15 +2,17 @@ package tvao.mmad.itu.tingle.Controller.Helpers;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
+
 import tvao.mmad.itu.tingle.R;
 
 /**
  * This class is used to reuse code that is written for all activities.
- * The class is a subclass of FragmentActivity and implemented by the activities to reduce code duplication.
+ * The class is a subclass of AppCompatActivity and implemented by the activities to reduce code duplication.
+ * The AppCompatActivity class is extended to use the toolbar and support FragmentActivities.
  */
-public abstract class SingleFragmentActivity extends FragmentActivity {
+public abstract class SingleFragmentActivity extends AppCompatActivity {
 
     protected abstract Fragment createFragment();
 
