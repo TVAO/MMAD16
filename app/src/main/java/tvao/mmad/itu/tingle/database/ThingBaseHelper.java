@@ -15,8 +15,19 @@ public class ThingBaseHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;
     private static final String DATABASE_NAME = "thingBase.db";
 
-    public ThingBaseHelper(Context context) {
+    private static ThingBaseHelper sThingBaseHelper;
+
+    private ThingBaseHelper(Context context)
+    {
         super(context, DATABASE_NAME, null, VERSION);
+    }
+
+    public static synchronized ThingBaseHelper get(Context context)
+    {
+        if (sThingBaseHelper == null)
+            sThingBaseHelper = new ThingBaseHelper(context);
+
+        return sThingBaseHelper;
     }
 
     @Override
