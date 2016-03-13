@@ -23,7 +23,7 @@ public class ThingHolder extends ViewHolder {
 //    private List<Thing> mThings;
 //    private View mItemView;
 
-    public ThingHolder(View itemView, List<Thing> things)
+    public ThingHolder(View itemView)
     {
         super(itemView);
         mTextView = (TextView) itemView; // findViewById(R.id.list_item_thing_title_text_view)

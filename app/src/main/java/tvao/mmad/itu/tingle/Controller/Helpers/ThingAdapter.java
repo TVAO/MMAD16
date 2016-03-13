@@ -1,26 +1,22 @@
 package tvao.mmad.itu.tingle.Controller.Helpers;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.List;
 
 import tvao.mmad.itu.tingle.Model.Thing;
 
 import static android.support.v7.widget.RecyclerView.Adapter;
-import static android.view.View.OnClickListener;
-import static android.view.View.OnLongClickListener;
 
 /**
  * This Adapter is used to communicate with the RecyclerView,
  * when a ViewHolder needs to be created or connected with a Thing object.
  * RecyclerView does not know about Thing object but Thing Adapter knows about Thing model.
  */
-public class ThingAdapter extends Adapter<ThingHolder> implements OnClickListener, OnLongClickListener {
+public class ThingAdapter extends Adapter<ThingHolder> {
 
     private List<Thing> mThings;
     private static Context sContext;
@@ -49,7 +45,7 @@ public class ThingAdapter extends Adapter<ThingHolder> implements OnClickListene
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(android.R.layout.simple_list_item_1, parent, false);
 
-        return new ThingHolder(view, mThings);
+        return new ThingHolder(view);
     }
 
     /**
@@ -86,43 +82,36 @@ public class ThingAdapter extends Adapter<ThingHolder> implements OnClickListene
         notifyItemRangeChanged(position, getItemCount()); // Adjust all views below deleted item
     }
 
-    @Override
-    public void onClick(View view)
+    public void setThings (List<Thing> things )
     {
-//            notifyItemChanged(selectedPosition);
-//            selectedPosition = mThingHolder.getLayoutPosition();
-//            notifyItemChanged(selectedPosition);
-    }
-
-    @Override
-    public boolean onLongClick(View view)
-    {
-        ThingHolder holder = (ThingHolder) view.getTag();
-        Thing thing = holder.getThing();
-
-            mThings.remove(thing.getId());
-
-            // Mark selected item
-            if(holder.itemView.getBackground() == null
-                    || holder.itemView.getBackground().equals(Color.TRANSPARENT))
-            {
-                holder.itemView.setBackgroundColor(Color.CYAN);
-            }
-            else
-            {
-                holder.itemView.setBackgroundColor(Color.TRANSPARENT);
-            }
-
-            notifyDataSetChanged();
-
-            Toast.makeText(sContext, "Item " + thing.getWhat() + " has been removed from list",
-                Toast.LENGTH_SHORT).show();
-
-        return false;
-    }
-
-
-    public void setThings(List<Thing> things) {
         mThings = things;
     }
+
+//    @Override
+//    public boolean onLongClick(View view)
+//    {
+//        ThingHolder holder = (ThingHolder) view.getTag();
+//        Thing thing = holder.getThing();
+//
+//            mThings.remove(thing.getId());
+//
+//            // Mark selected item
+//            if(holder.itemView.getBackground() == null
+//                    || holder.itemView.getBackground().equals(Color.TRANSPARENT))
+//            {
+//                holder.itemView.setBackgroundColor(Color.CYAN);
+//            }
+//            else
+//            {
+//                holder.itemView.setBackgroundColor(Color.TRANSPARENT);
+//            }
+//
+//            notifyDataSetChanged();
+//
+//            Toast.makeText(sContext, "Item " + thing.getWhat() + " has been removed from list",
+//                Toast.LENGTH_SHORT).show();
+//
+//        return false;
+//    }
+
 }

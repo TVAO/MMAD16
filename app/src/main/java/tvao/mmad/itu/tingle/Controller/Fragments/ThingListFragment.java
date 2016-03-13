@@ -12,9 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
-
 import java.util.List;
-
 import tvao.mmad.itu.tingle.Controller.Helpers.RecyclerItemClickListener;
 import tvao.mmad.itu.tingle.Controller.Helpers.ThingAdapter;
 import tvao.mmad.itu.tingle.Model.Thing;
@@ -31,7 +29,7 @@ import static tvao.mmad.itu.tingle.Controller.Helpers.RecyclerItemClickListener.
 public class ThingListFragment extends Fragment {
 
     private View mView;
-    private Button mBackButton, mDeleteButton;
+    private Button mBackButton; //, mDeleteButton;
 
     private List<Thing> mThings;
     private RecyclerView mThingRecyclerView;
@@ -82,7 +80,7 @@ public class ThingListFragment extends Fragment {
     {
         super.onCreate(savedInstanceState);
 
-        mThings = ThingRepository.get(this.getActivity()).getThings();
+        mThings = ThingRepository.get(this.getContext()).getThings();
 
         // selectedItemPosition = -1;
     }
@@ -116,22 +114,19 @@ public class ThingListFragment extends Fragment {
 //        });
 
         mThingRecyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(mThingRecyclerView.getContext(), new OnItemClickListener()
+                new RecyclerItemClickListener(getContext(), new OnItemClickListener()
                 {
                     @Override
                     public void onItemClick(View view, int position)
                     {
-                        int itemPosition = mThingRecyclerView.getChildAdapterPosition(view); // used getChildPosition
-                        Thing item = mThings.get(itemPosition);
+                        // int itemPosition = mThingRecyclerView.getChildAdapterPosition(view); // used getChildPosition
+
+                        Thing item = mThings.get(position); // itemPosition
 
                         Toast.makeText(mThingRecyclerView.getContext(), item.getWhat(), Toast.LENGTH_LONG).show();
 
-                        //ThingRepository.get(getActivity()).removeThing(item);
-                        mThings.remove(position);
-
-                        mAdapter.notifyItemRemoved(position); // Refresh items
-                        mAdapter.notifyItemRangeChanged(position, mThings.size()); // Adjust all views below deleted item
-
+                        // mThingRecyclerView.removeViewAt(position);
+                        mAdapter.removeAt(position);
                     }
                 })
         );
@@ -144,15 +139,15 @@ public class ThingListFragment extends Fragment {
     // Update recycler view with items in list
     private void updateUI()
     {
-        ThingRepository repository = ThingRepository.get(getActivity());
-        List<Thing> things = repository.getThings();
-
-        if (mAdapter == null) {
-            mAdapter = new ThingAdapter(things, getContext());
+        if (mAdapter == null)
+        {
+            mAdapter = new ThingAdapter(mThings, getContext());
             mThingRecyclerView.setAdapter(mAdapter);
-        } else {
-            mAdapter.setThings(things);
-            // mAdapter.notifyDataSetChanged();
+        }
+        else
+        {
+            mAdapter.setThings(mThings);
+            mAdapter.notifyDataSetChanged(); // Todo expensive use specific notify
         }
     }
 
