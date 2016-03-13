@@ -27,8 +27,6 @@ public class ThingRepository implements IRepository {
         mContext = context.getApplicationContext();
         mDatabase = new ThingBaseHelper(mContext)
                 .getWritableDatabase();
-
-        fillThings(); // Test data
     }
 
     // Public access modifier
@@ -159,16 +157,6 @@ public class ThingRepository implements IRepository {
         values.put(ThingTable.Cols.WHAT, thing.getWhat());
         values.put(ThingTable.Cols.WHERE, thing.getWhere());
         return values;
-    }
-
-    // Used to generate test data 
-    private void fillThings()
-    {
-        addThing(new Thing("Android Phone", "Desk"));
-        addThing(new Thing("Keys", "Kitchen"));
-        addThing(new Thing("Book", "Bag"));
-        addThing(new Thing("Jacket", "Closet"));
-        addThing(new Thing("Notes", "Office"));
     }
 
 }
