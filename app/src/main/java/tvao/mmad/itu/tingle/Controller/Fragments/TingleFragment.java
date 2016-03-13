@@ -102,6 +102,14 @@ public class TingleFragment extends Fragment {
 
     }
 
+//    // Update content of repository upon updates
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        ThingRepository.getThing(getActivity())
+//                .updateThing(mThing);
+//    }
+
     /**
      *  Creates and returns the view hierarchy associated with the fragment
      * @param inflater - used to inflate view in fragment
@@ -216,7 +224,7 @@ public class TingleFragment extends Fragment {
         int size = sThingRepository.size();
         if (size > 0 )
         {
-            mLastAdded.setText(sThingRepository.get(size - 1).toString()); // Set text to last item added
+            mLastAdded.setText(sThingRepository.getThing(size - 1).toString()); // Set text to last item added
         }
         else this.mLastAdded.setText(getString(R.string.item_notfound_toast));
     }

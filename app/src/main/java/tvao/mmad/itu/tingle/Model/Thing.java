@@ -17,6 +17,12 @@ public class Thing {
         mId = UUID.randomUUID(); // Generate unique identifier
     }
 
+    // Return Thing with appropriate id in query
+    public Thing(UUID id)
+    {
+        mId = id;
+    }
+
     /**
      * Uses oneLine helper function to build description of item.
      * @return - description of item and location

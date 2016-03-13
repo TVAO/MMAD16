@@ -132,5 +132,7 @@ public class ThingAdapter extends Adapter<ThingHolder> implements OnClickListene
     }
 
 
-
+    public void setThings(List<Thing> things) {
+        mThings = things;
+    }
 }

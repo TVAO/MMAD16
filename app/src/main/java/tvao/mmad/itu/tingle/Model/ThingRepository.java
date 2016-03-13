@@ -1,23 +1,23 @@
 package tvao.mmad.itu.tingle.Model;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
-
 import tvao.mmad.itu.tingle.Database.ThingBaseHelper;
+import tvao.mmad.itu.tingle.Database.ThingCursorWrapper;
+import tvao.mmad.itu.tingle.Database.ThingDbSchema;
+import static tvao.mmad.itu.tingle.Database.ThingDbSchema.ThingTable.*;
 
 /**
  * ThingDB is an in-memory database implemented using the singleton pattern and is used to hold a list of things.
  */
 public class ThingRepository implements IRepository {
-    private static ThingRepository sThingRepository;
 
-    // Fake database
-    private List<Thing> mThingsDB;
+    private static ThingRepository sThingRepository;
     private Context mContext;
     private SQLiteDatabase mDatabase;
 
@@ -27,8 +27,6 @@ public class ThingRepository implements IRepository {
         mContext = context.getApplicationContext();
         mDatabase = new ThingBaseHelper(mContext)
                 .getWritableDatabase();
-
-        mThingsDB = new ArrayList<Thing>();
 
         fillThings(); // Test data
     }
@@ -43,31 +41,124 @@ public class ThingRepository implements IRepository {
         return sThingRepository;
     }
 
-    public Iterator<Thing> getAll()
+    /**
+     * Returns a list of all things by using a cursor pointing on items in query.
+     * @return list of all things from database
+     */
+    public List<Thing> getThings()
     {
-        return mThingsDB.iterator();
+        List<Thing> things = new ArrayList<>();
+
+        ThingCursorWrapper cursor = queryThings(null, null);
+
+        try
+        {
+            cursor.moveToFirst(); // Move to first element
+            while (!cursor.isAfterLast()) // Pointer off end of data set
+            {
+                things.add(cursor.getThing());
+                cursor.moveToNext(); // Advance to next item
+            }
+        }
+        finally
+        {
+            cursor.close();
+        }
+
+        return things;
     }
 
-    public List<Thing> getThings() { return mThingsDB; }
+    public void addThing(Thing thing)
+    {
+        ContentValues values = getContentValues(thing);
+        mDatabase.insert(NAME, null, values);
+    }
 
-    public void addThing(Thing thing) { mThingsDB.add(thing);}
+//    //---deletes a particular title---
+//    public boolean deleteThing(UUID id)
+//    {
+//        return mDatabase.delete(NAME, ThingDbSchema.Cols.UUID + "=" + id, null) > 0;
+//    }
 
-    public void removeThing(int position) { mThingsDB.remove(position); }
+    public void removeThing(Thing thing)
+    {
+        ContentValues values = getContentValues(thing);
+        mDatabase.delete(NAME, ThingDbSchema.Cols.UUID + "=" + thing.getId(), null); // Delete thing in Thing table
+    }
 
-    public int size() { return mThingsDB.size(); }
+    public void updateThing(Thing thing)
+    {
+        String uuidString = thing.getId().toString();
 
-    public Thing get(int i) {return mThingsDB.get(i);}
+        ContentValues values = getContentValues(thing);
+
+        mDatabase.update(NAME, values,
+                ThingDbSchema.Cols.UUID + " = ?",
+                new String[] { uuidString });
+    }
+
+    // Method used to read data from SQLite database
+    private ThingCursorWrapper queryThings(String whereClause, String[] whereArgs) {
+
+        Cursor cursor = mDatabase.query(
+
+        NAME,
+                null, // Columns - null selects all columns
+                whereClause,
+                whereArgs,
+                null, // groupBy
+                null, // having
+                null  // orderBy
+        );
+
+        return new ThingCursorWrapper(cursor);
+    }
+
+    public int size()
+    {
+        return getThings().size();
+    }
+
+    public Thing getThing(int position)
+    {
+        return getThings().get(position);
+    }
 
     public Thing getThing(UUID id)
     {
-        for (Thing thing : mThingsDB)
+
+        ThingCursorWrapper cursor = queryThings(
+
+                ThingDbSchema.Cols.UUID + " = ?",
+                new String[]{id.toString()}
+        );
+
+        try
         {
-            if(thing.getId().equals(id))
+            if (cursor.getCount() == 0)
             {
-                return thing;
+                return null;
             }
+            cursor.moveToFirst();
+
+            return cursor.getThing();
         }
-        return null;
+
+        finally
+        {
+            cursor.close();
+        }
+
+
+    }
+
+    // Private method used to shuttle Things
+    private static ContentValues getContentValues(Thing thing) {
+        ContentValues values = new ContentValues();
+        values.put(ThingDbSchema.Cols.UUID, thing.getId().toString());
+        values.put(ThingDbSchema.Cols.WHAT, thing.getWhat());
+        values.put(ThingDbSchema.Cols.WHERE, thing.getWhere());
+        return values;
     }
 
     // Used to generate test data 

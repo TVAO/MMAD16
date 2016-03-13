@@ -30,7 +30,7 @@ public class ThingListFragment extends Fragment {
 
     private View mView;
     private Button mBackButton, mDeleteButton;
-    private ThingRepository mThingRepository;
+    private List<Thing> mThings;
     private RecyclerView mThingRecyclerView;
     private ThingAdapter mAdapter;
     private int selectedItemPosition; // Position of selected item used to removeAt
@@ -79,7 +79,7 @@ public class ThingListFragment extends Fragment {
     {
         super.onCreate(savedInstanceState);
 
-        mThingRepository = ThingRepository.get(this.getContext());
+        mThings = ThingRepository.get(this.getContext()).getThings();
 
         selectedItemPosition = -1;
     }
@@ -117,11 +117,11 @@ public class ThingListFragment extends Fragment {
                     @Override
                     public void onItemClick(View view, int position) {
                         int itemPosition = mThingRecyclerView.getChildPosition(view);
-                        Thing item = mThingRepository.get(itemPosition);
+                        Thing item = mThings.get(itemPosition);
                         Toast.makeText(mThingRecyclerView.getContext(), item.getWhat(), Toast.LENGTH_LONG).show();
-                        mThingRepository.getThings().remove(position);
+                        mThings.remove(position);
                         mAdapter.notifyItemRemoved(position); // Refresh items
-                        mAdapter.notifyItemRangeChanged(position, mThingRepository.getThings().size()); // Adjust all views below deleted item
+                        mAdapter.notifyItemRangeChanged(position, mThings.size()); // Adjust all views below deleted item
 
                     }
                 })
@@ -138,8 +138,17 @@ public class ThingListFragment extends Fragment {
         ThingRepository repository = ThingRepository.get(getActivity());
         List<Thing> things = repository.getThings();
 
-        mAdapter = new ThingAdapter(things, getActivity());
-        mThingRecyclerView.setAdapter(mAdapter);
+        if (mAdapter == null) {
+            mAdapter = new ThingAdapter(things, getContext());
+            mThingRecyclerView.setAdapter(mAdapter);
+        } else {
+            mAdapter.setThings(things);
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
+    public void setThings(List<Thing> crimes) {
+        mThings = crimes;
     }
 
     // Redirect back to main page (TingleActivity)
@@ -166,14 +175,13 @@ public class ThingListFragment extends Fragment {
             @Override
             public void onClick(View v)
             {
-                if (selectedItemPosition == -1)
-                {
+                if (selectedItemPosition == -1) {
                     makeToast(getString(R.string.item_notfound_toast));
                 }
                 else
                 {
-                    String itemName = mThingRepository.get(selectedItemPosition).getWhat();
-                    mThingRepository.removeThing(selectedItemPosition);
+                    String itemName = mThings.get(selectedItemPosition).getWhat();
+                    mThings.remove(selectedItemPosition);
                     makeToast(getString(R.string.item_deleted_toast) + " " + itemName);
                     // setItemListView();
                     selectedItemPosition = -1;
@@ -195,8 +203,8 @@ public class ThingListFragment extends Fragment {
 //        mListView = (ListView) mView.findViewById(R.id.list_view);
 //
 //        // Adapter used to bind together list and its items in the ListActivity
-//        // final ArrayAdapter adapter = new ArrayAdapter(getActivity().getApplicationContext(), R.layout.rowitem, R.id.row_item, mThingRepository.getThings().toArray()); // Context, layout and how items should be visualised
-//        adapter = new ArrayAdapter(getActivity().getApplicationContext(), R.layout.rowitem, R.id.row_item, mThingRepository.getThings().toArray()); // Context, layout and how items should be visualised
+//        // final ArrayAdapter adapter = new ArrayAdapter(getActivity().getApplicationContext(), R.layout.rowitem, R.id.row_item, mThings.getThings().toArray()); // Context, layout and how items should be visualised
+//        adapter = new ArrayAdapter(getActivity().getApplicationContext(), R.layout.rowitem, R.id.row_item, mThings.getThings().toArray()); // Context, layout and how items should be visualised
 //        if (mListView != null)
 //        mListView.setAdapter(adapter);
 //

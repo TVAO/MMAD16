@@ -1,6 +1,7 @@
 package tvao.mmad.itu.tingle.Model;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * This interface outlines the CRUD operations used in the ThingRepository.
@@ -8,9 +9,11 @@ import java.util.List;
  */
 public interface IRepository {
 
-    Thing get(int i);
-    List<Thing> getThings();
     void addThing(Thing thing);
-    void removeThing(int position);
+    Thing getThing(UUID id);
+    List<Thing> getThings();
+    void updateThing(Thing thing);
+    void removeThing(Thing thing);
+    //void removeThing(int position);
     int size();
 }
