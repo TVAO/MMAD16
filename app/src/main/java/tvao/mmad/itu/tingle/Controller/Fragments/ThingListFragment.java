@@ -21,6 +21,8 @@ import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.R;
 
+import static tvao.mmad.itu.tingle.Controller.Helpers.RecyclerItemClickListener.*;
+
 
 /**
  * This class represents a fragment used to display all items in list.
@@ -30,10 +32,11 @@ public class ThingListFragment extends Fragment {
 
     private View mView;
     private Button mBackButton, mDeleteButton;
+
     private List<Thing> mThings;
     private RecyclerView mThingRecyclerView;
     private ThingAdapter mAdapter;
-    private int selectedItemPosition; // Position of selected item used to removeAt
+    // private int selectedItemPosition; // Position of selected item used to removeAt
     private onBackPressedListener mCallBackToActivity; // Used to call host activity TingleActivity
 
     /**
@@ -79,9 +82,9 @@ public class ThingListFragment extends Fragment {
     {
         super.onCreate(savedInstanceState);
 
-        mThings = ThingRepository.get(this.getContext()).getThings();
+        mThings = ThingRepository.get(this.getActivity()).getThings();
 
-        selectedItemPosition = -1;
+        // selectedItemPosition = -1;
     }
 
     /**
@@ -105,21 +108,27 @@ public class ThingListFragment extends Fragment {
 
         mThingRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity())); // RecyclerView requires a LayoutManager
 
-        mThingRecyclerView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                return false;
-            }
-        });
+//        mThingRecyclerView.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                return false;
+//            }
+//        });
 
         mThingRecyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(mThingRecyclerView.getContext(), new RecyclerItemClickListener.OnItemClickListener() {
+                new RecyclerItemClickListener(mThingRecyclerView.getContext(), new OnItemClickListener()
+                {
                     @Override
-                    public void onItemClick(View view, int position) {
+                    public void onItemClick(View view, int position)
+                    {
                         int itemPosition = mThingRecyclerView.getChildAdapterPosition(view); // used getChildPosition
                         Thing item = mThings.get(itemPosition);
+
                         Toast.makeText(mThingRecyclerView.getContext(), item.getWhat(), Toast.LENGTH_LONG).show();
+
+                        //ThingRepository.get(getActivity()).removeThing(item);
                         mThings.remove(position);
+
                         mAdapter.notifyItemRemoved(position); // Refresh items
                         mAdapter.notifyItemRangeChanged(position, mThings.size()); // Adjust all views below deleted item
 
@@ -143,12 +152,8 @@ public class ThingListFragment extends Fragment {
             mThingRecyclerView.setAdapter(mAdapter);
         } else {
             mAdapter.setThings(things);
-            mAdapter.notifyDataSetChanged();
+            // mAdapter.notifyDataSetChanged();
         }
-    }
-
-    public void setThings(List<Thing> crimes) {
-        mThings = crimes;
     }
 
     // Redirect back to main page (TingleActivity)
@@ -169,25 +174,25 @@ public class ThingListFragment extends Fragment {
         }
 
         // Delete button to remove item
-        mDeleteButton = (Button) mView.findViewById(R.id.delete_button);
-        mDeleteButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                if (selectedItemPosition == -1) {
-                    makeToast(getString(R.string.item_notfound_toast));
-                }
-                else
-                {
-                    String itemName = mThings.get(selectedItemPosition).getWhat();
-                    mThings.remove(selectedItemPosition);
-                    makeToast(getString(R.string.item_deleted_toast) + " " + itemName);
-                    // setItemListView();
-                    selectedItemPosition = -1;
-                }
-            }
-        });
+//        mDeleteButton = (Button) mView.findViewById(R.id.delete_button);
+//        mDeleteButton.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View v)
+//            {
+//                if (selectedItemPosition == -1) {
+//                    makeToast(getString(R.string.item_notfound_toast));
+//                }
+//                else
+//                {
+//                    String itemName = mThings.get(selectedItemPosition).getWhat();
+//                    mThings.remove(selectedItemPosition);
+//                    makeToast(getString(R.string.item_deleted_toast) + " " + itemName);
+//                    // setItemListView();
+//                    selectedItemPosition = -1;
+//                }
+//            }
+//        });
 
     }
 

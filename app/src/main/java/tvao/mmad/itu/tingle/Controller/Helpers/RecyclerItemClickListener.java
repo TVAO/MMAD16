@@ -11,27 +11,34 @@ import android.view.View;
  * This is used to register click events on items used for e.g. deletion.
  */
 public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
+
     private OnItemClickListener mListener;
 
-    public interface OnItemClickListener {
+    public interface OnItemClickListener
+    {
         public void onItemClick(View view, int position);
     }
 
     GestureDetector mGestureDetector;
 
-    public RecyclerItemClickListener(Context context, OnItemClickListener listener) {
+    public RecyclerItemClickListener(Context context, OnItemClickListener listener)
+    {
         mListener = listener;
-        mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
-            @Override public boolean onSingleTapUp(MotionEvent e) {
+        mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener()
+        {
+            @Override public boolean onSingleTapUp(MotionEvent e)
+            {
                 return true;
             }
         });
     }
 
-    @Override public boolean onInterceptTouchEvent(RecyclerView view, MotionEvent e) {
+    @Override public boolean onInterceptTouchEvent(RecyclerView view, MotionEvent e)
+    {
         View childView = view.findChildViewUnder(e.getX(), e.getY());
-        if (childView != null && mListener != null && mGestureDetector.onTouchEvent(e)) {
-            mListener.onItemClick(childView, view.getChildPosition(childView));
+        if (childView != null && mListener != null && mGestureDetector.onTouchEvent(e))
+        {
+            mListener.onItemClick(childView, view.getChildAdapterPosition(childView)); // getChildPosition
             return true;
         }
         return false;

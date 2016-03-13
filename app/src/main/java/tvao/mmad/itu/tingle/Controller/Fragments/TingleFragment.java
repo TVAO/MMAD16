@@ -224,7 +224,7 @@ public class TingleFragment extends Fragment {
         int size = sThingRepository.size();
         if (size > 0 )
         {
-            mLastAdded.setText(sThingRepository.getThing(size - 1).toString()); // Set text to last item added
+            mLastAdded.setText(sThingRepository.getThings().get(size - 1).toString()); // Set text to last item added
         }
         else this.mLastAdded.setText(getString(R.string.item_notfound_toast));
     }

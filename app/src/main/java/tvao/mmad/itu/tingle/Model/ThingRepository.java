@@ -10,7 +10,6 @@ import java.util.UUID;
 import tvao.mmad.itu.tingle.Database.ThingBaseHelper;
 import tvao.mmad.itu.tingle.Database.ThingCursorWrapper;
 import tvao.mmad.itu.tingle.Database.ThingDbSchema.ThingTable;
-import static tvao.mmad.itu.tingle.Database.ThingDbSchema.ThingTable.*;
 
 /**
  * ThingDB is an in-memory database implemented using the singleton pattern and is used to hold a list of things.
@@ -69,7 +68,7 @@ public class ThingRepository implements IRepository {
     public void addThing(Thing thing)
     {
         ContentValues values = getContentValues(thing);
-        mDatabase.insert(NAME, null, values);
+        mDatabase.insert(ThingTable.NAME, null, values);
     }
 
 //    //---deletes a particular title---
@@ -80,8 +79,10 @@ public class ThingRepository implements IRepository {
 
     public void removeThing(Thing thing)
     {
-        ContentValues values = getContentValues(thing);
-        mDatabase.delete(NAME, ThingTable.Cols.UUID + "=" + thing.getId(), null); // Delete thing in Thing table
+        mDatabase.delete(ThingTable.NAME,
+                ThingTable.Cols.UUID + " != ?",
+                new String[] { thing.getId().toString() });
+
     }
 
     public void updateThing(Thing thing)
@@ -90,7 +91,7 @@ public class ThingRepository implements IRepository {
 
         ContentValues values = getContentValues(thing);
 
-        mDatabase.update(NAME, values,
+        mDatabase.update(ThingTable.NAME, values,
                 ThingTable.Cols.UUID + " = ?",
                 new String[]{uuidString});
     }
@@ -100,7 +101,7 @@ public class ThingRepository implements IRepository {
 
         Cursor cursor = mDatabase.query(
 
-                NAME,
+                ThingTable.NAME,
                 null, // Columns - null selects all columns
                 whereClause,
                 whereArgs,
@@ -115,11 +116,6 @@ public class ThingRepository implements IRepository {
     public int size()
     {
         return getThings().size();
-    }
-
-    public Thing getThing(int position)
-    {
-        return getThings().get(position);
     }
 
     public Thing getThing(UUID id)
