@@ -4,11 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
 import tvao.mmad.itu.tingle.Database.ThingBaseHelper;
 import tvao.mmad.itu.tingle.Database.ThingCursorWrapper;
 import tvao.mmad.itu.tingle.Database.ThingDbSchema.ThingTable;
@@ -27,7 +26,7 @@ public class ThingRepository implements IRepository {
     {
         mContext = context;
         //mContext = context.getApplicationContext();
-        mDatabase = new ThingBaseHelper(mContext)
+        mDatabase = ThingBaseHelper.get(mContext)
                 .getWritableDatabase();
     }
 
@@ -71,44 +70,25 @@ public class ThingRepository implements IRepository {
     public void addThing(Thing thing)
     {
         ContentValues values = getContentValues(thing);
-
-        try
-        {
-            mDatabase.insert(ThingTable.NAME, null, values);
-        }
-        catch (SQLiteException ex)
-        {
-            ex.printStackTrace();
-        }
-        finally
-        {
-            mDatabase.close();
-        }
+        mDatabase.insert(ThingTable.NAME, null, values);
     }
 
-//    //---deletes a particular title---
-//    public boolean deleteThing(UUID id)
-//    {
-//        return mDatabase.delete(NAME, ThingTable.Cols.UUID + "=" + id, null) > 0;
-//    }
+    // Delete a particular thing based on unique identifier
+    public boolean removeThing(UUID id)
+    {
+        return mDatabase.delete(ThingTable.NAME,
+                        ThingTable.Cols.UUID + " = ?",
+                        new String[] { id.toString() }
+                ) > 0;
+        // return mDatabase.delete(ThingTable.NAME, ThingTable.Cols.UUID + "=" + id, null) > 0;
+    }
 
+    // Delete a particular thing based on object reference
     public void removeThing(Thing thing)
     {
-        try
-        {
-            mDatabase.delete(ThingTable.NAME,
-                    ThingTable.Cols.UUID + " != ?",
-                    new String[]{thing.getId().toString()});
-        }
-        catch (SQLiteException ex)
-        {
-            ex.printStackTrace();
-        }
-        finally
-        {
-            mDatabase.close();
-        }
-
+        mDatabase.delete(ThingTable.NAME,
+                ThingTable.Cols.UUID + " != ?",
+                new String[] { thing.getId().toString() } );
     }
 
     public void updateThing(Thing thing)
@@ -117,20 +97,9 @@ public class ThingRepository implements IRepository {
 
         ContentValues values = getContentValues(thing);
 
-        try
-        {
-            mDatabase.update(ThingTable.NAME, values,
-                    ThingTable.Cols.UUID + " = ?",
-                    new String[]{uuidString});
-        }
-        catch (SQLiteException ex)
-        {
-            ex.printStackTrace();
-        }
-        finally
-        {
-            mDatabase.close();
-        }
+        mDatabase.update(ThingTable.NAME, values,
+                ThingTable.Cols.UUID + " = ?",
+                new String[]{uuidString});
     }
 
     // Method used to read data from SQLite database

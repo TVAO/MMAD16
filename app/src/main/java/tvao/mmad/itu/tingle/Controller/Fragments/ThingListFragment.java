@@ -12,14 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
-import java.util.List;
 import tvao.mmad.itu.tingle.Controller.Helpers.RecyclerItemClickListener;
 import tvao.mmad.itu.tingle.Controller.Helpers.ThingAdapter;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.R;
 
-import static tvao.mmad.itu.tingle.Controller.Helpers.RecyclerItemClickListener.*;
+import static tvao.mmad.itu.tingle.Controller.Helpers.RecyclerItemClickListener.OnItemClickListener;
 
 
 /**
@@ -114,18 +113,19 @@ public class ThingListFragment extends Fragment {
                     @Override
                     public void onItemClick(View view, int position)
                     {
-                        // int itemPosition = mThingRecyclerView.getChildAdapterPosition(view); // used getChildPosition
-
                         Thing item = mThingRepository.getThings().get(position);
-                        //Thing item = mThings.get(position); // itemPosition
 
-                        Toast.makeText(mThingRecyclerView.getContext(), item.getWhat(), Toast.LENGTH_LONG).show();
-
-                        // mThingRecyclerView.removeViewAt(position);
-                        //mThings.remove(item);
-                        mThingRepository.removeThing(item);
+                        boolean isDeleted = mThingRepository.removeThing(item.getId());
                         mAdapter.removeAt(position);
 
+                        if (isDeleted = true)
+                        {
+                            Toast.makeText(mThingRecyclerView.getContext(), item.getWhat(), Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(mThingRecyclerView.getContext(), item.getWhat() + "was not deleted", Toast.LENGTH_LONG).show();
+                        }
                     }
                 })
         );
@@ -142,7 +142,7 @@ public class ThingListFragment extends Fragment {
         {
             mAdapter = new ThingAdapter(mThingRepository.getThings(), getContext());
             mThingRecyclerView.setAdapter(mAdapter);
-            mAdapter.notifyDataSetChanged();
+            //mAdapter.notifyDataSetChanged();
         }
         else
         {
