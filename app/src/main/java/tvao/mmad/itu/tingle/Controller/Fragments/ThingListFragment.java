@@ -116,7 +116,7 @@ public class ThingListFragment extends Fragment {
                 new RecyclerItemClickListener(mThingRecyclerView.getContext(), new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        int itemPosition = mThingRecyclerView.getChildPosition(view); // use getChildAdapterPosition
+                        int itemPosition = mThingRecyclerView.getChildAdapterPosition(view); // used getChildPosition
                         Thing item = mThings.get(itemPosition);
                         Toast.makeText(mThingRecyclerView.getContext(), item.getWhat(), Toast.LENGTH_LONG).show();
                         mThings.remove(position);
