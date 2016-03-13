@@ -101,17 +101,9 @@ public class ThingListFragment extends Fragment {
 
         setButtons();
 
-        // setItemListView();
         mThingRecyclerView = (RecyclerView) mView.findViewById(R.id.thing_recycler_view);
 
         mThingRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity())); // RecyclerView requires a LayoutManager
-
-//        mThingRecyclerView.setOnLongClickListener(new View.OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View v) {
-//                return false;
-//            }
-//        });
 
         mThingRecyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getContext(), new OnItemClickListener()
@@ -126,6 +118,7 @@ public class ThingListFragment extends Fragment {
                         Toast.makeText(mThingRecyclerView.getContext(), item.getWhat(), Toast.LENGTH_LONG).show();
 
                         // mThingRecyclerView.removeViewAt(position);
+                        //mThings.remove(item);
                         mAdapter.removeAt(position);
                     }
                 })
