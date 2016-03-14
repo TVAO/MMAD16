@@ -12,10 +12,16 @@
     app:showAsAction="ifRoom|withText"/>
     <!-- showAsAction attribute refers to whether item will appear in toolbar -->
 
+    <!--<item-->
+        <!--android:id="@+id/menu_item_delete_thing"-->
+        <!--android:icon="@drawable/ic_menu_add"-->
+        <!--android:title="@string/delete_thing"-->
+        <!--app:showAsAction="ifRoom|withText"/>-->
+
     <!-- Show subtitle for given thing in menu if space -->
     <item
         android:id="@+id/menu_item_show_subtitle"
         android:title="@string/show_subtitle"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="never"/>
 
 </menu>

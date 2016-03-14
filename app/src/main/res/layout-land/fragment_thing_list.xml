@@ -11,13 +11,6 @@
               android:paddingTop="@dimen/activity_vertical_margin"
               android:orientation="vertical">
 
-    <!--<ListView-->
-        <!--android:id="@+id/list_view"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_weight="1">-->
-    <!--</ListView>-->
-
     <!--RecyclerView used to recycle text views displayed on screen with Thing data -->
     <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
                                             android:id="@+id/thing_recycler_view"
@@ -25,13 +18,5 @@
                                             android:layout_height="match_parent"
                                             android:layout_weight="1">
     </android.support.v7.widget.RecyclerView>
-
-    <!-- Button to removeAt item -->
-
-    <!--<Button-->
-        <!--android:id="@+id/delete_button"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/delete_button"/>-->
 
 </LinearLayout>

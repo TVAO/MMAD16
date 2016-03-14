@@ -24,4 +24,6 @@
     <string name="show_subtitle">Show subtitle</string>
     <string name="hide_subtitle">Hide Subtitle</string>
     <string name="subtitle_format">%1$s crimes</string>
+    <string name="delete_thing">Delete</string>
+    <string name="things_title">Things</string>
 </resources>

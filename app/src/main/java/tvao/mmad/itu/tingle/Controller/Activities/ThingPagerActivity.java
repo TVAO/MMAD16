@@ -1,13 +1,17 @@
 package tvao.mmad.itu.tingle.Controller.Activities;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import java.util.List;
 import java.util.UUID;
@@ -61,11 +65,10 @@ public class ThingPagerActivity extends FragmentActivity implements eventListene
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         // Setup agent managing conversation with ViewPager
-        mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager)
-        {
+        mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
 
             @Override
-            public Fragment getItem (int position){
+            public Fragment getItem(int position) {
                 Thing thing = mThings.get(position);
                 return newInstance(thing.getId());
             }
@@ -97,6 +100,23 @@ public class ThingPagerActivity extends FragmentActivity implements eventListene
     @Override
     public void onAddItems() {
 
+    }
+
+    public static ActivityOptions getTransition(Activity activity, View crimeView)
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            crimeView.setTransitionName("thing");
+
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(activity,
+                    crimeView, "thing");
+
+            return options;
+        }
+        else
+        {
+            return null;
+        }
     }
 
 }
