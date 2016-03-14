@@ -1,10 +1,14 @@
 package tvao.mmad.itu.tingle.Controller.Helpers;
 
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import com.bignerdranch.android.multiselector.ModalMultiSelectorCallback;
 import com.bignerdranch.android.multiselector.MultiSelector;
 import com.bignerdranch.android.multiselector.SwappingHolder;
 
@@ -28,10 +32,22 @@ public class ThingHolder extends SwappingHolder implements OnClickListener, OnLo
     private Thing mThing;
     private static MultiSelector mMultiSelector = new MultiSelector(); // Used to select multiple items
 
+    // Enter ActionMode as part of selection mode
+//    private ModalMultiSelectorCallback mActionModeCallback = new ModalMultiSelectorCallback() {
+//        @Override
+//        public boolean onActionItemClicked(ActionMode mode, MenuItem item)
+//        {
+//            return false;
+//        }
+//    };
+
     public ThingHolder(View itemView)
     {
         super(itemView, mMultiSelector); // multi selector communicates with ViewHolder
         mTextView = (TextView) itemView; // findViewById(R.id.list_item_thing_title_text_view)
+
+        itemView.setClickable(true);
+        itemView.setLongClickable(true);
     }
 
     public Thing getThing(){
@@ -69,7 +85,9 @@ public class ThingHolder extends SwappingHolder implements OnClickListener, OnLo
     @Override
     public boolean onLongClick(View view)
     {
-        if (!mMultiSelector.isSelectable()) { // Check if multi selector is already in selection mode
+        if (!mMultiSelector.isSelectable()) // Check if multi selector is already in selection mode
+        {
+            //((AppCompatActivity) getActivity()).startSupportActionMode(mActionModeCallback);
             mMultiSelector.setSelectable(true); // Enter selection mode
             mMultiSelector.setSelected(ThingHolder.this, true); // Set selected item
             return true;
