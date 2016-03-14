@@ -8,6 +8,7 @@ int anim abc_slide_in_bottom 0x7f050006
 int anim abc_slide_in_top 0x7f050007
 int anim abc_slide_out_bottom 0x7f050008
 int anim abc_slide_out_top 0x7f050009
+int anim raise 0x7f05000a
 int attr actionBarDivider 0x7f01003b
 int attr actionBarItemBackground 0x7f01003c
 int attr actionBarPopupTheme 0x7f010035
@@ -384,6 +385,7 @@ int dimen item_touch_helper_swipe_escape_velocity 0x7f08004d
 int dimen notification_large_icon_height 0x7f08004e
 int dimen notification_large_icon_width 0x7f08004f
 int dimen notification_subtext_size 0x7f080050
+int dimen touch_raise 0x7f080051
 int drawable abc_ab_share_pack_mtrl_alpha 0x7f020000
 int drawable abc_action_bar_item_background_material 0x7f020001
 int drawable abc_btn_borderless_material 0x7f020002
