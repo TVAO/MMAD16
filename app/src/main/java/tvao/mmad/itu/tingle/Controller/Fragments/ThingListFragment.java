@@ -48,7 +48,8 @@ public class ThingListFragment extends Fragment {
      * Interface is encapsulated in fragment to avoid use in other activities.
      * Interface is implemented by host activity determining what happens upon triggering the listener.
      */
-    public interface onBackPressedListener {
+    public interface onBackPressedListener
+    {
         void onBackPressed();
     }
 
@@ -60,14 +61,18 @@ public class ThingListFragment extends Fragment {
      * @param context - context of host activity
      */
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(Context context)
+    {
         super.onAttach(context);
         Activity activity = null;
 
-        try {
+        try
+        {
             activity = (Activity) context;
             mCallBackToActivity = (onBackPressedListener) activity;
-        } catch (ClassCastException e) {
+        }
+        catch (ClassCastException e)
+        {
             throw new ClassCastException(activity.toString()
                     + " must implement onBackPressedListener");
         }
@@ -79,13 +84,11 @@ public class ThingListFragment extends Fragment {
      * @param savedInstanceState - fragment rebuilt from saved state if not null
      */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true); // Tell FM that fragment receives menu callbacks
         mThingRepository = ThingRepository.get(getContext());
-        //mThings = ThingRepository.get(this.getContext()).getThings();
-
-        // selectedItemPosition = -1;
     }
 
     /**
@@ -109,23 +112,23 @@ public class ThingListFragment extends Fragment {
 
         mThingRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity())); // RecyclerView requires a LayoutManager
 
-        mThingRecyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(getContext(), new OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        Thing item = mThingRepository.getThings().get(position);
-
-                        boolean isDeleted = mThingRepository.removeThing(item.getId());
-                        mAdapter.removeAt(position);
-
-                        if (isDeleted = true) {
-                            Toast.makeText(mThingRecyclerView.getContext(), item.getWhat(), Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(mThingRecyclerView.getContext(), item.getWhat() + "was not deleted", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                })
-        );
+//        mThingRecyclerView.addOnItemTouchListener(
+//                new RecyclerItemClickListener(getContext(), new OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(View view, int position) {
+//                        Thing item = mThingRepository.getThings().get(position);
+//
+//                        boolean isDeleted = mThingRepository.removeThing(item.getId());
+//                        mAdapter.removeAt(position);
+//
+//                        if (isDeleted = true) {
+//                            Toast.makeText(mThingRecyclerView.getContext(), item.getWhat(), Toast.LENGTH_LONG).show();
+//                        } else {
+//                            Toast.makeText(mThingRecyclerView.getContext(), item.getWhat() + "was not deleted", Toast.LENGTH_LONG).show();
+//                        }
+//                    }
+//                })
+//        );
 
         if (savedInstanceState != null)
         {

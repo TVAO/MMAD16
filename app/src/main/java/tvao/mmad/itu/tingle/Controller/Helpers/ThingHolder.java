@@ -2,11 +2,17 @@ package tvao.mmad.itu.tingle.Controller.Helpers;
 
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
+
+import com.bignerdranch.android.multiselector.MultiSelector;
+import com.bignerdranch.android.multiselector.SwappingHolder;
 
 import java.util.List;
 
 import tvao.mmad.itu.tingle.Model.Thing;
+
+import static android.view.View.*;
 
 /**
  * This class is a ViewHolder used to maintain a view for each Thing in the list.
@@ -16,19 +22,16 @@ import tvao.mmad.itu.tingle.Model.Thing;
  * A ViewHolder object stores each of the component views inside the tag field of the Layout,
  * so you can immediately access them without the need to look them up repeatedly.
  */
-public class ThingHolder extends ViewHolder {
+public class ThingHolder extends SwappingHolder implements OnClickListener, OnLongClickListener {
 
     private TextView mTextView;
     private Thing mThing;
-//    private List<Thing> mThings;
-//    private View mItemView;
+    private static MultiSelector mMultiSelector = new MultiSelector(); // Used to select multiple items
 
     public ThingHolder(View itemView)
     {
-        super(itemView);
+        super(itemView, mMultiSelector); // multi selector communicates with ViewHolder
         mTextView = (TextView) itemView; // findViewById(R.id.list_item_thing_title_text_view)
-//        mThings = things;
-//        mItemView = itemView;
     }
 
     public Thing getThing(){
@@ -45,4 +48,32 @@ public class ThingHolder extends ViewHolder {
         mTextView.setText(mThing.toString());
     }
 
+    /**
+     * Navigate to detailed screen about thing on short click.
+     * Called when not in selection mode.
+     * @param view - view of item.
+     */
+    @Override
+    public void onClick(View view) {
+        if (!mMultiSelector.tapSelection(ThingHolder.this))
+        {
+            // Navigate to detail screen
+        }
+    }
+
+    /**
+     * Enter selection mode of items on long press.
+     * @param view - view of item.
+     * @return true if item is selected, false if already selected.
+     */
+    @Override
+    public boolean onLongClick(View view)
+    {
+        if (!mMultiSelector.isSelectable()) { // Check if multi selector is already in selection mode
+            mMultiSelector.setSelectable(true); // Enter selection mode
+            mMultiSelector.setSelected(ThingHolder.this, true); // Set selected item
+            return true;
+        }
+        return false;
+    }
 }
