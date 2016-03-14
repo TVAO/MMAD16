@@ -1708,7 +1708,7 @@ containing a value of this type.
         public static final int listMode=0x7f0c000a;
         public static final int list_item=0x7f0c0029;
         public static final int media_actions=0x7f0c0060;
-        public static final int menu_item_delete_crime=0x7f0c006c;
+        public static final int menu_item_delete_thing=0x7f0c006c;
         public static final int menu_item_new_thing=0x7f0c006a;
         public static final int menu_item_show_subtitle=0x7f0c006b;
         public static final int middle=0x7f0c001c;

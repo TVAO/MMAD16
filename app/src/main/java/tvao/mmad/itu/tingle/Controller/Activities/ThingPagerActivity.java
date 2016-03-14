@@ -29,9 +29,7 @@ import static tvao.mmad.itu.tingle.Controller.Fragments.TingleFragment.*;
  */
 public class ThingPagerActivity extends FragmentActivity implements eventListener {
 
-    private static final String EXTRA_THING_ID =
-            "com.bignerdranch.android.tingleintent.thing_id";
-
+    private static final String EXTRA_THING_ID = "thingintent.thing_id";
     private ViewPager mViewPager;
     private List<Thing> mThings;
 
@@ -41,12 +39,6 @@ public class ThingPagerActivity extends FragmentActivity implements eventListene
      * @param thingId
      * @return
      */
-    public static Intent newIntent(Context packageContext, UUID thingId)
-    {
-        Intent intent = new Intent(packageContext, ThingPagerActivity.class);
-        intent.putExtra(EXTRA_THING_ID, thingId);
-        return intent;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -54,7 +46,7 @@ public class ThingPagerActivity extends FragmentActivity implements eventListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thing_pager);
 
-        UUID crimeId = (UUID) getIntent().getSerializableExtra(EXTRA_THING_ID);
+        UUID thingId = (UUID) getIntent().getSerializableExtra(EXTRA_THING_ID);
 
         // Find View Pager
         mViewPager = (ViewPager) findViewById(R.id.activity_thing_pager_view_pager);
@@ -83,7 +75,7 @@ public class ThingPagerActivity extends FragmentActivity implements eventListene
         // Set current item in ViewPager to item clicked on in list
         for (int i = 0; i < mThings.size(); i++)
         {
-            if (mThings.get(i).getId().equals(crimeId))
+            if (mThings.get(i).getId().equals(thingId))
             {
                 mViewPager.setCurrentItem(i);
                 break;

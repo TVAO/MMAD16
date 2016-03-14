@@ -25,7 +25,7 @@ import tvao.mmad.itu.tingle.R;
  */
 public class ThingFragment extends BaseFragment {
 
-    public static final String EXTRA_THING_ID = "tingintent.THING_ID";
+    public static final String EXTRA_THING_ID = "thingintent.THING_ID";
     private static final String WHAT = "what";
     private static final String WHERE = "where";
     private static final String DESCRIPTION = "description";
@@ -45,7 +45,8 @@ public class ThingFragment extends BaseFragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
 
         UUID thingId = (UUID) getArguments().getSerializable(EXTRA_THING_ID);
@@ -55,7 +56,8 @@ public class ThingFragment extends BaseFragment {
 
     @Override
     @TargetApi(11)
-    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState)
+    {
         View v = inflater.inflate(R.layout.fragment_thing, parent, false);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);

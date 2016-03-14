@@ -517,7 +517,7 @@ int id line3 0x7f0c0066
 int id listMode 0x7f0c000a
 int id list_item 0x7f0c0029
 int id media_actions 0x7f0c0060
-int id menu_item_delete_crime 0x7f0c006c
+int id menu_item_delete_thing 0x7f0c006c
 int id menu_item_new_thing 0x7f0c006a
 int id menu_item_show_subtitle 0x7f0c006b
 int id middle 0x7f0c001c

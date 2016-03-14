@@ -42,9 +42,6 @@ import tvao.mmad.itu.tingle.R;
 public class ThingListFragment extends Fragment {
 
     private static final String TAG = "thingListFragment";
-    private static final String SAVED_SUBTITLE_VISIBLE = "subtitle"; // Used to save subtitle visibility upon rotation
-
-    private ThingRepository mThingRepository;
     private RecyclerView mThingRecyclerView;
     private onBackPressedListener mCallBackToActivity; // Used to call host activity TingleActivity
     private boolean mSubtitleVisible; // Keep track of subtitle visibility
@@ -65,17 +62,18 @@ public class ThingListFragment extends Fragment {
         @Override
         public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem)
         {
-            if (menuItem.getItemId()==  R.id.menu_item_new_thing)
+            if (menuItem.getItemId() == R.id.menu_item_delete_thing)
             {
                 // Need to finish the action mode before doing the following,
                 // not after. No idea why, but it crashes.
                 actionMode.finish();
 
-                for (int i = mThingRepository.size(); i >= 0; i--)
+                for (int i = mThings.size(); i >= 0; i--)
                 {
-                    if (mMultiSelector.isSelected(i, 0)) {
-                        Thing thing = mThingRepository.getThings().get(i);
-                        mThingRepository.removeThing(thing);
+                    if (mMultiSelector.isSelected(i, 0))
+                    {
+                        Thing thing = mThings.get(i);
+                        ThingRepository.get(getActivity()).removeThing(thing);
                         mThingRecyclerView.getAdapter().notifyItemRemoved(i);
                     }
                 }
@@ -135,7 +133,7 @@ public class ThingListFragment extends Fragment {
         setHasOptionsMenu(true); // Tell FM that fragment receives menu callbacks
         getActivity().setTitle(R.string.things_title);
         mSubtitleVisible = false;
-        mThingRepository = ThingRepository.get(getContext());
+        //mThingRepository = ThingRepository.get(getContext());
     }
 
     /**
@@ -146,16 +144,21 @@ public class ThingListFragment extends Fragment {
      * from the MultiSelector
      */
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState)
+    {
 
-        if (mMultiSelector != null) {
+        if (mMultiSelector != null)
+        {
             Bundle bundle = savedInstanceState;
-            if (bundle != null) {
+            if (bundle != null)
+            {
                 mMultiSelector.restoreSelectionStates(bundle.getBundle(TAG));
             }
 
-            if (mMultiSelector.isSelectable()) {
-                if (mDeleteMode != null) {
+            if (mMultiSelector.isSelectable())
+            {
+                if (mDeleteMode != null)
+                {
                     mDeleteMode.setClearOnPrepare(false);
                     ((AppCompatActivity) getActivity()).startSupportActionMode(mDeleteMode);
                 }
@@ -181,46 +184,16 @@ public class ThingListFragment extends Fragment {
     {
         View view = inflater.inflate(R.layout.fragment_thing_list, container, false);
 
-//        if (mSubtitleVisible) {
-//            getActionBar().setSubtitle(R.string.subtitle);
-//        }
-
-        //setButtons();
-
         mThingRecyclerView = (RecyclerView) view.findViewById(R.id.thing_recycler_view);
         mThingRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity())); // RecyclerView requires a LayoutManager
         mThings = ThingRepository.get(getActivity()).getThings();
         mThingRecyclerView.setAdapter(new ThingAdapter());
 
-//        mThingRecyclerView.addOnItemTouchListener(
-//                new RecyclerItemClickListener(getContext(), new OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(View view, int position) {
-//                        Thing item = mThingRepository.getThings().get(position);
-//
-//                        boolean isDeleted = mThingRepository.removeThing(item.getId());
-//                        mAdapter.removeAt(position);
-//
-//                        if (isDeleted = true) {
-//                            Toast.makeText(mThingRecyclerView.getContext(), item.getWhat(), Toast.LENGTH_LONG).show();
-//                        } else {
-//                            Toast.makeText(mThingRecyclerView.getContext(), item.getWhat() + "was not deleted", Toast.LENGTH_LONG).show();
-//                        }
-//                    }
-//                })
-//        );
-
-//        if (savedInstanceState != null)
-//        {
-//            mSubtitleVisible = savedInstanceState.getBoolean(SAVED_SUBTITLE_VISIBLE);
-//        }
-//
-//        updateUI();
-
         return view;
     }
 
-    private void selectThing(Thing thing) {
+    private void selectThing(Thing thing)
+    {
         // start an instance of CrimePagerActivity
         Intent i = new Intent(getActivity(), ThingPagerActivity.class);
         i.putExtra(ThingFragment.EXTRA_THING_ID, thing.getId());
