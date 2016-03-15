@@ -21,10 +21,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- <activity -->
+        <!-- android:name=".Controller.Activities.ThingListActivity" -->
+        <!-- android:label="@string/app_name"> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.support.PARENT_ACTIVITY" -->
+        <!-- android:value=".Controller.Activities.ThingPagerActivity"/> -->
+        <!-- </activity> -->
         <activity
             android:name="tvao.mmad.itu.tingle.Controller.Activities.ThingPagerActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:label="@string/app_name" >
+
+            <!-- android:theme="@style/AppTheme.NoActionBar"> -->
+            <!-- <meta-data -->
+            <!-- android:name="android.support.PARENT_ACTIVITY" -->
+            <!-- android:value=".Controller.Activities.ThingListActivity"/> -->
         </activity>
     </application>
 

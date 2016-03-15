@@ -57,16 +57,19 @@ public class ThingPagerActivity extends FragmentActivity implements eventListene
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         // Setup agent managing conversation with ViewPager
-        mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
+        mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager)
+        {
 
             @Override
-            public Fragment getItem(int position) {
+            public Fragment getItem(int position)
+            {
                 Thing thing = mThings.get(position);
                 return newInstance(thing.getId());
             }
 
             @Override
-            public int getCount() {
+            public int getCount()
+            {
                 return mThings.size();
             }
 

@@ -385,7 +385,8 @@ public class ThingListFragment extends Fragment {
         private final TextView mTextView;
         private Thing mThing;
 
-        public ThingHolder(View itemView) {
+        public ThingHolder(View itemView)
+        {
             super(itemView, mMultiSelector); // multi selector communicates with ViewHolder
             mTextView = (TextView) itemView; // findViewById(R.id.list_item_thing_title_text_view)
 
@@ -399,7 +400,8 @@ public class ThingListFragment extends Fragment {
          *
          * @param thing
          */
-        public void bindThing(Thing thing) {
+        public void bindThing(Thing thing)
+        {
             mThing = thing;
             mTextView.setText(mThing.toString());
         }
@@ -411,11 +413,14 @@ public class ThingListFragment extends Fragment {
          * @param view - view of item.
          */
         @Override
-        public void onClick(View view) {
-            if (mThing == null) {
+        public void onClick(View view)
+        {
+            if (mThing == null)
+            {
                 return;
             }
-            if (!mMultiSelector.tapSelection(ThingHolder.this)) {
+            if (!mMultiSelector.tapSelection(ThingHolder.this))
+            {
                 // Navigate to detail screen
                 selectThing(mThing);
             }
@@ -428,7 +433,8 @@ public class ThingListFragment extends Fragment {
          * @return true if item is selected, false if already selected.
          */
         @Override
-        public boolean onLongClick(View v) {
+        public boolean onLongClick(View v)
+        {
             ((AppCompatActivity) getActivity()).startSupportActionMode(mDeleteMode);
             mMultiSelector.setSelected(this, true);
             return true;
