@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
@@ -41,11 +40,16 @@ import tvao.mmad.itu.tingle.R;
  */
 public class ThingListFragment extends Fragment {
 
+    // Used to safe pager and count of things upon change of configuration (rotation)
     private static final String TAG = "thingListFragment";
+    private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
+
     private RecyclerView mThingRecyclerView;
+    //private ThingAdapter mThingAdapter;
     private onBackPressedListener mCallBackToActivity; // Used to call host activity TingleActivity
     private boolean mSubtitleVisible; // Keep track of subtitle visibility
 
+    //private ThingRepository mThingRepository;
     private List<Thing> mThings;
     private MultiSelector mMultiSelector = new MultiSelector();
     private ModalMultiSelectorCallback mDeleteMode = new ModalMultiSelectorCallback(mMultiSelector)
@@ -74,6 +78,7 @@ public class ThingListFragment extends Fragment {
                     {
                         Thing thing = mThings.get(i);
                         ThingRepository.get(getActivity()).removeThing(thing);
+                        //mThingAdapter.notifyItemRemoved(i);
                         mThingRecyclerView.getAdapter().notifyItemRemoved(i);
                     }
                 }
@@ -188,6 +193,7 @@ public class ThingListFragment extends Fragment {
         mThingRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity())); // RecyclerView requires a LayoutManager
         mThings = ThingRepository.get(getActivity()).getThings();
         mThingRecyclerView.setAdapter(new ThingAdapter());
+        //mThingRecyclerView.setAdapter(mThingAdapter);
 
         return view;
     }
@@ -198,14 +204,15 @@ public class ThingListFragment extends Fragment {
         Intent i = new Intent(getActivity(), ThingPagerActivity.class);
         i.putExtra(ThingFragment.EXTRA_THING_ID, thing.getId());
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
             // NOTE: shared element transition here.
             // Support library fragments do not support the three parameter
             // startActivityForResult call. So to get this to work, the entire
             // project had to be shifted over to use stdlib fragments,
             // and the v13 ViewPager.
             int index = mThings.indexOf(thing);
-            ThingHolder holder = (ThingHolder) mThingRecyclerView.findViewHolderForLayoutPosition(index);  // .findViewHolderForPosition(index);
+            ThingHolder holder = (ThingHolder) mThingRecyclerView.findViewHolderForAdapterPosition(index);  // Take into account data changes
 
             ActivityOptions options = ThingPagerActivity.getTransition(
                     getActivity(), holder.itemView);
@@ -221,6 +228,7 @@ public class ThingListFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
+        //mThingAdapter.notifyDataSetChanged();
         mThingRecyclerView.getAdapter().notifyDataSetChanged();
     }
 
@@ -245,7 +253,7 @@ public class ThingListFragment extends Fragment {
     {
         super.onSaveInstanceState(outState);
         outState.putBundle(TAG, mMultiSelector.saveSelectionStates());
-        //outState.putBoolean(SAVED_SUBTITLE_VISIBLE, mSubtitleVisible);
+        outState.putBoolean(SAVED_SUBTITLE_VISIBLE, mSubtitleVisible);
     }
 
     /**
@@ -284,7 +292,10 @@ public class ThingListFragment extends Fragment {
 
                 ThingRepository.get(getActivity()).addThing(thing);
 
+                //mThingAdapter.notifyItemInserted(mThings.indexOf(thing));
                 mThingRecyclerView.getAdapter().notifyItemInserted(mThings.indexOf(thing));
+
+                updateSubtitle();
 
 //                Intent intent = ThingPagerActivity
 //                        .newIntent(getActivity(), thing.getId());
@@ -340,7 +351,7 @@ public class ThingListFragment extends Fragment {
 //        else
 //        {
 //            mAdapter.setThings(mThingRepository.getThings());
-//            // mAdapter.notifyDataSetChanged(); // Todo expensive use specific notify already
+//            // mAdapter.notifyDataSetChanged(); // Todo expensive use specific notify option instead
 //        }
 //
 //        updateSubtitle(); // Update number of things after going back to main page
@@ -438,6 +449,12 @@ public class ThingListFragment extends Fragment {
             ((AppCompatActivity) getActivity()).startSupportActionMode(mDeleteMode);
             mMultiSelector.setSelected(this, true);
             return true;
+//            if (!mMultiSelector.isSelectable()) { // (3)
+//                mMultiSelector.setSelectable(true); // (4)
+//                mMultiSelector.setSelected(ThingHolder.this, true); // (5)
+//                return true;
+//            }
+//            return false;
         }
 
     }

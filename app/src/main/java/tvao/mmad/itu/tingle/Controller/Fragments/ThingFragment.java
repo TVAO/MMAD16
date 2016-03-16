@@ -1,7 +1,12 @@
 package tvao.mmad.itu.tingle.Controller.Fragments;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v4.app.NavUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Date;
 import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Controller.Helpers.BaseFragment;
@@ -34,7 +40,8 @@ public class ThingFragment extends BaseFragment {
     private EditText mTitleField;
     private TextView mWhatField, mWhereField;
 
-    public static ThingFragment newInstance(UUID thingId) {
+    public static ThingFragment newInstance(UUID thingId)
+    {
         Bundle args = new Bundle();
         args.putSerializable(EXTRA_THING_ID, thingId);
 
@@ -60,7 +67,7 @@ public class ThingFragment extends BaseFragment {
     {
         View v = inflater.inflate(R.layout.fragment_thing, parent, false);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        // getActionBar().setDisplayHomeAsUpEnabled(true); // Show menu icon Todo fix bug crash when showing menu in detail screen from pager
 
         mTitleField = (EditText) v.findViewById(R.id.crime_title);
         mTitleField.setText(mThing.getWhat());
@@ -100,6 +107,12 @@ public class ThingFragment extends BaseFragment {
     {
         super.onPause();
     }
+
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data)
+//    {
+//        if (resultCode != Activity.RESULT_OK) return;
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)

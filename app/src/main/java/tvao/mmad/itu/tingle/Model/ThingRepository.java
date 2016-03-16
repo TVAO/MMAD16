@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import tvao.mmad.itu.tingle.Database.DatabaseManager;
 import tvao.mmad.itu.tingle.Database.ThingBaseHelper;
 import tvao.mmad.itu.tingle.Database.ThingCursorWrapper;
 import tvao.mmad.itu.tingle.Database.ThingDbSchema.ThingTable;
@@ -25,9 +26,10 @@ public class ThingRepository implements IRepository {
     private ThingRepository(Context context)
     {
         mContext = context;
-        //mContext = context.getApplicationContext();
-        mDatabase = ThingBaseHelper.get(mContext)
-                .getWritableDatabase();
+
+        // Get thread safe database
+        DatabaseManager.initializeInstance(new ThingBaseHelper(mContext));
+        mDatabase = DatabaseManager.getInstance().openDatabase();
     }
 
     // Public access modifier

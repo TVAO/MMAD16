@@ -16,6 +16,7 @@ import android.view.View;
 import java.util.List;
 import java.util.UUID;
 
+import tvao.mmad.itu.tingle.Controller.Fragments.ThingFragment;
 import tvao.mmad.itu.tingle.Controller.Fragments.TingleFragment;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
@@ -29,17 +30,15 @@ import static tvao.mmad.itu.tingle.Controller.Fragments.TingleFragment.*;
  */
 public class ThingPagerActivity extends FragmentActivity implements eventListener {
 
-    private static final String EXTRA_THING_ID = "thingintent.thing_id";
+    private static final String EXTRA_THING_ID = "thing_id";
+    //private static final String EXTRA_THING_ID = "thingintent.thing_id";
     private ViewPager mViewPager;
     private List<Thing> mThings;
 
     /**
      * Helper function used to create intent carrying id of thing to be displayed on the screen when swiping between activities.
-     * @param packageContext
-     * @param thingId
-     * @return
+     * @param savedInstanceState - a bundle map with e.g. serializable objects from saved state of application.
      */
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -64,7 +63,7 @@ public class ThingPagerActivity extends FragmentActivity implements eventListene
             public Fragment getItem(int position)
             {
                 Thing thing = mThings.get(position);
-                return newInstance(thing.getId());
+                return ThingFragment.newInstance(thing.getId());
             }
 
             @Override

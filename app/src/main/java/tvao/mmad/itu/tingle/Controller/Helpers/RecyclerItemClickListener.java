@@ -10,6 +10,7 @@ import android.view.View;
  * This class is used to implement an OnClickListener for a RecyclerView.
  * This is used to register click events on items used for e.g. deletion.
  */
+@Deprecated
 public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
 
     private OnItemClickListener mListener;
