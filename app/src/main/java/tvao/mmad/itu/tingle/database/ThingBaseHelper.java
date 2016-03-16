@@ -7,8 +7,8 @@ import tvao.mmad.itu.tingle.Database.ThingDbSchema.ThingTable;
 
 
 /**
- * Class designed to getThing rid of the grunt work of opening a SQLiteDatabase
- * Used to getThing inside of ThingRepository to create your Thing database.
+ * Class designed to get rid of the grunt work of opening a SQLiteDatabase
+ * Used to get inside to create Thing database in ThingRepository.
  */
 public class ThingBaseHelper extends SQLiteOpenHelper {
 
@@ -17,7 +17,7 @@ public class ThingBaseHelper extends SQLiteOpenHelper {
 
     private static ThingBaseHelper sThingBaseHelper;
 
-    private ThingBaseHelper(Context context)
+    public ThingBaseHelper(Context context)
     {
         super(context, DATABASE_NAME, null, VERSION);
     }
