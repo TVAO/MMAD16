@@ -79,7 +79,7 @@ public class ThingPagerActivity extends FragmentActivity implements eventListene
         {
             if (mThings.get(i).getId().equals(thingId))
             {
-                mViewPager.setCurrentItem(i);
+                mViewPager.setCurrentItem(i); // Todo bug always shows detailed screen for first item in list
                 break;
             }
         }
@@ -96,14 +96,14 @@ public class ThingPagerActivity extends FragmentActivity implements eventListene
 
     }
 
-    public static ActivityOptions getTransition(Activity activity, View crimeView)
+    public static ActivityOptions getTransition(Activity activity, View thingView)
     {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
         {
-            crimeView.setTransitionName("thing");
+            thingView.setTransitionName("thing");
 
             ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(activity,
-                    crimeView, "thing");
+                    thingView, "thing");
 
             return options;
         }

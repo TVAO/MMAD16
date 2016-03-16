@@ -1,12 +1,7 @@
 package tvao.mmad.itu.tingle.Controller.Fragments;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v4.app.NavUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.Date;
 import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Controller.Helpers.BaseFragment;
@@ -69,7 +63,7 @@ public class ThingFragment extends BaseFragment {
 
         // getActionBar().setDisplayHomeAsUpEnabled(true); // Show menu icon Todo fix bug crash when showing menu in detail screen from pager
 
-        mTitleField = (EditText) v.findViewById(R.id.crime_title);
+        mTitleField = (EditText) v.findViewById(R.id.thing_title);
         mTitleField.setText(mThing.getWhat());
         mTitleField.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence c, int start, int before, int count) {

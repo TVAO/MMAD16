@@ -18,6 +18,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -295,8 +297,6 @@ public class ThingListFragment extends Fragment {
                 //mThingAdapter.notifyItemInserted(mThings.indexOf(thing));
                 mThingRecyclerView.getAdapter().notifyItemInserted(mThings.indexOf(thing));
 
-                updateSubtitle();
-
 //                Intent intent = ThingPagerActivity
 //                        .newIntent(getActivity(), thing.getId());
 //
@@ -306,7 +306,7 @@ public class ThingListFragment extends Fragment {
 
             case R.id.menu_item_show_subtitle: // Show total items
                 mSubtitleVisible = !mSubtitleVisible;
-                getActivity().invalidateOptionsMenu();
+                getActivity().invalidateOptionsMenu(); // Option menu showing amount of things changed
                 updateSubtitle();
                 return true;
 
@@ -339,12 +339,13 @@ public class ThingListFragment extends Fragment {
         activity.getSupportActionBar().setSubtitle(subtitle);
     }
 
+    // Old solution for deleting items in recyclerview
 //    // Update recycler view with items in list
 //    private void updateUI()
 //    {
 //        if (mAdapter == null)
 //        {
-//            mAdapter = new ThingAdapter(mThingRepository.getThings(), getContext());
+//            mAdapter = new ThingAdapter();
 //            mThingRecyclerView.setAdapter(mAdapter);
 //            //mAdapter.notifyDataSetChanged();
 //        }
@@ -355,25 +356,6 @@ public class ThingListFragment extends Fragment {
 //        }
 //
 //        updateSubtitle(); // Update number of things after going back to main page
-//    }
-
-//    // Redirect back to main page (TingleActivity)
-//    private void setButtons()
-//    {
-//        // Only have back button in portrait mode (removed in landscape mode)
-//        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-//        {
-//            mBackButton = (Button) mView.findViewById(R.id.back_button);
-//            mBackButton.setOnClickListener(new View.OnClickListener()
-//            {
-//                @Override
-//                public void onClick(View v)
-//                {
-//                    mCallBackToActivity.onBackPressed(); // Call host activity
-//                }
-//            });
-//        }
-//
 //    }
 
     private void makeToast(String string)
@@ -391,7 +373,7 @@ public class ThingListFragment extends Fragment {
      * A ViewHolder object stores each of the component views inside the tag field of the Layout,
      * so you can immediately access them without the need to look them up repeatedly.
      */
-    private class ThingHolder extends SwappingHolder implements View.OnClickListener, View.OnLongClickListener {
+    private class ThingHolder extends SwappingHolder implements OnClickListener, OnLongClickListener {
 
         private final TextView mTextView;
         private Thing mThing;
@@ -449,12 +431,6 @@ public class ThingListFragment extends Fragment {
             ((AppCompatActivity) getActivity()).startSupportActionMode(mDeleteMode);
             mMultiSelector.setSelected(this, true);
             return true;
-//            if (!mMultiSelector.isSelectable()) { // (3)
-//                mMultiSelector.setSelectable(true); // (4)
-//                mMultiSelector.setSelected(ThingHolder.this, true); // (5)
-//                return true;
-//            }
-//            return false;
         }
 
     }

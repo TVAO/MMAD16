@@ -1681,7 +1681,6 @@ containing a value of this type.
         public static final int chronometer=0x7f0c0064;
         public static final int collapseActionView=0x7f0c001e;
         public static final int contentPanel=0x7f0c0032;
-        public static final int crime_title=0x7f0c0054;
         public static final int custom=0x7f0c0038;
         public static final int customPanel=0x7f0c0037;
         public static final int decor_content_parent=0x7f0c0040;
@@ -1753,6 +1752,7 @@ containing a value of this type.
         public static final int thing_details_what=0x7f0c0055;
         public static final int thing_details_where=0x7f0c0056;
         public static final int thing_recycler_view=0x7f0c0057;
+        public static final int thing_title=0x7f0c0054;
         public static final int time=0x7f0c0063;
         public static final int title=0x7f0c002b;
         public static final int title_template=0x7f0c0030;
