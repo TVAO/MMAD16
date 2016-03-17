@@ -201,6 +201,15 @@ public class ThingListFragment extends Fragment {
         startActivity(i);
     }
 
+    // Create new thing and navigate to detailed screen activity
+    private void newThing(Thing thing)
+    {
+        ThingRepository.get(getActivity()).addThing(thing);
+        Intent intent = ThingPagerActivity
+                .newIntent(getActivity(), thing.getId());
+        startActivity(intent);
+    }
+
 //    private void selectThing(Thing thing)
 //    {
 //        // start an instance of CrimePagerActivity
@@ -270,6 +279,8 @@ public class ThingListFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
+        menu.clear(); // clear menu object before adding items to avoid duplicate menu items upon rotation
+
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_thing_list, menu);
 
@@ -297,10 +308,8 @@ public class ThingListFragment extends Fragment {
         {
             case R.id.menu_item_new_thing: // Add new thing
                 Thing thing = new Thing();
-                ThingRepository.get(getActivity()).addThing(thing);
-                Intent intent = ThingPagerActivity
-                        .newIntent(getActivity(), thing.getId());
-                startActivity(intent);
+                mAdapter.notifyDataSetChanged();
+                newThing(thing); // Go to detailed screen with new thing
                 return true;
 
             case R.id.menu_item_show_subtitle: // Show total items

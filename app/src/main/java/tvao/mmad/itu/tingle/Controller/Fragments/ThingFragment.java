@@ -1,6 +1,5 @@
 package tvao.mmad.itu.tingle.Controller.Fragments;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 
 import java.util.UUID;
 
-import tvao.mmad.itu.tingle.Controller.Helpers.BaseFragment;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.R;
