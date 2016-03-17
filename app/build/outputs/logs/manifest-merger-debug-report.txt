@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:2:1-35:12
+ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:2:1-28:12
 	package
 		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:2:11-41
 		INJECTED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml
@@ -14,7 +14,7 @@ ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:2:1-35
 		INJECTED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml
 application
-ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:5:5-33:19
+ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:5:5-26:19
 MERGED from [com.android.support:appcompat-v7:23.2.0] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-v4:23.2.0] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.2.0] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.0/AndroidManifest.xml:7:5-20
@@ -57,11 +57,11 @@ ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:14:17-
 	android:name
 		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:14:27-74
 activity#tvao.mmad.itu.tingle.Controller.Activities.ThingPagerActivity
-ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:25:9-32:20
+ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:17:9-25:20
 	android:label
-		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:27:13-45
+		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:19:13-45
 	android:name
-		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:26:13-69
+		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:18:13-69
 uses-sdk
 INJECTED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.2.0] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/AndroidManifest.xml:21:5-23:78

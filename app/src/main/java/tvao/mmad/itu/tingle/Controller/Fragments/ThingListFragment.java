@@ -127,7 +127,7 @@ public class ThingListFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true); // Tell FM that fragment receives menu callbacks
         getActivity().setTitle(R.string.things_title);
-        //mSubtitleVisible = false;
+        mSubtitleVisible = false;
     }
 
     /**
@@ -274,7 +274,7 @@ public class ThingListFragment extends Fragment {
         inflater.inflate(R.menu.fragment_thing_list, menu);
 
         MenuItem subtitleItem = menu.findItem(R.id.menu_item_show_subtitle);
-        if (mSubtitleVisible && subtitleItem != null)
+        if (mSubtitleVisible) //&& subtitleItem != null)
         {
             subtitleItem.setTitle(R.string.hide_subtitle);
         }

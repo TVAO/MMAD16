@@ -1,6 +1,8 @@
 package tvao.mmad.itu.tingle.Controller.Fragments;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
@@ -35,6 +37,16 @@ public class ThingFragment extends Fragment {
     private EditText mTitleField;
     private TextView mWhatField, mWhereField;
 
+    /**
+     * This method is used to instantiate a new Fragment used to display a detailed screen.
+     * Encapsulates and abstracts the steps required to setup the object from the client.
+     *
+     * Rather than having the client call the default constructor and manually set the fragment's arguments themselves,
+     * we provide a static factory method that does this for them making fragment instantiation convenient and enforcing well-defined behavior.
+     *
+     * @param thingId - id related to thing to be shown in activity.
+     * @return - new fragment with thing details.
+     */
     public static ThingFragment newInstance(UUID thingId)
     {
         Bundle args = new Bundle();
@@ -46,6 +58,10 @@ public class ThingFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * Called when activity is starting and used to setup detailed screen for a given thing.
+     * @param savedInstanceState - possible data from previous activity shutdown.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -56,10 +72,23 @@ public class ThingFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
+    /**
+     * This method is called after onCreate() and is used to assign View variables and do graphical initializations in view.
+     * @param inflater - instantiates a XML layout file into corresponding objects.
+     * @param parent - base class for layout parameters.
+     * @param savedInstanceState - possible data from previous activity shutdown.
+     * @return - new main UI view.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState)
     {
         View v = inflater.inflate(R.layout.fragment_thing, parent, false);
+
+        mWhatField = (EditText) v.findViewById(R.id.thing_details_what);
+        mWhatField.setText(mThing.getWhat());
+
+        mWhereField = (EditText) v.findViewById(R.id.thing_details_where);
+        mWhereField.setText(mThing.getWhere());
 
         mTitleField = (EditText) v.findViewById(R.id.thing_title);
         mTitleField.setText(mThing.getWhat());
@@ -69,11 +98,11 @@ public class ThingFragment extends Fragment {
             }
 
             public void beforeTextChanged(CharSequence c, int start, int count, int after) {
-                // this space intentionally left blank
+                // Space intentionally left blank
             }
 
             public void afterTextChanged(Editable c) {
-                // this one too
+                // This one too
             }
         });
 
@@ -81,40 +110,36 @@ public class ThingFragment extends Fragment {
 
     }
 
-
+    /**
+     * This method will be used to get a result from an activity in the future.
+     * @param requestCode - integer request code supplied to startActivityForResult(), allowing you to identify who this result came from.
+     * @param resultCode -  integer result code returned by the child activity through its setResult()
+     * @param data -  intent which can return result data to caller attached to Intent "extra"
+     */
     @Override
-    public void onStop()
+    @Deprecated
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        super.onStop();
+        if (resultCode != Activity.RESULT_OK) return;
     }
 
-    @Override
-    public void onStart()
-    {
-        super.onStart();
-    }
-
-    @Override
-    public void onPause()
-    {
-        super.onPause();
-    }
-
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data)
-//    {
-//        if (resultCode != Activity.RESULT_OK) return;
-//    }
-
+    /**
+     * This method is used to implement the Android ActionBar back button.
+     * This allows the user to navigate back to the list of items from a detailed screen for a given thing.
+     * @param item - menu item that is used.
+     * @return - true if navigating to home activity.
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        switch (item.getItemId()) {
+        switch (item.getItemId())
+        {
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(getActivity()); // Navigate to parent activity
+                NavUtils.navigateUpFromSameTask(getActivity()); // Navigate to parent activity (ThingListFragment)
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }
