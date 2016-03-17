@@ -29,7 +29,7 @@ import static tvao.mmad.itu.tingle.Controller.Fragments.TingleFragment.*;
  * ViewPager allows users to navigate between list items by swiping across the screen,
  * to “page” forward or backward through the things.
  */
-public class ThingPagerActivity extends AppCompatActivity { //FragmentActivity implements eventListener {
+public class ThingPagerActivity extends AppCompatActivity {
 
     private static final String EXTRA_THING_ID = "thing_id";
     //private static final String EXTRA_THING_ID = "thingintent.thing_id";
@@ -59,7 +59,6 @@ public class ThingPagerActivity extends AppCompatActivity { //FragmentActivity i
 
         // Get data
         mThings = ThingRepository.get(this).getThings();
-
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         // Setup agent managing conversation with ViewPager
@@ -79,6 +78,26 @@ public class ThingPagerActivity extends AppCompatActivity { //FragmentActivity i
                 return mThings.size();
             }
 
+        });
+
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
+        {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+            // Change title to name of thing
+            @Override
+            public void onPageSelected(int position)
+            {
+                Thing thing = mThings.get(position);
+                if (thing.getWhat() != null)
+                {
+                    setTitle(thing.getWhat());
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {}
         });
 
         // Set current item in ViewPager to item clicked on in list
