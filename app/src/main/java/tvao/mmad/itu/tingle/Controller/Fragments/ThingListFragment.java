@@ -48,10 +48,8 @@ public class ThingListFragment extends Fragment {
 
     private RecyclerView mThingRecyclerView;
     //private ThingAdapter mThingAdapter;
-    private onBackPressedListener mCallBackToActivity; // Used to call host activity TingleActivity
     private boolean mSubtitleVisible; // Keep track of subtitle visibility
 
-    //private ThingRepository mThingRepository;
     private List<Thing> mThings;
     private MultiSelector mMultiSelector = new MultiSelector();
     private ModalMultiSelectorCallback mDeleteMode = new ModalMultiSelectorCallback(mMultiSelector)
@@ -101,31 +99,6 @@ public class ThingListFragment extends Fragment {
     public interface onBackPressedListener
     {
         void onBackPressed();
-    }
-
-    /**
-     * The fragment captures the interface implementation in the activity TingleActivity during onAttach() lifecycle method.
-     * This method calls the interface methods in order to communicate with the activity TingleActivity.
-     * The method checks if the container activity has implemented the callback interface, otherwise throws an exception.
-     *
-     * @param context - context of host activity
-     */
-    @Override
-    public void onAttach(Context context)
-    {
-        super.onAttach(context);
-        Activity activity = null;
-
-        try
-        {
-            activity = (Activity) context;
-            mCallBackToActivity = (onBackPressedListener) activity;
-        }
-        catch (ClassCastException e)
-        {
-            throw new ClassCastException(activity.toString()
-                    + " must implement onBackPressedListener");
-        }
     }
 
     /**
