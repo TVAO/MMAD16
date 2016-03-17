@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 /**
  * This class is used by all fragments.
  */
+@Deprecated
 public class BaseFragment extends Fragment
 {
 

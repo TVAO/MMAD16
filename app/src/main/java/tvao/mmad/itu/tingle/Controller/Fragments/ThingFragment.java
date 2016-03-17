@@ -2,6 +2,7 @@ package tvao.mmad.itu.tingle.Controller.Fragments;
 
 import android.annotation.TargetApi;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -23,7 +24,7 @@ import tvao.mmad.itu.tingle.R;
  * This class represents the fragment of a detailed page for a given item.
  * The TingleFragment is hosted by the activity TinglePagerActivity.
  */
-public class ThingFragment extends BaseFragment {
+public class ThingFragment extends Fragment {
 
     public static final String EXTRA_THING_ID = "thingintent.THING_ID";
     private static final String WHAT = "what";
@@ -37,7 +38,7 @@ public class ThingFragment extends BaseFragment {
     public static ThingFragment newInstance(UUID thingId)
     {
         Bundle args = new Bundle();
-        args.putSerializable(EXTRA_THING_ID, thingId);
+        args.putSerializable(EXTRA_THING_ID, thingId); // Fragment argument
 
         ThingFragment fragment = new ThingFragment();
         fragment.setArguments(args);
@@ -56,12 +57,9 @@ public class ThingFragment extends BaseFragment {
     }
 
     @Override
-    @TargetApi(11)
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState)
     {
         View v = inflater.inflate(R.layout.fragment_thing, parent, false);
-
-        // getActionBar().setDisplayHomeAsUpEnabled(true); // Show menu icon Todo fix bug crash when showing menu in detail screen from pager
 
         mTitleField = (EditText) v.findViewById(R.id.thing_title);
         mTitleField.setText(mThing.getWhat());

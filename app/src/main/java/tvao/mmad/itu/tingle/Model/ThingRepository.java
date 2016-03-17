@@ -22,6 +22,16 @@ public class ThingRepository implements IRepository {
     private Context mContext;
     private SQLiteDatabase mDatabase;
 
+    // Public access modifier
+    public static ThingRepository get(Context context)
+    {
+        if (sThingRepository == null)
+        {
+            sThingRepository = new ThingRepository(context);
+        }
+        return sThingRepository;
+    }
+
     // Private constructor to uphold Singleton pattern
     private ThingRepository(Context context)
     {
@@ -32,14 +42,21 @@ public class ThingRepository implements IRepository {
         mDatabase = DatabaseManager.getInstance().openDatabase();
     }
 
-    // Public access modifier
-    public static ThingRepository get(Context context)
+    // Private method used to shuttle Things
+    private static ContentValues getContentValues(Thing thing)
     {
-        if (sThingRepository == null)
-        {
-            sThingRepository = new ThingRepository(context);
-        }
-        return sThingRepository;
+        ContentValues values = new ContentValues();
+        values.put(ThingTable.Cols.UUID, thing.getId().toString());
+        values.put(ThingTable.Cols.WHAT, thing.getWhat());
+        values.put(ThingTable.Cols.WHERE, thing.getWhere());
+
+        return values;
+    }
+
+    public void addThing(Thing thing)
+    {
+        ContentValues values = getContentValues(thing);
+        mDatabase.insert(ThingTable.NAME, null, values);
     }
 
     /**
@@ -52,27 +69,38 @@ public class ThingRepository implements IRepository {
 
         ThingCursorWrapper cursor = queryThings(null, null);
 
+        cursor.moveToFirst(); // Move to first element
+        while (!cursor.isAfterLast()) // Pointer off end of data set
+        {
+            things.add(cursor.getThing());
+            cursor.moveToNext(); // Advance to next item
+        }
+        cursor.close();
+
+        return things;
+    }
+
+    public Thing getThing(UUID id)
+    {
+        ThingCursorWrapper cursor = queryThings(
+
+                ThingTable.Cols.UUID + " = ?",
+                new String[]{id.toString()}
+        );
+
         try
         {
-            cursor.moveToFirst(); // Move to first element
-            while (!cursor.isAfterLast()) // Pointer off end of data set
+            if (cursor.getCount() == 0)
             {
-                things.add(cursor.getThing());
-                cursor.moveToNext(); // Advance to next item
+                return null;
             }
+            cursor.moveToFirst();
+            return cursor.getThing();
         }
         finally
         {
             cursor.close();
         }
-
-        return things;
-    }
-
-    public void addThing(Thing thing)
-    {
-        ContentValues values = getContentValues(thing);
-        mDatabase.insert(ThingTable.NAME, null, values);
     }
 
     // Delete a particular thing based on unique identifier
@@ -90,7 +118,7 @@ public class ThingRepository implements IRepository {
     {
         mDatabase.delete(ThingTable.NAME,
                 ThingTable.Cols.UUID + " != ?",
-                new String[] { thing.getId().toString() } );
+                new String[]{thing.getId().toString()});
     }
 
     public void updateThing(Thing thing)
@@ -107,7 +135,6 @@ public class ThingRepository implements IRepository {
     // Method used to read data from SQLite database
     private ThingCursorWrapper queryThings(String whereClause, String[] whereArgs)
     {
-
         Cursor cursor = mDatabase.query(
 
                 ThingTable.NAME,
@@ -125,45 +152,6 @@ public class ThingRepository implements IRepository {
     public int size()
     {
         return getThings().size();
-    }
-
-    public Thing getThing(UUID id)
-    {
-
-        ThingCursorWrapper cursor = queryThings(
-
-                ThingTable.Cols.UUID + " = ?",
-                new String[]{id.toString()}
-        );
-
-        try
-        {
-            if (cursor.getCount() == 0)
-            {
-                return null;
-            }
-            cursor.moveToFirst();
-
-            return cursor.getThing();
-        }
-
-        finally
-        {
-            cursor.close();
-        }
-
-
-    }
-
-    // Private method used to shuttle Things
-    private static ContentValues getContentValues(Thing thing)
-    {
-        ContentValues values = new ContentValues();
-        values.put(ThingTable.Cols.UUID, thing.getId().toString());
-        values.put(ThingTable.Cols.WHAT, thing.getWhat());
-        values.put(ThingTable.Cols.WHERE, thing.getWhere());
-
-        return values;
     }
 
 }
