@@ -24,7 +24,8 @@ public class TingleActivity extends SingleFragmentActivity implements onBackPres
      * Used to call fragment displaying main page.
      */
     @Override
-    public void onBackPressed(){
+    public void onBackPressed()
+    {
         changeFragment(new TingleFragment());
     }
 
@@ -32,7 +33,8 @@ public class TingleActivity extends SingleFragmentActivity implements onBackPres
      * Used to call fragment displaying list.
      */
     @Override
-    public void onShowItems() {
+    public void onShowItems()
+    {
         changeFragment(new ThingListFragment());
     }
 
@@ -40,13 +42,15 @@ public class TingleActivity extends SingleFragmentActivity implements onBackPres
      *  Refresh fragments to update list in landscape after adding item.
      */
     @Override
-    public void onAddItems() {
+    public void onAddItems()
+    {
         setFragment();
     }
 
     // Not currently used
     @Override
-    protected Fragment createFragment() {
+    protected Fragment createFragment()
+    {
         return new TingleFragment();
     }
 

@@ -224,6 +224,7 @@
     <string name="app_name">Tingle</string>
     <string name="back_button">Back</string>
     <string name="delete_button">Delete</string>
+    <string name="delete_thing">Delete</string>
     <string name="heading_create">Add new thing</string>
     <string name="heading_search">Search items</string>
     <string name="heading_showAllItems">See items</string>
@@ -240,6 +241,7 @@
     <string name="subtitle_format">%1$s crimes</string>
     <string name="thing_what_hint">Enter a title for the thing.</string>
     <string name="thing_where_hint">Enter the location of the item.</string>
+    <string name="things_title">Things Title</string>
     <string name="title_activity_list">ListActivity</string>
     <string name="what_hint">Enter name of item</string>
     <string name="what_thing">What thing?</string>

@@ -12,8 +12,7 @@ public interface IRepository {
     void addThing(Thing thing);
     Thing getThing(UUID id);
     List<Thing> getThings();
-    void updateThing(Thing thing);
-    void removeThing(Thing thing);
+    void updateThing(Thing thing);;
     boolean removeThing(UUID id);
     int size();
 }

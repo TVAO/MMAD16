@@ -7,6 +7,7 @@ import tvao.mmad.itu.tingle.Controller.Helpers.SingleFragmentActivity;
 /**
  * This activity is used to wrap a ThingListFragment used to display things.
  */
+@Deprecated
 public class ThingListActivity extends SingleFragmentActivity {
 
     @Override

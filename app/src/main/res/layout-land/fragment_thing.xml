@@ -5,6 +5,27 @@
               android:layout_height="wrap_content"
               android:orientation="vertical" >
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!--android:layout_weight="1"-->
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/things_title"
+            style="?android:listSeparatorTextViewStyle"
+            />
+        <EditText android:id="@+id/thing_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:hint="@string/thing_what_hint"
+            android:singleLine="true"
+            />
+    </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,6 +37,7 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:hint="@string/thing_what_hint"
+              android:singleLine="true"
         />
 
     <TextView
@@ -29,6 +51,7 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:hint="@string/thing_where_hint"
+              android:singleLine="true"
         />
 
 </LinearLayout>
