@@ -1,10 +1,6 @@
 package tvao.mmad.itu.tingle.Controller.Fragments;
 
-import android.app.Activity;
-import android.app.ActivityOptions;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +18,6 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bignerdranch.android.multiselector.ModalMultiSelectorCallback;
 import com.bignerdranch.android.multiselector.MultiSelector;
@@ -47,14 +42,20 @@ public class ThingListFragment extends Fragment {
     private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
 
     private RecyclerView mThingRecyclerView;
-    //private ThingAdapter mThingAdapter;
+    private ThingAdapter mAdapter;
     private boolean mSubtitleVisible; // Keep track of subtitle visibility
 
-    private List<Thing> mThings;
+    // Used to allow multi selection and deletion of selected items
     private MultiSelector mMultiSelector = new MultiSelector();
     private ModalMultiSelectorCallback mDeleteMode = new ModalMultiSelectorCallback(mMultiSelector)
     {
 
+        /**
+         * Called when action mode is first created. The menu supplied will be used to generate action buttons for the action mode.
+         * @param actionMode - set of option mode callbacks that are only called for multi select action mode.
+         * @param menu - menu used to populate action items.
+         * @return true if action mode should be crated, false is entering mode should be aborted.
+         */
         @Override
         public boolean onCreateActionMode(ActionMode actionMode, Menu menu)
         {
@@ -63,6 +64,13 @@ public class ThingListFragment extends Fragment {
             return true;
         }
 
+        /**
+         * This method is used to implement multi select with a contextual action mode.
+         * Selecting an item will turn multi choice on and activate an Action mode representing the multi select interaction.
+         * @param actionMode - set of option mode callbacks that are only called for multi select action mode.
+         * @param menuItem - menu item that was clicked.
+         * @return
+         */
         @Override
         public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem)
         {
@@ -72,14 +80,20 @@ public class ThingListFragment extends Fragment {
                 // not after. No idea why, but it crashes.
                 actionMode.finish();
 
-                for (int i = mThings.size(); i >= 0; i--)
+                for (int i = ThingRepository.get(getActivity()).size(); i >= 0; i--)
                 {
                     if (mMultiSelector.isSelected(i, 0))
                     {
-                        Thing thing = mThings.get(i);
-                        ThingRepository.get(getActivity()).removeThing(thing);
-                        //mThingAdapter.notifyItemRemoved(i);
-                        mThingRecyclerView.getAdapter().notifyItemRemoved(i);
+
+
+                        Thing thing = ThingRepository.get(getActivity()).getThings().get(i);
+                        //Thing thing = mThings.get(i);
+                        ThingRepository.get(getActivity()).removeThing(thing.getId());
+
+                        mAdapter.removeAt(i);
+
+                        //mAdapter.notifyItemRemoved(i);
+                        //mThingRecyclerView.getAdapter().notifyItemRemoved(i);
                     }
                 }
 
@@ -91,6 +105,7 @@ public class ThingListFragment extends Fragment {
         }
     };
 
+    // Todo consider removing this and implemented code in TingleActivity
     /**
      * This interface allows TingleFragment to communicate to host TingleActivity.
      * Interface is encapsulated in fragment to avoid use in other activities.
@@ -112,8 +127,7 @@ public class ThingListFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true); // Tell FM that fragment receives menu callbacks
         getActivity().setTitle(R.string.things_title);
-        mSubtitleVisible = false;
-        //mThingRepository = ThingRepository.get(getContext());
+        //mSubtitleVisible = false;
     }
 
     /**
@@ -166,46 +180,62 @@ public class ThingListFragment extends Fragment {
 
         mThingRecyclerView = (RecyclerView) view.findViewById(R.id.thing_recycler_view);
         mThingRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity())); // RecyclerView requires a LayoutManager
-        mThings = ThingRepository.get(getActivity()).getThings();
-        mThingRecyclerView.setAdapter(new ThingAdapter());
-        //mThingRecyclerView.setAdapter(mThingAdapter);
+        //mThingRecyclerView.setAdapter(new ThingAdapter(ThingRepository.get(getActivity()).getThings()));
+        mThingRecyclerView.setAdapter(mAdapter);
+
+        if (savedInstanceState != null)
+        {
+            mSubtitleVisible = savedInstanceState.getBoolean(SAVED_SUBTITLE_VISIBLE);
+        }
+
+        updateUI();
 
         return view;
     }
 
+    // Toggle item and navigate to detailed screen
     private void selectThing(Thing thing)
     {
-        // start an instance of CrimePagerActivity
         Intent i = new Intent(getActivity(), ThingPagerActivity.class);
         i.putExtra(ThingFragment.EXTRA_THING_ID, thing.getId());
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-        {
-            // NOTE: shared element transition here.
-            // Support library fragments do not support the three parameter
-            // startActivityForResult call. So to get this to work, the entire
-            // project had to be shifted over to use stdlib fragments,
-            // and the v13 ViewPager.
-            int index = mThings.indexOf(thing);
-            ThingHolder holder = (ThingHolder) mThingRecyclerView.findViewHolderForAdapterPosition(index);  // Take into account data changes
-
-            ActivityOptions options = ThingPagerActivity.getTransition(
-                    getActivity(), holder.itemView);
-
-            startActivityForResult(i, 0, options.toBundle());
-        }
-        else
-        {
-            startActivityForResult(i, 0);
-        }
+        startActivity(i);
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        //mThingAdapter.notifyDataSetChanged();
-        mThingRecyclerView.getAdapter().notifyDataSetChanged();
-    }
+//    private void selectThing(Thing thing)
+//    {
+//        // start an instance of CrimePagerActivity
+//        Intent i = new Intent(getActivity(), ThingPagerActivity.class);
+//        i.putExtra(ThingFragment.EXTRA_THING_ID, thing.getId());
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+//        {
+//            // NOTE: shared element transition here.
+//            // Support library fragments do not support the three parameter
+//            // startActivityForResult call. So to get this to work, the entire
+//            // project had to be shifted over to use stdlib fragments,
+//            // and the v13 ViewPager.
+//
+//            int index = ThingRepository.get(getActivity()).getThings().indexOf(thing);
+//            //int index = mThings.indexOf(thing);
+//            ThingHolder holder = (ThingHolder) mThingRecyclerView.findViewHolderForAdapterPosition(index);  // Take into account data changes
+//
+//            ActivityOptions options = ThingPagerActivity.getTransition(
+//                    getActivity(), holder.itemView);
+//
+//            startActivityForResult(i, 0, options.toBundle());
+//        }
+//        else
+//        {
+//            startActivityForResult(i, 0);
+//        }
+//    }
+
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data)
+//    {
+//        //mThingAdapter.notifyDataSetChanged();
+//        mThingRecyclerView.getAdapter().notifyDataSetChanged();
+//    }
 
     /**
      * This method is called whenever Fragment with list of items is shown to user.
@@ -215,7 +245,7 @@ public class ThingListFragment extends Fragment {
     public void onResume()
     {
         super.onResume();
-        //updateUI();
+        updateUI();
     }
 
     /**
@@ -227,8 +257,8 @@ public class ThingListFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState)
     {
         super.onSaveInstanceState(outState);
-        outState.putBundle(TAG, mMultiSelector.saveSelectionStates());
-        outState.putBoolean(SAVED_SUBTITLE_VISIBLE, mSubtitleVisible);
+        outState.putBundle(TAG, mMultiSelector.saveSelectionStates()); // Save selected items
+        outState.putBoolean(SAVED_SUBTITLE_VISIBLE, mSubtitleVisible); // Save count of total things
     }
 
     /**
@@ -248,6 +278,10 @@ public class ThingListFragment extends Fragment {
         {
             subtitleItem.setTitle(R.string.hide_subtitle);
         }
+        else
+        {
+            subtitleItem.setTitle(R.string.show_subtitle);
+        }
     }
 
     /**
@@ -262,19 +296,11 @@ public class ThingListFragment extends Fragment {
         switch (item.getItemId())
         {
             case R.id.menu_item_new_thing: // Add new thing
-
                 Thing thing = new Thing();
-
                 ThingRepository.get(getActivity()).addThing(thing);
-
-                //mThingAdapter.notifyItemInserted(mThings.indexOf(thing));
-                mThingRecyclerView.getAdapter().notifyItemInserted(mThings.indexOf(thing));
-
-//                Intent intent = ThingPagerActivity
-//                        .newIntent(getActivity(), thing.getId());
-//
-//                startActivity(intent);
-
+                //mThingRecyclerView.getAdapter().notifyItemInserted(mThings.indexOf(thing));
+                int indexPosition = ThingRepository.get(getActivity()).getThings().indexOf(thing);
+                mAdapter.notifyItemInserted(indexPosition);
                 return true;
 
             case R.id.menu_item_show_subtitle: // Show total items
@@ -285,15 +311,8 @@ public class ThingListFragment extends Fragment {
 
             default:
                 return super.onOptionsItemSelected(item);
-
         }
 
-    }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo)
-    {
-        getActivity().getMenuInflater().inflate(R.menu.thing_list_item_context, menu);
     }
 
     // Set subtitle in toolbar showing number of things in total
@@ -312,53 +331,67 @@ public class ThingListFragment extends Fragment {
         activity.getSupportActionBar().setSubtitle(subtitle);
     }
 
-    // Old solution for deleting items in recyclerview
-//    // Update recycler view with items in list
-//    private void updateUI()
-//    {
-//        if (mAdapter == null)
-//        {
-//            mAdapter = new ThingAdapter();
-//            mThingRecyclerView.setAdapter(mAdapter);
-//            //mAdapter.notifyDataSetChanged();
-//        }
-//        else
-//        {
-//            mAdapter.setThings(mThingRepository.getThings());
-//            // mAdapter.notifyDataSetChanged(); // Todo expensive use specific notify option instead
-//        }
-//
-//        updateSubtitle(); // Update number of things after going back to main page
-//    }
-
-    private void makeToast(String string)
+    // Get data from singleton repository and setup adapter with reloaded items
+    private void updateUI()
     {
-        Context context = getActivity().getApplicationContext();
-        Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
+        ThingRepository thingRepository = ThingRepository.get(getActivity());
+        List<Thing> things = thingRepository.getThings();
+
+        if (mAdapter == null)
+        {
+            mAdapter = new ThingAdapter(things);
+            mThingRecyclerView.setAdapter(mAdapter);
+        } else {
+            mAdapter.setThings(things);
+            //mAdapter.notifyDataSetChanged(); // Todo use specific notify option to avoid overhead of reloading all items
+        }
+
+        updateSubtitle();
     }
 
+    /**
+     * Callback to be invoked when the context menu for this view is being built.
+     * Shows delete action item in menu bar.
+     * @param menu - context menu to call that is built.
+     * @param view - the view for which menu is built.
+     * @param menuInfo - extra information about menu.
+     */
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
+        getActivity().getMenuInflater().inflate(R.menu.thing_list_item_context, menu);
+    }
 
     /**
-     * This class is a ViewHolder used to maintain a view for each Thing in the list.
-     * findViewById() is called frequently during the scrolling of ListView, which can slow down performance.
+     * This class is a ViewHolder used to maintain a view for each Thing row in the RecyclerView.
+     * findViewById() is called frequently during the scrolling of list, which can slow down performance.
      * Even when the Adapter returns an inflated view for recycling, you still need to look up the elements and update them.
+     *
      * A way around repeated use of findViewById() is to use the "view holder" design pattern.
      * A ViewHolder object stores each of the component views inside the tag field of the Layout,
      * so you can immediately access them without the need to look them up repeatedly.
+     *
+     * ViewHolder also becomes the most natural place to handle any click events for a specific item.
+     * ViewHolder is in a clear position to act as a row-level controller object that handles those kinds of details.
+     * ViewHolder is the last piece: it’s responsible for handling any events that occur on a specific item that RecyclerView displays.
+     *
+     * Note that ViewHolder does not support any tools for selection and thus use MultiSelection library instead.
+     * SwappingHolder is an extension of ViewHolder class with additional properties used to elevate items upon selection.
      */
     private class ThingHolder extends SwappingHolder implements OnClickListener, OnLongClickListener {
 
-        private final TextView mTextView;
+        private TextView mTextView;
         private Thing mThing;
 
         public ThingHolder(View itemView)
         {
             super(itemView, mMultiSelector); // multi selector communicates with ViewHolder
-            mTextView = (TextView) itemView; // findViewById(R.id.list_item_thing_title_text_view)
+            //mTextView = (TextView) itemView; // findViewById(R.id.list_item_thing_title_text_view)
 
             itemView.setOnClickListener(this);
             itemView.setLongClickable(true);
             itemView.setOnLongClickListener(this);
+
+            mTextView = (TextView) itemView;
         }
 
         /**
@@ -385,38 +418,43 @@ public class ThingListFragment extends Fragment {
             {
                 return;
             }
-            if (!mMultiSelector.tapSelection(ThingHolder.this))
+            if (!mMultiSelector.tapSelection(ThingHolder.this)) // Simulate tapping an item
             {
-                // Navigate to detail screen
+                // Toggle selection of item and navigate to detailed screen
                 selectThing(mThing);
             }
         }
 
         /**
          * Enter selection mode of items on long press.
-         *
          * @param view - view of item.
          * @return true if item is selected, false if already selected.
          */
         @Override
-        public boolean onLongClick(View v)
+        public boolean onLongClick(View view)
         {
-            ((AppCompatActivity) getActivity()).startSupportActionMode(mDeleteMode);
+            ((AppCompatActivity) getActivity()).startSupportActionMode(mDeleteMode); // Turn on delete action mode.
             mMultiSelector.setSelected(this, true);
             return true;
         }
 
     }
 
-
-
     /**
      *
      * This Adapter is used to communicate with the RecyclerView,
      * when a ViewHolder needs to be created or connected with a Thing object.
      * RecyclerView does not know about Thing object but Thing Adapter knows about Thing model.
+     * The adapter is used to create and bind ViewHolders.
      */
     private class ThingAdapter extends RecyclerView.Adapter<ThingHolder> {
+
+        private List<Thing> mThings;
+
+        public ThingAdapter(List<Thing> things)
+        {
+            mThings = things;
+        }
 
         /**
          * Create view and wrap it in a view holder (for single list item).
@@ -446,7 +484,6 @@ public class ThingListFragment extends Fragment {
             Thing thing = mThings.get(position);
             holder.bindThing(thing);
             Log.d(TAG, "binding things" + thing + " at position" + position);
-            //holder.itemView.setSelected(selectedPosition == position); // Select item at position
         }
 
         /**
@@ -459,6 +496,17 @@ public class ThingListFragment extends Fragment {
             return mThings.size();
         }
 
+        public void removeAt(int position)
+        {
+            mThings.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, mThings.size());
+        }
+
+        public void setThings(List<Thing> things)
+        {
+            mThings = things;
+        }
     }
 
 }

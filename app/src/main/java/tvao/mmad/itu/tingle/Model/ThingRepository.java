@@ -103,6 +103,11 @@ public class ThingRepository implements IRepository {
         }
     }
 
+    public Thing getThingAt(int position)
+    {
+        return getThings().get(position);
+    }
+
     // Delete a particular thing based on unique identifier
     public boolean removeThing(UUID id)
     {
@@ -111,14 +116,6 @@ public class ThingRepository implements IRepository {
                         new String[] { id.toString() }
                 ) > 0;
         // return mDatabase.delete(ThingTable.NAME, ThingTable.Cols.UUID + "=" + id, null) > 0;
-    }
-
-    // Delete a particular thing based on object reference
-    public void removeThing(Thing thing)
-    {
-        mDatabase.delete(ThingTable.NAME,
-                ThingTable.Cols.UUID + " != ?",
-                new String[]{thing.getId().toString()});
     }
 
     public void updateThing(Thing thing)

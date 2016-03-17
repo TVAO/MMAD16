@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="16dp"
             android:hint="@string/thing_what_hint"
+            android:singleLine="true"
             />
     </LinearLayout>
 
@@ -36,6 +37,7 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:hint="@string/thing_what_hint"
+              android:singleLine="true"
         />
 
     <TextView
@@ -49,6 +51,7 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:hint="@string/thing_where_hint"
+              android:singleLine="true"
         />
 
 </LinearLayout>
