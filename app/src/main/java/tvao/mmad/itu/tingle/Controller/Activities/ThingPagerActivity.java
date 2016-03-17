@@ -44,6 +44,10 @@ public class ThingPagerActivity extends AppCompatActivity {
 
     /**
      * Helper function used to create intent carrying id of thing to be displayed on the screen when swiping between activities.
+     *
+     * This method is called after the Activity onAttachFragment() but before that Fragment onCreateView().
+     * The method is used to assign variables, get Intent extras, and anything else that does not involve the View hierarchy/
+     *
      * @param savedInstanceState - a bundle map with e.g. serializable objects from saved state of application.
      */
     @Override
@@ -73,22 +77,20 @@ public class ThingPagerActivity extends AppCompatActivity {
             }
 
             @Override
-            public int getCount()
-            {
+            public int getCount() {
                 return mThings.size();
             }
 
         });
 
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
-        {
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
 
             // Change title to name of thing
             @Override
-            public void onPageSelected(int position)
-            {
+            public void onPageSelected(int position) {
                 Thing thing = mThings.get(position);
                 if (thing.getWhat() != null)
                 {

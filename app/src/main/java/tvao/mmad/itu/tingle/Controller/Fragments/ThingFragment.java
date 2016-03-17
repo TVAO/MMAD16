@@ -66,7 +66,6 @@ public class ThingFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
         UUID thingId = (UUID) getArguments().getSerializable(EXTRA_THING_ID);
         mThing = ThingRepository.get(getActivity()).getThing(thingId);
         setHasOptionsMenu(true);

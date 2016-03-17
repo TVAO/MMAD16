@@ -298,9 +298,9 @@ public class ThingListFragment extends Fragment {
             case R.id.menu_item_new_thing: // Add new thing
                 Thing thing = new Thing();
                 ThingRepository.get(getActivity()).addThing(thing);
-                //mThingRecyclerView.getAdapter().notifyItemInserted(mThings.indexOf(thing));
-                int indexPosition = ThingRepository.get(getActivity()).getThings().indexOf(thing);
-                mAdapter.notifyItemInserted(indexPosition);
+                Intent intent = ThingPagerActivity
+                        .newIntent(getActivity(), thing.getId());
+                startActivity(intent);
                 return true;
 
             case R.id.menu_item_show_subtitle: // Show total items
