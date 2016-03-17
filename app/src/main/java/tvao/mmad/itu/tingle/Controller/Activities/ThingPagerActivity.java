@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import java.util.List;
@@ -28,12 +29,18 @@ import static tvao.mmad.itu.tingle.Controller.Fragments.TingleFragment.*;
  * ViewPager allows users to navigate between list items by swiping across the screen,
  * to “page” forward or backward through the things.
  */
-public class ThingPagerActivity extends FragmentActivity implements eventListener {
+public class ThingPagerActivity extends AppCompatActivity { //FragmentActivity implements eventListener {
 
     private static final String EXTRA_THING_ID = "thing_id";
     //private static final String EXTRA_THING_ID = "thingintent.thing_id";
     private ViewPager mViewPager;
     private List<Thing> mThings;
+
+    public static Intent newIntent(Context packageContext, UUID crimeId) {
+        Intent intent = new Intent(packageContext, ThingPagerActivity.class);
+        intent.putExtra(EXTRA_THING_ID, crimeId);
+        return intent;
+    }
 
     /**
      * Helper function used to create intent carrying id of thing to be displayed on the screen when swiping between activities.
@@ -83,16 +90,6 @@ public class ThingPagerActivity extends FragmentActivity implements eventListene
                 break;
             }
         }
-
-    }
-
-    @Override
-    public void onShowItems() {
-
-    }
-
-    @Override
-    public void onAddItems() {
 
     }
 
