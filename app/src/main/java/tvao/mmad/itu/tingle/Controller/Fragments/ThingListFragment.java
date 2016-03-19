@@ -202,7 +202,7 @@ public class ThingListFragment extends Fragment {
     }
 
     // Create new thing and navigate to detailed screen activity
-    private void newThing(Thing thing)
+    private void addNewThing(Thing thing)
     {
         ThingRepository.get(getActivity()).addThing(thing);
         Intent intent = ThingPagerActivity
@@ -308,8 +308,8 @@ public class ThingListFragment extends Fragment {
         {
             case R.id.menu_item_new_thing: // Add new thing
                 Thing thing = new Thing();
-                mAdapter.notifyDataSetChanged();
-                newThing(thing); // Go to detailed screen with new thing
+                addNewThing(thing); // Go to detailed screen with new thing
+                mAdapter.notifyDataSetChanged(); // Todo make specific notify
                 return true;
 
             case R.id.menu_item_show_subtitle: // Show total items
