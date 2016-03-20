@@ -224,6 +224,7 @@ public class TingleFragment extends Fragment {
         if (size > 0 )
         {
             mLastAdded.setText(sThingRepository.getThings().get(size - 1).toString()); // Set text to last item added
+            getActivity().invalidateOptionsMenu(); // Recreate menu due to new count of total items
         }
         else this.mLastAdded.setText(getString(R.string.item_notFound_toast));
     }

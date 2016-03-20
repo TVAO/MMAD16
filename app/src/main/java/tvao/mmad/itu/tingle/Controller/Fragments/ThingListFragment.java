@@ -276,7 +276,6 @@ public class ThingListFragment extends Fragment {
             case R.id.menu_item_new_thing: // Add new thing
                 Thing thing = new Thing();
                 addNewThing(thing); // Go to detailed screen with new thing
-                //mAdapter.notifyDataSetChanged(); // Todo make specific notify
                 return true;
 
             case R.id.menu_item_show_subtitle: // Show total items
