@@ -31,14 +31,14 @@ import static tvao.mmad.itu.tingle.Controller.Fragments.TingleFragment.*;
  */
 public class ThingPagerActivity extends AppCompatActivity {
 
-    private static final String EXTRA_THING_ID = "thing_id";
-    //private static final String EXTRA_THING_ID = "thingintent.thing_id";
+    private static final String EXTRA_THING_ID = "tvao.mmad.itu.tingle.thing_id";
     private ViewPager mViewPager;
     private List<Thing> mThings;
 
-    public static Intent newIntent(Context packageContext, UUID crimeId) {
+    public static Intent newIntent(Context packageContext, UUID thingId)
+    {
         Intent intent = new Intent(packageContext, ThingPagerActivity.class);
-        intent.putExtra(EXTRA_THING_ID, crimeId);
+        intent.putExtra(EXTRA_THING_ID, thingId);
         return intent;
     }
 

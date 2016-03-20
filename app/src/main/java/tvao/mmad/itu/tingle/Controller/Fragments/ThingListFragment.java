@@ -196,9 +196,8 @@ public class ThingListFragment extends Fragment {
     // Toggle item and navigate to detailed screen
     private void selectThing(Thing thing)
     {
-        Intent i = new Intent(getActivity(), ThingPagerActivity.class);
-        i.putExtra(ThingFragment.EXTRA_THING_ID, thing.getId());
-        startActivity(i);
+        Intent intent = ThingPagerActivity.newIntent(getActivity(), thing.getId());
+        startActivity(intent);
     }
 
     // Create new thing and navigate to detailed screen activity
