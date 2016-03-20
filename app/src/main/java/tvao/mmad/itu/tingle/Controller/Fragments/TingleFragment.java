@@ -244,6 +244,7 @@ public class TingleFragment extends Fragment {
 
     }
 
+    // Todo code is duplicated in TingleFragment and ThingFragment, use BarcodeActivity instead and remove code duplication
     /**
      * This method is used to get the result back from scanning a barcode and save it in the barcode field.
      * Called whenever Scanner exits, giving requestCode you started it with, the resultCode it returned, and any additional data from it.

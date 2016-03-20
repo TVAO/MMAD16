@@ -264,7 +264,7 @@
     <string name="subtitle_format">%1$s crimes</string>
     <string name="thing_what_hint">Enter a title for the thing.</string>
     <string name="thing_where_hint">Enter the location of the item.</string>
-    <string name="things_title">Things Title</string>
+    <string name="things_title">Things</string>
     <string name="title_activity_list">ListActivity</string>
     <string name="what_hint">Enter name of item</string>
     <string name="what_thing">What?</string>

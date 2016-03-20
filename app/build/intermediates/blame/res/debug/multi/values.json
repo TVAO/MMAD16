@@ -2531,14 +2531,7 @@
                     "endOffset": 31439
                 },
                 "from": {
-                    "file": "/Users/TVANO/Documents/Tingle/app/src/main/res/values/strings.xml",
-                    "position": {
-                        "startLine": 32,
-                        "startColumn": 4,
-                        "startOffset": 1652,
-                        "endColumn": 60,
-                        "endOffset": 1708
-                    }
+                    "file": "/Users/TVANO/Documents/Tingle/app/src/main/res/values/strings.xml"
                 }
             },
             {
@@ -2786,20 +2779,27 @@
                     "startLine": 266,
                     "startColumn": 4,
                     "startOffset": 32667,
-                    "endColumn": 53,
-                    "endOffset": 32716
+                    "endColumn": 47,
+                    "endOffset": 32710
                 },
                 "from": {
-                    "file": "/Users/TVANO/Documents/Tingle/app/src/main/res/values/strings.xml"
+                    "file": "/Users/TVANO/Documents/Tingle/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 1465,
+                        "endColumn": 47,
+                        "endOffset": 1508
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 267,
                     "startColumn": 4,
-                    "startOffset": 32721,
+                    "startOffset": 32715,
                     "endColumn": 60,
-                    "endOffset": 32777
+                    "endOffset": 32771
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/src/main/res/values/strings.xml"
@@ -2809,9 +2809,9 @@
                 "to": {
                     "startLine": 268,
                     "startColumn": 4,
-                    "startOffset": 32782,
+                    "startOffset": 32776,
                     "endColumn": 56,
-                    "endOffset": 32834
+                    "endOffset": 32828
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/src/main/res/values/strings.xml"
@@ -2821,28 +2821,21 @@
                 "to": {
                     "startLine": 269,
                     "startColumn": 4,
-                    "startOffset": 32839,
+                    "startOffset": 32833,
                     "endColumn": 44,
-                    "endOffset": 32879
+                    "endOffset": 32873
                 },
                 "from": {
-                    "file": "/Users/TVANO/Documents/Tingle/app/src/main/res/values/strings.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 171,
-                        "endColumn": 44,
-                        "endOffset": 211
-                    }
+                    "file": "/Users/TVANO/Documents/Tingle/app/src/main/res/values/strings.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 270,
                     "startColumn": 4,
-                    "startOffset": 32884,
+                    "startOffset": 32878,
                     "endColumn": 61,
-                    "endOffset": 32941
+                    "endOffset": 32935
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/src/main/res/values/strings.xml"
@@ -2852,9 +2845,9 @@
                 "to": {
                     "startLine": 271,
                     "startColumn": 4,
-                    "startOffset": 32946,
+                    "startOffset": 32940,
                     "endColumn": 46,
-                    "endOffset": 32988
+                    "endOffset": 32982
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/src/main/res/values/strings.xml"
@@ -2864,9 +2857,9 @@
                 "to": {
                     "startLine": 272,
                     "startColumn": 4,
-                    "startOffset": 32993,
+                    "startOffset": 32987,
                     "endColumn": 58,
-                    "endOffset": 33047
+                    "endOffset": 33041
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.journeyapps/zxing-android-embedded/3.2.0/res/values/values.xml"
@@ -2876,9 +2869,9 @@
                 "to": {
                     "startLine": 273,
                     "startColumn": 4,
-                    "startOffset": 33052,
+                    "startOffset": 33046,
                     "endColumn": 46,
-                    "endOffset": 33094
+                    "endOffset": 33088
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.journeyapps/zxing-android-embedded/3.2.0/res/values/values.xml"
@@ -2888,9 +2881,9 @@
                 "to": {
                     "startLine": 274,
                     "startColumn": 4,
-                    "startOffset": 33099,
+                    "startOffset": 33093,
                     "endColumn": 143,
-                    "endOffset": 33238
+                    "endOffset": 33232
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.journeyapps/zxing-android-embedded/3.2.0/res/values/values.xml"
@@ -2900,9 +2893,9 @@
                 "to": {
                     "startLine": 275,
                     "startColumn": 4,
-                    "startOffset": 33243,
+                    "startOffset": 33237,
                     "endColumn": 112,
-                    "endOffset": 33351
+                    "endOffset": 33345
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.journeyapps/zxing-android-embedded/3.2.0/res/values/values.xml"
@@ -2912,9 +2905,9 @@
                 "to": {
                     "startLine": 276,
                     "startColumn": 4,
-                    "startOffset": 33356,
+                    "startOffset": 33350,
                     "endColumn": 77,
-                    "endOffset": 33429
+                    "endOffset": 33423
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -2924,9 +2917,9 @@
                 "to": {
                     "startLine": 277,
                     "startColumn": 4,
-                    "startOffset": 33434,
+                    "startOffset": 33428,
                     "endColumn": 89,
-                    "endOffset": 33519
+                    "endOffset": 33513
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -2936,9 +2929,9 @@
                 "to": {
                     "startLine": 278,
                     "startColumn": 4,
-                    "startOffset": 33524,
+                    "startOffset": 33518,
                     "endColumn": 87,
-                    "endOffset": 33607
+                    "endOffset": 33601
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -2948,9 +2941,9 @@
                 "to": {
                     "startLine": 279,
                     "startColumn": 4,
-                    "startOffset": 33612,
+                    "startOffset": 33606,
                     "endColumn": 95,
-                    "endOffset": 33703
+                    "endOffset": 33697
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -2960,10 +2953,10 @@
                 "to": {
                     "startLine": 280,
                     "startColumn": 4,
-                    "startOffset": 33708,
+                    "startOffset": 33702,
                     "endLine": 286,
                     "endColumn": 12,
-                    "endOffset": 34023
+                    "endOffset": 34017
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/src/main/res/values/styles.xml"
@@ -2973,9 +2966,9 @@
                 "to": {
                     "startLine": 287,
                     "startColumn": 4,
-                    "startOffset": 34028,
+                    "startOffset": 34022,
                     "endColumn": 89,
-                    "endOffset": 34113
+                    "endOffset": 34107
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/src/main/res/values/styles.xml"
@@ -2985,10 +2978,10 @@
                 "to": {
                     "startLine": 288,
                     "startColumn": 4,
-                    "startOffset": 34118,
+                    "startOffset": 34112,
                     "endLine": 291,
                     "endColumn": 12,
-                    "endOffset": 34263
+                    "endOffset": 34257
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/src/main/res/values/styles.xml"
@@ -2998,9 +2991,9 @@
                 "to": {
                     "startLine": 292,
                     "startColumn": 4,
-                    "startOffset": 34268,
+                    "startOffset": 34262,
                     "endColumn": 79,
-                    "endOffset": 34343
+                    "endOffset": 34337
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/src/main/res/values/styles.xml"
@@ -3010,10 +3003,10 @@
                 "to": {
                     "startLine": 293,
                     "startColumn": 4,
-                    "startOffset": 34348,
+                    "startOffset": 34342,
                     "endLine": 299,
                     "endColumn": 12,
-                    "endOffset": 34844
+                    "endOffset": 34838
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3023,9 +3016,9 @@
                 "to": {
                     "startLine": 300,
                     "startColumn": 4,
-                    "startOffset": 34849,
+                    "startOffset": 34843,
                     "endColumn": 88,
-                    "endOffset": 34933
+                    "endOffset": 34927
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3035,10 +3028,10 @@
                 "to": {
                     "startLine": 301,
                     "startColumn": 4,
-                    "startOffset": 34938,
+                    "startOffset": 34932,
                     "endLine": 304,
                     "endColumn": 12,
-                    "endOffset": 35180
+                    "endOffset": 35174
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3048,10 +3041,10 @@
                 "to": {
                     "startLine": 305,
                     "startColumn": 4,
-                    "startOffset": 35185,
+                    "startOffset": 35179,
                     "endLine": 308,
                     "endColumn": 12,
-                    "endOffset": 35461
+                    "endOffset": 35455
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3061,10 +3054,10 @@
                 "to": {
                     "startLine": 309,
                     "startColumn": 4,
-                    "startOffset": 35466,
+                    "startOffset": 35460,
                     "endLine": 313,
                     "endColumn": 12,
-                    "endOffset": 35746
+                    "endOffset": 35740
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3074,10 +3067,10 @@
                 "to": {
                     "startLine": 314,
                     "startColumn": 4,
-                    "startOffset": 35751,
+                    "startOffset": 35745,
                     "endLine": 319,
                     "endColumn": 12,
-                    "endOffset": 36139
+                    "endOffset": 36133
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3087,10 +3080,10 @@
                 "to": {
                     "startLine": 320,
                     "startColumn": 4,
-                    "startOffset": 36144,
+                    "startOffset": 36138,
                     "endLine": 326,
                     "endColumn": 12,
-                    "endOffset": 36616
+                    "endOffset": 36610
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3100,10 +3093,10 @@
                 "to": {
                     "startLine": 327,
                     "startColumn": 4,
-                    "startOffset": 36621,
+                    "startOffset": 36615,
                     "endLine": 330,
                     "endColumn": 12,
-                    "endOffset": 36838
+                    "endOffset": 36832
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3113,10 +3106,10 @@
                 "to": {
                     "startLine": 331,
                     "startColumn": 4,
-                    "startOffset": 36843,
+                    "startOffset": 36837,
                     "endLine": 334,
                     "endColumn": 12,
-                    "endOffset": 37060
+                    "endOffset": 37054
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3126,10 +3119,10 @@
                 "to": {
                     "startLine": 335,
                     "startColumn": 4,
-                    "startOffset": 37065,
+                    "startOffset": 37059,
                     "endLine": 339,
                     "endColumn": 12,
-                    "endOffset": 37328
+                    "endOffset": 37322
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3139,10 +3132,10 @@
                 "to": {
                     "startLine": 340,
                     "startColumn": 4,
-                    "startOffset": 37333,
+                    "startOffset": 37327,
                     "endLine": 343,
                     "endColumn": 12,
-                    "endOffset": 37555
+                    "endOffset": 37549
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3152,10 +3145,10 @@
                 "to": {
                     "startLine": 344,
                     "startColumn": 4,
-                    "startOffset": 37560,
+                    "startOffset": 37554,
                     "endLine": 347,
                     "endColumn": 12,
-                    "endOffset": 37785
+                    "endOffset": 37779
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3165,10 +3158,10 @@
                 "to": {
                     "startLine": 348,
                     "startColumn": 4,
-                    "startOffset": 37790,
+                    "startOffset": 37784,
                     "endLine": 351,
                     "endColumn": 12,
-                    "endOffset": 38015
+                    "endOffset": 38009
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3178,10 +3171,10 @@
                 "to": {
                     "startLine": 352,
                     "startColumn": 4,
-                    "startOffset": 38020,
+                    "startOffset": 38014,
                     "endLine": 355,
                     "endColumn": 12,
-                    "endOffset": 38245
+                    "endOffset": 38239
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3191,10 +3184,10 @@
                 "to": {
                     "startLine": 356,
                     "startColumn": 4,
-                    "startOffset": 38250,
+                    "startOffset": 38244,
                     "endLine": 359,
                     "endColumn": 12,
-                    "endOffset": 38475
+                    "endOffset": 38469
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3204,10 +3197,10 @@
                 "to": {
                     "startLine": 360,
                     "startColumn": 4,
-                    "startOffset": 38480,
+                    "startOffset": 38474,
                     "endLine": 363,
                     "endColumn": 12,
-                    "endOffset": 38702
+                    "endOffset": 38696
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3217,10 +3210,10 @@
                 "to": {
                     "startLine": 364,
                     "startColumn": 4,
-                    "startOffset": 38707,
+                    "startOffset": 38701,
                     "endLine": 367,
                     "endColumn": 12,
-                    "endOffset": 38941
+                    "endOffset": 38935
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3230,10 +3223,10 @@
                 "to": {
                     "startLine": 368,
                     "startColumn": 4,
-                    "startOffset": 38946,
+                    "startOffset": 38940,
                     "endLine": 371,
                     "endColumn": 12,
-                    "endOffset": 39167
+                    "endOffset": 39161
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3243,10 +3236,10 @@
                 "to": {
                     "startLine": 372,
                     "startColumn": 4,
-                    "startOffset": 39172,
+                    "startOffset": 39166,
                     "endLine": 375,
                     "endColumn": 12,
-                    "endOffset": 39412
+                    "endOffset": 39406
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3256,10 +3249,10 @@
                 "to": {
                     "startLine": 376,
                     "startColumn": 4,
-                    "startOffset": 39417,
+                    "startOffset": 39411,
                     "endLine": 377,
                     "endColumn": 12,
-                    "endOffset": 39542
+                    "endOffset": 39536
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3269,10 +3262,10 @@
                 "to": {
                     "startLine": 378,
                     "startColumn": 4,
-                    "startOffset": 39547,
+                    "startOffset": 39541,
                     "endLine": 379,
                     "endColumn": 12,
-                    "endOffset": 39672
+                    "endOffset": 39666
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3282,10 +3275,10 @@
                 "to": {
                     "startLine": 380,
                     "startColumn": 4,
-                    "startOffset": 39677,
+                    "startOffset": 39671,
                     "endLine": 383,
                     "endColumn": 12,
-                    "endOffset": 39902
+                    "endOffset": 39896
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3295,10 +3288,10 @@
                 "to": {
                     "startLine": 384,
                     "startColumn": 4,
-                    "startOffset": 39907,
+                    "startOffset": 39901,
                     "endLine": 387,
                     "endColumn": 12,
-                    "endOffset": 40150
+                    "endOffset": 40144
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3308,10 +3301,10 @@
                 "to": {
                     "startLine": 388,
                     "startColumn": 4,
-                    "startOffset": 40155,
+                    "startOffset": 40149,
                     "endLine": 391,
                     "endColumn": 12,
-                    "endOffset": 40369
+                    "endOffset": 40363
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3321,10 +3314,10 @@
                 "to": {
                     "startLine": 392,
                     "startColumn": 4,
-                    "startOffset": 40374,
+                    "startOffset": 40368,
                     "endLine": 396,
                     "endColumn": 12,
-                    "endOffset": 40652
+                    "endOffset": 40646
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3334,10 +3327,10 @@
                 "to": {
                     "startLine": 397,
                     "startColumn": 4,
-                    "startOffset": 40657,
+                    "startOffset": 40651,
                     "endLine": 400,
                     "endColumn": 12,
-                    "endOffset": 40860
+                    "endOffset": 40854
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3347,10 +3340,10 @@
                 "to": {
                     "startLine": 401,
                     "startColumn": 4,
-                    "startOffset": 40865,
+                    "startOffset": 40859,
                     "endLine": 403,
                     "endColumn": 12,
-                    "endOffset": 40991
+                    "endOffset": 40985
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3360,10 +3353,10 @@
                 "to": {
                     "startLine": 404,
                     "startColumn": 4,
-                    "startOffset": 40996,
+                    "startOffset": 40990,
                     "endLine": 407,
                     "endColumn": 12,
-                    "endOffset": 41218
+                    "endOffset": 41212
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3373,10 +3366,10 @@
                 "to": {
                     "startLine": 408,
                     "startColumn": 4,
-                    "startOffset": 41223,
+                    "startOffset": 41217,
                     "endLine": 411,
                     "endColumn": 12,
-                    "endOffset": 41464
+                    "endOffset": 41458
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3386,10 +3379,10 @@
                 "to": {
                     "startLine": 412,
                     "startColumn": 4,
-                    "startOffset": 41469,
+                    "startOffset": 41463,
                     "endLine": 415,
                     "endColumn": 12,
-                    "endOffset": 41689
+                    "endOffset": 41683
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3399,10 +3392,10 @@
                 "to": {
                     "startLine": 416,
                     "startColumn": 4,
-                    "startOffset": 41694,
+                    "startOffset": 41688,
                     "endLine": 419,
                     "endColumn": 12,
-                    "endOffset": 41936
+                    "endOffset": 41930
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3412,10 +3405,10 @@
                 "to": {
                     "startLine": 420,
                     "startColumn": 4,
-                    "startOffset": 41941,
+                    "startOffset": 41935,
                     "endLine": 423,
                     "endColumn": 12,
-                    "endOffset": 42157
+                    "endOffset": 42151
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3425,10 +3418,10 @@
                 "to": {
                     "startLine": 424,
                     "startColumn": 4,
-                    "startOffset": 42162,
+                    "startOffset": 42156,
                     "endLine": 427,
                     "endColumn": 12,
-                    "endOffset": 42402
+                    "endOffset": 42396
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3438,10 +3431,10 @@
                 "to": {
                     "startLine": 428,
                     "startColumn": 4,
-                    "startOffset": 42407,
+                    "startOffset": 42401,
                     "endLine": 431,
                     "endColumn": 12,
-                    "endOffset": 42678
+                    "endOffset": 42672
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3451,10 +3444,10 @@
                 "to": {
                     "startLine": 432,
                     "startColumn": 4,
-                    "startOffset": 42683,
+                    "startOffset": 42677,
                     "endLine": 435,
                     "endColumn": 12,
-                    "endOffset": 42979
+                    "endOffset": 42973
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3464,10 +3457,10 @@
                 "to": {
                     "startLine": 436,
                     "startColumn": 4,
-                    "startOffset": 42984,
+                    "startOffset": 42978,
                     "endLine": 439,
                     "endColumn": 12,
-                    "endOffset": 43303
+                    "endOffset": 43297
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3477,10 +3470,10 @@
                 "to": {
                     "startLine": 440,
                     "startColumn": 4,
-                    "startOffset": 43308,
+                    "startOffset": 43302,
                     "endLine": 443,
                     "endColumn": 12,
-                    "endOffset": 43594
+                    "endOffset": 43588
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3490,10 +3483,10 @@
                 "to": {
                     "startLine": 444,
                     "startColumn": 4,
-                    "startOffset": 43599,
+                    "startOffset": 43593,
                     "endLine": 447,
                     "endColumn": 12,
-                    "endOffset": 43908
+                    "endOffset": 43902
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3503,9 +3496,9 @@
                 "to": {
                     "startLine": 448,
                     "startColumn": 4,
-                    "startOffset": 43913,
+                    "startOffset": 43907,
                     "endColumn": 136,
-                    "endOffset": 44045
+                    "endOffset": 44039
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3515,9 +3508,9 @@
                 "to": {
                     "startLine": 449,
                     "startColumn": 4,
-                    "startOffset": 44050,
+                    "startOffset": 44044,
                     "endColumn": 130,
-                    "endOffset": 44176
+                    "endOffset": 44170
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3527,9 +3520,9 @@
                 "to": {
                     "startLine": 450,
                     "startColumn": 4,
-                    "startOffset": 44181,
+                    "startOffset": 44175,
                     "endColumn": 104,
-                    "endOffset": 44281
+                    "endOffset": 44275
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3539,10 +3532,10 @@
                 "to": {
                     "startLine": 451,
                     "startColumn": 4,
-                    "startOffset": 44286,
+                    "startOffset": 44280,
                     "endLine": 453,
                     "endColumn": 12,
-                    "endOffset": 44485
+                    "endOffset": 44479
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3552,10 +3545,10 @@
                 "to": {
                     "startLine": 454,
                     "startColumn": 4,
-                    "startOffset": 44490,
+                    "startOffset": 44484,
                     "endLine": 456,
                     "endColumn": 12,
-                    "endOffset": 44693
+                    "endOffset": 44687
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3565,10 +3558,10 @@
                 "to": {
                     "startLine": 457,
                     "startColumn": 4,
-                    "startOffset": 44698,
+                    "startOffset": 44692,
                     "endLine": 458,
                     "endColumn": 12,
-                    "endOffset": 44817
+                    "endOffset": 44811
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3578,10 +3571,10 @@
                 "to": {
                     "startLine": 459,
                     "startColumn": 4,
-                    "startOffset": 44822,
+                    "startOffset": 44816,
                     "endLine": 460,
                     "endColumn": 12,
-                    "endOffset": 44941
+                    "endOffset": 44935
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3591,9 +3584,9 @@
                 "to": {
                     "startLine": 461,
                     "startColumn": 4,
-                    "startOffset": 44946,
+                    "startOffset": 44940,
                     "endColumn": 104,
-                    "endOffset": 45046
+                    "endOffset": 45040
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3603,9 +3596,9 @@
                 "to": {
                     "startLine": 462,
                     "startColumn": 4,
-                    "startOffset": 45051,
+                    "startOffset": 45045,
                     "endColumn": 116,
-                    "endOffset": 45163
+                    "endOffset": 45157
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3615,10 +3608,10 @@
                 "to": {
                     "startLine": 463,
                     "startColumn": 4,
-                    "startOffset": 45168,
+                    "startOffset": 45162,
                     "endLine": 465,
                     "endColumn": 12,
-                    "endOffset": 45377
+                    "endOffset": 45371
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3628,10 +3621,10 @@
                 "to": {
                     "startLine": 466,
                     "startColumn": 4,
-                    "startOffset": 45382,
+                    "startOffset": 45376,
                     "endLine": 467,
                     "endColumn": 12,
-                    "endOffset": 45523
+                    "endOffset": 45517
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3641,10 +3634,10 @@
                 "to": {
                     "startLine": 468,
                     "startColumn": 4,
-                    "startOffset": 45528,
+                    "startOffset": 45522,
                     "endLine": 469,
                     "endColumn": 12,
-                    "endOffset": 45663
+                    "endOffset": 45657
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3654,10 +3647,10 @@
                 "to": {
                     "startLine": 470,
                     "startColumn": 4,
-                    "startOffset": 45668,
+                    "startOffset": 45662,
                     "endLine": 471,
                     "endColumn": 12,
-                    "endOffset": 45749
+                    "endOffset": 45743
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3667,10 +3660,10 @@
                 "to": {
                     "startLine": 472,
                     "startColumn": 4,
-                    "startOffset": 45754,
+                    "startOffset": 45748,
                     "endLine": 476,
                     "endColumn": 12,
-                    "endOffset": 46097
+                    "endOffset": 46091
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3680,9 +3673,9 @@
                 "to": {
                     "startLine": 477,
                     "startColumn": 4,
-                    "startOffset": 46102,
+                    "startOffset": 46096,
                     "endColumn": 87,
-                    "endOffset": 46185
+                    "endOffset": 46179
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3692,10 +3685,10 @@
                 "to": {
                     "startLine": 478,
                     "startColumn": 4,
-                    "startOffset": 46190,
+                    "startOffset": 46184,
                     "endLine": 481,
                     "endColumn": 12,
-                    "endOffset": 46415
+                    "endOffset": 46409
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3705,10 +3698,10 @@
                 "to": {
                     "startLine": 482,
                     "startColumn": 4,
-                    "startOffset": 46420,
+                    "startOffset": 46414,
                     "endLine": 487,
                     "endColumn": 12,
-                    "endOffset": 46833
+                    "endOffset": 46827
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3718,10 +3711,10 @@
                 "to": {
                     "startLine": 488,
                     "startColumn": 4,
-                    "startOffset": 46838,
+                    "startOffset": 46832,
                     "endLine": 491,
                     "endColumn": 12,
-                    "endOffset": 47066
+                    "endOffset": 47060
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3731,9 +3724,9 @@
                 "to": {
                     "startLine": 492,
                     "startColumn": 4,
-                    "startOffset": 47071,
+                    "startOffset": 47065,
                     "endColumn": 81,
-                    "endOffset": 47148
+                    "endOffset": 47142
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3743,10 +3736,10 @@
                 "to": {
                     "startLine": 493,
                     "startColumn": 4,
-                    "startOffset": 47153,
+                    "startOffset": 47147,
                     "endLine": 494,
                     "endColumn": 12,
-                    "endOffset": 47246
+                    "endOffset": 47240
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3756,10 +3749,10 @@
                 "to": {
                     "startLine": 495,
                     "startColumn": 4,
-                    "startOffset": 47251,
+                    "startOffset": 47245,
                     "endLine": 505,
                     "endColumn": 12,
-                    "endOffset": 47863
+                    "endOffset": 47857
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3769,9 +3762,9 @@
                 "to": {
                     "startLine": 506,
                     "startColumn": 4,
-                    "startOffset": 47868,
+                    "startOffset": 47862,
                     "endColumn": 99,
-                    "endOffset": 47963
+                    "endOffset": 47957
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3781,10 +3774,10 @@
                 "to": {
                     "startLine": 507,
                     "startColumn": 4,
-                    "startOffset": 47968,
+                    "startOffset": 47962,
                     "endLine": 510,
                     "endColumn": 12,
-                    "endOffset": 48199
+                    "endOffset": 48193
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3794,10 +3787,10 @@
                 "to": {
                     "startLine": 511,
                     "startColumn": 4,
-                    "startOffset": 48204,
+                    "startOffset": 48198,
                     "endLine": 516,
                     "endColumn": 12,
-                    "endOffset": 48623
+                    "endOffset": 48617
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3807,10 +3800,10 @@
                 "to": {
                     "startLine": 517,
                     "startColumn": 4,
-                    "startOffset": 48628,
+                    "startOffset": 48622,
                     "endLine": 520,
                     "endColumn": 12,
-                    "endOffset": 48862
+                    "endOffset": 48856
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3820,9 +3813,9 @@
                 "to": {
                     "startLine": 521,
                     "startColumn": 4,
-                    "startOffset": 48867,
+                    "startOffset": 48861,
                     "endColumn": 93,
-                    "endOffset": 48956
+                    "endOffset": 48950
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3832,9 +3825,9 @@
                 "to": {
                     "startLine": 522,
                     "startColumn": 4,
-                    "startOffset": 48961,
+                    "startOffset": 48955,
                     "endColumn": 88,
-                    "endOffset": 49045
+                    "endOffset": 49039
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3844,10 +3837,10 @@
                 "to": {
                     "startLine": 523,
                     "startColumn": 4,
-                    "startOffset": 49050,
+                    "startOffset": 49044,
                     "endLine": 526,
                     "endColumn": 12,
-                    "endOffset": 49282
+                    "endOffset": 49276
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3857,10 +3850,10 @@
                 "to": {
                     "startLine": 527,
                     "startColumn": 4,
-                    "startOffset": 49287,
+                    "startOffset": 49281,
                     "endLine": 552,
                     "endColumn": 12,
-                    "endOffset": 51233
+                    "endOffset": 51227
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3870,10 +3863,10 @@
                 "to": {
                     "startLine": 553,
                     "startColumn": 4,
-                    "startOffset": 51238,
+                    "startOffset": 51232,
                     "endLine": 556,
                     "endColumn": 12,
-                    "endOffset": 51475
+                    "endOffset": 51469
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3883,10 +3876,10 @@
                 "to": {
                     "startLine": 557,
                     "startColumn": 4,
-                    "startOffset": 51480,
+                    "startOffset": 51474,
                     "endLine": 583,
                     "endColumn": 12,
-                    "endOffset": 53557
+                    "endOffset": 53551
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3896,10 +3889,10 @@
                 "to": {
                     "startLine": 584,
                     "startColumn": 4,
-                    "startOffset": 53562,
+                    "startOffset": 53556,
                     "endLine": 738,
                     "endColumn": 12,
-                    "endOffset": 63397
+                    "endOffset": 63391
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3909,10 +3902,10 @@
                 "to": {
                     "startLine": 739,
                     "startColumn": 4,
-                    "startOffset": 63402,
+                    "startOffset": 63396,
                     "endLine": 760,
                     "endColumn": 12,
-                    "endOffset": 64664
+                    "endOffset": 64658
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3922,10 +3915,10 @@
                 "to": {
                     "startLine": 761,
                     "startColumn": 4,
-                    "startOffset": 64669,
+                    "startOffset": 64663,
                     "endLine": 915,
                     "endColumn": 12,
-                    "endOffset": 74614
+                    "endOffset": 74608
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3935,10 +3928,10 @@
                 "to": {
                     "startLine": 916,
                     "startColumn": 4,
-                    "startOffset": 74619,
+                    "startOffset": 74613,
                     "endLine": 937,
                     "endColumn": 12,
-                    "endOffset": 75895
+                    "endOffset": 75889
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3948,10 +3941,10 @@
                 "to": {
                     "startLine": 938,
                     "startColumn": 4,
-                    "startOffset": 75900,
+                    "startOffset": 75894,
                     "endLine": 944,
                     "endColumn": 12,
-                    "endOffset": 76431
+                    "endOffset": 76425
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3961,10 +3954,10 @@
                 "to": {
                     "startLine": 945,
                     "startColumn": 4,
-                    "startOffset": 76436,
+                    "startOffset": 76430,
                     "endLine": 949,
                     "endColumn": 12,
-                    "endOffset": 76761
+                    "endOffset": 76755
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3974,10 +3967,10 @@
                 "to": {
                     "startLine": 950,
                     "startColumn": 4,
-                    "startOffset": 76766,
+                    "startOffset": 76760,
                     "endLine": 970,
                     "endColumn": 12,
-                    "endOffset": 77884
+                    "endOffset": 77878
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -3987,10 +3980,10 @@
                 "to": {
                     "startLine": 971,
                     "startColumn": 4,
-                    "startOffset": 77889,
+                    "startOffset": 77883,
                     "endLine": 975,
                     "endColumn": 12,
-                    "endOffset": 78140
+                    "endOffset": 78134
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4000,10 +3993,10 @@
                 "to": {
                     "startLine": 976,
                     "startColumn": 4,
-                    "startOffset": 78145,
+                    "startOffset": 78139,
                     "endLine": 980,
                     "endColumn": 12,
-                    "endOffset": 78376
+                    "endOffset": 78370
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4013,10 +4006,10 @@
                 "to": {
                     "startLine": 981,
                     "startColumn": 4,
-                    "startOffset": 78381,
+                    "startOffset": 78375,
                     "endLine": 990,
                     "endColumn": 12,
-                    "endOffset": 78923
+                    "endOffset": 78917
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4026,10 +4019,10 @@
                 "to": {
                     "startLine": 991,
                     "startColumn": 4,
-                    "startOffset": 78928,
+                    "startOffset": 78922,
                     "endLine": 999,
                     "endColumn": 12,
-                    "endOffset": 79417
+                    "endOffset": 79411
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4039,10 +4032,10 @@
                 "to": {
                     "startLine": 1000,
                     "startColumn": 4,
-                    "startOffset": 79422,
+                    "startOffset": 79416,
                     "endLine": 1008,
                     "endColumn": 12,
-                    "endOffset": 80022
+                    "endOffset": 80016
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4052,10 +4045,10 @@
                 "to": {
                     "startLine": 1009,
                     "startColumn": 4,
-                    "startOffset": 80027,
+                    "startOffset": 80021,
                     "endLine": 1011,
                     "endColumn": 12,
-                    "endOffset": 80170
+                    "endOffset": 80164
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4065,10 +4058,10 @@
                 "to": {
                     "startLine": 1012,
                     "startColumn": 4,
-                    "startOffset": 80175,
+                    "startOffset": 80169,
                     "endLine": 1018,
                     "endColumn": 12,
-                    "endOffset": 80750
+                    "endOffset": 80744
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4078,10 +4071,10 @@
                 "to": {
                     "startLine": 1019,
                     "startColumn": 4,
-                    "startOffset": 80755,
+                    "startOffset": 80749,
                     "endLine": 1026,
                     "endColumn": 12,
-                    "endOffset": 81314
+                    "endOffset": 81308
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4091,10 +4084,10 @@
                 "to": {
                     "startLine": 1027,
                     "startColumn": 4,
-                    "startOffset": 81319,
+                    "startOffset": 81313,
                     "endLine": 1033,
                     "endColumn": 12,
-                    "endOffset": 81689
+                    "endOffset": 81683
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4104,9 +4097,9 @@
                 "to": {
                     "startLine": 1034,
                     "startColumn": 4,
-                    "startOffset": 81694,
+                    "startOffset": 81688,
                     "endColumn": 117,
-                    "endOffset": 81807
+                    "endOffset": 81801
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4116,10 +4109,10 @@
                 "to": {
                     "startLine": 1035,
                     "startColumn": 4,
-                    "startOffset": 81812,
+                    "startOffset": 81806,
                     "endLine": 1043,
                     "endColumn": 12,
-                    "endOffset": 82345
+                    "endOffset": 82339
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4129,10 +4122,10 @@
                 "to": {
                     "startLine": 1044,
                     "startColumn": 4,
-                    "startOffset": 82350,
+                    "startOffset": 82344,
                     "endLine": 1046,
                     "endColumn": 12,
-                    "endOffset": 82502
+                    "endOffset": 82496
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4142,10 +4135,10 @@
                 "to": {
                     "startLine": 1047,
                     "startColumn": 4,
-                    "startOffset": 82507,
+                    "startOffset": 82501,
                     "endLine": 1049,
                     "endColumn": 12,
-                    "endOffset": 82646
+                    "endOffset": 82640
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4155,10 +4148,10 @@
                 "to": {
                     "startLine": 1050,
                     "startColumn": 4,
-                    "startOffset": 82651,
+                    "startOffset": 82645,
                     "endLine": 1054,
                     "endColumn": 12,
-                    "endOffset": 82966
+                    "endOffset": 82960
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4168,10 +4161,10 @@
                 "to": {
                     "startLine": 1055,
                     "startColumn": 4,
-                    "startOffset": 82971,
+                    "startOffset": 82965,
                     "endLine": 1058,
                     "endColumn": 12,
-                    "endOffset": 83222
+                    "endOffset": 83216
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4181,10 +4174,10 @@
                 "to": {
                     "startLine": 1059,
                     "startColumn": 4,
-                    "startOffset": 83227,
+                    "startOffset": 83221,
                     "endLine": 1062,
                     "endColumn": 12,
-                    "endOffset": 83392
+                    "endOffset": 83386
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4194,10 +4187,10 @@
                 "to": {
                     "startLine": 1063,
                     "startColumn": 4,
-                    "startOffset": 83397,
+                    "startOffset": 83391,
                     "endLine": 1065,
                     "endColumn": 12,
-                    "endOffset": 83533
+                    "endOffset": 83527
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4207,9 +4200,9 @@
                 "to": {
                     "startLine": 1066,
                     "startColumn": 4,
-                    "startOffset": 83538,
+                    "startOffset": 83532,
                     "endColumn": 63,
-                    "endOffset": 83597
+                    "endOffset": 83591
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4219,10 +4212,10 @@
                 "to": {
                     "startLine": 1067,
                     "startColumn": 4,
-                    "startOffset": 83602,
+                    "startOffset": 83596,
                     "endLine": 1070,
                     "endColumn": 12,
-                    "endOffset": 83879
+                    "endOffset": 83873
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4232,10 +4225,10 @@
                 "to": {
                     "startLine": 1071,
                     "startColumn": 4,
-                    "startOffset": 83884,
+                    "startOffset": 83878,
                     "endLine": 1074,
                     "endColumn": 12,
-                    "endOffset": 84165
+                    "endOffset": 84159
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4245,10 +4238,10 @@
                 "to": {
                     "startLine": 1075,
                     "startColumn": 4,
-                    "startOffset": 84170,
+                    "startOffset": 84164,
                     "endLine": 1084,
                     "endColumn": 12,
-                    "endOffset": 84841
+                    "endOffset": 84835
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4258,10 +4251,10 @@
                 "to": {
                     "startLine": 1085,
                     "startColumn": 4,
-                    "startOffset": 84846,
+                    "startOffset": 84840,
                     "endLine": 1089,
                     "endColumn": 12,
-                    "endOffset": 85105
+                    "endOffset": 85099
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4271,10 +4264,10 @@
                 "to": {
                     "startLine": 1090,
                     "startColumn": 4,
-                    "startOffset": 85110,
+                    "startOffset": 85104,
                     "endLine": 1096,
                     "endColumn": 12,
-                    "endOffset": 85443
+                    "endOffset": 85437
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4284,10 +4277,10 @@
                 "to": {
                     "startLine": 1097,
                     "startColumn": 4,
-                    "startOffset": 85448,
+                    "startOffset": 85442,
                     "endLine": 1102,
                     "endColumn": 12,
-                    "endOffset": 85796
+                    "endOffset": 85790
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4297,9 +4290,9 @@
                 "to": {
                     "startLine": 1103,
                     "startColumn": 4,
-                    "startOffset": 85801,
+                    "startOffset": 85795,
                     "endColumn": 93,
-                    "endOffset": 85890
+                    "endOffset": 85884
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4309,10 +4302,10 @@
                 "to": {
                     "startLine": 1104,
                     "startColumn": 4,
-                    "startOffset": 85895,
+                    "startOffset": 85889,
                     "endLine": 1106,
                     "endColumn": 12,
-                    "endOffset": 86076
+                    "endOffset": 86070
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4322,10 +4315,10 @@
                 "to": {
                     "startLine": 1107,
                     "startColumn": 4,
-                    "startOffset": 86081,
+                    "startOffset": 86075,
                     "endLine": 1110,
                     "endColumn": 12,
-                    "endOffset": 86382
+                    "endOffset": 86376
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4335,10 +4328,10 @@
                 "to": {
                     "startLine": 1111,
                     "startColumn": 4,
-                    "startOffset": 86387,
+                    "startOffset": 86381,
                     "endLine": 1115,
                     "endColumn": 12,
-                    "endOffset": 86644
+                    "endOffset": 86638
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4348,10 +4341,10 @@
                 "to": {
                     "startLine": 1116,
                     "startColumn": 4,
-                    "startOffset": 86649,
+                    "startOffset": 86643,
                     "endLine": 1117,
                     "endColumn": 12,
-                    "endOffset": 86769
+                    "endOffset": 86763
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4361,10 +4354,10 @@
                 "to": {
                     "startLine": 1118,
                     "startColumn": 4,
-                    "startOffset": 86774,
+                    "startOffset": 86768,
                     "endLine": 1119,
                     "endColumn": 12,
-                    "endOffset": 86896
+                    "endOffset": 86890
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4374,10 +4367,10 @@
                 "to": {
                     "startLine": 1120,
                     "startColumn": 4,
-                    "startOffset": 86901,
+                    "startOffset": 86895,
                     "endLine": 1122,
                     "endColumn": 12,
-                    "endOffset": 87135
+                    "endOffset": 87129
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4387,10 +4380,10 @@
                 "to": {
                     "startLine": 1123,
                     "startColumn": 4,
-                    "startOffset": 87140,
+                    "startOffset": 87134,
                     "endLine": 1125,
                     "endColumn": 12,
-                    "endOffset": 87346
+                    "endOffset": 87340
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4400,10 +4393,10 @@
                 "to": {
                     "startLine": 1126,
                     "startColumn": 4,
-                    "startOffset": 87351,
+                    "startOffset": 87345,
                     "endLine": 1127,
                     "endColumn": 12,
-                    "endOffset": 87465
+                    "endOffset": 87459
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4413,10 +4406,10 @@
                 "to": {
                     "startLine": 1128,
                     "startColumn": 4,
-                    "startOffset": 87470,
+                    "startOffset": 87464,
                     "endLine": 1131,
                     "endColumn": 12,
-                    "endOffset": 87658
+                    "endOffset": 87652
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4426,10 +4419,10 @@
                 "to": {
                     "startLine": 1132,
                     "startColumn": 4,
-                    "startOffset": 87663,
+                    "startOffset": 87657,
                     "endLine": 1138,
                     "endColumn": 12,
-                    "endOffset": 88113
+                    "endOffset": 88107
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4439,10 +4432,10 @@
                 "to": {
                     "startLine": 1139,
                     "startColumn": 4,
-                    "startOffset": 88118,
+                    "startOffset": 88112,
                     "endLine": 1141,
                     "endColumn": 12,
-                    "endOffset": 88294
+                    "endOffset": 88288
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4452,10 +4445,10 @@
                 "to": {
                     "startLine": 1142,
                     "startColumn": 4,
-                    "startOffset": 88299,
+                    "startOffset": 88293,
                     "endLine": 1144,
                     "endColumn": 12,
-                    "endOffset": 88416
+                    "endOffset": 88410
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4465,10 +4458,10 @@
                 "to": {
                     "startLine": 1145,
                     "startColumn": 4,
-                    "startOffset": 88421,
+                    "startOffset": 88415,
                     "endLine": 1148,
                     "endColumn": 12,
-                    "endOffset": 88675
+                    "endOffset": 88669
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4478,10 +4471,10 @@
                 "to": {
                     "startLine": 1149,
                     "startColumn": 4,
-                    "startOffset": 88680,
+                    "startOffset": 88674,
                     "endLine": 1150,
                     "endColumn": 12,
-                    "endOffset": 88788
+                    "endOffset": 88782
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4491,10 +4484,10 @@
                 "to": {
                     "startLine": 1151,
                     "startColumn": 4,
-                    "startOffset": 88793,
+                    "startOffset": 88787,
                     "endLine": 1154,
                     "endColumn": 12,
-                    "endOffset": 88975
+                    "endOffset": 88969
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4504,10 +4497,10 @@
                 "to": {
                     "startLine": 1155,
                     "startColumn": 4,
-                    "startOffset": 88980,
+                    "startOffset": 88974,
                     "endLine": 1156,
                     "endColumn": 12,
-                    "endOffset": 89077
+                    "endOffset": 89071
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4517,10 +4510,10 @@
                 "to": {
                     "startLine": 1157,
                     "startColumn": 4,
-                    "startOffset": 89082,
+                    "startOffset": 89076,
                     "endLine": 1162,
                     "endColumn": 12,
-                    "endOffset": 89521
+                    "endOffset": 89515
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4530,10 +4523,10 @@
                 "to": {
                     "startLine": 1163,
                     "startColumn": 4,
-                    "startOffset": 89526,
+                    "startOffset": 89520,
                     "endLine": 1164,
                     "endColumn": 12,
-                    "endOffset": 89645
+                    "endOffset": 89639
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4543,10 +4536,10 @@
                 "to": {
                     "startLine": 1165,
                     "startColumn": 4,
-                    "startOffset": 89650,
+                    "startOffset": 89644,
                     "endLine": 1168,
                     "endColumn": 12,
-                    "endOffset": 89930
+                    "endOffset": 89924
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4556,10 +4549,10 @@
                 "to": {
                     "startLine": 1169,
                     "startColumn": 4,
-                    "startOffset": 89935,
+                    "startOffset": 89929,
                     "endLine": 1176,
                     "endColumn": 12,
-                    "endOffset": 90438
+                    "endOffset": 90432
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4569,10 +4562,10 @@
                 "to": {
                     "startLine": 1177,
                     "startColumn": 4,
-                    "startOffset": 90443,
+                    "startOffset": 90437,
                     "endLine": 1184,
                     "endColumn": 12,
-                    "endOffset": 90934
+                    "endOffset": 90928
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4582,10 +4575,10 @@
                 "to": {
                     "startLine": 1185,
                     "startColumn": 4,
-                    "startOffset": 90939,
+                    "startOffset": 90933,
                     "endLine": 1196,
                     "endColumn": 12,
-                    "endOffset": 91815
+                    "endOffset": 91809
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4595,10 +4588,10 @@
                 "to": {
                     "startLine": 1197,
                     "startColumn": 4,
-                    "startOffset": 91820,
+                    "startOffset": 91814,
                     "endLine": 1202,
                     "endColumn": 12,
-                    "endOffset": 92109
+                    "endOffset": 92103
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4608,10 +4601,10 @@
                 "to": {
                     "startLine": 1203,
                     "startColumn": 4,
-                    "startOffset": 92114,
+                    "startOffset": 92108,
                     "endLine": 1211,
                     "endColumn": 12,
-                    "endOffset": 92679
+                    "endOffset": 92673
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4621,10 +4614,10 @@
                 "to": {
                     "startLine": 1212,
                     "startColumn": 4,
-                    "startOffset": 92684,
+                    "startOffset": 92678,
                     "endLine": 1222,
                     "endColumn": 12,
-                    "endOffset": 93411
+                    "endOffset": 93405
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4634,10 +4627,10 @@
                 "to": {
                     "startLine": 1223,
                     "startColumn": 4,
-                    "startOffset": 93416,
+                    "startOffset": 93410,
                     "endLine": 1225,
                     "endColumn": 12,
-                    "endOffset": 93583
+                    "endOffset": 93577
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4647,10 +4640,10 @@
                 "to": {
                     "startLine": 1226,
                     "startColumn": 4,
-                    "startOffset": 93588,
+                    "startOffset": 93582,
                     "endLine": 1230,
                     "endColumn": 12,
-                    "endOffset": 93919
+                    "endOffset": 93913
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4660,10 +4653,10 @@
                 "to": {
                     "startLine": 1231,
                     "startColumn": 4,
-                    "startOffset": 93924,
+                    "startOffset": 93918,
                     "endLine": 1242,
                     "endColumn": 12,
-                    "endOffset": 94827
+                    "endOffset": 94821
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4673,10 +4666,10 @@
                 "to": {
                     "startLine": 1243,
                     "startColumn": 4,
-                    "startOffset": 94832,
+                    "startOffset": 94826,
                     "endLine": 1247,
                     "endColumn": 12,
-                    "endOffset": 95105
+                    "endOffset": 95099
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4686,10 +4679,10 @@
                 "to": {
                     "startLine": 1248,
                     "startColumn": 4,
-                    "startOffset": 95110,
+                    "startOffset": 95104,
                     "endLine": 1285,
                     "endColumn": 12,
-                    "endOffset": 97967
+                    "endOffset": 97961
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4699,10 +4692,10 @@
                 "to": {
                     "startLine": 1286,
                     "startColumn": 4,
-                    "startOffset": 97972,
+                    "startOffset": 97966,
                     "endLine": 1324,
                     "endColumn": 12,
-                    "endOffset": 100969
+                    "endOffset": 100963
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4712,9 +4705,9 @@
                 "to": {
                     "startLine": 1325,
                     "startColumn": 4,
-                    "startOffset": 100974,
+                    "startOffset": 100968,
                     "endColumn": 61,
-                    "endOffset": 101031
+                    "endOffset": 101025
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4724,10 +4717,10 @@
                 "to": {
                     "startLine": 1326,
                     "startColumn": 4,
-                    "startOffset": 101036,
+                    "startOffset": 101030,
                     "endLine": 1335,
                     "endColumn": 12,
-                    "endOffset": 101661
+                    "endOffset": 101655
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4737,10 +4730,10 @@
                 "to": {
                     "startLine": 1336,
                     "startColumn": 4,
-                    "startOffset": 101666,
+                    "startOffset": 101660,
                     "endLine": 1344,
                     "endColumn": 12,
-                    "endOffset": 102275
+                    "endOffset": 102269
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4750,9 +4743,9 @@
                 "to": {
                     "startLine": 1345,
                     "startColumn": 4,
-                    "startOffset": 102280,
+                    "startOffset": 102274,
                     "endColumn": 85,
-                    "endOffset": 102361
+                    "endOffset": 102355
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4762,10 +4755,10 @@
                 "to": {
                     "startLine": 1346,
                     "startColumn": 4,
-                    "startOffset": 102366,
+                    "startOffset": 102360,
                     "endLine": 1347,
                     "endColumn": 12,
-                    "endOffset": 102474
+                    "endOffset": 102468
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4775,10 +4768,10 @@
                 "to": {
                     "startLine": 1348,
                     "startColumn": 4,
-                    "startOffset": 102479,
+                    "startOffset": 102473,
                     "endLine": 1351,
                     "endColumn": 12,
-                    "endOffset": 102703
+                    "endOffset": 102697
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4788,10 +4781,10 @@
                 "to": {
                     "startLine": 1352,
                     "startColumn": 4,
-                    "startOffset": 102708,
+                    "startOffset": 102702,
                     "endLine": 1354,
                     "endColumn": 12,
-                    "endOffset": 102863
+                    "endOffset": 102857
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4801,10 +4794,10 @@
                 "to": {
                     "startLine": 1355,
                     "startColumn": 4,
-                    "startOffset": 102868,
+                    "startOffset": 102862,
                     "endLine": 1357,
                     "endColumn": 12,
-                    "endOffset": 103015
+                    "endOffset": 103009
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4814,10 +4807,10 @@
                 "to": {
                     "startLine": 1358,
                     "startColumn": 4,
-                    "startOffset": 103020,
+                    "startOffset": 103014,
                     "endLine": 1360,
                     "endColumn": 12,
-                    "endOffset": 103186
+                    "endOffset": 103180
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4827,10 +4820,10 @@
                 "to": {
                     "startLine": 1361,
                     "startColumn": 4,
-                    "startOffset": 103191,
+                    "startOffset": 103185,
                     "endLine": 1363,
                     "endColumn": 12,
-                    "endOffset": 103353
+                    "endOffset": 103347
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4840,10 +4833,10 @@
                 "to": {
                     "startLine": 1364,
                     "startColumn": 4,
-                    "startOffset": 103358,
+                    "startOffset": 103352,
                     "endLine": 1367,
                     "endColumn": 12,
-                    "endOffset": 103596
+                    "endOffset": 103590
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4853,10 +4846,10 @@
                 "to": {
                     "startLine": 1368,
                     "startColumn": 4,
-                    "startOffset": 103601,
+                    "startOffset": 103595,
                     "endLine": 1370,
                     "endColumn": 12,
-                    "endOffset": 103766
+                    "endOffset": 103760
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4866,10 +4859,10 @@
                 "to": {
                     "startLine": 1371,
                     "startColumn": 4,
-                    "startOffset": 103771,
+                    "startOffset": 103765,
                     "endLine": 1373,
                     "endColumn": 12,
-                    "endOffset": 103939
+                    "endOffset": 103933
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4879,10 +4872,10 @@
                 "to": {
                     "startLine": 1374,
                     "startColumn": 4,
-                    "startOffset": 103944,
+                    "startOffset": 103938,
                     "endLine": 1376,
                     "endColumn": 12,
-                    "endOffset": 104110
+                    "endOffset": 104104
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4892,10 +4885,10 @@
                 "to": {
                     "startLine": 1377,
                     "startColumn": 4,
-                    "startOffset": 104115,
+                    "startOffset": 104109,
                     "endLine": 1380,
                     "endColumn": 12,
-                    "endOffset": 104384
+                    "endOffset": 104378
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4905,10 +4898,10 @@
                 "to": {
                     "startLine": 1381,
                     "startColumn": 4,
-                    "startOffset": 104389,
+                    "startOffset": 104383,
                     "endLine": 1383,
                     "endColumn": 12,
-                    "endOffset": 104583
+                    "endOffset": 104577
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4918,10 +4911,10 @@
                 "to": {
                     "startLine": 1384,
                     "startColumn": 4,
-                    "startOffset": 104588,
+                    "startOffset": 104582,
                     "endLine": 1387,
                     "endColumn": 12,
-                    "endOffset": 104788
+                    "endOffset": 104782
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4931,10 +4924,10 @@
                 "to": {
                     "startLine": 1388,
                     "startColumn": 4,
-                    "startOffset": 104793,
+                    "startOffset": 104787,
                     "endLine": 1391,
                     "endColumn": 12,
-                    "endOffset": 105118
+                    "endOffset": 105112
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4944,9 +4937,9 @@
                 "to": {
                     "startLine": 1392,
                     "startColumn": 4,
-                    "startOffset": 105123,
+                    "startOffset": 105117,
                     "endColumn": 83,
-                    "endOffset": 105202
+                    "endOffset": 105196
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4956,9 +4949,9 @@
                 "to": {
                     "startLine": 1393,
                     "startColumn": 4,
-                    "startOffset": 105207,
+                    "startOffset": 105201,
                     "endColumn": 95,
-                    "endOffset": 105298
+                    "endOffset": 105292
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4968,9 +4961,9 @@
                 "to": {
                     "startLine": 1394,
                     "startColumn": 4,
-                    "startOffset": 105303,
+                    "startOffset": 105297,
                     "endColumn": 95,
-                    "endOffset": 105394
+                    "endOffset": 105388
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4980,9 +4973,9 @@
                 "to": {
                     "startLine": 1395,
                     "startColumn": 4,
-                    "startOffset": 105399,
+                    "startOffset": 105393,
                     "endColumn": 97,
-                    "endOffset": 105492
+                    "endOffset": 105486
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -4992,9 +4985,9 @@
                 "to": {
                     "startLine": 1396,
                     "startColumn": 4,
-                    "startOffset": 105497,
+                    "startOffset": 105491,
                     "endColumn": 99,
-                    "endOffset": 105592
+                    "endOffset": 105586
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5004,9 +4997,9 @@
                 "to": {
                     "startLine": 1397,
                     "startColumn": 4,
-                    "startOffset": 105597,
+                    "startOffset": 105591,
                     "endColumn": 101,
-                    "endOffset": 105694
+                    "endOffset": 105688
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5016,9 +5009,9 @@
                 "to": {
                     "startLine": 1398,
                     "startColumn": 4,
-                    "startOffset": 105699,
+                    "startOffset": 105693,
                     "endColumn": 101,
-                    "endOffset": 105796
+                    "endOffset": 105790
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5028,9 +5021,9 @@
                 "to": {
                     "startLine": 1399,
                     "startColumn": 4,
-                    "startOffset": 105801,
+                    "startOffset": 105795,
                     "endColumn": 101,
-                    "endOffset": 105898
+                    "endOffset": 105892
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5040,9 +5033,9 @@
                 "to": {
                     "startLine": 1400,
                     "startColumn": 4,
-                    "startOffset": 105903,
+                    "startOffset": 105897,
                     "endColumn": 101,
-                    "endOffset": 106000
+                    "endOffset": 105994
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5052,9 +5045,9 @@
                 "to": {
                     "startLine": 1401,
                     "startColumn": 4,
-                    "startOffset": 106005,
+                    "startOffset": 105999,
                     "endColumn": 101,
-                    "endOffset": 106102
+                    "endOffset": 106096
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5064,9 +5057,9 @@
                 "to": {
                     "startLine": 1402,
                     "startColumn": 4,
-                    "startOffset": 106107,
+                    "startOffset": 106101,
                     "endColumn": 99,
-                    "endOffset": 106202
+                    "endOffset": 106196
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5076,9 +5069,9 @@
                 "to": {
                     "startLine": 1403,
                     "startColumn": 4,
-                    "startOffset": 106207,
+                    "startOffset": 106201,
                     "endColumn": 95,
-                    "endOffset": 106298
+                    "endOffset": 106292
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5088,9 +5081,9 @@
                 "to": {
                     "startLine": 1404,
                     "startColumn": 4,
-                    "startOffset": 106303,
+                    "startOffset": 106297,
                     "endColumn": 111,
-                    "endOffset": 106410
+                    "endOffset": 106404
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5100,9 +5093,9 @@
                 "to": {
                     "startLine": 1405,
                     "startColumn": 4,
-                    "startOffset": 106415,
+                    "startOffset": 106409,
                     "endColumn": 128,
-                    "endOffset": 106539
+                    "endOffset": 106533
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5112,9 +5105,9 @@
                 "to": {
                     "startLine": 1406,
                     "startColumn": 4,
-                    "startOffset": 106544,
+                    "startOffset": 106538,
                     "endColumn": 122,
-                    "endOffset": 106662
+                    "endOffset": 106656
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5124,10 +5117,10 @@
                 "to": {
                     "startLine": 1407,
                     "startColumn": 4,
-                    "startOffset": 106667,
+                    "startOffset": 106661,
                     "endLine": 1408,
                     "endColumn": 12,
-                    "endOffset": 106816
+                    "endOffset": 106810
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5137,10 +5130,10 @@
                 "to": {
                     "startLine": 1409,
                     "startColumn": 4,
-                    "startOffset": 106821,
+                    "startOffset": 106815,
                     "endLine": 1410,
                     "endColumn": 12,
-                    "endOffset": 106970
+                    "endOffset": 106964
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5150,9 +5143,9 @@
                 "to": {
                     "startLine": 1411,
                     "startColumn": 4,
-                    "startOffset": 106975,
+                    "startOffset": 106969,
                     "endColumn": 97,
-                    "endOffset": 107068
+                    "endOffset": 107062
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5162,9 +5155,9 @@
                 "to": {
                     "startLine": 1412,
                     "startColumn": 4,
-                    "startOffset": 107073,
+                    "startOffset": 107067,
                     "endColumn": 113,
-                    "endOffset": 107182
+                    "endOffset": 107176
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5174,9 +5167,9 @@
                 "to": {
                     "startLine": 1413,
                     "startColumn": 4,
-                    "startOffset": 107187,
+                    "startOffset": 107181,
                     "endColumn": 93,
-                    "endOffset": 107276
+                    "endOffset": 107270
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5186,10 +5179,10 @@
                 "to": {
                     "startLine": 1414,
                     "startColumn": 4,
-                    "startOffset": 107281,
+                    "startOffset": 107275,
                     "endLine": 1415,
                     "endColumn": 12,
-                    "endOffset": 107416
+                    "endOffset": 107410
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5199,10 +5192,10 @@
                 "to": {
                     "startLine": 1416,
                     "startColumn": 4,
-                    "startOffset": 107421,
+                    "startOffset": 107415,
                     "endLine": 1417,
                     "endColumn": 12,
-                    "endOffset": 107550
+                    "endOffset": 107544
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5212,9 +5205,9 @@
                 "to": {
                     "startLine": 1418,
                     "startColumn": 4,
-                    "startOffset": 107555,
+                    "startOffset": 107549,
                     "endColumn": 95,
-                    "endOffset": 107646
+                    "endOffset": 107640
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5224,9 +5217,9 @@
                 "to": {
                     "startLine": 1419,
                     "startColumn": 4,
-                    "startOffset": 107651,
+                    "startOffset": 107645,
                     "endColumn": 111,
-                    "endOffset": 107758
+                    "endOffset": 107752
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5236,9 +5229,9 @@
                 "to": {
                     "startLine": 1420,
                     "startColumn": 4,
-                    "startOffset": 107763,
+                    "startOffset": 107757,
                     "endColumn": 99,
-                    "endOffset": 107858
+                    "endOffset": 107852
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5248,9 +5241,9 @@
                 "to": {
                     "startLine": 1421,
                     "startColumn": 4,
-                    "startOffset": 107863,
+                    "startOffset": 107857,
                     "endColumn": 115,
-                    "endOffset": 107974
+                    "endOffset": 107968
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5260,9 +5253,9 @@
                 "to": {
                     "startLine": 1422,
                     "startColumn": 4,
-                    "startOffset": 107979,
+                    "startOffset": 107973,
                     "endColumn": 95,
-                    "endOffset": 108070
+                    "endOffset": 108064
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5272,9 +5265,9 @@
                 "to": {
                     "startLine": 1423,
                     "startColumn": 4,
-                    "startOffset": 108075,
+                    "startOffset": 108069,
                     "endColumn": 111,
-                    "endOffset": 108182
+                    "endOffset": 108176
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5284,10 +5277,10 @@
                 "to": {
                     "startLine": 1424,
                     "startColumn": 4,
-                    "startOffset": 108187,
+                    "startOffset": 108181,
                     "endLine": 1425,
                     "endColumn": 12,
-                    "endOffset": 108322
+                    "endOffset": 108316
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5297,9 +5290,9 @@
                 "to": {
                     "startLine": 1426,
                     "startColumn": 4,
-                    "startOffset": 108327,
+                    "startOffset": 108321,
                     "endColumn": 135,
-                    "endOffset": 108458
+                    "endOffset": 108452
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5309,10 +5302,10 @@
                 "to": {
                     "startLine": 1427,
                     "startColumn": 4,
-                    "startOffset": 108463,
+                    "startOffset": 108457,
                     "endLine": 1428,
                     "endColumn": 12,
-                    "endOffset": 108622
+                    "endOffset": 108616
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5322,9 +5315,9 @@
                 "to": {
                     "startLine": 1429,
                     "startColumn": 4,
-                    "startOffset": 108627,
+                    "startOffset": 108621,
                     "endColumn": 129,
-                    "endOffset": 108752
+                    "endOffset": 108746
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5334,10 +5327,10 @@
                 "to": {
                     "startLine": 1430,
                     "startColumn": 4,
-                    "startOffset": 108757,
+                    "startOffset": 108751,
                     "endLine": 1431,
                     "endColumn": 12,
-                    "endOffset": 108910
+                    "endOffset": 108904
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5347,10 +5340,10 @@
                 "to": {
                     "startLine": 1432,
                     "startColumn": 4,
-                    "startOffset": 108915,
+                    "startOffset": 108909,
                     "endLine": 1433,
                     "endColumn": 12,
-                    "endOffset": 109060
+                    "endOffset": 109054
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5360,9 +5353,9 @@
                 "to": {
                     "startLine": 1434,
                     "startColumn": 4,
-                    "startOffset": 109065,
+                    "startOffset": 109059,
                     "endColumn": 140,
-                    "endOffset": 109201
+                    "endOffset": 109195
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5372,10 +5365,10 @@
                 "to": {
                     "startLine": 1435,
                     "startColumn": 4,
-                    "startOffset": 109206,
+                    "startOffset": 109200,
                     "endLine": 1436,
                     "endColumn": 12,
-                    "endOffset": 109345
+                    "endOffset": 109339
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5385,9 +5378,9 @@
                 "to": {
                     "startLine": 1437,
                     "startColumn": 4,
-                    "startOffset": 109350,
+                    "startOffset": 109344,
                     "endColumn": 134,
-                    "endOffset": 109480
+                    "endOffset": 109474
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5397,9 +5390,9 @@
                 "to": {
                     "startLine": 1438,
                     "startColumn": 4,
-                    "startOffset": 109485,
+                    "startOffset": 109479,
                     "endColumn": 111,
-                    "endOffset": 109592
+                    "endOffset": 109586
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5409,9 +5402,9 @@
                 "to": {
                     "startLine": 1439,
                     "startColumn": 4,
-                    "startOffset": 109597,
+                    "startOffset": 109591,
                     "endColumn": 127,
-                    "endOffset": 109720
+                    "endOffset": 109714
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5421,10 +5414,10 @@
                 "to": {
                     "startLine": 1440,
                     "startColumn": 4,
-                    "startOffset": 109725,
+                    "startOffset": 109719,
                     "endLine": 1441,
                     "endColumn": 12,
-                    "endOffset": 109856
+                    "endOffset": 109850
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5434,10 +5427,10 @@
                 "to": {
                     "startLine": 1442,
                     "startColumn": 4,
-                    "startOffset": 109861,
+                    "startOffset": 109855,
                     "endLine": 1443,
                     "endColumn": 12,
-                    "endOffset": 109998
+                    "endOffset": 109992
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5447,10 +5440,10 @@
                 "to": {
                     "startLine": 1444,
                     "startColumn": 4,
-                    "startOffset": 110003,
+                    "startOffset": 109997,
                     "endLine": 1445,
                     "endColumn": 12,
-                    "endOffset": 110140
+                    "endOffset": 110134
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5460,9 +5453,9 @@
                 "to": {
                     "startLine": 1446,
                     "startColumn": 4,
-                    "startOffset": 110145,
+                    "startOffset": 110139,
                     "endColumn": 111,
-                    "endOffset": 110252
+                    "endOffset": 110246
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5472,9 +5465,9 @@
                 "to": {
                     "startLine": 1447,
                     "startColumn": 4,
-                    "startOffset": 110257,
+                    "startOffset": 110251,
                     "endColumn": 139,
-                    "endOffset": 110392
+                    "endOffset": 110386
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5484,9 +5477,9 @@
                 "to": {
                     "startLine": 1448,
                     "startColumn": 4,
-                    "startOffset": 110397,
+                    "startOffset": 110391,
                     "endColumn": 67,
-                    "endOffset": 110460
+                    "endOffset": 110454
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5496,9 +5489,9 @@
                 "to": {
                     "startLine": 1449,
                     "startColumn": 4,
-                    "startOffset": 110465,
+                    "startOffset": 110459,
                     "endColumn": 72,
-                    "endOffset": 110533
+                    "endOffset": 110527
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5508,9 +5501,9 @@
                 "to": {
                     "startLine": 1450,
                     "startColumn": 4,
-                    "startOffset": 110538,
+                    "startOffset": 110532,
                     "endColumn": 73,
-                    "endOffset": 110607
+                    "endOffset": 110601
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5520,9 +5513,9 @@
                 "to": {
                     "startLine": 1451,
                     "startColumn": 4,
-                    "startOffset": 110612,
+                    "startOffset": 110606,
                     "endColumn": 72,
-                    "endOffset": 110680
+                    "endOffset": 110674
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5532,9 +5525,9 @@
                 "to": {
                     "startLine": 1452,
                     "startColumn": 4,
-                    "startOffset": 110685,
+                    "startOffset": 110679,
                     "endColumn": 73,
-                    "endOffset": 110754
+                    "endOffset": 110748
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5544,10 +5537,10 @@
                 "to": {
                     "startLine": 1453,
                     "startColumn": 4,
-                    "startOffset": 110759,
+                    "startOffset": 110753,
                     "endLine": 1454,
                     "endColumn": 12,
-                    "endOffset": 110900
+                    "endOffset": 110894
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5557,10 +5550,10 @@
                 "to": {
                     "startLine": 1455,
                     "startColumn": 4,
-                    "startOffset": 110905,
+                    "startOffset": 110899,
                     "endLine": 1456,
                     "endColumn": 12,
-                    "endOffset": 111044
+                    "endOffset": 111038
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5570,10 +5563,10 @@
                 "to": {
                     "startLine": 1457,
                     "startColumn": 4,
-                    "startOffset": 111049,
+                    "startOffset": 111043,
                     "endLine": 1458,
                     "endColumn": 12,
-                    "endOffset": 111182
+                    "endOffset": 111176
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5583,9 +5576,9 @@
                 "to": {
                     "startLine": 1459,
                     "startColumn": 4,
-                    "startOffset": 111187,
+                    "startOffset": 111181,
                     "endColumn": 65,
-                    "endOffset": 111248
+                    "endOffset": 111242
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5595,9 +5588,9 @@
                 "to": {
                     "startLine": 1460,
                     "startColumn": 4,
-                    "startOffset": 111253,
+                    "startOffset": 111247,
                     "endColumn": 89,
-                    "endOffset": 111338
+                    "endOffset": 111332
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5607,9 +5600,9 @@
                 "to": {
                     "startLine": 1461,
                     "startColumn": 4,
-                    "startOffset": 111343,
+                    "startOffset": 111337,
                     "endColumn": 75,
-                    "endOffset": 111414
+                    "endOffset": 111408
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5619,9 +5612,9 @@
                 "to": {
                     "startLine": 1462,
                     "startColumn": 4,
-                    "startOffset": 111419,
+                    "startOffset": 111413,
                     "endColumn": 103,
-                    "endOffset": 111518
+                    "endOffset": 111512
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5631,9 +5624,9 @@
                 "to": {
                     "startLine": 1463,
                     "startColumn": 4,
-                    "startOffset": 111523,
+                    "startOffset": 111517,
                     "endColumn": 89,
-                    "endOffset": 111608
+                    "endOffset": 111602
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5643,9 +5636,9 @@
                 "to": {
                     "startLine": 1464,
                     "startColumn": 4,
-                    "startOffset": 111613,
+                    "startOffset": 111607,
                     "endColumn": 101,
-                    "endOffset": 111710
+                    "endOffset": 111704
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5655,9 +5648,9 @@
                 "to": {
                     "startLine": 1465,
                     "startColumn": 4,
-                    "startOffset": 111715,
+                    "startOffset": 111709,
                     "endColumn": 107,
-                    "endOffset": 111818
+                    "endOffset": 111812
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5667,9 +5660,9 @@
                 "to": {
                     "startLine": 1466,
                     "startColumn": 4,
-                    "startOffset": 111823,
+                    "startOffset": 111817,
                     "endColumn": 107,
-                    "endOffset": 111926
+                    "endOffset": 111920
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5679,9 +5672,9 @@
                 "to": {
                     "startLine": 1467,
                     "startColumn": 4,
-                    "startOffset": 111931,
+                    "startOffset": 111925,
                     "endColumn": 99,
-                    "endOffset": 112026
+                    "endOffset": 112020
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5691,9 +5684,9 @@
                 "to": {
                     "startLine": 1468,
                     "startColumn": 4,
-                    "startOffset": 112031,
+                    "startOffset": 112025,
                     "endColumn": 79,
-                    "endOffset": 112106
+                    "endOffset": 112100
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5703,9 +5696,9 @@
                 "to": {
                     "startLine": 1469,
                     "startColumn": 4,
-                    "startOffset": 112111,
+                    "startOffset": 112105,
                     "endColumn": 91,
-                    "endOffset": 112198
+                    "endOffset": 112192
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5715,9 +5708,9 @@
                 "to": {
                     "startLine": 1470,
                     "startColumn": 4,
-                    "startOffset": 112203,
+                    "startOffset": 112197,
                     "endColumn": 97,
-                    "endOffset": 112296
+                    "endOffset": 112290
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5727,10 +5720,10 @@
                 "to": {
                     "startLine": 1471,
                     "startColumn": 4,
-                    "startOffset": 112301,
+                    "startOffset": 112295,
                     "endLine": 1472,
                     "endColumn": 12,
-                    "endOffset": 112406
+                    "endOffset": 112400
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5740,9 +5733,9 @@
                 "to": {
                     "startLine": 1473,
                     "startColumn": 4,
-                    "startOffset": 112411,
+                    "startOffset": 112405,
                     "endColumn": 77,
-                    "endOffset": 112484
+                    "endOffset": 112478
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5752,9 +5745,9 @@
                 "to": {
                     "startLine": 1474,
                     "startColumn": 4,
-                    "startOffset": 112489,
+                    "startOffset": 112483,
                     "endColumn": 105,
-                    "endOffset": 112590
+                    "endOffset": 112584
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5764,9 +5757,9 @@
                 "to": {
                     "startLine": 1475,
                     "startColumn": 4,
-                    "startOffset": 112595,
+                    "startOffset": 112589,
                     "endColumn": 91,
-                    "endOffset": 112682
+                    "endOffset": 112676
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5776,9 +5769,9 @@
                 "to": {
                     "startLine": 1476,
                     "startColumn": 4,
-                    "startOffset": 112687,
+                    "startOffset": 112681,
                     "endColumn": 103,
-                    "endOffset": 112786
+                    "endOffset": 112780
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5788,9 +5781,9 @@
                 "to": {
                     "startLine": 1477,
                     "startColumn": 4,
-                    "startOffset": 112791,
+                    "startOffset": 112785,
                     "endColumn": 109,
-                    "endOffset": 112896
+                    "endOffset": 112890
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5800,10 +5793,10 @@
                 "to": {
                     "startLine": 1478,
                     "startColumn": 4,
-                    "startOffset": 112901,
+                    "startOffset": 112895,
                     "endLine": 1479,
                     "endColumn": 12,
-                    "endOffset": 113018
+                    "endOffset": 113012
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5813,10 +5806,10 @@
                 "to": {
                     "startLine": 1480,
                     "startColumn": 4,
-                    "startOffset": 113023,
+                    "startOffset": 113017,
                     "endLine": 1483,
                     "endColumn": 12,
-                    "endOffset": 113181
+                    "endOffset": 113175
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5826,10 +5819,10 @@
                 "to": {
                     "startLine": 1484,
                     "startColumn": 4,
-                    "startOffset": 113186,
+                    "startOffset": 113180,
                     "endLine": 1487,
                     "endColumn": 12,
-                    "endOffset": 113338
+                    "endOffset": 113332
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5839,9 +5832,9 @@
                 "to": {
                     "startLine": 1488,
                     "startColumn": 4,
-                    "startOffset": 113343,
+                    "startOffset": 113337,
                     "endColumn": 79,
-                    "endOffset": 113418
+                    "endOffset": 113412
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5851,9 +5844,9 @@
                 "to": {
                     "startLine": 1489,
                     "startColumn": 4,
-                    "startOffset": 113423,
+                    "startOffset": 113417,
                     "endColumn": 99,
-                    "endOffset": 113518
+                    "endOffset": 113512
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5863,9 +5856,9 @@
                 "to": {
                     "startLine": 1490,
                     "startColumn": 4,
-                    "startOffset": 113523,
+                    "startOffset": 113517,
                     "endColumn": 89,
-                    "endOffset": 113608
+                    "endOffset": 113602
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5875,9 +5868,9 @@
                 "to": {
                     "startLine": 1491,
                     "startColumn": 4,
-                    "startOffset": 113613,
+                    "startOffset": 113607,
                     "endColumn": 109,
-                    "endOffset": 113718
+                    "endOffset": 113712
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5887,9 +5880,9 @@
                 "to": {
                     "startLine": 1492,
                     "startColumn": 4,
-                    "startOffset": 113723,
+                    "startOffset": 113717,
                     "endColumn": 91,
-                    "endOffset": 113810
+                    "endOffset": 113804
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5899,10 +5892,10 @@
                 "to": {
                     "startLine": 1493,
                     "startColumn": 4,
-                    "startOffset": 113815,
+                    "startOffset": 113809,
                     "endLine": 1494,
                     "endColumn": 12,
-                    "endOffset": 113910
+                    "endOffset": 113904
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5912,10 +5905,10 @@
                 "to": {
                     "startLine": 1495,
                     "startColumn": 4,
-                    "startOffset": 113915,
+                    "startOffset": 113909,
                     "endLine": 1496,
                     "endColumn": 12,
-                    "endOffset": 114022
+                    "endOffset": 114016
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5925,10 +5918,10 @@
                 "to": {
                     "startLine": 1497,
                     "startColumn": 4,
-                    "startOffset": 114027,
+                    "startOffset": 114021,
                     "endLine": 1498,
                     "endColumn": 12,
-                    "endOffset": 114136
+                    "endOffset": 114130
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5938,10 +5931,10 @@
                 "to": {
                     "startLine": 1499,
                     "startColumn": 4,
-                    "startOffset": 114141,
+                    "startOffset": 114135,
                     "endLine": 1500,
                     "endColumn": 12,
-                    "endOffset": 114252
+                    "endOffset": 114246
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5951,10 +5944,10 @@
                 "to": {
                     "startLine": 1501,
                     "startColumn": 4,
-                    "startOffset": 114257,
+                    "startOffset": 114251,
                     "endLine": 1502,
                     "endColumn": 12,
-                    "endOffset": 114368
+                    "endOffset": 114362
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5964,9 +5957,9 @@
                 "to": {
                     "startLine": 1503,
                     "startColumn": 4,
-                    "startOffset": 114373,
+                    "startOffset": 114367,
                     "endColumn": 93,
-                    "endOffset": 114462
+                    "endOffset": 114456
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5976,9 +5969,9 @@
                 "to": {
                     "startLine": 1504,
                     "startColumn": 4,
-                    "startOffset": 114467,
+                    "startOffset": 114461,
                     "endColumn": 113,
-                    "endOffset": 114576
+                    "endOffset": 114570
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -5988,9 +5981,9 @@
                 "to": {
                     "startLine": 1505,
                     "startColumn": 4,
-                    "startOffset": 114581,
+                    "startOffset": 114575,
                     "endColumn": 111,
-                    "endOffset": 114688
+                    "endOffset": 114682
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6000,10 +5993,10 @@
                 "to": {
                     "startLine": 1506,
                     "startColumn": 4,
-                    "startOffset": 114693,
+                    "startOffset": 114687,
                     "endLine": 1507,
                     "endColumn": 12,
-                    "endOffset": 114790
+                    "endOffset": 114784
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6013,10 +6006,10 @@
                 "to": {
                     "startLine": 1508,
                     "startColumn": 4,
-                    "startOffset": 114795,
+                    "startOffset": 114789,
                     "endLine": 1509,
                     "endColumn": 12,
-                    "endOffset": 114910
+                    "endOffset": 114904
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6026,10 +6019,10 @@
                 "to": {
                     "startLine": 1510,
                     "startColumn": 4,
-                    "startOffset": 114915,
+                    "startOffset": 114909,
                     "endLine": 1511,
                     "endColumn": 12,
-                    "endOffset": 115032
+                    "endOffset": 115026
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6039,9 +6032,9 @@
                 "to": {
                     "startLine": 1512,
                     "startColumn": 4,
-                    "startOffset": 115037,
+                    "startOffset": 115031,
                     "endColumn": 81,
-                    "endOffset": 115114
+                    "endOffset": 115108
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6051,9 +6044,9 @@
                 "to": {
                     "startLine": 1513,
                     "startColumn": 4,
-                    "startOffset": 115119,
+                    "startOffset": 115113,
                     "endColumn": 103,
-                    "endOffset": 115218
+                    "endOffset": 115212
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6063,9 +6056,9 @@
                 "to": {
                     "startLine": 1514,
                     "startColumn": 4,
-                    "startOffset": 115223,
+                    "startOffset": 115217,
                     "endColumn": 119,
-                    "endOffset": 115338
+                    "endOffset": 115332
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6075,9 +6068,9 @@
                 "to": {
                     "startLine": 1515,
                     "startColumn": 4,
-                    "startOffset": 115343,
+                    "startOffset": 115337,
                     "endColumn": 125,
-                    "endOffset": 115464
+                    "endOffset": 115458
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6087,9 +6080,9 @@
                 "to": {
                     "startLine": 1516,
                     "startColumn": 4,
-                    "startOffset": 115469,
+                    "startOffset": 115463,
                     "endColumn": 97,
-                    "endOffset": 115562
+                    "endOffset": 115556
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6099,9 +6092,9 @@
                 "to": {
                     "startLine": 1517,
                     "startColumn": 4,
-                    "startOffset": 115567,
+                    "startOffset": 115561,
                     "endColumn": 93,
-                    "endOffset": 115656
+                    "endOffset": 115650
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6111,9 +6104,9 @@
                 "to": {
                     "startLine": 1518,
                     "startColumn": 4,
-                    "startOffset": 115661,
+                    "startOffset": 115655,
                     "endColumn": 87,
-                    "endOffset": 115744
+                    "endOffset": 115738
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6123,9 +6116,9 @@
                 "to": {
                     "startLine": 1519,
                     "startColumn": 4,
-                    "startOffset": 115749,
+                    "startOffset": 115743,
                     "endColumn": 111,
-                    "endOffset": 115856
+                    "endOffset": 115850
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6135,9 +6128,9 @@
                 "to": {
                     "startLine": 1520,
                     "startColumn": 4,
-                    "startOffset": 115861,
+                    "startOffset": 115855,
                     "endColumn": 115,
-                    "endOffset": 115972
+                    "endOffset": 115966
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6147,9 +6140,9 @@
                 "to": {
                     "startLine": 1521,
                     "startColumn": 4,
-                    "startOffset": 115977,
+                    "startOffset": 115971,
                     "endColumn": 121,
-                    "endOffset": 116094
+                    "endOffset": 116088
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6159,9 +6152,9 @@
                 "to": {
                     "startLine": 1522,
                     "startColumn": 4,
-                    "startOffset": 116099,
+                    "startOffset": 116093,
                     "endColumn": 111,
-                    "endOffset": 116206
+                    "endOffset": 116200
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6171,10 +6164,10 @@
                 "to": {
                     "startLine": 1523,
                     "startColumn": 4,
-                    "startOffset": 116211,
+                    "startOffset": 116205,
                     "endLine": 1525,
                     "endColumn": 12,
-                    "endOffset": 116381
+                    "endOffset": 116375
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6184,9 +6177,9 @@
                 "to": {
                     "startLine": 1526,
                     "startColumn": 4,
-                    "startOffset": 116386,
+                    "startOffset": 116380,
                     "endColumn": 115,
-                    "endOffset": 116497
+                    "endOffset": 116491
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6196,9 +6189,9 @@
                 "to": {
                     "startLine": 1527,
                     "startColumn": 4,
-                    "startOffset": 116502,
+                    "startOffset": 116496,
                     "endColumn": 85,
-                    "endOffset": 116583
+                    "endOffset": 116577
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6208,9 +6201,9 @@
                 "to": {
                     "startLine": 1528,
                     "startColumn": 4,
-                    "startOffset": 116588,
+                    "startOffset": 116582,
                     "endColumn": 91,
-                    "endOffset": 116675
+                    "endOffset": 116669
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6220,10 +6213,10 @@
                 "to": {
                     "startLine": 1529,
                     "startColumn": 4,
-                    "startOffset": 116680,
+                    "startOffset": 116674,
                     "endLine": 1530,
                     "endColumn": 12,
-                    "endOffset": 116787
+                    "endOffset": 116781
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6233,10 +6226,10 @@
                 "to": {
                     "startLine": 1531,
                     "startColumn": 4,
-                    "startOffset": 116792,
+                    "startOffset": 116786,
                     "endLine": 1532,
                     "endColumn": 12,
-                    "endOffset": 116911
+                    "endOffset": 116905
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6246,9 +6239,9 @@
                 "to": {
                     "startLine": 1533,
                     "startColumn": 4,
-                    "startOffset": 116916,
+                    "startOffset": 116910,
                     "endColumn": 66,
-                    "endOffset": 116978
+                    "endOffset": 116972
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6258,10 +6251,10 @@
                 "to": {
                     "startLine": 1534,
                     "startColumn": 4,
-                    "startOffset": 116983,
+                    "startOffset": 116977,
                     "endLine": 1535,
                     "endColumn": 12,
-                    "endOffset": 117104
+                    "endOffset": 117098
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6271,9 +6264,9 @@
                 "to": {
                     "startLine": 1536,
                     "startColumn": 4,
-                    "startOffset": 117109,
+                    "startOffset": 117103,
                     "endColumn": 67,
-                    "endOffset": 117172
+                    "endOffset": 117166
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6283,10 +6276,10 @@
                 "to": {
                     "startLine": 1537,
                     "startColumn": 4,
-                    "startOffset": 117177,
+                    "startOffset": 117171,
                     "endLine": 1538,
                     "endColumn": 12,
-                    "endOffset": 117300
+                    "endOffset": 117294
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6296,10 +6289,10 @@
                 "to": {
                     "startLine": 1539,
                     "startColumn": 4,
-                    "startOffset": 117305,
+                    "startOffset": 117299,
                     "endLine": 1540,
                     "endColumn": 12,
-                    "endOffset": 117444
+                    "endOffset": 117438
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6309,10 +6302,10 @@
                 "to": {
                     "startLine": 1541,
                     "startColumn": 4,
-                    "startOffset": 117449,
+                    "startOffset": 117443,
                     "endLine": 1542,
                     "endColumn": 12,
-                    "endOffset": 117572
+                    "endOffset": 117566
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6322,9 +6315,9 @@
                 "to": {
                     "startLine": 1543,
                     "startColumn": 4,
-                    "startOffset": 117577,
+                    "startOffset": 117571,
                     "endColumn": 68,
-                    "endOffset": 117641
+                    "endOffset": 117635
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6334,9 +6327,9 @@
                 "to": {
                     "startLine": 1544,
                     "startColumn": 4,
-                    "startOffset": 117646,
+                    "startOffset": 117640,
                     "endColumn": 94,
-                    "endOffset": 117736
+                    "endOffset": 117730
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6346,9 +6339,9 @@
                 "to": {
                     "startLine": 1545,
                     "startColumn": 4,
-                    "startOffset": 117741,
+                    "startOffset": 117735,
                     "endColumn": 114,
-                    "endOffset": 117851
+                    "endOffset": 117845
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6358,9 +6351,9 @@
                 "to": {
                     "startLine": 1546,
                     "startColumn": 4,
-                    "startOffset": 117856,
+                    "startOffset": 117850,
                     "endColumn": 112,
-                    "endOffset": 117964
+                    "endOffset": 117958
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6370,9 +6363,9 @@
                 "to": {
                     "startLine": 1547,
                     "startColumn": 4,
-                    "startOffset": 117969,
+                    "startOffset": 117963,
                     "endColumn": 98,
-                    "endOffset": 118063
+                    "endOffset": 118057
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6382,9 +6375,9 @@
                 "to": {
                     "startLine": 1548,
                     "startColumn": 4,
-                    "startOffset": 118068,
+                    "startOffset": 118062,
                     "endColumn": 108,
-                    "endOffset": 118172
+                    "endOffset": 118166
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6394,9 +6387,9 @@
                 "to": {
                     "startLine": 1549,
                     "startColumn": 4,
-                    "startOffset": 118177,
+                    "startOffset": 118171,
                     "endColumn": 110,
-                    "endOffset": 118283
+                    "endOffset": 118277
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6406,9 +6399,9 @@
                 "to": {
                     "startLine": 1550,
                     "startColumn": 4,
-                    "startOffset": 118288,
+                    "startOffset": 118282,
                     "endColumn": 110,
-                    "endOffset": 118394
+                    "endOffset": 118388
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6418,9 +6411,9 @@
                 "to": {
                     "startLine": 1551,
                     "startColumn": 4,
-                    "startOffset": 118399,
+                    "startOffset": 118393,
                     "endColumn": 100,
-                    "endOffset": 118495
+                    "endOffset": 118489
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6430,9 +6423,9 @@
                 "to": {
                     "startLine": 1552,
                     "startColumn": 4,
-                    "startOffset": 118500,
+                    "startOffset": 118494,
                     "endColumn": 104,
-                    "endOffset": 118600
+                    "endOffset": 118594
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6442,10 +6435,10 @@
                 "to": {
                     "startLine": 1553,
                     "startColumn": 4,
-                    "startOffset": 118605,
+                    "startOffset": 118599,
                     "endLine": 1554,
                     "endColumn": 12,
-                    "endOffset": 118712
+                    "endOffset": 118706
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6455,10 +6448,10 @@
                 "to": {
                     "startLine": 1555,
                     "startColumn": 4,
-                    "startOffset": 118717,
+                    "startOffset": 118711,
                     "endLine": 1556,
                     "endColumn": 12,
-                    "endOffset": 118842
+                    "endOffset": 118836
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6468,9 +6461,9 @@
                 "to": {
                     "startLine": 1557,
                     "startColumn": 4,
-                    "startOffset": 118847,
+                    "startOffset": 118841,
                     "endColumn": 90,
-                    "endOffset": 118933
+                    "endOffset": 118927
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6480,9 +6473,9 @@
                 "to": {
                     "startLine": 1558,
                     "startColumn": 4,
-                    "startOffset": 118938,
+                    "startOffset": 118932,
                     "endColumn": 122,
-                    "endOffset": 119056
+                    "endOffset": 119050
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6492,10 +6485,10 @@
                 "to": {
                     "startLine": 1559,
                     "startColumn": 4,
-                    "startOffset": 119061,
+                    "startOffset": 119055,
                     "endLine": 1560,
                     "endColumn": 12,
-                    "endOffset": 119168
+                    "endOffset": 119162
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6505,9 +6498,9 @@
                 "to": {
                     "startLine": 1561,
                     "startColumn": 4,
-                    "startOffset": 119173,
+                    "startOffset": 119167,
                     "endColumn": 85,
-                    "endOffset": 119254
+                    "endOffset": 119248
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6517,9 +6510,9 @@
                 "to": {
                     "startLine": 1562,
                     "startColumn": 4,
-                    "startOffset": 119259,
+                    "startOffset": 119253,
                     "endColumn": 103,
-                    "endOffset": 119358
+                    "endOffset": 119352
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6529,10 +6522,10 @@
                 "to": {
                     "startLine": 1563,
                     "startColumn": 4,
-                    "startOffset": 119363,
+                    "startOffset": 119357,
                     "endLine": 1564,
                     "endColumn": 12,
-                    "endOffset": 119466
+                    "endOffset": 119460
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6542,10 +6535,10 @@
                 "to": {
                     "startLine": 1565,
                     "startColumn": 4,
-                    "startOffset": 119471,
+                    "startOffset": 119465,
                     "endLine": 1566,
                     "endColumn": 12,
-                    "endOffset": 119566
+                    "endOffset": 119560
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6555,10 +6548,10 @@
                 "to": {
                     "startLine": 1567,
                     "startColumn": 4,
-                    "startOffset": 119571,
+                    "startOffset": 119565,
                     "endLine": 1568,
                     "endColumn": 12,
-                    "endOffset": 119684
+                    "endOffset": 119678
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6568,10 +6561,10 @@
                 "to": {
                     "startLine": 1569,
                     "startColumn": 4,
-                    "startOffset": 119689,
+                    "startOffset": 119683,
                     "endLine": 1570,
                     "endColumn": 12,
-                    "endOffset": 119788
+                    "endOffset": 119782
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6581,10 +6574,10 @@
                 "to": {
                     "startLine": 1571,
                     "startColumn": 4,
-                    "startOffset": 119793,
+                    "startOffset": 119787,
                     "endLine": 1572,
                     "endColumn": 12,
-                    "endOffset": 119892
+                    "endOffset": 119886
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6594,10 +6587,10 @@
                 "to": {
                     "startLine": 1573,
                     "startColumn": 4,
-                    "startOffset": 119897,
+                    "startOffset": 119891,
                     "endLine": 1574,
                     "endColumn": 12,
-                    "endOffset": 120018
+                    "endOffset": 120012
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6607,9 +6600,9 @@
                 "to": {
                     "startLine": 1575,
                     "startColumn": 4,
-                    "startOffset": 120023,
+                    "startOffset": 120017,
                     "endColumn": 87,
-                    "endOffset": 120106
+                    "endOffset": 120100
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6619,9 +6612,9 @@
                 "to": {
                     "startLine": 1576,
                     "startColumn": 4,
-                    "startOffset": 120111,
+                    "startOffset": 120105,
                     "endColumn": 107,
-                    "endOffset": 120214
+                    "endOffset": 120208
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6631,9 +6624,9 @@
                 "to": {
                     "startLine": 1577,
                     "startColumn": 4,
-                    "startOffset": 120219,
+                    "startOffset": 120213,
                     "endColumn": 99,
-                    "endOffset": 120314
+                    "endOffset": 120308
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6643,9 +6636,9 @@
                 "to": {
                     "startLine": 1578,
                     "startColumn": 4,
-                    "startOffset": 120319,
+                    "startOffset": 120313,
                     "endColumn": 89,
-                    "endOffset": 120404
+                    "endOffset": 120398
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6655,9 +6648,9 @@
                 "to": {
                     "startLine": 1579,
                     "startColumn": 4,
-                    "startOffset": 120409,
+                    "startOffset": 120403,
                     "endColumn": 109,
-                    "endOffset": 120514
+                    "endOffset": 120508
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6667,9 +6660,9 @@
                 "to": {
                     "startLine": 1580,
                     "startColumn": 4,
-                    "startOffset": 120519,
+                    "startOffset": 120513,
                     "endColumn": 83,
-                    "endOffset": 120598
+                    "endOffset": 120592
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6679,9 +6672,9 @@
                 "to": {
                     "startLine": 1581,
                     "startColumn": 4,
-                    "startOffset": 120603,
+                    "startOffset": 120597,
                     "endColumn": 83,
-                    "endOffset": 120682
+                    "endOffset": 120676
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6691,9 +6684,9 @@
                 "to": {
                     "startLine": 1582,
                     "startColumn": 4,
-                    "startOffset": 120687,
+                    "startOffset": 120681,
                     "endColumn": 53,
-                    "endOffset": 120736
+                    "endOffset": 120730
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6703,9 +6696,9 @@
                 "to": {
                     "startLine": 1583,
                     "startColumn": 4,
-                    "startOffset": 120741,
+                    "startOffset": 120735,
                     "endColumn": 63,
-                    "endOffset": 120800
+                    "endOffset": 120794
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6715,9 +6708,9 @@
                 "to": {
                     "startLine": 1584,
                     "startColumn": 4,
-                    "startOffset": 120805,
+                    "startOffset": 120799,
                     "endColumn": 105,
-                    "endOffset": 120906
+                    "endOffset": 120900
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6727,9 +6720,9 @@
                 "to": {
                     "startLine": 1585,
                     "startColumn": 4,
-                    "startOffset": 120911,
+                    "startOffset": 120905,
                     "endColumn": 109,
-                    "endOffset": 121016
+                    "endOffset": 121010
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6739,9 +6732,9 @@
                 "to": {
                     "startLine": 1586,
                     "startColumn": 4,
-                    "startOffset": 121021,
+                    "startOffset": 121015,
                     "endColumn": 83,
-                    "endOffset": 121100
+                    "endOffset": 121094
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6751,9 +6744,9 @@
                 "to": {
                     "startLine": 1587,
                     "startColumn": 4,
-                    "startOffset": 121105,
+                    "startOffset": 121099,
                     "endColumn": 119,
-                    "endOffset": 121220
+                    "endOffset": 121214
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/values/values.xml"
@@ -6763,10 +6756,10 @@
                 "to": {
                     "startLine": 1588,
                     "startColumn": 4,
-                    "startOffset": 121225,
+                    "startOffset": 121219,
                     "endLine": 1589,
                     "endColumn": 10,
-                    "endOffset": 121320
+                    "endOffset": 121314
                 },
                 "from": {
                     "file": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.journeyapps/zxing-android-embedded/3.2.0/res/values/values.xml"

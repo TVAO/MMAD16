@@ -25,7 +25,7 @@
     <string name="hide_subtitle">Hide Subtitle</string>
     <string name="subtitle_format">%1$s crimes</string>
     <string name="delete_thing">Delete</string>
-    <string name="things_title">Things Title</string>
+    <string name="things_title">Things</string>
 
     <!-- Barcode resources -->
     <string name="heading_scan">Scan Item</string>
