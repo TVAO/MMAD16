@@ -27,24 +27,18 @@ public class TingleFragment extends Fragment {
 
     private static final String ARG_THING_ID = "thing_id"; // Fragment argument used by host activity
 
-    // GUI variables
-    private Button mAddButton, mListButton, mSearchButton;
+    private Button mAddButton, mListButton, mSearchButton; // GUI variables
     private TextView mLastAdded, mWhatField, mWhereField;
-
-    // Database
-    private static ThingRepository sThingRepository;
-
-    // Used to call host activity TingleActivity
-    private eventListener mCallBackToActivity;
+    private static ThingRepository sThingRepository; // Database
+    private eventListener mCallBackToActivity; // Used to call host activity TingleActivity
 
     /**
      * This interface allows TingleFragment to communicate to host TingleActivity.
      * Interface is encapsulated in fragment to avoid use in other activities.
      * Interface is implemented by host activity determining what happens upon triggering the listener.
      */
-    public interface eventListener
+    public interface eventListener // Todo remove ?
     {
-        // void onClickItem(); // See details of item
         void onShowItems(); // See list of items
         void onAddItems(); // Update list in landscape after adding item
     }
@@ -56,7 +50,7 @@ public class TingleFragment extends Fragment {
      * @param context - context of host activity
      */
     @Override
-    public void onAttach(Context context)
+    public void onAttach(Context context) // Todo remove ?
     {
         super.onAttach(context);
         Activity activity = new Activity();
@@ -79,7 +73,7 @@ public class TingleFragment extends Fragment {
      * @param thingId - id of Thing to be displayed in fragment
      * @return - fragment displaying thing
      */
-    public static TingleFragment newInstance(UUID thingId)
+    public static TingleFragment newInstance(UUID thingId) // Todo use in TingleActivity
     {
         Bundle args = new Bundle();
         args.putSerializable(ARG_THING_ID, thingId);
@@ -102,6 +96,7 @@ public class TingleFragment extends Fragment {
 
     }
 
+    // Todo remove ?
 //    // Update content of repository upon updates
 //    @Override
 //    public void onPause() {
@@ -173,9 +168,11 @@ public class TingleFragment extends Fragment {
         mAddButton = (Button) view.findViewById(R.id.add_button);
 
         // Add item click event
-        mAddButton.setOnClickListener(new View.OnClickListener() {
+        mAddButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 if ((mWhatField.getText().length() > 0) && (mWhereField.getText().length() > 0))
                 {
                     sThingRepository.addThing(
@@ -191,9 +188,11 @@ public class TingleFragment extends Fragment {
 
         // Setup search button used to search for item denoted in "What" field
         mSearchButton = (Button) view.findViewById(R.id.search_button);
-        mSearchButton.setOnClickListener(new View.OnClickListener() {
+        mSearchButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 if (mWhatField.getText().length() > 0)
                 {
                     String searchResult = searchItems(mWhatField.getText().toString());
@@ -225,6 +224,7 @@ public class TingleFragment extends Fragment {
         if (size > 0 )
         {
             mLastAdded.setText(sThingRepository.getThings().get(size - 1).toString()); // Set text to last item added
+            getActivity().invalidateOptionsMenu(); // Recreate menu due to new count of total items
         }
         else this.mLastAdded.setText(getString(R.string.item_notFound_toast));
     }
