@@ -86,13 +86,15 @@ public class ThingFragment extends Fragment {
 
         // Find add button
         mAddButton = (Button) v.findViewById(R.id.thing_details_add_button);
-        mAddButton.setOnClickListener(new View.OnClickListener() {
+        mAddButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 mThing.setWhat(mWhatField.getText().toString().trim());
                 mThing.setWhere(mWhereField.getText().toString().trim());
                 ThingRepository.get(getActivity()).updateThing(mThing);
-                NavUtils.navigateUpFromSameTask(getActivity());
+                NavUtils.navigateUpFromSameTask(getActivity()); // Todo fix refresh in landscape mode
             }
         });
 
