@@ -222,7 +222,6 @@ public class TingleFragment extends Fragment {
                 public void onClick(View v)
                 {
                     Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-                    //intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
                     startActivityForResult(intent, 0);
                 }
             });
@@ -232,6 +231,13 @@ public class TingleFragment extends Fragment {
 
     }
 
+    /**
+     * This method is used to get the result back from scanning a barcode and save it in the barcode field.
+     * Called whenever Scanner exits, giving requestCode you started it with, the resultCode it returned, and any additional data from it.
+     * @param requestCode - integer request code to identify where result came from in startActivityForResult called when clicking Scan button.
+     * @param resultCode - integer result code returned by the child activity through its setResult()/
+     * @param data - intent with result data to the caller.
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
@@ -248,7 +254,7 @@ public class TingleFragment extends Fragment {
                 Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.TOP, 25, 400);
                 toast.show();
-//                String contents = data.getStringExtra("SCAN_RESULT");
+
                 Log.d("onActivityResult", "contents: " + contents);
             }
             else if (resultCode == getActivity().RESULT_CANCELED)
