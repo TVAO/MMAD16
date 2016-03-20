@@ -7,7 +7,7 @@ import java.util.UUID;
  */
 public class Thing {
 
-    private String mWhat, mWhere = null;
+    private String mWhat, mWhere, mBarcode = null;
     private UUID mId;
 
     // Used to add empty Things in ThingPager
@@ -15,13 +15,25 @@ public class Thing {
     {
         mWhat = "";
         mWhere = "";
+        mBarcode = "";
         mId = UUID.randomUUID();
     }
 
+    // Item without barcode
     public Thing(String what, String where)
     {
         mWhat = what;
         mWhere = where;
+        mBarcode = "";
+        mId = UUID.randomUUID(); // Generate unique identifier
+    }
+
+    // Item with barcode
+    public Thing(String what, String where, String barcode)
+    {
+        mWhat = what;
+        mWhere = where;
+        mBarcode = barcode;
         mId = UUID.randomUUID(); // Generate unique identifier
     }
 
@@ -60,4 +72,8 @@ public class Thing {
     public void setWhere(String where) { mWhere = where; }
 
     public UUID getId() { return mId; }
+
+    public String getBarcode() { return mBarcode; }
+
+    public void setBarcode(String barcode) { mBarcode = barcode; }
 }

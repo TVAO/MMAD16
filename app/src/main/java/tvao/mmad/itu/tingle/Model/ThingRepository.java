@@ -50,6 +50,7 @@ public class ThingRepository implements IRepository {
         values.put(ThingTable.Cols.UUID, thing.getId().toString());
         values.put(ThingTable.Cols.WHAT, thing.getWhat());
         values.put(ThingTable.Cols.WHERE, thing.getWhere());
+        values.put(ThingTable.Cols.BARCODE, thing.getBarcode());
 
         return values;
     }

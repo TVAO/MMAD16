@@ -119,6 +119,7 @@ tools:context=".Controller.Activities.TingleActivity">
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:hint="@string/barcode_hint"
+            android:editable="false"
             />
 
     </LinearLayout>

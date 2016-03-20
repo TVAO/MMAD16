@@ -174,9 +174,22 @@ public class TingleFragment extends Fragment {
             {
                 if ((mWhatField.getText().length() > 0) && (mWhereField.getText().length() > 0))
                 {
-                    sThingRepository.addThing(
-                            new Thing(mWhatField.getText().toString(),
-                                    mWhereField.getText().toString()));
+                    if(mBarcodeField.getText().toString().isEmpty())
+                    {
+                        // Add item without barcode
+                        sThingRepository.addThing(
+                                new Thing(mWhatField.getText().toString(),
+                                         mWhereField.getText().toString()));
+                    }
+                    else
+                    {
+                        // Add item with barcode
+                        sThingRepository.addThing(
+                                new Thing(mWhatField.getText().toString(),
+                                          mWhereField.getText().toString(),
+                                          mBarcodeField.getText().toString())
+                        );
+                    }
                     mWhatField.setText("");
                     mWhereField.setText("");
                     updateUI();

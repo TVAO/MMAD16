@@ -243,7 +243,7 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="app_name">Tingle</string>
     <string name="back_button">Back</string>
-    <string name="barcode_hint">Press Scan to get barcode</string>
+    <string name="barcode_hint">Scan to get barcode</string>
     <string name="barcode_thing">Barcode</string>
     <string name="delete_button">Delete</string>
     <string name="delete_thing">Delete</string>
@@ -267,7 +267,7 @@
     <string name="things_title">Things Title</string>
     <string name="title_activity_list">ListActivity</string>
     <string name="what_hint">Enter name of item</string>
-    <string name="what_thing">What thing?</string>
+    <string name="what_thing">What?</string>
     <string name="where_hint">Enter location of item</string>
     <string name="where_thing">Where?</string>
     <string name="zxing_app_name">Barcode Scanner</string>
