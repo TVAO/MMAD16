@@ -48,19 +48,27 @@
         android:hint="@string/barcode_hint"
         android:editable="false"/>
 
-    <!-- Button so scan barcode from items -->
-    <Button
-        android:id="@+id/barcode_scanner"
-        android:text="@string/heading_scan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <!-- Button to add new thing -->
-    <Button
-        android:id="@+id/thing_details_add_button"
-        android:text="@string/heading_create"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:orientation="horizontal">
+
+        <!-- Button so scan barcode from items -->
+        <Button
+            android:id="@+id/barcode_scanner"
+            android:text="@string/heading_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <!-- Button to add new thing -->
+        <Button
+            android:id="@+id/thing_details_add_button"
+            android:text="@string/heading_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
 
 </LinearLayout>
