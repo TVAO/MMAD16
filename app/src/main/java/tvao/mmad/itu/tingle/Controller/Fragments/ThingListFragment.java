@@ -316,9 +316,10 @@ public class ThingListFragment extends Fragment {
         {
             mAdapter = new ThingAdapter(things);
             mThingRecyclerView.setAdapter(mAdapter);
-        } else {
+        } else
+        {
             mAdapter.setThings(things);
-            //mAdapter.notifyDataSetChanged(); // Todo use specific notify option to avoid overhead of reloading all items
+            mAdapter.notifyDataSetChanged(); // Only reload items when going back from detailed screen so no real overhead
         }
 
         updateSubtitle();

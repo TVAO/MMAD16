@@ -172,6 +172,7 @@ public class ThingFragment extends Fragment {
                 Log.d("onActivityResult", "RESULT_CANCELED");
             }
         }
+
     }
 
     /**
