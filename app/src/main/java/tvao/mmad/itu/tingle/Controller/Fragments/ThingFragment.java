@@ -94,7 +94,7 @@ public class ThingFragment extends Fragment {
                 mThing.setWhat(mWhatField.getText().toString().trim());
                 mThing.setWhere(mWhereField.getText().toString().trim());
                 ThingRepository.get(getActivity()).updateThing(mThing);
-                NavUtils.navigateUpFromSameTask(getActivity()); // Todo fix refresh in landscape mode
+                NavUtils.navigateUpFromSameTask(getActivity()); // Navigate to parent activity (ThingListFragment)
             }
         });
 
@@ -107,15 +107,18 @@ public class ThingFragment extends Fragment {
         mTitleField = (EditText) v.findViewById(R.id.thing_title);
         mTitleField.setText(mThing.getWhat());
         mTitleField.addTextChangedListener(new TextWatcher() {
-            public void onTextChanged(CharSequence c, int start, int before, int count) {
+            public void onTextChanged(CharSequence c, int start, int before, int count)
+            {
                 mThing.setWhat(c.toString());
             }
 
-            public void beforeTextChanged(CharSequence c, int start, int count, int after) {
+            public void beforeTextChanged(CharSequence c, int start, int count, int after)
+            {
                 // Space intentionally left blank
             }
 
-            public void afterTextChanged(Editable c) {
+            public void afterTextChanged(Editable c)
+            {
                 // This one too
             }
         });

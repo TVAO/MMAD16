@@ -2,6 +2,7 @@ package tvao.mmad.itu.tingle.Controller.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -204,35 +205,6 @@ public class ThingListFragment extends Fragment {
                 .newIntent(getActivity(), thing.getId());
         startActivity(intent);
     }
-
-//    private void selectThing(Thing thing)
-//    {
-//        // start an instance of CrimePagerActivity
-//        Intent i = new Intent(getActivity(), ThingPagerActivity.class);
-//        i.putExtra(ThingFragment.EXTRA_THING_ID, thing.getId());
-//
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-//        {
-//            // NOTE: shared element transition here.
-//            // Support library fragments do not support the three parameter
-//            // startActivityForResult call. So to get this to work, the entire
-//            // project had to be shifted over to use stdlib fragments,
-//            // and the v13 ViewPager.
-//
-//            int index = ThingRepository.get(getActivity()).getThings().indexOf(thing);
-//            //int index = mThings.indexOf(thing);
-//            ThingHolder holder = (ThingHolder) mThingRecyclerView.findViewHolderForAdapterPosition(index);  // Take into account data changes
-//
-//            ActivityOptions options = ThingPagerActivity.getTransition(
-//                    getActivity(), holder.itemView);
-//
-//            startActivityForResult(i, 0, options.toBundle());
-//        }
-//        else
-//        {
-//            startActivityForResult(i, 0);
-//        }
-//    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
