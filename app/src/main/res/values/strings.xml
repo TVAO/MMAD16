@@ -27,4 +27,6 @@
     <string name="delete_thing">Delete</string>
     <string name="things_title">Things Title</string>
     <string name="heading_scan">Scan Item</string>
+    <string name="barcode_thing">Barcode</string>
+    <string name="barcode_hint">Press Scan to get barcode</string>
 </resources>

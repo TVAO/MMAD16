@@ -243,9 +243,12 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="app_name">Tingle</string>
     <string name="back_button">Back</string>
+    <string name="barcode_hint">Press Scan to get barcode</string>
+    <string name="barcode_thing">Barcode</string>
     <string name="delete_button">Delete</string>
     <string name="delete_thing">Delete</string>
     <string name="heading_create">Add new thing</string>
+    <string name="heading_scan">Scan Item</string>
     <string name="heading_search">Search items</string>
     <string name="heading_showAllItems">See items</string>
     <string name="headline">Last thing added</string>

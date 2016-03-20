@@ -16,22 +16,20 @@ android:paddingTop="@dimen/activity_vertical_margin">
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/headline"
-    android:textSize="18dp"
-    android:gravity="top"
-    />
+    android:textSize="14dp"
+    android:gravity="top"/>
 
     <TextView
     android:id="@+id/last_thing"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    />
+    android:layout_height="wrap_content"/>
 
     <!-- Button to add new thing -->
     <Button
     android:id="@+id/add_button"
     android:text="@string/heading_create"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
+    android:layout_height="wrap_content"/>
 
     <!-- Button to search for item -->
     <Button
@@ -40,12 +38,14 @@ android:paddingTop="@dimen/activity_vertical_margin">
         android:layout_height="wrap_content"
         android:text="@string/heading_search"/>
 
-    <!-- Button so scan barcode from items -->
-    <Button
-        android:id="@+id/zxing_barcode_scanner"
-        android:text="@string/heading_scan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <!--&lt;!&ndash; Button so scan barcode from items &ndash;&gt;-->
+    <!--<Button-->
+        <!--android:id="@+id/barcode_scanner"-->
+        <!--android:text="@string/heading_scan"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--/>-->
 
     <!-- Thin horizontal line -->
     <View
@@ -61,7 +61,7 @@ android:paddingTop="@dimen/activity_vertical_margin">
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="@string/what_thing" />
+        android:text="@string/what_thing"/>
 
         <EditText
         android:id="@+id/what_text"
@@ -81,16 +81,14 @@ android:paddingTop="@dimen/activity_vertical_margin">
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="@string/where_thing"
-        />
+        android:text="@string/where_thing"/>
 
         <EditText
         android:id="@+id/where_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
-        android:hint="@string/where_hint"
-        />
+        android:hint="@string/where_hint"/>
 
     </LinearLayout>
 

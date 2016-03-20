@@ -2,19 +2,26 @@ package tvao.mmad.itu.tingle.Controller.Fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.journeyapps.barcodescanner.CaptureActivity;
+
 import java.util.UUID;
 
+import tvao.mmad.itu.tingle.Controller.Activities.BarcodeActivity;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.R;
@@ -29,6 +36,7 @@ public class TingleFragment extends Fragment {
 
     private Button mAddButton, mListButton, mSearchButton, mScanButton; // GUI variables
     private TextView mLastAdded, mWhatField, mWhereField;
+    private EditText mBarcodeField;
     private static ThingRepository sThingRepository; // Database
     private eventListener mCallBackToActivity; // Used to call host activity TingleActivity
 
@@ -95,15 +103,6 @@ public class TingleFragment extends Fragment {
         sThingRepository = ThingRepository.get(this.getContext());
 
     }
-
-    // Todo remove ?
-//    // Update content of repository upon updates
-//    @Override
-//    public void onPause() {
-//        super.onPause();
-//        ThingRepository.getThing(getActivity())
-//                .updateThing(mThing);
-//    }
 
     /**
      *  Creates and returns the view hierarchy associated with the fragment
@@ -203,28 +202,63 @@ public class TingleFragment extends Fragment {
             }
         });
 
-        mScanButton = (Button) view.findViewById(R.id.zxing_barcode_scanner);
-        mScanButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-
-            }
-        });
-
         // Only show item list button when in portrait mode (removed in landscape)
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
         {
             mListButton = (Button) view.findViewById(R.id.item_list_button);
-            mListButton.setOnClickListener(new View.OnClickListener() {
+            mListButton.setOnClickListener(new View.OnClickListener()
+            {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v)
+                {
                     mCallBackToActivity.onShowItems(); // Callback to activity
                 }
             });
+
+            mScanButton = (Button) view.findViewById(R.id.barcode_scanner);
+            mScanButton.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+                    //intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+                    startActivityForResult(intent, 0);
+                }
+            });
+
+            mBarcodeField = (EditText) view.findViewById(R.id.barcode_text);
         }
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (requestCode == 0)
+        {
+            if (resultCode == getActivity().RESULT_OK)
+            {
+                String contents = data.getStringExtra("SCAN_RESULT");
+                String format = data.getStringExtra("SCAN_RESULT_FORMAT");
+
+                mBarcodeField.setText(contents);
+
+                // Handle successful scan
+                Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.TOP, 25, 400);
+                toast.show();
+//                String contents = data.getStringExtra("SCAN_RESULT");
+                Log.d("onActivityResult", "contents: " + contents);
+            }
+            else if (resultCode == getActivity().RESULT_CANCELED)
+            {   // Handle cancel
+                Toast toast = Toast.makeText(getContext(), "Scan was Cancelled!", Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.TOP, 25, 400);
+                toast.show();
+                Log.d("onActivityResult", "RESULT_CANCELED");
+            }
+        }
     }
 
     // Update content of UI after adding a new item, e.g. last added item.
