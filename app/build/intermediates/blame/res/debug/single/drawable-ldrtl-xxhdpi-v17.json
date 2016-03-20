@@ -1,10 +1,14 @@
 [
     {
-        "merged": "C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxhdpi-v17\\abc_spinner_mtrl_am_alpha.9.png",
-        "source": "C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.0\\res\\drawable-ldrtl-xxhdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
+        "merged": "/Users/TVANO/Documents/Tingle/C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxhdpi-v17\\abc_spinner_mtrl_am_alpha.9.png",
+        "source": "/Users/TVANO/Documents/Tingle/C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.0\\res\\drawable-ldrtl-xxhdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxhdpi-v17\\abc_spinner_mtrl_am_alpha.9.png",
-        "source": "C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.0\\res\\drawable-ldrtl-xxhdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
+        "merged": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxhdpi-v17\\abc_spinner_mtrl_am_alpha.9.png",
+        "source": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.0\\res\\drawable-ldrtl-xxhdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
+        "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/drawable-ldrtl-xxhdpi-v17/abc_spinner_mtrl_am_alpha.9.png",
+        "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/drawable-ldrtl-xxhdpi-v17/abc_spinner_mtrl_am_alpha.9.png"
     }
 ]
