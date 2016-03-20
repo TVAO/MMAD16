@@ -1,6 +1,8 @@
 package tvao.mmad.itu.tingle.Controller.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +26,7 @@ import com.bignerdranch.android.multiselector.MultiSelector;
 import com.bignerdranch.android.multiselector.SwappingHolder;
 
 import java.util.List;
+import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Controller.Activities.ThingPagerActivity;
 import tvao.mmad.itu.tingle.Model.Thing;
@@ -84,16 +87,9 @@ public class ThingListFragment extends Fragment {
                 {
                     if (mMultiSelector.isSelected(i, 0))
                     {
-
-
                         Thing thing = ThingRepository.get(getActivity()).getThings().get(i);
-                        //Thing thing = mThings.get(i);
                         ThingRepository.get(getActivity()).removeThing(thing.getId());
-
                         mAdapter.removeAt(i);
-
-                        //mAdapter.notifyItemRemoved(i);
-                        //mThingRecyclerView.getAdapter().notifyItemRemoved(i);
                     }
                 }
 
@@ -196,13 +192,13 @@ public class ThingListFragment extends Fragment {
     // Toggle item and navigate to detailed screen
     private void selectThing(Thing thing)
     {
-        Intent i = new Intent(getActivity(), ThingPagerActivity.class);
-        i.putExtra(ThingFragment.EXTRA_THING_ID, thing.getId());
-        startActivity(i);
+        Intent intent = ThingPagerActivity
+                .newIntent(getActivity(), thing.getId());
+        startActivity(intent);
     }
 
     // Create new thing and navigate to detailed screen activity
-    private void newThing(Thing thing)
+    private void addNewThing(Thing thing)
     {
         ThingRepository.get(getActivity()).addThing(thing);
         Intent intent = ThingPagerActivity
@@ -210,41 +206,12 @@ public class ThingListFragment extends Fragment {
         startActivity(intent);
     }
 
-//    private void selectThing(Thing thing)
-//    {
-//        // start an instance of CrimePagerActivity
-//        Intent i = new Intent(getActivity(), ThingPagerActivity.class);
-//        i.putExtra(ThingFragment.EXTRA_THING_ID, thing.getId());
-//
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-//        {
-//            // NOTE: shared element transition here.
-//            // Support library fragments do not support the three parameter
-//            // startActivityForResult call. So to get this to work, the entire
-//            // project had to be shifted over to use stdlib fragments,
-//            // and the v13 ViewPager.
-//
-//            int index = ThingRepository.get(getActivity()).getThings().indexOf(thing);
-//            //int index = mThings.indexOf(thing);
-//            ThingHolder holder = (ThingHolder) mThingRecyclerView.findViewHolderForAdapterPosition(index);  // Take into account data changes
-//
-//            ActivityOptions options = ThingPagerActivity.getTransition(
-//                    getActivity(), holder.itemView);
-//
-//            startActivityForResult(i, 0, options.toBundle());
-//        }
-//        else
-//        {
-//            startActivityForResult(i, 0);
-//        }
-//    }
-
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data)
-//    {
-//        //mThingAdapter.notifyDataSetChanged();
-//        mThingRecyclerView.getAdapter().notifyDataSetChanged();
-//    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        //mThingAdapter.notifyDataSetChanged();
+        mThingRecyclerView.getAdapter().notifyDataSetChanged();
+    }
 
     /**
      * This method is called whenever Fragment with list of items is shown to user.
@@ -308,8 +275,7 @@ public class ThingListFragment extends Fragment {
         {
             case R.id.menu_item_new_thing: // Add new thing
                 Thing thing = new Thing();
-                mAdapter.notifyDataSetChanged();
-                newThing(thing); // Go to detailed screen with new thing
+                addNewThing(thing); // Go to detailed screen with new thing
                 return true;
 
             case R.id.menu_item_show_subtitle: // Show total items

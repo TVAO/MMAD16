@@ -13,6 +13,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import java.util.List;
 import java.util.UUID;
@@ -31,14 +33,14 @@ import static tvao.mmad.itu.tingle.Controller.Fragments.TingleFragment.*;
  */
 public class ThingPagerActivity extends AppCompatActivity {
 
-    private static final String EXTRA_THING_ID = "thing_id";
-    //private static final String EXTRA_THING_ID = "thingintent.thing_id";
+    private static final String EXTRA_THING_ID = "tvao.mmad.itu.tingle.thing_id";
     private ViewPager mViewPager;
     private List<Thing> mThings;
 
-    public static Intent newIntent(Context packageContext, UUID crimeId) {
+    public static Intent newIntent(Context packageContext, UUID thingId)
+    {
         Intent intent = new Intent(packageContext, ThingPagerActivity.class);
-        intent.putExtra(EXTRA_THING_ID, crimeId);
+        intent.putExtra(EXTRA_THING_ID, thingId);
         return intent;
     }
 
@@ -56,7 +58,7 @@ public class ThingPagerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thing_pager);
 
-        UUID thingId = (UUID) getIntent().getSerializableExtra(EXTRA_THING_ID);
+        final UUID thingId = (UUID) getIntent().getSerializableExtra(EXTRA_THING_ID);
 
         // Find View Pager
         mViewPager = (ViewPager) findViewById(R.id.activity_thing_pager_view_pager);
@@ -107,7 +109,7 @@ public class ThingPagerActivity extends AppCompatActivity {
         {
             if (mThings.get(i).getId().equals(thingId))
             {
-                mViewPager.setCurrentItem(i); // Todo bug always shows detailed screen for first item in list
+                mViewPager.setCurrentItem(i);
                 break;
             }
         }
