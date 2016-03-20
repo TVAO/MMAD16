@@ -44,13 +44,18 @@
         </activity>
         <activity
             android:name="tvao.mmad.itu.tingle.Controller.Activities.ThingPagerActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:parentActivityName="tvao.mmad.itu.tingle.Controller.Activities.ThingListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Controller.Activities.ThingListActivity" />
+        </activity>
+        <activity android:name="tvao.mmad.itu.tingle.Controller.Activities.ThingListActivity" >
 
-            <!-- Does not work because I use TingleListFragment instead of activity -->
-            <!-- android:theme="@style/AppTheme.NoActionBar"> -->
-            <!-- <meta-data -->
-            <!-- android:name="android.support.PARENT_ACTIVITY" -->
-            <!-- android:value=".Controller.Activities.ThingListActivity"/> -->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"

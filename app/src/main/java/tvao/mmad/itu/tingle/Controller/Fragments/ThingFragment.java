@@ -11,11 +11,13 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.UUID;
 
+import tvao.mmad.itu.tingle.Controller.Activities.ThingListActivity;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.R;
@@ -32,6 +34,7 @@ public class ThingFragment extends Fragment {
     private static final String DESCRIPTION = "description";
 
     private Thing mThing;
+    private Button mAddButton;
     private EditText mTitleField;
     private TextView mWhatField, mWhereField;
 
@@ -80,6 +83,18 @@ public class ThingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState)
     {
         View v = inflater.inflate(R.layout.fragment_thing, parent, false);
+
+        // Find add button
+        mAddButton = (Button) v.findViewById(R.id.thing_details_add_button);
+        mAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mThing.setWhat(mWhatField.getText().toString().trim());
+                mThing.setWhere(mWhereField.getText().toString().trim());
+                ThingRepository.get(getActivity()).updateThing(mThing);
+                NavUtils.navigateUpFromSameTask(getActivity());
+            }
+        });
 
         mWhatField = (EditText) v.findViewById(R.id.thing_details_what);
         mWhatField.setText(mThing.getWhat());

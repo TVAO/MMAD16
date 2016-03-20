@@ -1,5 +1,6 @@
 package tvao.mmad.itu.tingle.Controller.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -24,6 +25,7 @@ import com.bignerdranch.android.multiselector.MultiSelector;
 import com.bignerdranch.android.multiselector.SwappingHolder;
 
 import java.util.List;
+import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Controller.Activities.ThingPagerActivity;
 import tvao.mmad.itu.tingle.Model.Thing;
@@ -84,16 +86,9 @@ public class ThingListFragment extends Fragment {
                 {
                     if (mMultiSelector.isSelected(i, 0))
                     {
-
-
                         Thing thing = ThingRepository.get(getActivity()).getThings().get(i);
-                        //Thing thing = mThings.get(i);
                         ThingRepository.get(getActivity()).removeThing(thing.getId());
-
                         mAdapter.removeAt(i);
-
-                        //mAdapter.notifyItemRemoved(i);
-                        //mThingRecyclerView.getAdapter().notifyItemRemoved(i);
                     }
                 }
 
@@ -196,7 +191,8 @@ public class ThingListFragment extends Fragment {
     // Toggle item and navigate to detailed screen
     private void selectThing(Thing thing)
     {
-        Intent intent = ThingPagerActivity.newIntent(getActivity(), thing.getId());
+        Intent intent = ThingPagerActivity
+                .newIntent(getActivity(), thing.getId());
         startActivity(intent);
     }
 
@@ -238,12 +234,12 @@ public class ThingListFragment extends Fragment {
 //        }
 //    }
 
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data)
-//    {
-//        //mThingAdapter.notifyDataSetChanged();
-//        mThingRecyclerView.getAdapter().notifyDataSetChanged();
-//    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        //mThingAdapter.notifyDataSetChanged();
+        mThingRecyclerView.getAdapter().notifyDataSetChanged();
+    }
 
     /**
      * This method is called whenever Fragment with list of items is shown to user.
@@ -308,7 +304,7 @@ public class ThingListFragment extends Fragment {
             case R.id.menu_item_new_thing: // Add new thing
                 Thing thing = new Thing();
                 addNewThing(thing); // Go to detailed screen with new thing
-                mAdapter.notifyDataSetChanged(); // Todo make specific notify
+                //mAdapter.notifyDataSetChanged(); // Todo make specific notify
                 return true;
 
             case R.id.menu_item_show_subtitle: // Show total items
