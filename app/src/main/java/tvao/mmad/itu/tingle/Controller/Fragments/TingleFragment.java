@@ -27,7 +27,7 @@ public class TingleFragment extends Fragment {
 
     private static final String ARG_THING_ID = "thing_id"; // Fragment argument used by host activity
 
-    private Button mAddButton, mListButton, mSearchButton; // GUI variables
+    private Button mAddButton, mListButton, mSearchButton, mScanButton; // GUI variables
     private TextView mLastAdded, mWhatField, mWhereField;
     private static ThingRepository sThingRepository; // Database
     private eventListener mCallBackToActivity; // Used to call host activity TingleActivity
@@ -200,6 +200,16 @@ public class TingleFragment extends Fragment {
                     else makeToast(getString(R.string.item_notFound_toast)); // Item not found
                 }
                 // makeToast(getString(R.string.item_notSpecified_toast));
+            }
+        });
+
+        mScanButton = (Button) view.findViewById(R.id.zxing_barcode_scanner);
+        mScanButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+
             }
         });
 

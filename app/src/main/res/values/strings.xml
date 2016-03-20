@@ -26,4 +26,5 @@
     <string name="subtitle_format">%1$s crimes</string>
     <string name="delete_thing">Delete</string>
     <string name="things_title">Things Title</string>
+    <string name="heading_scan">Scan Item</string>
 </resources>

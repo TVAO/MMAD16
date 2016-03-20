@@ -12,12 +12,12 @@
         "source": "/Users/TVANO/Documents/Tingle/app/build/generated/res/pngs/debug/drawable-anydpi-v21/abc_btn_checkbox_unchecked_mtrl.xml"
     },
     {
-        "merged": "/Users/TVANO/Documents/Tingle/C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\abc_ic_ab_back_material.xml",
-        "source": "/Users/TVANO/Documents/Tingle/C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\abc_ic_ab_back_material.xml"
-    },
-    {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/abc_ic_go_search_api_material.xml",
         "source": "/Users/TVANO/Documents/Tingle/app/build/generated/res/pngs/debug/drawable-anydpi-v21/abc_ic_go_search_api_material.xml"
+    },
+    {
+        "merged": "/Users/TVANO/Documents/Tingle/C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\abc_ic_ab_back_material.xml",
+        "source": "/Users/TVANO/Documents/Tingle/C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\abc_ic_ab_back_material.xml"
     },
     {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/abc_ic_menu_copy_material.xml",

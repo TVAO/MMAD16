@@ -40,6 +40,13 @@ android:paddingTop="@dimen/activity_vertical_margin">
         android:layout_height="wrap_content"
         android:text="@string/heading_search"/>
 
+    <!-- Button so scan barcode from items -->
+    <Button
+        android:id="@+id/zxing_barcode_scanner"
+        android:text="@string/heading_scan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <!-- Thin horizontal line -->
     <View
     android:layout_width="match_parent"
