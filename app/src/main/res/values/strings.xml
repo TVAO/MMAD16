@@ -2,7 +2,7 @@
     <string name="app_name">Tingle</string>
     <string name="headline">Last thing added</string>
     <string name="heading_create">Add new thing</string>
-    <string name="what_thing">What thing?</string>
+    <string name="what_thing">What?</string>
     <string name="where_thing">Where?</string>
     <string name="title_activity_list">ListActivity</string>
     <string name="back_button">Back</string>
@@ -25,5 +25,10 @@
     <string name="hide_subtitle">Hide Subtitle</string>
     <string name="subtitle_format">%1$s crimes</string>
     <string name="delete_thing">Delete</string>
-    <string name="things_title">Things Title</string>
+    <string name="things_title">Things</string>
+
+    <!-- Barcode resources -->
+    <string name="heading_scan">Scan Item</string>
+    <string name="barcode_thing">Barcode</string>
+    <string name="barcode_hint">Scan to get barcode</string>
 </resources>

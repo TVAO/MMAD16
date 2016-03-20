@@ -57,6 +57,11 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+
+        <uses-permission android:name="android.permission.CAMERA" />
+
+        <activity android:name="tvao.mmad.itu.tingle.Controller.Activities.BarcodeActivity" >
+        </activity>
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:clearTaskOnLaunch="true"

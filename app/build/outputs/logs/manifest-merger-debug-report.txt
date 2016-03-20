@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:2:1-33:12
+ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:2:1-37:12
 	package
 		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:2:11-41
 		INJECTED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml
@@ -14,7 +14,7 @@ ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:2:1-33
 		INJECTED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml
 application
-ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:5:5-31:19
+ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:5:5-35:19
 MERGED from [com.journeyapps:zxing-android-embedded:3.2.0] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.journeyapps/zxing-android-embedded/3.2.0/AndroidManifest.xml:45:5-53:19
 MERGED from [com.android.support:appcompat-v7:23.2.0] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-v4:23.2.0] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:22:5-20
@@ -75,6 +75,14 @@ activity#tvao.mmad.itu.tingle.Controller.Activities.ThingListActivity
 ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:25:9-30:20
 	android:name
 		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:25:19-74
+uses-permission#android.permission.CAMERA
+ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:31:9-68
+	android:name
+		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:31:26-66
+activity#tvao.mmad.itu.tingle.Controller.Activities.BarcodeActivity
+ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:32:9-34:20
+	android:name
+		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:33:13-66
 uses-sdk
 INJECTED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.journeyapps:zxing-android-embedded:3.2.0] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.journeyapps/zxing-android-embedded/3.2.0/AndroidManifest.xml:19:5-43
@@ -105,10 +113,6 @@ MERGED from [com.android.support:support-v4:23.2.0] /Users/TVANO/Documents/Tingl
 	android:minSdkVersion
 		INJECTED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml
-uses-permission#android.permission.CAMERA
-ADDED from [com.journeyapps:zxing-android-embedded:3.2.0] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.journeyapps/zxing-android-embedded/3.2.0/AndroidManifest.xml:21:5-65
-	android:name
-		ADDED from [com.journeyapps:zxing-android-embedded:3.2.0] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.journeyapps/zxing-android-embedded/3.2.0/AndroidManifest.xml:21:22-62
 uses-feature#android.hardware.camera
 ADDED from [com.journeyapps:zxing-android-embedded:3.2.0] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.journeyapps/zxing-android-embedded/3.2.0/AndroidManifest.xml:24:5-26:36
 	android:required

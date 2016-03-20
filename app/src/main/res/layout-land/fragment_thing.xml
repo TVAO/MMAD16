@@ -5,61 +5,70 @@
               android:layout_height="wrap_content"
               android:orientation="vertical" >
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <!--android:layout_weight="1"-->
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/things_title"
-            style="?android:listSeparatorTextViewStyle"
-            />
-        <EditText android:id="@+id/thing_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
-            android:hint="@string/thing_what_hint"
-            android:singleLine="true"
-            />
-    </LinearLayout>
+    <!-- What -->
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/what_thing"
-        style="?android:listSeparatorTextViewStyle"
-        />
+        style="?android:listSeparatorTextViewStyle"/>
 
     <EditText android:id="@+id/thing_details_what"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:hint="@string/thing_what_hint"
-              android:singleLine="true"
-        />
+              android:singleLine="true"/>
+
+    <!-- Where -->
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/where_thing"
-        style="?android:listSeparatorTextViewStyle"
-        />
+        style="?android:listSeparatorTextViewStyle"/>
 
     <EditText android:id="@+id/thing_details_where"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:hint="@string/thing_where_hint"
-              android:singleLine="true"
-        />
+              android:singleLine="true"/>
 
-    <!-- Button to add new thing -->
-    <Button
-        android:id="@+id/thing_details_add_button"
-        android:text="@string/heading_create"
+    <!-- Barcode -->
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:text="@string/barcode_thing"/>
+
+    <EditText
+        android:id="@+id/barcode_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:hint="@string/barcode_hint"
+        android:editable="false"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Button so scan barcode from items -->
+        <Button
+            android:id="@+id/barcode_scanner"
+            android:text="@string/heading_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <!-- Button to add new thing -->
+        <Button
+            android:id="@+id/thing_details_add_button"
+            android:text="@string/heading_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
 
 </LinearLayout>

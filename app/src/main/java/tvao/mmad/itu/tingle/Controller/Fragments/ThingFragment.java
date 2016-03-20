@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.UUID;
 
@@ -34,9 +37,8 @@ public class ThingFragment extends Fragment {
     private static final String DESCRIPTION = "description";
 
     private Thing mThing;
-    private Button mAddButton;
-    private EditText mTitleField;
-    private TextView mWhatField, mWhereField;
+    private Button mAddButton, mScanButton;
+    private EditText mWhatField, mWhereField, mBarcodeField;
 
     /**
      * This method is used to instantiate a new Fragment used to display a detailed screen.
@@ -91,10 +93,35 @@ public class ThingFragment extends Fragment {
             @Override
             public void onClick(View v)
             {
-                mThing.setWhat(mWhatField.getText().toString().trim());
-                mThing.setWhere(mWhereField.getText().toString().trim());
-                ThingRepository.get(getActivity()).updateThing(mThing);
-                NavUtils.navigateUpFromSameTask(getActivity()); // Navigate to parent activity (ThingListFragment)
+                if((mWhatField.getText().length() > 0) && (mWhereField.getText().length() > 0))
+                {
+                    mThing.setWhat(mWhatField.getText().toString().trim());
+                    mThing.setWhere(mWhereField.getText().toString().trim());
+                    mThing.setBarcode(mBarcodeField.getText().toString().trim());
+
+                    if (ThingRepository.get(getActivity()).getThing(mThing.getId()) == null)
+                    {
+                        // Add new item from menu bar
+                        ThingRepository.get(getActivity()).addThing(mThing);
+                    }
+                    else
+                    {
+                        // Update existing item
+                        ThingRepository.get(getActivity()).updateThing(mThing);
+                    }
+                    NavUtils.navigateUpFromSameTask(getActivity()); // Navigate to parent activity (ThingListFragment)
+                }
+            }
+        });
+
+        mScanButton = (Button) v.findViewById(R.id.barcode_scanner);
+        mScanButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+                startActivityForResult(intent, 0);
             }
         });
 
@@ -104,31 +131,15 @@ public class ThingFragment extends Fragment {
         mWhereField = (EditText) v.findViewById(R.id.thing_details_where);
         mWhereField.setText(mThing.getWhere());
 
-        mTitleField = (EditText) v.findViewById(R.id.thing_title);
-        mTitleField.setText(mThing.getWhat());
-        mTitleField.addTextChangedListener(new TextWatcher() {
-            public void onTextChanged(CharSequence c, int start, int before, int count)
-            {
-                mThing.setWhat(c.toString());
-            }
-
-            public void beforeTextChanged(CharSequence c, int start, int count, int after)
-            {
-                // Space intentionally left blank
-            }
-
-            public void afterTextChanged(Editable c)
-            {
-                // This one too
-            }
-        });
+        mBarcodeField = (EditText) v.findViewById(R.id.barcode_text);
+        mBarcodeField.setText(mThing.getBarcode());
 
         return v;
-
     }
 
     /**
-     * This method will be used to get a result from an activity in the future.
+     * This method is used to get the result back from scanning a barcode and save it in the barcode field.
+     * Called whenever Scanner exits, giving requestCode you started it with, the resultCode it returned, and any additional data from it.
      * @param requestCode - integer request code supplied to startActivityForResult(), allowing you to identify who this result came from.
      * @param resultCode -  integer result code returned by the child activity through its setResult()
      * @param data -  intent which can return result data to caller attached to Intent "extra"
@@ -137,7 +148,31 @@ public class ThingFragment extends Fragment {
     @Deprecated
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        if (resultCode != Activity.RESULT_OK) return;
+        if (requestCode == 0)
+        {
+            if (resultCode == getActivity().RESULT_OK)
+            {
+                String contents = data.getStringExtra("SCAN_RESULT");
+                String format = data.getStringExtra("SCAN_RESULT_FORMAT");
+
+                mBarcodeField.setText(contents);
+
+                // Handle successful scan
+                Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.TOP, 25, 400);
+                toast.show();
+
+                Log.d("onActivityResult", "contents: " + contents);
+            }
+            else if (resultCode == getActivity().RESULT_CANCELED)
+            {   // Handle cancel
+                Toast toast = Toast.makeText(getContext(), "Scan was Cancelled!", Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.TOP, 25, 400);
+                toast.show();
+                Log.d("onActivityResult", "RESULT_CANCELED");
+            }
+        }
+
     }
 
     /**

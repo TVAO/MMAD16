@@ -37,7 +37,8 @@ public class ThingBaseHelper extends SQLiteOpenHelper {
                         " _id integer primary key autoincrement, " +
                         ThingTable.Cols.UUID + ", " +
                         ThingTable.Cols.WHAT + ", " +
-                        ThingTable.Cols.WHERE +
+                        ThingTable.Cols.WHERE + ", " +
+                        ThingTable.Cols.BARCODE +
                 ")"
         );
     }

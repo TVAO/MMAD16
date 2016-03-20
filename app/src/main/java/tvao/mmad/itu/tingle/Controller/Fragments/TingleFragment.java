@@ -2,19 +2,26 @@ package tvao.mmad.itu.tingle.Controller.Fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.journeyapps.barcodescanner.CaptureActivity;
+
 import java.util.UUID;
 
+import tvao.mmad.itu.tingle.Controller.Activities.BarcodeActivity;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.R;
@@ -27,8 +34,9 @@ public class TingleFragment extends Fragment {
 
     private static final String ARG_THING_ID = "thing_id"; // Fragment argument used by host activity
 
-    private Button mAddButton, mListButton, mSearchButton; // GUI variables
+    private Button mAddButton, mListButton, mSearchButton, mScanButton; // GUI variables
     private TextView mLastAdded, mWhatField, mWhereField;
+    private EditText mBarcodeField;
     private static ThingRepository sThingRepository; // Database
     private eventListener mCallBackToActivity; // Used to call host activity TingleActivity
 
@@ -95,15 +103,6 @@ public class TingleFragment extends Fragment {
         sThingRepository = ThingRepository.get(this.getContext());
 
     }
-
-    // Todo remove ?
-//    // Update content of repository upon updates
-//    @Override
-//    public void onPause() {
-//        super.onPause();
-//        ThingRepository.getThing(getActivity())
-//                .updateThing(mThing);
-//    }
 
     /**
      *  Creates and returns the view hierarchy associated with the fragment
@@ -175,9 +174,22 @@ public class TingleFragment extends Fragment {
             {
                 if ((mWhatField.getText().length() > 0) && (mWhereField.getText().length() > 0))
                 {
-                    sThingRepository.addThing(
-                            new Thing(mWhatField.getText().toString(),
-                                    mWhereField.getText().toString()));
+                    if(mBarcodeField.getText().toString().isEmpty())
+                    {
+                        // Add item without barcode
+                        sThingRepository.addThing(
+                                new Thing(mWhatField.getText().toString(),
+                                         mWhereField.getText().toString()));
+                    }
+                    else
+                    {
+                        // Add item with barcode
+                        sThingRepository.addThing(
+                                new Thing(mWhatField.getText().toString(),
+                                          mWhereField.getText().toString(),
+                                          mBarcodeField.getText().toString())
+                        );
+                    }
                     mWhatField.setText("");
                     mWhereField.setText("");
                     updateUI();
@@ -207,14 +219,66 @@ public class TingleFragment extends Fragment {
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
         {
             mListButton = (Button) view.findViewById(R.id.item_list_button);
-            mListButton.setOnClickListener(new View.OnClickListener() {
+            mListButton.setOnClickListener(new View.OnClickListener()
+            {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v)
+                {
                     mCallBackToActivity.onShowItems(); // Callback to activity
                 }
             });
+
+            mScanButton = (Button) view.findViewById(R.id.barcode_scanner);
+            mScanButton.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+                    startActivityForResult(intent, 0);
+                }
+            });
+
+            mBarcodeField = (EditText) view.findViewById(R.id.barcode_text);
         }
 
+    }
+
+    // Todo code is duplicated in TingleFragment and ThingFragment, use BarcodeActivity instead and remove code duplication
+    /**
+     * This method is used to get the result back from scanning a barcode and save it in the barcode field.
+     * Called whenever Scanner exits, giving requestCode you started it with, the resultCode it returned, and any additional data from it.
+     * @param requestCode - integer request code to identify where result came from in startActivityForResult called when clicking Scan button.
+     * @param resultCode - integer result code returned by the child activity through its setResult()/
+     * @param data - intent with result data to the caller.
+     */
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (requestCode == 0)
+        {
+            if (resultCode == getActivity().RESULT_OK)
+            {
+                String contents = data.getStringExtra("SCAN_RESULT");
+                String format = data.getStringExtra("SCAN_RESULT_FORMAT");
+
+                mBarcodeField.setText(contents);
+
+                // Handle successful scan
+                Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.TOP, 25, 400);
+                toast.show();
+
+                Log.d("onActivityResult", "contents: " + contents);
+            }
+            else if (resultCode == getActivity().RESULT_CANCELED)
+            {   // Handle cancel
+                Toast toast = Toast.makeText(getContext(), "Scan was Cancelled!", Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.TOP, 25, 400);
+                toast.show();
+                Log.d("onActivityResult", "RESULT_CANCELED");
+            }
+        }
     }
 
     // Update content of UI after adding a new item, e.g. last added item.

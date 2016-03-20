@@ -47,6 +47,13 @@ tools:context=".Controller.Activities.TingleActivity">
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
 
+    <!-- Button so scan barcode from items -->
+    <Button
+        android:id="@+id/barcode_scanner"
+        android:text="@string/heading_scan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <!-- Thin horizontal line -->
     <View
     android:layout_width="match_parent"
@@ -91,6 +98,29 @@ tools:context=".Controller.Activities.TingleActivity">
         android:singleLine="true"
         android:hint="@string/where_hint"
         />
+
+    </LinearLayout>
+
+    <!-- Barcode scanner -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/barcode_thing"
+            />
+
+        <EditText
+            android:id="@+id/barcode_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:hint="@string/barcode_hint"
+            android:editable="false"
+            />
 
     </LinearLayout>
 

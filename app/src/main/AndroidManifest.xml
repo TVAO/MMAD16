@@ -28,6 +28,10 @@
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
+        <uses-permission android:name="android.permission.CAMERA"/>
+        <activity
+            android:name=".Controller.Activities.BarcodeActivity">
+        </activity>
     </application>
 
 </manifest>
