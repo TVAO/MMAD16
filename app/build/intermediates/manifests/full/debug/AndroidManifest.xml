@@ -57,6 +57,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Controller.Activities.ThingListActivity" />
         </activity>
+        <activity
+            android:name="tvao.mmad.itu.tingle.SettingsActivity"
+            android:label="SettingsActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name="tvao.mmad.itu.tingle.Controller.Activities.ThingListActivity" >
 
             <!-- <intent-filter> -->

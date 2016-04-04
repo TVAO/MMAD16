@@ -5,6 +5,8 @@ import android.util.Log;
 
 import java.io.IOException;
 
+import tvao.mmad.itu.tingle.Network.ProductFetcher;
+
 /**
  * Used to work with background threads using AsyncTask.AsyncTask class that creates a background thread and runs code in doInBackground on that thread.
  * This inner class override AsyncTask.doInBackground to get product data from Outpan website and log it.
@@ -24,7 +26,7 @@ public class FetchOutpanTask extends AsyncTask<String, Void, byte[]> {
         try
         {
             // Example: https://www.outpan.com/view_product.php?barcode=0076808501063
-            result = new tvao.mmad.itu.tingle.ProductFetcher().getUrlBytes("https://www.outpan.com/");
+            result = new ProductFetcher().getUrlBytes("https://www.outpan.com/");
 
             // https://api.outpan.com/v2/products/[barcode]/?apikey=[key]
             // result = new ProductFetcher().
@@ -36,7 +38,7 @@ public class FetchOutpanTask extends AsyncTask<String, Void, byte[]> {
             Log.e(TAG, "Failed to fetch URL: ", ioe);
         }
 
-        new tvao.mmad.itu.tingle.ProductFetcher().fetchProducts();
+        new ProductFetcher().fetchProducts();
 
         return result;
     }

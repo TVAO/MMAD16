@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:2:1-43:12
+ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:2:1-49:12
 	package
 		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:2:11-41
 		INJECTED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml
@@ -27,7 +27,7 @@ ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:10:5-7
 	android:name
 		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:10:22-76
 application
-ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:12:5-41:19
+ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:12:5-47:19
 MERGED from [com.journeyapps:zxing-android-embedded:3.2.0] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.journeyapps/zxing-android-embedded/3.2.0/AndroidManifest.xml:45:5-53:19
 MERGED from [com.android.support:appcompat-v7:23.2.0] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-v4:23.2.0] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:22:5-20
@@ -84,14 +84,30 @@ ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:28:13-
 		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:30:17-73
 	android:name
 		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:29:17-63
-activity#tvao.mmad.itu.tingle.Controller.Activities.ThingListActivity
+activity#tvao.mmad.itu.tingle.SettingsActivity
 ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:32:9-37:20
+	android:label
+		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:32:19-51
 	android:name
-		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:32:19-74
+		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:32:52-84
+intent-filter#android.intent.action.MANAGE_NETWORK_USAGE+android.intent.category.DEFAULT
+ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:33:13-36:29
+action#android.intent.action.MANAGE_NETWORK_USAGE
+ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:34:17-85
+	android:name
+		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:34:25-82
+category#android.intent.category.DEFAULT
+ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:35:17-76
+	android:name
+		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:35:27-73
+activity#tvao.mmad.itu.tingle.Controller.Activities.ThingListActivity
+ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:38:9-43:20
+	android:name
+		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:38:19-74
 activity#tvao.mmad.itu.tingle.Controller.Activities.BarcodeActivity
-ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:38:9-40:20
+ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:44:9-46:20
 	android:name
-		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:39:13-66
+		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:45:13-66
 uses-sdk
 INJECTED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.journeyapps:zxing-android-embedded:3.2.0] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.journeyapps/zxing-android-embedded/3.2.0/AndroidManifest.xml:19:5-43

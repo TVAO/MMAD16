@@ -1,9 +1,6 @@
 package tvao.mmad.itu.tingle.Controller.Fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -26,14 +23,11 @@ import com.bignerdranch.android.multiselector.ModalMultiSelectorCallback;
 import com.bignerdranch.android.multiselector.MultiSelector;
 import com.bignerdranch.android.multiselector.SwappingHolder;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Controller.Activities.ThingPagerActivity;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
-import tvao.mmad.itu.tingle.ProductFetcher;
 import tvao.mmad.itu.tingle.R;
 
 
