@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -19,11 +20,13 @@ import android.widget.Toast;
 
 import com.journeyapps.barcodescanner.CaptureActivity;
 
+import java.io.IOException;
 import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Controller.Activities.BarcodeActivity;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
+import tvao.mmad.itu.tingle.ProductFetcher;
 import tvao.mmad.itu.tingle.R;
 
 /**
@@ -33,6 +36,7 @@ import tvao.mmad.itu.tingle.R;
 public class TingleFragment extends Fragment {
 
     private static final String ARG_THING_ID = "thing_id"; // Fragment argument used by host activity
+    public static final String TAG = "Tingleragment";
 
     private Button mAddButton, mListButton, mSearchButton, mScanButton; // GUI variables
     private TextView mLastAdded, mWhatField, mWhereField;

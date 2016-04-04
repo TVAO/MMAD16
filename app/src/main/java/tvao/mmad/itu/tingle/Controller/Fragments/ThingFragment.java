@@ -2,6 +2,7 @@ package tvao.mmad.itu.tingle.Controller.Fragments;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Controller.Activities.ThingListActivity;
@@ -35,6 +37,8 @@ import tvao.mmad.itu.tingle.R;
 public class ThingFragment extends Fragment {
 
     public static final String EXTRA_THING_ID = "thingintent.THING_ID";
+    public static final String TAG = "ThingFragment";
+
     private static final String WHAT = "what";
     private static final String WHERE = "where";
     private static final String DESCRIPTION = "description";
@@ -160,7 +164,7 @@ public class ThingFragment extends Fragment {
 
                 mBarcodeField.setText(contents);
 
-                // Todo add content from JSON product lookup in ProductFetcher
+                // Todo add content from JSON product lookup in ProductFetcher or use FetchOutpanTask
 
                 // Handle successful scan
                 Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);

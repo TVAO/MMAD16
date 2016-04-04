@@ -29,6 +29,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Controller.Activities.ThingListActivity"/>
         </activity>
+        <activity android:label="SettingsActivity" android:name=".SettingsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Controller.Activities.ThingListActivity">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->

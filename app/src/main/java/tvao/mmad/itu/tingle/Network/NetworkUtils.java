@@ -24,6 +24,20 @@ public class NetworkUtils {
     }
 
     /**
+     * Help function used to check if network is "available".
+     * Should be used before any network operations used to fetch product data.
+     * Handles cases like flaky mobile networks, airplane mode, and restricted background data
+     * @return true if connection is available.
+     */
+    public boolean isOnline()
+    {
+        ConnectivityManager connMgr = (ConnectivityManager)
+                mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo(); // Get first available network or null
+        return (networkInfo != null && networkInfo.isConnected());
+    }
+
+    /**
      * Checking for all possible internet providers
      * **/
     public boolean isConnectingToInternet()
