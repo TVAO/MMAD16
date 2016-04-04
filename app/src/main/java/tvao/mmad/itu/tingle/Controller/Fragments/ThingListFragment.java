@@ -507,8 +507,8 @@ public class ThingListFragment extends Fragment {
                 result = new ProductFetcher().getUrlBytes("https://www.outpan.com/");
 
                 // https://api.outpan.com/v2/products/[barcode]/?apikey=[key]
-//                result = new ProductFetcher().
-//                        getUrlBytes("https://api.outpan.com/v2/products/" + params[0] + "/?apikey=[KEY]");
+                // result = new ProductFetcher().
+                // getUrlBytes("https://api.outpan.com/v2/products/" + params[0] + "/?apikey=[KEY]");
                 Log.i(TAG, "Fetched contents of URL: " + result);
             }
             catch (IOException ioe)
@@ -518,7 +518,6 @@ public class ThingListFragment extends Fragment {
 
             new ProductFetcher().fetchProducts();
 
-            //return null;
             return result;
         }
 

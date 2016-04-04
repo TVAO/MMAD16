@@ -18,11 +18,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Controller.Activities.ThingListActivity;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
+import tvao.mmad.itu.tingle.ProductFetcher;
 import tvao.mmad.itu.tingle.R;
 
 /**
@@ -156,6 +159,8 @@ public class ThingFragment extends Fragment {
                 String format = data.getStringExtra("SCAN_RESULT_FORMAT");
 
                 mBarcodeField.setText(contents);
+
+                // Todo add content from JSON product lookup in ProductFetcher
 
                 // Handle successful scan
                 Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
