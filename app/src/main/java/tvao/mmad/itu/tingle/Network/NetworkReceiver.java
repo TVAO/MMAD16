@@ -1,4 +1,4 @@
-package tvao.mmad.itu.tingle;
+package tvao.mmad.itu.tingle.Network;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
+import tvao.mmad.itu.tingle.R;
 
 /**
  * This class is used to register and unregister the NetworkReceiver within the main activity,

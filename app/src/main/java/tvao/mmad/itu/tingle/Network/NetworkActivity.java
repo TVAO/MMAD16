@@ -1,4 +1,4 @@
-package tvao.mmad.itu.tingle;
+package tvao.mmad.itu.tingle.Network;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,6 +8,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+
+import tvao.mmad.itu.tingle.FetchOutpanTask;
+import tvao.mmad.itu.tingle.Network.NetworkReceiver;
 
 /**
  * When the user changes preferences in the settings screen, it typically has consequences for the app's behavior.
@@ -47,10 +50,12 @@ public class NetworkActivity extends Activity {
     }
 
     @Override
-    public void onDestroy() {
+    public void onDestroy()
+    {
         super.onDestroy();
         // Unregisters BroadcastReceiver when app is destroyed.
-        if (receiver != null) {
+        if (receiver != null)
+        {
             this.unregisterReceiver(receiver);
         }
     }
@@ -59,7 +64,8 @@ public class NetworkActivity extends Activity {
     // pref settings allow it.
 
     @Override
-    public void onStart () {
+    public void onStart ()
+    {
         super.onStart();
 
         // Gets the user's network preference settings
@@ -71,7 +77,8 @@ public class NetworkActivity extends Activity {
 
         updateConnectedFlags();
 
-        if(refreshDisplay){
+        if(refreshDisplay)
+        {
             loadPage();
         }
     }
@@ -98,7 +105,8 @@ public class NetworkActivity extends Activity {
     // Uses AsyncTask subclass to download the XML feed from stackoverflow.com.
     public void loadPage()
     {
-        if (((sPref.equals(ANY)) && (wifiConnected || mobileConnected))
+        if (((sPref.equals(ANY)) && (wifiConnected
+                || mobileConnected))
                 || ((sPref.equals(WIFI)) && (wifiConnected)))
         {
             // AsyncTask subclass

@@ -1,4 +1,4 @@
-package tvao.mmad.itu.tingle;
+package tvao.mmad.itu.tingle.Network;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -7,6 +7,8 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
+
+import tvao.mmad.itu.tingle.R;
 
 /**
  * This class is used to create a robust network connection (connection detector).
@@ -63,8 +65,10 @@ public class NetworkUtils {
             {
                 NetworkInfo[] info = connectivityManager.getAllNetworkInfo();
                 if (info != null) {
-                    for (NetworkInfo anInfo : info) {
-                        if (anInfo.getState() == NetworkInfo.State.CONNECTED) {
+                    for (NetworkInfo anInfo : info)
+                    {
+                        if (anInfo.getState() == NetworkInfo.State.CONNECTED)
+                        {
                             Log.d("Network",
                                     "NETWORKNAME: " + anInfo.getTypeName());
                             return true;

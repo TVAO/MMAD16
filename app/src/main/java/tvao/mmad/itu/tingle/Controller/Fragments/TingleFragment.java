@@ -268,6 +268,8 @@ public class TingleFragment extends Fragment {
 
                 mBarcodeField.setText(contents);
 
+                // Todo add content from JSON product lookup in ProductFetcher or use FetchOutpanTask
+
                 // Handle successful scan
                 Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.TOP, 25, 400);

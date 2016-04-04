@@ -1,9 +1,8 @@
-package tvao.mmad.itu.tingle;
+package tvao.mmad.itu.tingle.Network;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
-
 import static android.content.SharedPreferences.*;
 
 /**
@@ -47,7 +46,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     // The main activity queries the PreferenceManager to get the latest settings.
 
     @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)
+    {
         // Sets refreshDisplay to true so that when the user returns to the main
         // activity, the display refreshes to reflect the new settings.
         NetworkActivity.refreshDisplay = true;

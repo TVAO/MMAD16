@@ -1,4 +1,4 @@
-package tvao.mmad.itu.tingle;
+package tvao.mmad.itu.tingle.Network;
 
 import android.net.Uri;
 import android.os.AsyncTask;
