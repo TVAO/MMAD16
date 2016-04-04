@@ -1,11 +1,9 @@
-package tvao.mmad.itu.tingle;
+package tvao.mmad.itu.tingle.Network;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
 import java.io.IOException;
-
-import tvao.mmad.itu.tingle.Network.ProductFetcher;
 
 /**
  * Used to work with background threads using AsyncTask.AsyncTask class that creates a background thread and runs code in doInBackground on that thread.
@@ -26,10 +24,10 @@ public class FetchOutpanTask extends AsyncTask<String, Void, byte[]> {
         try
         {
             // Example: https://www.outpan.com/view_product.php?barcode=0076808501063
-            result = new ProductFetcher().getUrlBytes("https://www.outpan.com/");
+            result = new ThingFetcher().getUrlBytes("https://www.outpan.com/");
 
             // https://api.outpan.com/v2/products/[barcode]/?apikey=[key]
-            // result = new ProductFetcher().
+            // result = new ThingFetcher().
             // getUrlBytes("https://api.outpan.com/v2/products/" + params[0] + "/?apikey=[KEY]");
             Log.i(TAG, "Fetched contents of URL: " + result);
         }
@@ -38,7 +36,7 @@ public class FetchOutpanTask extends AsyncTask<String, Void, byte[]> {
             Log.e(TAG, "Failed to fetch URL: ", ioe);
         }
 
-        new ProductFetcher().fetchProducts();
+        new ThingFetcher().fetchProducts();
 
         return result;
     }

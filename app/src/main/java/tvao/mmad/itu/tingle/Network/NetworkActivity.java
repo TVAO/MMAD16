@@ -9,9 +9,6 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 
-import tvao.mmad.itu.tingle.FetchOutpanTask;
-import tvao.mmad.itu.tingle.Network.NetworkReceiver;
-
 /**
  * When the user changes preferences in the settings screen, it typically has consequences for the app's behavior.
  * In this snippet, the app checks the preferences settings in onStart().

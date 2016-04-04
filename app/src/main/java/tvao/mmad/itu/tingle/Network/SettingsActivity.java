@@ -8,7 +8,7 @@ import static android.content.SharedPreferences.*;
 /**
  * SettingsActivity is a subclass of PreferenceActivity that displays a preferences screen.
  * The preference screen should let users specify whether to display attributes for an item
- * or whether to download/fetch product information for items using ProductFetcher.
+ * or whether to download/fetch product information for items using ThingFetcher.
  */
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
 

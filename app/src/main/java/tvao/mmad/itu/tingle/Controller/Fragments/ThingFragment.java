@@ -18,6 +18,7 @@ import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
+import tvao.mmad.itu.tingle.Network.ThingFetcher;
 import tvao.mmad.itu.tingle.R;
 
 /**
@@ -152,9 +153,12 @@ public class ThingFragment extends Fragment {
                 String contents = data.getStringExtra("SCAN_RESULT");
                 String format = data.getStringExtra("SCAN_RESULT_FORMAT");
 
-                mBarcodeField.setText(contents);
+                // Todo add content from JSON product lookup in ThingFetcher or use FetchOutpanTask
+                //mBarcodeField.setText(contents);
+                Thing scanItem = new ThingFetcher().fetchThing(contents);
+                mBarcodeField.setText(scanItem.getBarcode());
+                mWhatField.setText(scanItem.getWhat());
 
-                // Todo add content from JSON product lookup in ProductFetcher or use FetchOutpanTask
 
                 // Handle successful scan
                 Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);

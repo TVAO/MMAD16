@@ -1,7 +1,6 @@
 package tvao.mmad.itu.tingle.Network;
 
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -21,9 +20,9 @@ import tvao.mmad.itu.tingle.Model.Thing;
 /**
  * Handle networking in Tingle and is used to get product info from outpan.com.
  */
-public class ProductFetcher {
+public class ThingFetcher {
 
-    private static final String TAG = "ProductFetcher";
+    private static final String TAG = "ThingFetcher";
     protected static final String API_KEY = "dfcb9acf8be3478bd404abec2c193791";
 
     /**
@@ -93,6 +92,52 @@ public class ProductFetcher {
         }
     }
 
+    public Thing fetchThing(String barcode)
+    {
+        Thing thing = new Thing();
+
+        try
+        {
+            String url = Uri.parse("https://api.outpan.com/v2/products/" + barcode + "/?apikey=" + API_KEY).toString();
+//                    .buildUpon()
+//                    .appendQueryParameter("method", "flickr.photos.getRecent")
+//                    .appendQueryParameter("api_key", API_KEY)
+//                    .appendQueryParameter("format", "json")
+//                    .appendQueryParameter("nojsoncallback", "1")
+//                    .appendQueryParameter("extras", "url_s")
+               //     .build().toString();
+            String jsonString = getUrlString(url);
+            Log.i(TAG, "Received JSON: " + jsonString);
+            JSONObject jsonBody = new JSONObject(jsonString);
+            parseThing(thing, jsonBody);
+        }
+        catch (JSONException je)
+        {
+            Log.e(TAG, "Failed to parse JSON", je);
+        }
+        catch(IOException ioe)
+        {
+            Log.e(TAG, "Failed to fetch items", ioe);
+        }
+
+        return thing;
+    }
+
+    private void parseThing(Thing thing, JSONObject jsonBody)
+            throws IOException, JSONException
+    {
+        String barcode = jsonBody.getJSONObject("barcode").toString();
+        String name = jsonBody.getJSONObject("name").toString();
+
+        JSONArray attributes = jsonBody.getJSONArray("attributes"); // Multiple values in same object
+        String specificAttribute = jsonBody.getJSONObject("attributes").getString("manufacturer"); // One specific value
+
+        thing.setBarcode(barcode);
+        thing.setWhat(name);
+        //thing.setBarcode(jsonBody.getString("barcode"));
+        //thing.setWhat(jsonBody.getString("name"));
+    }
+
     public List<Thing> fetchProducts()
     {
         List<Thing> items = new ArrayList<>();
@@ -147,7 +192,5 @@ public class ProductFetcher {
             things.add(thing);
         }
     }
-
-
 
 }
