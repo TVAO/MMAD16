@@ -155,9 +155,9 @@ public class ThingFragment extends Fragment {
 
                 // Todo add content from JSON product lookup in ThingFetcher or use FetchOutpanTask
                 //mBarcodeField.setText(contents);
-                Thing scanItem = new ThingFetcher().fetchThing(contents);
-                mBarcodeField.setText(scanItem.getBarcode());
-                mWhatField.setText(scanItem.getWhat());
+                //Thing scanItem = new ThingFetcher().fetchThing(contents);
+                //mBarcodeField.setText(scanItem.getBarcode());
+                //mWhatField.setText(scanItem.getWhat());
 
 
                 // Handle successful scan
