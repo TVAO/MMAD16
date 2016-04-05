@@ -12,8 +12,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 import tvao.mmad.itu.tingle.Model.Thing;
 
@@ -117,7 +115,7 @@ public class ThingFetcher {
         }
         catch(IOException ioe)
         {
-            Log.e(TAG, "Failed to fetch items", ioe);
+            Log.e(TAG, "Failed to fetch item", ioe);
         }
 
         return thing;
@@ -138,59 +136,59 @@ public class ThingFetcher {
         //thing.setWhat(jsonBody.getString("name"));
     }
 
-    public List<Thing> fetchProducts()
-    {
-        List<Thing> items = new ArrayList<>();
-
-        try
-        {
-            String url = Uri.parse("https://api.flickr.com/services/rest/")
-                    .buildUpon()
-                    .appendQueryParameter("method", "flickr.photos.getRecent")
-                    .appendQueryParameter("api_key", API_KEY)
-                    .appendQueryParameter("format", "json")
-                    .appendQueryParameter("nojsoncallback", "1")
-                    .appendQueryParameter("extras", "url_s")
-                    .build().toString();
-            String jsonString = getUrlString(url);
-            Log.i(TAG, "Received JSON: " + jsonString);
-            JSONObject jsonBody = new JSONObject(jsonString);
-            parseProducts(items, jsonBody);
-        }
-        catch (JSONException je)
-        {
-            Log.e(TAG, "Failed to parse JSON", je);
-        }
-        catch(IOException ioe)
-        {
-            Log.e(TAG, "Failed to fetch items", ioe);
-        }
-
-        return items;
-    }
-
-    private void parseProducts(List<Thing> things, JSONObject jsonBody)
-            throws IOException, JSONException
-    {
-        JSONObject photosJsonObject = jsonBody.getJSONObject("images");
-        JSONArray photoJsonArray = photosJsonObject.getJSONArray("images");
-
-        for (int i = 0; i < photoJsonArray.length(); i++)
-        {
-            JSONObject photoJsonObject = photoJsonArray.getJSONObject(i);
-            Thing thing = new Thing();
-
-            thing.setBarcode(photoJsonObject.getString("barcode"));
-            thing.setWhat(photoJsonObject.getString("name"));
-
-            if (!photoJsonObject.has("url_s"))
-            {
-                continue;
-            }
-
-            //thing.setUrl(photoJsonObject.getString("url_s"));
-            things.add(thing);
-        }
-    }
+//    public List<Thing> fetchProducts()
+//    {
+//        List<Thing> items = new ArrayList<>();
+//
+//        try
+//        {
+//            String url = Uri.parse("https://api.flickr.com/services/rest/")
+//                    .buildUpon()
+//                    .appendQueryParameter("method", "flickr.photos.getRecent")
+//                    .appendQueryParameter("api_key", API_KEY)
+//                    .appendQueryParameter("format", "json")
+//                    .appendQueryParameter("nojsoncallback", "1")
+//                    .appendQueryParameter("extras", "url_s")
+//                    .build().toString();
+//            String jsonString = getUrlString(url);
+//            Log.i(TAG, "Received JSON: " + jsonString);
+//            JSONObject jsonBody = new JSONObject(jsonString);
+//            parseProducts(items, jsonBody);
+//        }
+//        catch (JSONException je)
+//        {
+//            Log.e(TAG, "Failed to parse JSON", je);
+//        }
+//        catch(IOException ioe)
+//        {
+//            Log.e(TAG, "Failed to fetch items", ioe);
+//        }
+//
+//        return items;
+//    }
+//
+//    private void parseProducts(List<Thing> things, JSONObject jsonBody)
+//            throws IOException, JSONException
+//    {
+//        JSONObject photosJsonObject = jsonBody.getJSONObject("images");
+//        JSONArray photoJsonArray = photosJsonObject.getJSONArray("images");
+//
+//        for (int i = 0; i < photoJsonArray.length(); i++)
+//        {
+//            JSONObject photoJsonObject = photoJsonArray.getJSONObject(i);
+//            Thing thing = new Thing();
+//
+//            thing.setBarcode(photoJsonObject.getString("barcode"));
+//            thing.setWhat(photoJsonObject.getString("name"));
+//
+//            if (!photoJsonObject.has("url_s"))
+//            {
+//                continue;
+//            }
+//
+//            //thing.setUrl(photoJsonObject.getString("url_s"));
+//            things.add(thing);
+//        }
+//    }
 
 }

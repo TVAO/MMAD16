@@ -30,7 +30,7 @@ import tvao.mmad.itu.tingle.R;
 public class TingleFragment extends Fragment {
 
     private static final String ARG_THING_ID = "thing_id"; // Fragment argument used by host activity
-    public static final String TAG = "Tingleragment";
+    public static final String TAG = "TingleFragment";
 
     private Button mAddButton, mListButton, mSearchButton, mScanButton; // GUI variables
     private TextView mLastAdded, mWhatField, mWhereField;
@@ -265,7 +265,7 @@ public class TingleFragment extends Fragment {
                 //Thing scanItem = new ThingFetcher().fetchThing(contents);
                 //mBarcodeField.setText(scanItem.getBarcode());
                 //mWhatField.setText(scanItem.getWhat());
-
+                //Thing scanItem = new FetchOutpanTask().execute(contents); // Todo FetchOutpanTask vs ThingFetcher?
 
                 // Handle successful scan
                 Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);

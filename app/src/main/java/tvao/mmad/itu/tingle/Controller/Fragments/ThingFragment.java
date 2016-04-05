@@ -18,7 +18,7 @@ import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
-import tvao.mmad.itu.tingle.Network.ThingFetcher;
+import tvao.mmad.itu.tingle.Network.FetchOutpanTask;
 import tvao.mmad.itu.tingle.R;
 
 /**
@@ -135,6 +135,8 @@ public class ThingFragment extends Fragment {
         return v;
     }
 
+    // Todo onActivityResult is duplicated in ThingFragment and TingleFragment
+
     /**
      * This method is used to get the result back from scanning a barcode and save it in the barcode field.
      * Called whenever Scanner exits, giving requestCode you started it with, the resultCode it returned, and any additional data from it.
@@ -143,7 +145,6 @@ public class ThingFragment extends Fragment {
      * @param data -  intent which can return result data to caller attached to Intent "extra"
      */
     @Override
-    @Deprecated
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         if (requestCode == 0)
@@ -154,10 +155,11 @@ public class ThingFragment extends Fragment {
                 String format = data.getStringExtra("SCAN_RESULT_FORMAT");
 
                 // Todo add content from JSON product lookup in ThingFetcher or use FetchOutpanTask
-                //mBarcodeField.setText(contents);
+                mBarcodeField.setText(contents);
                 //Thing scanItem = new ThingFetcher().fetchThing(contents);
                 //mBarcodeField.setText(scanItem.getBarcode());
                 //mWhatField.setText(scanItem.getWhat());
+                //Thing scanItem = new FetchOutpanTask().execute(contents); // Todo FetchOutpanTask vs ThingFetcher?
 
 
                 // Handle successful scan

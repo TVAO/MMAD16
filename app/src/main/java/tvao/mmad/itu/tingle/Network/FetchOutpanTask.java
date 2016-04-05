@@ -36,15 +36,15 @@ public class FetchOutpanTask extends AsyncTask<String, Void, byte[]> {
             Log.e(TAG, "Failed to fetch URL: ", ioe);
         }
 
-        new ThingFetcher().fetchProducts();
+        new ThingFetcher().fetchThing(params[0]); // Barcode param
 
         return result;
     }
 
     @Override
-    protected void onPostExecute(byte[] products)
+    protected void onPostExecute(byte[] products) // Todo post execute something ?
     {
-        //updateUI(); // Todo post execute something ?
+        // Do something
     }
 
 //        @Override
@@ -53,4 +53,5 @@ public class FetchOutpanTask extends AsyncTask<String, Void, byte[]> {
 //            mAdapter.setThings(products);
 //            updateUI();
 //        }
+
 }
