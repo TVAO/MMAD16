@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Model.Thing;
@@ -45,6 +46,7 @@ public class ThingDetailFragment extends Fragment {
 
     private ImageButton mPhotoButton;
     private ImageView mImageView;
+    private File mPhotoFile;
 
     /**
      * This method is used to instantiate a new Fragment used to display a detailed screen.
@@ -77,6 +79,7 @@ public class ThingDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         UUID thingId = (UUID) getArguments().getSerializable(EXTRA_THING_ID);
         mThing = ThingRepository.get(getActivity()).getThing(thingId);
+        mPhotoFile = ThingRepository.get(getContext()).getPhotoFile(mThing);
         setHasOptionsMenu(true);
     }
 
