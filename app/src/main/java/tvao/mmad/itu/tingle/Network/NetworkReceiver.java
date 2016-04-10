@@ -16,6 +16,7 @@ import tvao.mmad.itu.tingle.R;
  * The upshot is that the next time the user returns to the app,
  * the app will only download the latest feed and update the display if NetworkActivity.refreshDisplay is set to true.
  */
+@Deprecated
 public class NetworkReceiver extends BroadcastReceiver {
 
     @Override

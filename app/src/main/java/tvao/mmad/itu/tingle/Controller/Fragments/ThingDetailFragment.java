@@ -1,5 +1,6 @@
 package tvao.mmad.itu.tingle.Controller.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import java.util.UUID;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.Network.FetchOutpanTask;
+import tvao.mmad.itu.tingle.Network.NetworkUtils;
 import tvao.mmad.itu.tingle.R;
 
 /**
@@ -154,27 +156,36 @@ public class ThingDetailFragment extends Fragment {
                 String contents = data.getStringExtra("SCAN_RESULT");
                 String format = data.getStringExtra("SCAN_RESULT_FORMAT");
 
-                FetchOutpanTask lookupBarcodeTask = new FetchOutpanTask(new FetchOutpanTask.AsyncResponse()
-                {
-                    @Override
-                    public void processFinish(Thing output)
-                    {
-                        // Set barcode info based on lookup result from OnPostExecute() in AsyncTask
-                        mBarcodeField.setText(output.getBarcode());
-                        mWhatField.setText(output.getWhat());
-                        Log.d("Lookup", "barcode: " + output.getBarcode());
-                        Log.d("Lookup", "what: " + output.getWhat());
-                    }
-                });
-
-                lookupBarcodeTask.execute(contents);
-
                 // Handle successful scan
                 Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.TOP, 25, 400);
                 toast.show();
 
                 Log.d("onActivityResult", "contents: " + contents);
+
+                // Lookup item from barcode if user has connection
+                if(new NetworkUtils(getContext()).isOnline())
+                {
+                    FetchOutpanTask lookupBarcodeTask = new FetchOutpanTask(new FetchOutpanTask.AsyncResponse()
+                    {
+                        @Override
+                        public void processFinish(Thing output)
+                        {
+                            // Set barcode info based on lookup result from OnPostExecute() in AsyncTask
+                            mBarcodeField.setText(output.getBarcode());
+                            mWhatField.setText(output.getWhat());
+                            Log.d("Lookup", "barcode: " + output.getBarcode());
+                            Log.d("Lookup", "what: " + output.getWhat());
+                            // Todo could just add Thing directly to items with name, barcode and optionally attributed in new field
+                        }
+                    });
+
+                    lookupBarcodeTask.execute(contents);
+                }
+                else
+                {
+                    makeToast("You are not connected to a network... Please try again.");
+                }
             }
             else if (resultCode == getActivity().RESULT_CANCELED)
             {   // Handle cancel
@@ -185,6 +196,13 @@ public class ThingDetailFragment extends Fragment {
             }
         }
 
+    }
+
+    // Todo remove duplicated in ThingDetailFragment and TingleMainFragment
+    private void makeToast(String string)
+    {
+        Context context = getActivity().getApplicationContext();
+        Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
     }
 
     /**

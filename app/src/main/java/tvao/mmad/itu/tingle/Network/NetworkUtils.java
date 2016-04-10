@@ -16,9 +16,7 @@ import tvao.mmad.itu.tingle.R;
  */
 public class NetworkUtils {
 
-    private static String DEBUG_TAG = "";
-
-    private Context mContext;
+    private static Context mContext;
 
     public NetworkUtils(Context context)
     {
@@ -31,7 +29,7 @@ public class NetworkUtils {
      * Handles cases like flaky mobile networks, airplane mode, and restricted background data
      * @return true if connection is available.
      */
-    public boolean isOnline()
+    public static boolean isOnline()
     {
         ConnectivityManager connMgr = (ConnectivityManager)
                 mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
