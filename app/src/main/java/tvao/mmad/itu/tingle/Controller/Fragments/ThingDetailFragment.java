@@ -42,7 +42,7 @@ public class ThingDetailFragment extends Fragment {
     public static final String EXTRA_THING_ID = "thingintent.THING_ID";
     public static final String TAG = "ThingDetailFragment";
 
-    private static final int REQUEST_PHOTO= 0;
+    private static final int REQUEST_PHOTO= 2;
 
     private Thing mThing;
     private Button mAddButton, mScanButton;
@@ -151,20 +151,17 @@ public class ThingDetailFragment extends Fragment {
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
         {
             mPhotoButton = (ImageButton) v.findViewById(R.id.thing_camera);
-            mPhotoView = (ImageView) v.findViewById(R.id.thing_photo);
-            updatePhotoView(); // Load image into image view
-
 
             // Intent used to fire up camera application using action "ACTION_IMAGE_CAPTURE"
             final Intent captureImage = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
             // Check if camera is available, else disable camera button
             PackageManager packageManager = getActivity().getPackageManager();
-            if (packageManager.resolveActivity(captureImage,
-                    PackageManager.MATCH_DEFAULT_ONLY) == null)
-            {
-                mPhotoButton.setEnabled(false);
-            }
+//            if (packageManager.resolveActivity(captureImage,
+//                    PackageManager.MATCH_DEFAULT_ONLY) == null)
+//            {
+//                mPhotoButton.setEnabled(false);
+//            }
 
             boolean canTakePhoto = mPhotoFile != null &&
                     captureImage.resolveActivity(packageManager) != null;
@@ -182,14 +179,17 @@ public class ThingDetailFragment extends Fragment {
                 public void onClick(View v)
                 {
                     // Check for camera permissions at runtime before starting camera intent
-                    if(!hasPermissionInManifest(getContext(), android.Manifest.permission.CAMERA.toString()))
-                    {
-                        requestPermissions(new String[]{android.Manifest.permission.CAMERA},
-                                REQUEST_PHOTO);
-                    }
-                    startActivityForResult(captureImage, REQUEST_PHOTO);
+//                    if(!hasPermissionInManifest(getContext(), android.Manifest.permission.CAMERA.toString()))
+//                    {
+//                        requestPermissions(new String[]{android.Manifest.permission.CAMERA},
+//                                REQUEST_PHOTO);
+//                    }
+                    startActivityForResult(captureImage, REQUEST_PHOTO); // Todo get SecurityException due to permission issue ???
                 }
             });
+
+            mPhotoView = (ImageView) v.findViewById(R.id.thing_photo);
+            updatePhotoView(); // Load image into image view
 
         }
 
