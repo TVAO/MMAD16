@@ -1,8 +1,6 @@
 package tvao.mmad.itu.tingle.Controller.Fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -26,7 +24,6 @@ import com.bignerdranch.android.multiselector.MultiSelector;
 import com.bignerdranch.android.multiselector.SwappingHolder;
 
 import java.util.List;
-import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Controller.Activities.ThingPagerActivity;
 import tvao.mmad.itu.tingle.Model.Thing;
@@ -103,7 +100,7 @@ public class ThingListFragment extends Fragment {
 
     // Todo consider removing this and implemented code in TingleActivity
     /**
-     * This interface allows TingleFragment to communicate to host TingleActivity.
+     * This interface allows TingleMainFragment to communicate to host TingleActivity.
      * Interface is encapsulated in fragment to avoid use in other activities.
      * Interface is implemented by host activity determining what happens upon triggering the listener.
      */

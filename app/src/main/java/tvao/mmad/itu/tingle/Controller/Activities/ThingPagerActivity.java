@@ -7,25 +7,19 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 
 import java.util.List;
 import java.util.UUID;
 
-import tvao.mmad.itu.tingle.Controller.Fragments.ThingFragment;
-import tvao.mmad.itu.tingle.Controller.Fragments.TingleFragment;
+import tvao.mmad.itu.tingle.Controller.Fragments.ThingDetailFragment;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.R;
-
-import static tvao.mmad.itu.tingle.Controller.Fragments.TingleFragment.*;
 
 /**
  * ViewPager allows users to navigate between list items by swiping across the screen,
@@ -75,7 +69,7 @@ public class ThingPagerActivity extends AppCompatActivity {
             public Fragment getItem(int position)
             {
                 Thing thing = mThings.get(position);
-                return ThingFragment.newInstance(thing.getId());
+                return ThingDetailFragment.newInstance(thing.getId());
             }
 
             @Override

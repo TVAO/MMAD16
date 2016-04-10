@@ -8,7 +8,14 @@
         android:minSdkVersion="16"
         android:targetSdkVersion="23" />
 
-    <uses-permission android:name="android.permission.CAMERA" /> <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
+    <!-- Dialogue shown to user about below permissions when downloading app -->
+    <!-- Camera is used to register bar code -->
+    <!-- Internet and access is used for network operations -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -50,6 +57,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Controller.Activities.ThingListActivity" />
         </activity>
+        <activity
+            android:name="tvao.mmad.itu.tingle.SettingsActivity"
+            android:label="SettingsActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name="tvao.mmad.itu.tingle.Controller.Activities.ThingListActivity" >
 
             <!-- <intent-filter> -->
@@ -57,9 +73,6 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-
-        <uses-permission android:name="android.permission.CAMERA" />
-
         <activity android:name="tvao.mmad.itu.tingle.Controller.Activities.BarcodeActivity" >
         </activity>
         <activity

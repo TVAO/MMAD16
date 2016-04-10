@@ -1,12 +1,10 @@
 package tvao.mmad.itu.tingle.Controller.Fragments;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -15,23 +13,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.UUID;
 
-import tvao.mmad.itu.tingle.Controller.Activities.ThingListActivity;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
+import tvao.mmad.itu.tingle.Network.FetchOutpanTask;
+import tvao.mmad.itu.tingle.Network.NetworkUtils;
 import tvao.mmad.itu.tingle.R;
 
 /**
  * This class represents the fragment of a detailed page for a given item.
- * The TingleFragment is hosted by the activity TinglePagerActivity.
+ * The TingleMainFragment is hosted by the activity TinglePagerActivity.
  */
-public class ThingFragment extends Fragment {
+public class ThingDetailFragment extends Fragment {
 
     public static final String EXTRA_THING_ID = "thingintent.THING_ID";
+    public static final String TAG = "ThingDetailFragment";
+
     private static final String WHAT = "what";
     private static final String WHERE = "where";
     private static final String DESCRIPTION = "description";
@@ -50,12 +50,12 @@ public class ThingFragment extends Fragment {
      * @param thingId - id related to thing to be shown in activity.
      * @return - new fragment with thing details.
      */
-    public static ThingFragment newInstance(UUID thingId)
+    public static ThingDetailFragment newInstance(UUID thingId)
     {
         Bundle args = new Bundle();
         args.putSerializable(EXTRA_THING_ID, thingId); // Fragment argument
 
-        ThingFragment fragment = new ThingFragment();
+        ThingDetailFragment fragment = new ThingDetailFragment();
         fragment.setArguments(args);
 
         return fragment;
@@ -137,6 +137,8 @@ public class ThingFragment extends Fragment {
         return v;
     }
 
+    // Todo onActivityResult is duplicated in ThingDetailFragment and TingleMainFragment
+
     /**
      * This method is used to get the result back from scanning a barcode and save it in the barcode field.
      * Called whenever Scanner exits, giving requestCode you started it with, the resultCode it returned, and any additional data from it.
@@ -145,7 +147,6 @@ public class ThingFragment extends Fragment {
      * @param data -  intent which can return result data to caller attached to Intent "extra"
      */
     @Override
-    @Deprecated
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         if (requestCode == 0)
@@ -155,14 +156,36 @@ public class ThingFragment extends Fragment {
                 String contents = data.getStringExtra("SCAN_RESULT");
                 String format = data.getStringExtra("SCAN_RESULT_FORMAT");
 
-                mBarcodeField.setText(contents);
-
                 // Handle successful scan
                 Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.TOP, 25, 400);
                 toast.show();
 
                 Log.d("onActivityResult", "contents: " + contents);
+
+                // Lookup item from barcode if user has connection
+                if(new NetworkUtils(getContext()).isOnline())
+                {
+                    FetchOutpanTask lookupBarcodeTask = new FetchOutpanTask(new FetchOutpanTask.AsyncResponse()
+                    {
+                        @Override
+                        public void processFinish(Thing output)
+                        {
+                            // Set barcode info based on lookup result from OnPostExecute() in AsyncTask
+                            mBarcodeField.setText(output.getBarcode());
+                            mWhatField.setText(output.getWhat());
+                            Log.d("Lookup", "barcode: " + output.getBarcode());
+                            Log.d("Lookup", "what: " + output.getWhat());
+                            // Todo could just add Thing directly to items with name, barcode and optionally attributed in new field
+                        }
+                    });
+
+                    lookupBarcodeTask.execute(contents);
+                }
+                else
+                {
+                    makeToast("You are not connected to a network... Please try again.");
+                }
             }
             else if (resultCode == getActivity().RESULT_CANCELED)
             {   // Handle cancel
@@ -173,6 +196,13 @@ public class ThingFragment extends Fragment {
             }
         }
 
+    }
+
+    // Todo remove duplicated in ThingDetailFragment and TingleMainFragment
+    private void makeToast(String string)
+    {
+        Context context = getActivity().getApplicationContext();
+        Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
     }
 
     /**

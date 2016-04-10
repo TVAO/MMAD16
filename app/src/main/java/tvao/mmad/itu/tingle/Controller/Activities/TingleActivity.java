@@ -7,15 +7,15 @@ import android.support.v4.app.FragmentManager;
 
 import tvao.mmad.itu.tingle.Controller.Fragments.ThingListFragment;
 import tvao.mmad.itu.tingle.Controller.Fragments.ThingListFragment.onBackPressedListener;
-import tvao.mmad.itu.tingle.Controller.Fragments.TingleFragment;
-import tvao.mmad.itu.tingle.Controller.Fragments.TingleFragment.eventListener;
+import tvao.mmad.itu.tingle.Controller.Fragments.TingleMainFragment;
+import tvao.mmad.itu.tingle.Controller.Fragments.TingleMainFragment.eventListener;
 import tvao.mmad.itu.tingle.Controller.Helpers.SingleFragmentActivity;
 import tvao.mmad.itu.tingle.R;
 
 
 /**
  * This class represents the main application screen that the user can interact with.
- * The class uses the TingleFragment and ThingListFragment to add, removeAt and show items.
+ * The class uses the TingleMainFragment and ThingListFragment to add, removeAt and show items.
  * The activity communicates with fragments by implementing listeners on them.
  */
 public class TingleActivity extends SingleFragmentActivity implements onBackPressedListener, eventListener {
@@ -26,7 +26,7 @@ public class TingleActivity extends SingleFragmentActivity implements onBackPres
     @Override
     public void onBackPressed()
     {
-        changeFragment(new TingleFragment());
+        changeFragment(new TingleMainFragment());
     }
 
     /**
@@ -51,7 +51,7 @@ public class TingleActivity extends SingleFragmentActivity implements onBackPres
     @Override
     protected Fragment createFragment()
     {
-        return new TingleFragment();
+        return new TingleMainFragment();
     }
 
     @Override
@@ -79,7 +79,7 @@ public class TingleActivity extends SingleFragmentActivity implements onBackPres
         FragmentManager fragmentManager = getSupportFragmentManager();
         //Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container_left);
 
-            Fragment fragment = new TingleFragment();
+            Fragment fragment = new TingleMainFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.fragment_container_left, fragment) // Replace current fragment instead of new fragment each time
                     .commit();
@@ -90,7 +90,7 @@ public class TingleActivity extends SingleFragmentActivity implements onBackPres
 
         {
             FragmentManager fragmentManager = getSupportFragmentManager();
-            Fragment tingleFragment = new TingleFragment();
+            Fragment tingleFragment = new TingleMainFragment();
             Fragment listFragment = new ThingListFragment();
 
 

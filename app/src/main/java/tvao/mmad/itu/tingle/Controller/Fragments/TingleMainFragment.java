@@ -16,23 +16,22 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.journeyapps.barcodescanner.CaptureActivity;
-
 import java.util.UUID;
 
-import tvao.mmad.itu.tingle.Controller.Activities.BarcodeActivity;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
+import tvao.mmad.itu.tingle.Network.FetchOutpanTask;
+import tvao.mmad.itu.tingle.Network.NetworkUtils;
 import tvao.mmad.itu.tingle.R;
 
 /**
  * This class represents the fragment of main page.
- * The TingleFragment is hosted by the activity TingleActivity.
+ * The TingleMainFragment is hosted by the activity TingleActivity.
  */
-public class TingleFragment extends Fragment {
+public class TingleMainFragment extends Fragment {
 
     private static final String ARG_THING_ID = "thing_id"; // Fragment argument used by host activity
+    public static final String TAG = "TingleMainFragment";
 
     private Button mAddButton, mListButton, mSearchButton, mScanButton; // GUI variables
     private TextView mLastAdded, mWhatField, mWhereField;
@@ -41,7 +40,7 @@ public class TingleFragment extends Fragment {
     private eventListener mCallBackToActivity; // Used to call host activity TingleActivity
 
     /**
-     * This interface allows TingleFragment to communicate to host TingleActivity.
+     * This interface allows TingleMainFragment to communicate to host TingleActivity.
      * Interface is encapsulated in fragment to avoid use in other activities.
      * Interface is implemented by host activity determining what happens upon triggering the listener.
      */
@@ -76,16 +75,16 @@ public class TingleFragment extends Fragment {
     }
 
     /**
-     * Attach fragment argument with thing id used by host activity to get TingleFragment with specific Thing id
+     * Attach fragment argument with thing id used by host activity to get TingleMainFragment with specific Thing id
      * Creates an arguments bundle, creates a fragment instance, and then attaches the arguments to the fragment.
      * @param thingId - id of Thing to be displayed in fragment
      * @return - fragment displaying thing
      */
-    public static TingleFragment newInstance(UUID thingId) // Todo use in TingleActivity
+    public static TingleMainFragment newInstance(UUID thingId) // Todo use in TingleActivity
     {
         Bundle args = new Bundle();
         args.putSerializable(ARG_THING_ID, thingId);
-        TingleFragment fragment = new TingleFragment();
+        TingleMainFragment fragment = new TingleMainFragment();
         fragment.setArguments(args);
 
         return fragment;
@@ -130,7 +129,7 @@ public class TingleFragment extends Fragment {
      * @param item - item to search for
      * @return - where item is located
      */
-    public String searchItems(String item)
+    public String searchItems(String item) // Todo replace with private search class using AsyncTask
     {
         String searchItem = item.toLowerCase().trim();
         String result = null;
@@ -244,7 +243,7 @@ public class TingleFragment extends Fragment {
 
     }
 
-    // Todo code is duplicated in TingleFragment and ThingFragment, use BarcodeActivity instead and remove code duplication
+    // Todo code is duplicated in TingleMainFragment and ThingDetailFragment, use BarcodeActivity instead and remove code duplication
     /**
      * This method is used to get the result back from scanning a barcode and save it in the barcode field.
      * Called whenever Scanner exits, giving requestCode you started it with, the resultCode it returned, and any additional data from it.
@@ -262,14 +261,38 @@ public class TingleFragment extends Fragment {
                 String contents = data.getStringExtra("SCAN_RESULT");
                 String format = data.getStringExtra("SCAN_RESULT_FORMAT");
 
-                mBarcodeField.setText(contents);
-
                 // Handle successful scan
                 Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.TOP, 25, 400);
                 toast.show();
 
                 Log.d("onActivityResult", "contents: " + contents);
+
+                // Lookup item from barcode if user has connection
+                if(new NetworkUtils(getContext()).isOnline())
+                {
+                    FetchOutpanTask lookupBarcodeTask = new FetchOutpanTask(new FetchOutpanTask.AsyncResponse()
+                    {
+                        @Override
+                        public void processFinish(Thing output)
+                        {
+                            // Set barcode info based on lookup result from OnPostExecute() in AsyncTask
+                            mBarcodeField.setText(output.getBarcode());
+                            mWhatField.setText(output.getWhat());
+                            Log.d("Lookup", "barcode: " + output.getBarcode());
+                            Log.d("Lookup", "what: " + output.getWhat());
+                            // Todo could just add Thing directly to items with name, barcode and optionally attributed in new field
+                        }
+                    });
+
+                    lookupBarcodeTask.execute(contents);
+                }
+                else
+                {
+                    makeToast("You are not connected to a network... Please try again.");
+                }
+
+
             }
             else if (resultCode == getActivity().RESULT_CANCELED)
             {   // Handle cancel
@@ -298,5 +321,17 @@ public class TingleFragment extends Fragment {
         Context context = getActivity().getApplicationContext();
         Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
     }
+
+//    // Class used to run barcode lookup on network in separate threads
+//    private class FetchOutpanTask extends AsyncTask<String, Void, Thing>
+//    {
+//
+//
+//        @Override
+//        protected Thing doInBackground(String... params) {
+//            return null;
+//        }
+//
+//    }
 
 }

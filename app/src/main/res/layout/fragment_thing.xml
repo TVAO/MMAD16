@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- This layout is used by TingleFragment to show a detailed description of the item. -->
+<!-- This layout is used by TingleMainFragment to show a detailed description of the item. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
