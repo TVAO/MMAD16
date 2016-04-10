@@ -18,17 +18,16 @@ import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
-import tvao.mmad.itu.tingle.Network.FetchOutpanTask;
 import tvao.mmad.itu.tingle.R;
 
 /**
  * This class represents the fragment of a detailed page for a given item.
- * The TingleFragment is hosted by the activity TinglePagerActivity.
+ * The TingleMainFragment is hosted by the activity TinglePagerActivity.
  */
-public class ThingFragment extends Fragment {
+public class ThingDetailFragment extends Fragment {
 
     public static final String EXTRA_THING_ID = "thingintent.THING_ID";
-    public static final String TAG = "ThingFragment";
+    public static final String TAG = "ThingDetailFragment";
 
     private static final String WHAT = "what";
     private static final String WHERE = "where";
@@ -48,12 +47,12 @@ public class ThingFragment extends Fragment {
      * @param thingId - id related to thing to be shown in activity.
      * @return - new fragment with thing details.
      */
-    public static ThingFragment newInstance(UUID thingId)
+    public static ThingDetailFragment newInstance(UUID thingId)
     {
         Bundle args = new Bundle();
         args.putSerializable(EXTRA_THING_ID, thingId); // Fragment argument
 
-        ThingFragment fragment = new ThingFragment();
+        ThingDetailFragment fragment = new ThingDetailFragment();
         fragment.setArguments(args);
 
         return fragment;
@@ -135,7 +134,7 @@ public class ThingFragment extends Fragment {
         return v;
     }
 
-    // Todo onActivityResult is duplicated in ThingFragment and TingleFragment
+    // Todo onActivityResult is duplicated in ThingDetailFragment and TingleMainFragment
 
     /**
      * This method is used to get the result back from scanning a barcode and save it in the barcode field.

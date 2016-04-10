@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Landscape container used to make space for two fragments TingleFragment and ThingListFragment hosted by Tingle Activity in main app -->
+<!-- Landscape container used to make space for two fragments TingleMainFragment and ThingListFragment hosted by Tingle Activity in main app -->
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -10,7 +10,7 @@
     android:orientation="horizontal"
     tools:context=".Controller.Activities.TingleActivity">
 
-    <!-- Container used to make space for TingleFragment hosted by TingleActivity -->
+    <!-- Container used to make space for TingleMainFragment hosted by TingleActivity -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:id="@+id/fragment_container_left"
              android:layout_width="match_parent"

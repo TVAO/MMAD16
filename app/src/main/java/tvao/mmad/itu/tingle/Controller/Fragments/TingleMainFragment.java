@@ -20,17 +20,16 @@ import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
-import tvao.mmad.itu.tingle.Network.ThingFetcher;
 import tvao.mmad.itu.tingle.R;
 
 /**
  * This class represents the fragment of main page.
- * The TingleFragment is hosted by the activity TingleActivity.
+ * The TingleMainFragment is hosted by the activity TingleActivity.
  */
-public class TingleFragment extends Fragment {
+public class TingleMainFragment extends Fragment {
 
     private static final String ARG_THING_ID = "thing_id"; // Fragment argument used by host activity
-    public static final String TAG = "TingleFragment";
+    public static final String TAG = "TingleMainFragment";
 
     private Button mAddButton, mListButton, mSearchButton, mScanButton; // GUI variables
     private TextView mLastAdded, mWhatField, mWhereField;
@@ -39,7 +38,7 @@ public class TingleFragment extends Fragment {
     private eventListener mCallBackToActivity; // Used to call host activity TingleActivity
 
     /**
-     * This interface allows TingleFragment to communicate to host TingleActivity.
+     * This interface allows TingleMainFragment to communicate to host TingleActivity.
      * Interface is encapsulated in fragment to avoid use in other activities.
      * Interface is implemented by host activity determining what happens upon triggering the listener.
      */
@@ -74,16 +73,16 @@ public class TingleFragment extends Fragment {
     }
 
     /**
-     * Attach fragment argument with thing id used by host activity to get TingleFragment with specific Thing id
+     * Attach fragment argument with thing id used by host activity to get TingleMainFragment with specific Thing id
      * Creates an arguments bundle, creates a fragment instance, and then attaches the arguments to the fragment.
      * @param thingId - id of Thing to be displayed in fragment
      * @return - fragment displaying thing
      */
-    public static TingleFragment newInstance(UUID thingId) // Todo use in TingleActivity
+    public static TingleMainFragment newInstance(UUID thingId) // Todo use in TingleActivity
     {
         Bundle args = new Bundle();
         args.putSerializable(ARG_THING_ID, thingId);
-        TingleFragment fragment = new TingleFragment();
+        TingleMainFragment fragment = new TingleMainFragment();
         fragment.setArguments(args);
 
         return fragment;
@@ -242,7 +241,7 @@ public class TingleFragment extends Fragment {
 
     }
 
-    // Todo code is duplicated in TingleFragment and ThingFragment, use BarcodeActivity instead and remove code duplication
+    // Todo code is duplicated in TingleMainFragment and ThingDetailFragment, use BarcodeActivity instead and remove code duplication
     /**
      * This method is used to get the result back from scanning a barcode and save it in the barcode field.
      * Called whenever Scanner exits, giving requestCode you started it with, the resultCode it returned, and any additional data from it.

@@ -100,7 +100,7 @@ public class ThingListFragment extends Fragment {
 
     // Todo consider removing this and implemented code in TingleActivity
     /**
-     * This interface allows TingleFragment to communicate to host TingleActivity.
+     * This interface allows TingleMainFragment to communicate to host TingleActivity.
      * Interface is encapsulated in fragment to avoid use in other activities.
      * Interface is implemented by host activity determining what happens upon triggering the listener.
      */
