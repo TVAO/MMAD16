@@ -10,6 +10,7 @@ import static android.content.SharedPreferences.*;
  * The preference screen should let users specify whether to display attributes for an item
  * or whether to download/fetch product information for items using ThingFetcher.
  */
+@Deprecated
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
 
     @Override
