@@ -1,7 +1,9 @@
 package tvao.mmad.itu.tingle.Controller.Helpers;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Point;
 
 /**
  * This class is used to scale and display bitmaps from which photos are loaded into.
@@ -50,5 +52,20 @@ public class PictureUtils {
         // Read in and create final bitmap
         return BitmapFactory.decodeFile(path, options);
     }
+
+    /**
+     * Scale bitmap for particular activty.
+     * @param path - path of file in filesystem.
+     * @param activity - activity to scale photo in.
+     * @return scaled bitmap.
+     */
+    public static Bitmap getScaledBitmap(String path, Activity activity)
+    {
+        Point size = new Point();
+        activity.getWindowManager().getDefaultDisplay()
+                .getSize(size);
+        return getScaledBitmap(path, size.x, size.y);
+    }
+
 
 }

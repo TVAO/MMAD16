@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -24,8 +25,8 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.util.UUID;
-import java.util.jar.Manifest;
 
+import tvao.mmad.itu.tingle.Controller.Helpers.PictureUtils;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.Network.FetchOutpanTask;
@@ -48,7 +49,7 @@ public class ThingDetailFragment extends Fragment {
     private EditText mWhatField, mWhereField, mBarcodeField;
 
     private ImageButton mPhotoButton;
-    private ImageView mImageView;
+    private ImageView mPhotoView;
     private File mPhotoFile;
 
     /**
@@ -150,7 +151,8 @@ public class ThingDetailFragment extends Fragment {
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
         {
             mPhotoButton = (ImageButton) v.findViewById(R.id.thing_camera);
-            mImageView = (ImageView) v.findViewById(R.id.thing_photo);
+            mPhotoView = (ImageView) v.findViewById(R.id.thing_photo);
+            updatePhotoView(); // Load image into image view
 
 
             // Intent used to fire up camera application using action "ACTION_IMAGE_CAPTURE"
@@ -252,6 +254,10 @@ public class ThingDetailFragment extends Fragment {
                 Log.d("onActivityResult", "RESULT_CANCELED");
             }
         }
+        else if(requestCode == REQUEST_PHOTO)
+        {
+            updatePhotoView(); // Show bitmap photo in ImageView
+        }
 
     }
 
@@ -313,6 +319,19 @@ public class ThingDetailFragment extends Fragment {
             e.printStackTrace();
         }
         return false;
+    }
+
+    // Method used to load bitmap into ImageView showing picture
+    private void updatePhotoView()
+    {
+        if (mPhotoFile == null || !mPhotoFile.exists())
+        {
+            mPhotoView.setImageDrawable(null);
+        } else {
+            Bitmap bitmap = PictureUtils.getScaledBitmap(
+                    mPhotoFile.getPath(), getActivity());
+            mPhotoView.setImageBitmap(bitmap);
+        }
     }
 
 
