@@ -20,6 +20,7 @@ import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
+import tvao.mmad.itu.tingle.Network.FetchOutpanTask;
 import tvao.mmad.itu.tingle.R;
 
 /**
@@ -127,7 +128,7 @@ public class TingleMainFragment extends Fragment {
      * @param item - item to search for
      * @return - where item is located
      */
-    public String searchItems(String item)
+    public String searchItems(String item) // Todo replace with private search class using AsyncTask
     {
         String searchItem = item.toLowerCase().trim();
         String result = null;
@@ -260,11 +261,24 @@ public class TingleMainFragment extends Fragment {
                 String format = data.getStringExtra("SCAN_RESULT_FORMAT");
 
                 // Todo add content from JSON product lookup in ThingFetcher or use FetchOutpanTask
-                mBarcodeField.setText(contents);
+                //mBarcodeField.setText(contents);
                 //Thing scanItem = new ThingFetcher().fetchThing(contents);
                 //mBarcodeField.setText(scanItem.getBarcode());
                 //mWhatField.setText(scanItem.getWhat());
-                //Thing scanItem = new FetchOutpanTask().execute(contents); // Todo FetchOutpanTask vs ThingFetcher?
+                //new FetchOutpanTask().execute(contents); // Todo FetchOutpanTask vs ThingFetcher?
+                FetchOutpanTask lookupBarcodeTask = new FetchOutpanTask(new FetchOutpanTask.AsyncResponse()
+                {
+                    @Override
+                    public void processFinish(Thing output)
+                    {
+                        mBarcodeField.setText(output.getBarcode());
+                        mWhatField.setText(output.getWhat());
+                        Log.d("Lookup", "barcode: " + output.getBarcode());
+                        Log.d("Lookup", "what: " + output.getWhat());
+                    }
+                });
+
+                lookupBarcodeTask.execute(contents);
 
                 // Handle successful scan
                 Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
@@ -300,5 +314,17 @@ public class TingleMainFragment extends Fragment {
         Context context = getActivity().getApplicationContext();
         Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
     }
+
+//    // Class used to run barcode lookup on network in separate threads
+//    private class FetchOutpanTask extends AsyncTask<String, Void, Thing>
+//    {
+//
+//
+//        @Override
+//        protected Thing doInBackground(String... params) {
+//            return null;
+//        }
+//
+//    }
 
 }

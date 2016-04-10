@@ -17,6 +17,7 @@ import tvao.mmad.itu.tingle.Model.Thing;
 
 /**
  * Handle networking in Tingle and is used to get product info from outpan.com.
+ * Run in a separate thread using AsyncTask in "FetchOutpanTask" class.
  */
 public class ThingFetcher {
 
@@ -97,13 +98,6 @@ public class ThingFetcher {
         try
         {
             String url = Uri.parse("https://api.outpan.com/v2/products/" + barcode + "/?apikey=" + API_KEY).toString();
-//                    .buildUpon()
-//                    .appendQueryParameter("method", "flickr.photos.getRecent")
-//                    .appendQueryParameter("api_key", API_KEY)
-//                    .appendQueryParameter("format", "json")
-//                    .appendQueryParameter("nojsoncallback", "1")
-//                    .appendQueryParameter("extras", "url_s")
-               //     .build().toString();
             String jsonString = getUrlString(url);
             Log.i(TAG, "Received JSON: " + jsonString);
             JSONObject jsonBody = new JSONObject(jsonString);
@@ -124,16 +118,14 @@ public class ThingFetcher {
     private void parseThing(Thing thing, JSONObject jsonBody)
             throws IOException, JSONException
     {
-        String barcode = jsonBody.getJSONObject("barcode").toString();
-        String name = jsonBody.getJSONObject("name").toString();
+        String barcode = jsonBody.getString("gtin");
+        String name = jsonBody.getString("name");
 
-        JSONArray attributes = jsonBody.getJSONArray("attributes"); // Multiple values in same object
-        String specificAttribute = jsonBody.getJSONObject("attributes").getString("manufacturer"); // One specific value
+        //JSONArray attributes = jsonBody.getJSONArray("attributes"); // Multiple values in same object
+        //String specificAttribute = jsonBody.getJSONObject("attributes").getString("manufacturer"); // One specific value
 
         thing.setBarcode(barcode);
         thing.setWhat(name);
-        //thing.setBarcode(jsonBody.getString("barcode"));
-        //thing.setWhat(jsonBody.getString("name"));
     }
 
 //    public List<Thing> fetchProducts()
