@@ -76,4 +76,13 @@ public class Thing {
     public String getBarcode() { return mBarcode; }
 
     public void setBarcode(String barcode) { mBarcode = barcode; }
+
+    /**
+     * Method used to get filename for a given thing knowing what holder photo is stored in on phone
+     * @return filename of thing.
+     */
+    public String getPhotoFilename()
+    {
+        return "IMG_" + getId().toString() + ".jpg";
+    }
 }
