@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import java.util.UUID;
 
+import tvao.mmad.itu.tingle.Controller.Helpers.SearchClass;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.Network.FetchOutpanTask;
@@ -206,9 +207,21 @@ public class TingleMainFragment extends Fragment {
             {
                 if (mWhatField.getText().length() > 0)
                 {
-                    String searchResult = searchItems(mWhatField.getText().toString());
-                    if (searchResult != null) makeToast(getString(R.string.item_locationIs_toast) + " " + searchResult); // Item found
-                    else makeToast(getString(R.string.item_notFound_toast)); // Item not found
+                    SearchClass searchClass = new SearchClass(ThingRepository.get(getContext()).getThings(), new SearchClass.AsyncResponse()
+                    {
+                        @Override
+                        public void processFinish(String searchResult)
+                        {
+                            if (searchResult != null) makeToast(getString(R.string.item_locationIs_toast) + " " + searchResult); // Item found
+                            else makeToast(getString(R.string.item_notFound_toast)); // Item not found
+                        }
+                    });
+
+                    searchClass.execute(mWhatField.getText().toString());
+                    //String searchResult = searchItems(mWhatField.getText().toString());
+
+                    //if (searchResult != null) makeToast(getString(R.string.item_locationIs_toast) + " " + searchResult); // Item found
+                    //else makeToast(getString(R.string.item_notFound_toast)); // Item not found
                 }
                 // makeToast(getString(R.string.item_notSpecified_toast));
             }
