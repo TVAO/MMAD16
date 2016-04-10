@@ -2,6 +2,7 @@ package tvao.mmad.itu.tingle.Controller.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
@@ -13,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.UUID;
@@ -39,6 +42,9 @@ public class ThingDetailFragment extends Fragment {
     private Thing mThing;
     private Button mAddButton, mScanButton;
     private EditText mWhatField, mWhereField, mBarcodeField;
+
+    private ImageButton mPhotoButton;
+    private ImageView mImageView;
 
     /**
      * This method is used to instantiate a new Fragment used to display a detailed screen.
@@ -133,6 +139,13 @@ public class ThingDetailFragment extends Fragment {
 
         mBarcodeField = (EditText) v.findViewById(R.id.barcode_text);
         mBarcodeField.setText(mThing.getBarcode());
+
+        // Only show camera functionality in portrait mode (removed in landscape)
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+        {
+            mPhotoButton = (ImageButton) v.findViewById(R.id.thing_camera);
+            mImageView = (ImageView) v.findViewById(R.id.thing_photo);
+        }
 
         return v;
     }
