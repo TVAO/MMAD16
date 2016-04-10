@@ -260,17 +260,12 @@ public class TingleMainFragment extends Fragment {
                 String contents = data.getStringExtra("SCAN_RESULT");
                 String format = data.getStringExtra("SCAN_RESULT_FORMAT");
 
-                // Todo add content from JSON product lookup in ThingFetcher or use FetchOutpanTask
-                //mBarcodeField.setText(contents);
-                //Thing scanItem = new ThingFetcher().fetchThing(contents);
-                //mBarcodeField.setText(scanItem.getBarcode());
-                //mWhatField.setText(scanItem.getWhat());
-                //new FetchOutpanTask().execute(contents); // Todo FetchOutpanTask vs ThingFetcher?
                 FetchOutpanTask lookupBarcodeTask = new FetchOutpanTask(new FetchOutpanTask.AsyncResponse()
                 {
                     @Override
                     public void processFinish(Thing output)
                     {
+                        // Set barcode info based on lookup result from OnPostExecute() in AsyncTask
                         mBarcodeField.setText(output.getBarcode());
                         mWhatField.setText(output.getWhat());
                         Log.d("Lookup", "barcode: " + output.getBarcode());
