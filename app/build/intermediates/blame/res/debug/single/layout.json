@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/view_camera_and_title.xml",
+        "source": "/Users/TVANO/Documents/Tingle/app/src/main/res/layout/view_camera_and_title.xml"
+    },
+    {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/activity_list.xml",
         "source": "/Users/TVANO/Documents/Tingle/app/src/main/res/layout/activity_list.xml"
     },

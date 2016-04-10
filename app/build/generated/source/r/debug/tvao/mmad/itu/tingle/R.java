@@ -1802,9 +1802,9 @@ containing a value of this type.
         public static final int listMode=0x7f0d0011;
         public static final int list_item=0x7f0d0033;
         public static final int media_actions=0x7f0d006c;
-        public static final int menu_item_delete_thing=0x7f0d007c;
-        public static final int menu_item_new_thing=0x7f0d007a;
-        public static final int menu_item_show_subtitle=0x7f0d007b;
+        public static final int menu_item_delete_thing=0x7f0d007f;
+        public static final int menu_item_new_thing=0x7f0d007d;
+        public static final int menu_item_show_subtitle=0x7f0d007e;
         public static final int middle=0x7f0d0023;
         public static final int multiply=0x7f0d001c;
         public static final int never=0x7f0d0027;
@@ -1844,10 +1844,13 @@ containing a value of this type.
         public static final int text=0x7f0d0073;
         public static final int text2=0x7f0d0071;
         public static final int textSpacerNoButtons=0x7f0d003f;
+        public static final int thing_camera=0x7f0d0077;
         public static final int thing_details_add_button=0x7f0d0062;
         public static final int thing_details_what=0x7f0d005e;
         public static final int thing_details_where=0x7f0d005f;
+        public static final int thing_photo=0x7f0d0076;
         public static final int thing_recycler_view=0x7f0d0063;
+        public static final int thing_title=0x7f0d0078;
         public static final int time=0x7f0d006f;
         public static final int title=0x7f0d0035;
         public static final int title_template=0x7f0d003a;
@@ -1859,16 +1862,16 @@ containing a value of this type.
         public static final int withText=0x7f0d0028;
         public static final int wrap_content=0x7f0d001b;
         public static final int zxing_back_button=0x7f0d000a;
-        public static final int zxing_barcode_scanner=0x7f0d0079;
-        public static final int zxing_barcode_surface=0x7f0d0076;
+        public static final int zxing_barcode_scanner=0x7f0d007c;
+        public static final int zxing_barcode_surface=0x7f0d0079;
         public static final int zxing_camera_error=0x7f0d000b;
         public static final int zxing_decode=0x7f0d000c;
         public static final int zxing_decode_failed=0x7f0d000d;
         public static final int zxing_decode_succeeded=0x7f0d000e;
         public static final int zxing_possible_result_points=0x7f0d000f;
         public static final int zxing_prewiew_size_ready=0x7f0d0010;
-        public static final int zxing_status_view=0x7f0d0078;
-        public static final int zxing_viewfinder_view=0x7f0d0077;
+        public static final int zxing_status_view=0x7f0d007b;
+        public static final int zxing_viewfinder_view=0x7f0d007a;
     }
     public static final class integer {
         public static final int abc_config_activityDefaultDur=0x7f0b0001;
@@ -1921,8 +1924,9 @@ containing a value of this type.
         public static final int select_dialog_multichoice_material=0x7f040028;
         public static final int select_dialog_singlechoice_material=0x7f040029;
         public static final int support_simple_spinner_dropdown_item=0x7f04002a;
-        public static final int zxing_barcode_scanner=0x7f04002b;
-        public static final int zxing_capture=0x7f04002c;
+        public static final int view_camera_and_title=0x7f04002b;
+        public static final int zxing_barcode_scanner=0x7f04002c;
+        public static final int zxing_capture=0x7f04002d;
     }
     public static final class menu {
         public static final int fragment_thing_list=0x7f0e0000;
@@ -1977,15 +1981,16 @@ containing a value of this type.
         public static final int show_subtitle=0x7f07002c;
         public static final int status_bar_notification_info_overflow=0x7f070013;
         public static final int subtitle_format=0x7f07002d;
-        public static final int thing_what_hint=0x7f07002e;
-        public static final int thing_where_hint=0x7f07002f;
-        public static final int things_title=0x7f070030;
-        public static final int title_activity_list=0x7f070031;
-        public static final int what_hint=0x7f070032;
-        public static final int what_thing=0x7f070033;
-        public static final int where_hint=0x7f070034;
-        public static final int where_thing=0x7f070035;
-        public static final int wifi_connected=0x7f070036;
+        public static final int thing_title_label=0x7f07002e;
+        public static final int thing_what_hint=0x7f07002f;
+        public static final int thing_where_hint=0x7f070030;
+        public static final int things_title=0x7f070031;
+        public static final int title_activity_list=0x7f070032;
+        public static final int what_hint=0x7f070033;
+        public static final int what_thing=0x7f070034;
+        public static final int where_hint=0x7f070035;
+        public static final int where_thing=0x7f070036;
+        public static final int wifi_connected=0x7f070037;
         public static final int zxing_app_name=0x7f070014;
         public static final int zxing_button_ok=0x7f070015;
         public static final int zxing_msg_camera_framework_bug=0x7f070016;

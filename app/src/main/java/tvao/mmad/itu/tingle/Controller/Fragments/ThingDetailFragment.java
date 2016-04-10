@@ -2,7 +2,13 @@ package tvao.mmad.itu.tingle.Controller.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
@@ -13,10 +19,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.UUID;
 
+import tvao.mmad.itu.tingle.Controller.Helpers.PictureUtils;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.Network.FetchOutpanTask;
@@ -32,13 +42,15 @@ public class ThingDetailFragment extends Fragment {
     public static final String EXTRA_THING_ID = "thingintent.THING_ID";
     public static final String TAG = "ThingDetailFragment";
 
-    private static final String WHAT = "what";
-    private static final String WHERE = "where";
-    private static final String DESCRIPTION = "description";
+    private static final int REQUEST_PHOTO= 2;
 
     private Thing mThing;
     private Button mAddButton, mScanButton;
     private EditText mWhatField, mWhereField, mBarcodeField;
+
+    private ImageButton mPhotoButton;
+    private ImageView mPhotoView;
+    private File mPhotoFile;
 
     /**
      * This method is used to instantiate a new Fragment used to display a detailed screen.
@@ -71,6 +83,7 @@ public class ThingDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         UUID thingId = (UUID) getArguments().getSerializable(EXTRA_THING_ID);
         mThing = ThingRepository.get(getActivity()).getThing(thingId);
+        mPhotoFile = ThingRepository.get(getContext()).getPhotoFile(mThing);
         setHasOptionsMenu(true);
     }
 
@@ -134,6 +147,52 @@ public class ThingDetailFragment extends Fragment {
         mBarcodeField = (EditText) v.findViewById(R.id.barcode_text);
         mBarcodeField.setText(mThing.getBarcode());
 
+        // Only show camera functionality in portrait mode (removed in landscape)
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+        {
+            mPhotoButton = (ImageButton) v.findViewById(R.id.thing_camera);
+
+            // Intent used to fire up camera application using action "ACTION_IMAGE_CAPTURE"
+            final Intent captureImage = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+            // Check if camera is available, else disable camera button
+            PackageManager packageManager = getActivity().getPackageManager();
+//            if (packageManager.resolveActivity(captureImage,
+//                    PackageManager.MATCH_DEFAULT_ONLY) == null)
+//            {
+//                mPhotoButton.setEnabled(false);
+//            }
+
+            boolean canTakePhoto = mPhotoFile != null &&
+                    captureImage.resolveActivity(packageManager) != null;
+            mPhotoButton.setEnabled(canTakePhoto);
+
+            if (canTakePhoto)
+            {
+                Uri uri = Uri.fromFile(mPhotoFile);
+                captureImage.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+            }
+
+            mPhotoButton.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    // Check for camera permissions at runtime before starting camera intent
+//                    if(!hasPermissionInManifest(getContext(), android.Manifest.permission.CAMERA.toString()))
+//                    {
+//                        requestPermissions(new String[]{android.Manifest.permission.CAMERA},
+//                                REQUEST_PHOTO);
+//                    }
+                    startActivityForResult(captureImage, REQUEST_PHOTO); // Todo get SecurityException due to permission issue ???
+                }
+            });
+
+            mPhotoView = (ImageView) v.findViewById(R.id.thing_photo);
+            updatePhotoView(); // Load image into image view
+
+        }
+
         return v;
     }
 
@@ -195,6 +254,10 @@ public class ThingDetailFragment extends Fragment {
                 Log.d("onActivityResult", "RESULT_CANCELED");
             }
         }
+        else if(requestCode == REQUEST_PHOTO)
+        {
+            updatePhotoView(); // Show bitmap photo in ImageView
+        }
 
     }
 
@@ -223,5 +286,53 @@ public class ThingDetailFragment extends Fragment {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    /**
+     * This method is used to check if a permission exists in the manifest file.
+     * Specifically, this is used for the camera permission that needs to be requested during runtime.
+     * See link: http://stackoverflow.com/questions/32789027/android-m-camera-intent-permission-bug
+     * @param context - context of fragment.
+     * @param permissionName - name of permission, e.g. Manifest.permission.CAMERA
+     * @return
+     */
+    public boolean hasPermissionInManifest(Context context, String permissionName)
+    {
+        final String packageName = context.getPackageName();
+        try
+        {
+            final PackageInfo packageInfo = context.getPackageManager()
+                    .getPackageInfo(packageName, PackageManager.GET_PERMISSIONS);
+            final String[] declaredPermisisons = packageInfo.requestedPermissions;
+            if (declaredPermisisons != null && declaredPermisisons.length > 0)
+            {
+                for (String p : declaredPermisisons)
+                {
+                    if (p.equals(permissionName))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        catch (PackageManager.NameNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // Method used to load bitmap into ImageView showing picture
+    private void updatePhotoView()
+    {
+        if (mPhotoFile == null || !mPhotoFile.exists())
+        {
+            mPhotoView.setImageDrawable(null);
+        } else {
+            Bitmap bitmap = PictureUtils.getScaledBitmap(
+                    mPhotoFile.getPath(), getActivity());
+            mPhotoView.setImageBitmap(bitmap);
+        }
+    }
+
 
 }

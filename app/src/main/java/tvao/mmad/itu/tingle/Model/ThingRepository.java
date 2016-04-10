@@ -4,7 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -103,6 +105,26 @@ public class ThingRepository implements IRepository {
         {
             cursor.close();
         }
+    }
+
+    /**
+     * This method is used to find out where photos should live.
+     * The method does not create any files on the file system.
+     * It returns File objects that point to the right locations.
+     * @param thing - thing of which photo file location should be found.
+     * @return File object with correct photo file location
+     */
+    public File getPhotoFile(Thing thing)
+    {
+        File externalFilesDir = mContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
+        // Verify that external storage exist for saving pictures
+        if(externalFilesDir == null)
+        {
+            return null;
+        }
+
+        return new File(externalFilesDir, thing.getPhotoFilename());
     }
 
     public Thing getThingAt(int position)

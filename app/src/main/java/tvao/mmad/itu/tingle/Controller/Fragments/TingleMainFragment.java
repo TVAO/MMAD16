@@ -174,7 +174,7 @@ public class TingleMainFragment extends Fragment {
             {
                 if ((mWhatField.getText().length() > 0) && (mWhereField.getText().length() > 0))
                 {
-                    if(mBarcodeField.getText().toString().isEmpty())
+                    if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
                     {
                         // Add item without barcode
                         sThingRepository.addThing(
