@@ -11,11 +11,14 @@
     <!-- Dialogue shown to user about below permissions when downloading app -->
     <!-- Camera is used to register bar code -->
     <!-- Internet and access is used for network operations -->
+    <!-- External storage is used for photos -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
 
-    <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
