@@ -28,12 +28,12 @@
         "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/drawable-hdpi-v4/abc_btn_rating_star_off_mtrl_alpha.png"
     },
     {
-        "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_go_search_api_material.png",
-        "source": "/Users/TVANO/Documents/Tingle/app/build/generated/res/pngs/debug/drawable-hdpi/abc_ic_go_search_api_material.png"
-    },
-    {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_voice_search_api_material.png",
         "source": "/Users/TVANO/Documents/Tingle/app/build/generated/res/pngs/debug/drawable-hdpi/abc_ic_voice_search_api_material.png"
+    },
+    {
+        "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_go_search_api_material.png",
+        "source": "/Users/TVANO/Documents/Tingle/app/build/generated/res/pngs/debug/drawable-hdpi/abc_ic_go_search_api_material.png"
     },
     {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png",
