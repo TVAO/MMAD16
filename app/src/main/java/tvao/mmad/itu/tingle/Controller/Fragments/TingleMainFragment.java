@@ -129,29 +129,29 @@ public class TingleMainFragment extends BaseFragment {
         return v;
     }
 
-    /**
-     * Used to search for an item in database.
-     * @param item - item to search for
-     * @return - where item is located
-     */
-    public String searchItems(String item) // Todo replace with private search class using AsyncTask
-    {
-        String searchItem = item.toLowerCase().trim();
-        String result = null;
-
-        for (Thing i : sThingRepository.getThings())
-        {
-            if(i.getWhat().toLowerCase().trim().equals(searchItem))
-            {
-                result = i.getWhere(); // Return specific item per default
-            }
-            else if (i.getWhat().toLowerCase().trim().contains(searchItem))
-            {
-                result = i.getWhere(); // Return item containing
-            }
-        }
-        return result;
-    }
+//    /**
+//     * Used to search for an item in database.
+//     * @param item - item to search for
+//     * @return - where item is located
+//     */
+//    public String searchItems(String item) // Todo replace with private search class using AsyncTask
+//    {
+//        String searchItem = item.toLowerCase().trim();
+//        String result = null;
+//
+//        for (Thing i : sThingRepository.getThings())
+//        {
+//            if(i.getWhat().toLowerCase().trim().equals(searchItem))
+//            {
+//                result = i.getWhere(); // Return specific item per default
+//            }
+//            else if (i.getWhat().toLowerCase().trim().contains(searchItem))
+//            {
+//                result = i.getWhere(); // Return item containing
+//            }
+//        }
+//        return result;
+//    }
 
     // Setup text fields
     private void setTextFields(View view)
@@ -334,23 +334,5 @@ public class TingleMainFragment extends BaseFragment {
         }
         else this.mLastAdded.setText(getString(R.string.item_notFound_toast));
     }
-
-//    private void makeToast(String string)
-//    {
-//        Context context = getActivity().getApplicationContext();
-//        Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
-//    }
-
-//    // Class used to run barcode lookup on network in separate threads
-//    private class FetchOutpanTask extends AsyncTask<String, Void, Thing>
-//    {
-//
-//
-//        @Override
-//        protected Thing doInBackground(String... params) {
-//            return null;
-//        }
-//
-//    }
 
 }
