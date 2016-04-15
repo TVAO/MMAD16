@@ -122,7 +122,8 @@ public class ThingDetailFragment extends Fragment {
                         // Update existing item
                         ThingRepository.get(getActivity()).updateThing(mThing);
                     }
-                    NavUtils.navigateUpFromSameTask(getActivity()); // Navigate to parent activity (ThingListFragment)
+                    getActivity().finish(); // Done and close activity
+                    //NavUtils.navigateUpFromSameTask(getActivity()); // Navigate to parent activity (ThingListFragment)
                 }
             }
         });
