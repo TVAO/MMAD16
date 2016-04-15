@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import java.util.UUID;
 
+import tvao.mmad.itu.tingle.Controller.Helpers.BaseFragment;
 import tvao.mmad.itu.tingle.Controller.Helpers.SearchClass;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
@@ -29,7 +30,7 @@ import tvao.mmad.itu.tingle.R;
  * This class represents the fragment of main page.
  * The TingleMainFragment is hosted by the activity TingleActivity.
  */
-public class TingleMainFragment extends Fragment {
+public class TingleMainFragment extends BaseFragment {
 
     private static final String ARG_THING_ID = "thing_id"; // Fragment argument used by host activity
     public static final String TAG = "TingleMainFragment";
@@ -334,11 +335,11 @@ public class TingleMainFragment extends Fragment {
         else this.mLastAdded.setText(getString(R.string.item_notFound_toast));
     }
 
-    private void makeToast(String string)
-    {
-        Context context = getActivity().getApplicationContext();
-        Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
-    }
+//    private void makeToast(String string)
+//    {
+//        Context context = getActivity().getApplicationContext();
+//        Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
+//    }
 
 //    // Class used to run barcode lookup on network in separate threads
 //    private class FetchOutpanTask extends AsyncTask<String, Void, Thing>

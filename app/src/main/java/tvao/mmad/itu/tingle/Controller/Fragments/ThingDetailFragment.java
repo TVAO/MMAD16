@@ -27,6 +27,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.util.UUID;
 
+import tvao.mmad.itu.tingle.Controller.Helpers.BaseFragment;
 import tvao.mmad.itu.tingle.Controller.Helpers.PictureUtils;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
@@ -38,7 +39,7 @@ import tvao.mmad.itu.tingle.R;
  * This class represents the fragment of a detailed page for a given item.
  * The TingleMainFragment is hosted by the activity TinglePagerActivity.
  */
-public class ThingDetailFragment extends Fragment {
+public class ThingDetailFragment extends BaseFragment {
 
     public static final String EXTRA_THING_ID = "thingintent.THING_ID";
     public static final String TAG = "ThingDetailFragment";
@@ -266,12 +267,12 @@ public class ThingDetailFragment extends Fragment {
         }
     }
 
-    // Todo remove duplicated in ThingDetailFragment and TingleMainFragment
-    private void makeToast(String string)
-    {
-        Context context = getActivity().getApplicationContext();
-        Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
-    }
+//    // Todo remove duplicated in ThingDetailFragment and TingleMainFragment
+//    private void makeToast(String string)
+//    {
+//        Context context = getActivity().getApplicationContext();
+//        Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
+//    }
 
     /**
      * This method is used to implement the Android ActionBar back button.
