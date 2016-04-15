@@ -1,5 +1,6 @@
 package tvao.mmad.itu.tingle.Controller.Fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -42,7 +43,8 @@ public class ThingDetailFragment extends Fragment {
     public static final String EXTRA_THING_ID = "thingintent.THING_ID";
     public static final String TAG = "ThingDetailFragment";
 
-    private static final int REQUEST_PHOTO= 2;
+    private static final int REQUEST_PHOTO = 2;
+    private static final int REQUEST_SCAN = 3;
 
     private Thing mThing;
     private Button mAddButton, mScanButton;
@@ -135,7 +137,7 @@ public class ThingDetailFragment extends Fragment {
             public void onClick(View v)
             {
                 Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-                startActivityForResult(intent, 0);
+                startActivityForResult(intent, REQUEST_SCAN);
             }
         });
 
@@ -185,7 +187,7 @@ public class ThingDetailFragment extends Fragment {
 //                        requestPermissions(new String[]{android.Manifest.permission.CAMERA},
 //                                REQUEST_PHOTO);
 //                    }
-                    startActivityForResult(captureImage, REQUEST_PHOTO); // Todo get SecurityException due to permission issue ???
+                  startActivityForResult(captureImage, REQUEST_PHOTO); // Todo get SecurityException due to permission issue ???
                 }
             });
 
@@ -209,57 +211,59 @@ public class ThingDetailFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        if (requestCode == 0)
+        switch (requestCode)
         {
-            if (resultCode == getActivity().RESULT_OK)
-            {
-                String contents = data.getStringExtra("SCAN_RESULT");
-                String format = data.getStringExtra("SCAN_RESULT_FORMAT");
+            case Activity.RESULT_OK :
+                makeToast(getString(R.string.ok));
 
-                // Handle successful scan
-                Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.TOP, 25, 400);
-                toast.show();
-
-                Log.d("onActivityResult", "contents: " + contents);
-
-                // Lookup item from barcode if user has connection
-                if(new NetworkUtils(getContext()).isOnline())
-                {
-                    FetchOutpanTask lookupBarcodeTask = new FetchOutpanTask(new FetchOutpanTask.AsyncResponse()
-                    {
-                        @Override
-                        public void processFinish(Thing output)
-                        {
-                            // Set barcode info based on lookup result from OnPostExecute() in AsyncTask
-                            mBarcodeField.setText(output.getBarcode());
-                            mWhatField.setText(output.getWhat());
-                            Log.d("Lookup", "barcode: " + output.getBarcode());
-                            Log.d("Lookup", "what: " + output.getWhat());
-                            // Todo could just add Thing directly to items with name, barcode and optionally attributed in new field
-                        }
-                    });
-
-                    lookupBarcodeTask.execute(contents);
-                }
-                else
-                {
-                    makeToast("You are not connected to a network... Please try again.");
-                }
-            }
-            else if (resultCode == getActivity().RESULT_CANCELED)
-            {   // Handle cancel
-                Toast toast = Toast.makeText(getContext(), "Scan was Cancelled!", Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.TOP, 25, 400);
-                toast.show();
+            case Activity.RESULT_CANCELED :
+                makeToast("Scan was cancelled!");
                 Log.d("onActivityResult", "RESULT_CANCELED");
-            }
-        }
-        else if(requestCode == REQUEST_PHOTO)
-        {
-            updatePhotoView(); // Show bitmap photo in ImageView
-        }
 
+            case REQUEST_SCAN :
+                handleScanData(data);
+
+            case REQUEST_PHOTO :
+                updatePhotoView();
+        }
+    }
+
+    // Lookup item from barcode and save information
+    private void handleScanData(Intent data)
+    {
+        String contents = data.getStringExtra("SCAN_RESULT");
+        String format = data.getStringExtra("SCAN_RESULT_FORMAT");
+
+        // Handle successful scan
+        Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.TOP, 25, 400);
+        toast.show();
+
+        Log.d("onActivityResult", "contents: " + contents);
+
+        // Lookup item from barcode if user has connection
+        if(new NetworkUtils(getContext()).isOnline())
+        {
+            FetchOutpanTask lookupBarcodeTask = new FetchOutpanTask(new FetchOutpanTask.AsyncResponse()
+            {
+                @Override
+                public void processFinish(Thing output)
+                {
+                    // Set barcode info based on lookup result from OnPostExecute() in AsyncTask
+                    mBarcodeField.setText(output.getBarcode());
+                    mWhatField.setText(output.getWhat());
+                    Log.d("Lookup", "barcode: " + output.getBarcode());
+                    Log.d("Lookup", "what: " + output.getWhat());
+                    // Todo could just add Thing directly to items with name, barcode and optionally attributed in new field
+                }
+            });
+
+            lookupBarcodeTask.execute(contents);
+        }
+        else
+        {
+            makeToast("You are not connected to a network... Please try again.");
+        }
     }
 
     // Todo remove duplicated in ThingDetailFragment and TingleMainFragment

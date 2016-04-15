@@ -12,7 +12,6 @@
     <!-- Camera is used to register bar code -->
     <!-- Internet and access is used for network operations -->
     <!-- External storage is used for photos -->
-    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission
@@ -22,6 +21,9 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature
         android:name="android.hardware.camera.front"
         android:required="false" /> <!-- TODO replace above two with next line after Android 4.2 -->
@@ -52,32 +54,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="tvao.mmad.itu.tingle.Controller.Activities.ThingPagerActivity"
-            android:label="@string/app_name"
-            android:parentActivityName="tvao.mmad.itu.tingle.Controller.Activities.ThingListActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Controller.Activities.ThingListActivity" />
-        </activity>
-        <activity
-            android:name="tvao.mmad.itu.tingle.SettingsActivity"
-            android:label="SettingsActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
+        <activity android:name="tvao.mmad.itu.tingle.Controller.Activities.ThingPagerActivity" />
+        <!-- <activity android:label="SettingsActivity" android:name=".SettingsActivity"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" /> -->
+        <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <!-- <activity android:name=".Controller.Activities.ThingListActivity"/> -->
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name="tvao.mmad.itu.tingle.Controller.Activities.ThingListActivity" >
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity android:name="tvao.mmad.itu.tingle.Controller.Activities.BarcodeActivity" >
-        </activity>
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:clearTaskOnLaunch="true"
