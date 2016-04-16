@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!-- Layout container for a view hierarchy scrolled by the user, allowing it to be larger than the physical display and fit all UI components -->
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
@@ -77,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
-            <!-- Button to add new thing -->
+            <!-- Button to save thing -->
             <Button
                 android:id="@+id/thing_details_add_button"
                 android:text="@string/heading_save"
