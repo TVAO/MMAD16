@@ -12,6 +12,10 @@
         "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/abc_screen_simple.xml"
     },
     {
+        "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/dialog_date.xml",
+        "source": "/Users/TVANO/Documents/Tingle/app/src/main/res/layout/dialog_date.xml"
+    },
+    {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
         "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/abc_screen_simple_overlay_action_mode.xml"
     },
