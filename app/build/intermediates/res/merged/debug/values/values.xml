@@ -250,6 +250,7 @@
     <string name="delete_thing">Delete</string>
     <string name="heading_create">Add new thing</string>
     <string name="heading_date">Choose date</string>
+    <string name="heading_save">Save</string>
     <string name="heading_scan">Scan Item</string>
     <string name="heading_search">Search items</string>
     <string name="heading_showAllItems">See items</string>

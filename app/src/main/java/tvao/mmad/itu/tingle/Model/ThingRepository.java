@@ -56,7 +56,7 @@ public class ThingRepository implements IRepository {
         values.put(ThingTable.Cols.WHAT, thing.getWhat());
         values.put(ThingTable.Cols.WHERE, thing.getWhere());
         values.put(ThingTable.Cols.BARCODE, thing.getBarcode());
-        values.put(ThingTable.Cols.DATE, getDateTime(thing.getDate()));
+        values.put(ThingTable.Cols.DATE, getDateTimeString(thing.getDate()));
 
         return values;
     }
@@ -175,7 +175,7 @@ public class ThingRepository implements IRepository {
     }
 
     // Returns datetime value used to set content value as string in SQLite
-    private static String getDateTime(Date date)
+    public static String getDateTimeString(Date date)
     {
         SimpleDateFormat dateFormat = new SimpleDateFormat(
                 "yyyy-MM-dd HH:mm:ss", Locale.getDefault());

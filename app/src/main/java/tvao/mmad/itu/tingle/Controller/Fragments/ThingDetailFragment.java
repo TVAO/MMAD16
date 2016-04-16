@@ -26,7 +26,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Controller.Helpers.BaseFragment;
@@ -172,24 +174,18 @@ public class ThingDetailFragment extends BaseFragment {
     {
         // Find add button
         mAddButton = (Button) v.findViewById(R.id.thing_details_add_button);
-        mAddButton.setOnClickListener(new View.OnClickListener()
-        {
+        mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                if((mWhatField.getText().length() > 0) && (mWhereField.getText().length() > 0))
-                {
+            public void onClick(View v) {
+                if ((mWhatField.getText().length() > 0) && (mWhereField.getText().length() > 0)) {
                     mThing.setWhat(mWhatField.getText().toString().trim());
                     mThing.setWhere(mWhereField.getText().toString().trim());
                     mThing.setBarcode(mBarcodeField.getText().toString().trim());
 
-                    if (ThingRepository.get(getActivity()).getThing(mThing.getId()) == null)
-                    {
+                    if (ThingRepository.get(getActivity()).getThing(mThing.getId()) == null) {
                         // Add new item from menu bar
                         ThingRepository.get(getActivity()).addThing(mThing);
-                    }
-                    else
-                    {
+                    } else {
                         // Update existing item
                         ThingRepository.get(getActivity()).updateThing(mThing);
                     }
@@ -209,8 +205,8 @@ public class ThingDetailFragment extends BaseFragment {
             public void onClick(View v) {
                 FragmentManager manager = getFragmentManager();
                 DatePickerFragment dialog = DatePickerFragment.newInstance(mThing.getDate());
-                dialog.setTargetFragment(ThingDetailFragment.this,REQUEST_DATE);
-                dialog.show(manager,DIALOG_DATE);
+                dialog.setTargetFragment(ThingDetailFragment.this, REQUEST_DATE);
+                dialog.show(manager, DIALOG_DATE);
             }
         });
     }
@@ -367,7 +363,15 @@ public class ThingDetailFragment extends BaseFragment {
 
     private void updateDate()
     {
-        mDateButton.setText(mThing.getDate().toString());
+        String simpleDate = simplifyDateFormatDisplay(mThing.getDate());
+        mDateButton.setText(simpleDate);
+    }
+
+    private String simplifyDateFormatDisplay(Date date)
+    {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "yyyy-MM-dd", Locale.getDefault());
+        return dateFormat.format(date);
     }
 
 }
