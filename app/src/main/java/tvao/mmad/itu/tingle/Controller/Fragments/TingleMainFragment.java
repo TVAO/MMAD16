@@ -287,38 +287,46 @@ public class TingleMainFragment extends BaseFragment {
     // Lookup item from barcode and save information
     private void handleScanData(Intent data)
     {
-        String contents = data.getStringExtra("SCAN_RESULT");
-        String format = data.getStringExtra("SCAN_RESULT_FORMAT");
-
-        // Handle successful scan
-        Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.TOP, 25, 400);
-        toast.show();
-
-        Log.d("onActivityResult", "contents: " + contents);
-
-        // Lookup item from barcode if user has connection
-        if(new NetworkUtils(getContext()).isOnline())
+        if (data != null && data.getExtras() != null) // Scan data received
         {
-            FetchOutpanTask lookupBarcodeTask = new FetchOutpanTask(new FetchOutpanTask.AsyncResponse()
-            {
-                @Override
-                public void processFinish(Thing output)
-                {
-                    // Set barcode info based on lookup result from OnPostExecute() in AsyncTask
-                    mBarcodeField.setText(output.getBarcode());
-                    mWhatField.setText(output.getWhat());
-                    Log.d("Lookup", "barcode: " + output.getBarcode());
-                    Log.d("Lookup", "what: " + output.getWhat());
-                    // Todo could just add Thing directly to items with name, barcode and optionally attributed in new field
-                }
-            });
+            String contents = data.getStringExtra("SCAN_RESULT");
+            String format = data.getStringExtra("SCAN_RESULT_FORMAT");
 
-            lookupBarcodeTask.execute(contents);
+            // Handle successful scan
+            Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format, Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.TOP, 25, 400);
+            toast.show();
+
+            Log.d("onActivityResult", "contents: " + contents);
+
+            // Lookup item from barcode if user has connection
+            if (new NetworkUtils(getContext()).isOnline())
+            {
+                FetchOutpanTask lookupBarcodeTask = new FetchOutpanTask(new FetchOutpanTask.AsyncResponse()
+                {
+                    @Override
+                    public void processFinish(Thing output)
+                    {
+                        // Set barcode info based on lookup result from OnPostExecute() in AsyncTask
+                        mBarcodeField.setText(output.getBarcode());
+                        mWhatField.setText(output.getWhat());
+                        Log.d("Lookup", "barcode: " + output.getBarcode());
+                        Log.d("Lookup", "what: " + output.getWhat());
+                        // Todo could just add Thing directly to items with name, barcode and optionally attributed in new field
+                    }
+                });
+
+                lookupBarcodeTask.execute(contents);
+            } else
+            {
+                makeToast("You are not connected to a network... Please try again.");
+            }
         }
         else
         {
-            makeToast("You are not connected to a network... Please try again.");
+            // Cancel scan
+            makeToast("Scan was cancelled!");
+            Log.d("onActivityResult", "RESULT_CANCELED");
         }
     }
 

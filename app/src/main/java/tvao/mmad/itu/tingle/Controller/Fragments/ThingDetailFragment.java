@@ -128,8 +128,10 @@ public class ThingDetailFragment extends BaseFragment {
     private void setupCameraButton(View v)
     {
         // Only show camera functionality in portrait mode (removed in landscape)
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-        {
+        //if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+        //{
+            mPhotoView = (ImageView) v.findViewById(R.id.thing_photo);
+
             mPhotoButton = (ImageButton) v.findViewById(R.id.thing_camera);
 
             // Intent used to fire up camera application using action "ACTION_IMAGE_CAPTURE"
@@ -154,10 +156,8 @@ public class ThingDetailFragment extends BaseFragment {
                 }
             });
 
-            mPhotoView = (ImageView) v.findViewById(R.id.thing_photo);
-
             updatePhotoView(); // Load image into image view
-        }
+        //}
     }
 
     // Check if camera is available
@@ -174,18 +174,23 @@ public class ThingDetailFragment extends BaseFragment {
     {
         // Find add button
         mAddButton = (Button) v.findViewById(R.id.thing_details_add_button);
-        mAddButton.setOnClickListener(new View.OnClickListener() {
+        mAddButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
-                if ((mWhatField.getText().length() > 0) && (mWhereField.getText().length() > 0)) {
+            public void onClick(View v)
+            {
+                if ((mWhatField.getText().length() > 0) && (mWhereField.getText().length() > 0))
+                {
                     mThing.setWhat(mWhatField.getText().toString().trim());
                     mThing.setWhere(mWhereField.getText().toString().trim());
                     mThing.setBarcode(mBarcodeField.getText().toString().trim());
 
-                    if (ThingRepository.get(getActivity()).getThing(mThing.getId()) == null) {
+                    if (ThingRepository.get(getActivity()).getThing(mThing.getId()) == null)
+                    {
                         // Add new item from menu bar
                         ThingRepository.get(getActivity()).addThing(mThing);
-                    } else {
+                    } else
+                    {
                         // Update existing item
                         ThingRepository.get(getActivity()).updateThing(mThing);
                     }
@@ -238,11 +243,8 @@ public class ThingDetailFragment extends BaseFragment {
         switch (requestCode)
         {
             //case Activity.RESULT_OK :
-            //    makeToast(getString(R.string.ok));
 
             case Activity.RESULT_CANCELED :
-                makeToast("Scan was cancelled!");
-                Log.d("onActivityResult", "RESULT_CANCELED");
 
             case REQUEST_SCAN :
                 handleScanData(data);
@@ -251,47 +253,64 @@ public class ThingDetailFragment extends BaseFragment {
                 updatePhotoView();
 
             case REQUEST_DATE :
-                Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
-                mThing.setDate(date);
-                updateDate();
+                handleDate(data);
+        }
+    }
+
+    private void handleDate(Intent data)
+    {
+        if (data != null && data.getExtras() != null)
+        {
+            Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
+            mThing.setDate(date);
+            updateDate();
         }
     }
 
     // Lookup item from barcode and save information
     private void handleScanData(Intent data)
     {
-        String contents = data.getStringExtra("SCAN_RESULT");
-        String format = data.getStringExtra("SCAN_RESULT_FORMAT");
-
-        // Handle successful scan
-        Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.TOP, 25, 400);
-        toast.show();
-
-        Log.d("onActivityResult", "contents: " + contents);
-
-        // Lookup item from barcode if user has connection
-        if(new NetworkUtils(getContext()).isOnline())
+        if (data != null && data.getExtras() != null) // Scan data received
         {
-            FetchOutpanTask lookupBarcodeTask = new FetchOutpanTask(new FetchOutpanTask.AsyncResponse()
-            {
-                @Override
-                public void processFinish(Thing output)
-                {
-                    // Set barcode info based on lookup result from OnPostExecute() in AsyncTask
-                    mBarcodeField.setText(output.getBarcode());
-                    mWhatField.setText(output.getWhat());
-                    Log.d("Lookup", "barcode: " + output.getBarcode());
-                    Log.d("Lookup", "what: " + output.getWhat());
-                    // Todo could just add Thing directly to items with name, barcode and optionally attributed in new field
-                }
-            });
+            String contents = data.getStringExtra("SCAN_RESULT");
+            String format = data.getStringExtra("SCAN_RESULT_FORMAT");
 
-            lookupBarcodeTask.execute(contents);
+            // Handle successful scan
+            Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format, Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.TOP, 25, 400);
+            toast.show();
+
+            Log.d("onActivityResult", "contents: " + contents);
+
+            // Lookup item from barcode if user has connection
+            if (new NetworkUtils(getContext()).isOnline())
+            {
+                FetchOutpanTask lookupBarcodeTask = new FetchOutpanTask(new FetchOutpanTask.AsyncResponse()
+                {
+                    @Override
+                    public void processFinish(Thing output)
+                    {
+                        // Set barcode info based on lookup result from OnPostExecute() in AsyncTask
+                        mBarcodeField.setText(output.getBarcode());
+                        mWhatField.setText(output.getWhat());
+                        Log.d("Lookup", "barcode: " + output.getBarcode());
+                        Log.d("Lookup", "what: " + output.getWhat());
+                        // Todo could just add Thing directly to items with name, barcode and optionally attributed in new field
+                    }
+                });
+
+                lookupBarcodeTask.execute(contents);
+            }
+            else
+            {
+                makeToast("You are not connected to a network... Please try again.");
+            }
         }
         else
         {
-            makeToast("You are not connected to a network... Please try again.");
+            // Cancel scan
+            makeToast("Scan was cancelled!");
+            Log.d("onActivityResult", "RESULT_CANCELED");
         }
     }
 
@@ -354,7 +373,8 @@ public class ThingDetailFragment extends BaseFragment {
         if (mPhotoFile == null || !mPhotoFile.exists())
         {
             mPhotoView.setImageDrawable(null);
-        } else {
+        } else
+        {
             Bitmap bitmap = PictureUtils.getScaledBitmap(
                     mPhotoFile.getPath(), getActivity());
             mPhotoView.setImageBitmap(bitmap);
