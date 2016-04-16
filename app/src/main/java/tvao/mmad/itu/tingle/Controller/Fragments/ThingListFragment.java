@@ -99,7 +99,6 @@ public class ThingListFragment extends BaseFragment {
         }
     };
 
-    // Todo consider removing this and implemented code in TingleActivity
     /**
      * This interface allows TingleMainFragment to communicate to host TingleActivity.
      * Interface is encapsulated in fragment to avoid use in other activities.
@@ -107,7 +106,7 @@ public class ThingListFragment extends BaseFragment {
      */
     public interface onBackPressedListener
     {
-        void onBackPressed();
+        void onBackPressed(); // Used to go back to main page from list
     }
 
     /**

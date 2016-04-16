@@ -48,7 +48,7 @@ public class TingleMainFragment extends BaseFragment {
      * Interface is encapsulated in fragment to avoid use in other activities.
      * Interface is implemented by host activity determining what happens upon triggering the listener.
      */
-    public interface eventListener // Todo remove ?
+    public interface eventListener
     {
         void onShowItems(); // See list of items
         void onAddItems(); // Update list in landscape after adding item
@@ -61,7 +61,7 @@ public class TingleMainFragment extends BaseFragment {
      * @param context - context of host activity
      */
     @Override
-    public void onAttach(Context context) // Todo remove ?
+    public void onAttach(Context context)
     {
         super.onAttach(context);
         Activity activity = new Activity();
