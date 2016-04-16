@@ -12,6 +12,7 @@ import tvao.mmad.itu.tingle.R;
  * The class is a subclass of AppCompatActivity and implemented by the activities to reduce code duplication.
  * The AppCompatActivity class is extended to use the toolbar and support FragmentActivities.
  */
+@Deprecated
 public abstract class SingleFragmentActivity extends AppCompatActivity {
 
     protected abstract Fragment createFragment();

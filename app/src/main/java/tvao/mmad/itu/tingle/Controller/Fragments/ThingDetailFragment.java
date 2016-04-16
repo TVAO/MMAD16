@@ -125,6 +125,52 @@ public class ThingDetailFragment extends BaseFragment {
         return v;
     }
 
+    /**
+     * This method is used to get the result back from scanning a barcode and save it in the barcode field.
+     * Called whenever Scanner exits, giving requestCode you started it with, the resultCode it returned, and any additional data from it.
+     * @param requestCode - integer request code supplied to startActivityForResult(), allowing you to identify who this result came from.
+     * @param resultCode -  integer result code returned by the child activity through its setResult()
+     * @param data -  intent which can return result data to caller attached to Intent "extra"
+     */
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        switch (requestCode)
+        {
+            //case Activity.RESULT_OK :
+
+            case Activity.RESULT_CANCELED :
+
+            case REQUEST_SCAN :
+                handleScanData(data);
+
+            case REQUEST_PHOTO :
+                updatePhotoView();
+
+            case REQUEST_DATE :
+                handleDate(data);
+        }
+    }
+
+    /**
+     * This method is used to implement the Android ActionBar back button.
+     * This allows the user to navigate back to the list of items from a detailed screen for a given thing.
+     * @param item - menu item that is used.
+     * @return - true if navigating to home activity.
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(getActivity()); // Navigate to parent activity (ThingListFragment)
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     private void setupCameraButton(View v)
     {
         // Only show camera functionality in portrait mode (removed in landscape)
@@ -177,8 +223,7 @@ public class ThingDetailFragment extends BaseFragment {
         mAddButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 if ((mWhatField.getText().length() > 0) && (mWhereField.getText().length() > 0))
                 {
                     mThing.setWhat(mWhatField.getText().toString().trim());
@@ -205,9 +250,11 @@ public class ThingDetailFragment extends BaseFragment {
     {
         mDateButton = (Button) v.findViewById(R.id.thing_details_date_button);
         updateDate();
-        mDateButton.setOnClickListener(new View.OnClickListener() {
+        mDateButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 FragmentManager manager = getFragmentManager();
                 DatePickerFragment dialog = DatePickerFragment.newInstance(mThing.getDate());
                 dialog.setTargetFragment(ThingDetailFragment.this, REQUEST_DATE);
@@ -226,35 +273,6 @@ public class ThingDetailFragment extends BaseFragment {
 
         mBarcodeField = (EditText) v.findViewById(R.id.barcode_text);
         mBarcodeField.setText(mThing.getBarcode());
-    }
-
-    // Todo onActivityResult is duplicated in ThingDetailFragment and TingleMainFragment
-
-    /**
-     * This method is used to get the result back from scanning a barcode and save it in the barcode field.
-     * Called whenever Scanner exits, giving requestCode you started it with, the resultCode it returned, and any additional data from it.
-     * @param requestCode - integer request code supplied to startActivityForResult(), allowing you to identify who this result came from.
-     * @param resultCode -  integer result code returned by the child activity through its setResult()
-     * @param data -  intent which can return result data to caller attached to Intent "extra"
-     */
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        switch (requestCode)
-        {
-            //case Activity.RESULT_OK :
-
-            case Activity.RESULT_CANCELED :
-
-            case REQUEST_SCAN :
-                handleScanData(data);
-
-            case REQUEST_PHOTO :
-                updatePhotoView();
-
-            case REQUEST_DATE :
-                handleDate(data);
-        }
     }
 
     private void handleDate(Intent data)
@@ -314,23 +332,32 @@ public class ThingDetailFragment extends BaseFragment {
         }
     }
 
-    /**
-     * This method is used to implement the Android ActionBar back button.
-     * This allows the user to navigate back to the list of items from a detailed screen for a given thing.
-     * @param item - menu item that is used.
-     * @return - true if navigating to home activity.
-     */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
+    // Method used to load bitmap into ImageView showing picture
+    private void updatePhotoView()
     {
-        switch (item.getItemId())
+        if (mPhotoFile == null || !mPhotoFile.exists())
         {
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(getActivity()); // Navigate to parent activity (ThingListFragment)
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+            mPhotoView.setImageDrawable(null);
+        } else
+        {
+            // Scale image before insert
+            Bitmap bitmap = PictureUtils.getScaledBitmap(
+                    mPhotoFile.getPath(), getActivity());
+            mPhotoView.setImageBitmap(bitmap);
         }
+    }
+
+    private void updateDate()
+    {
+        String simpleDate = simplifyDateFormatDisplay(mThing.getDate());
+        mDateButton.setText(simpleDate);
+    }
+
+    private String simplifyDateFormatDisplay(Date date)
+    {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "yyyy-MM-dd", Locale.getDefault());
+        return dateFormat.format(date);
     }
 
     /**
@@ -365,33 +392,6 @@ public class ThingDetailFragment extends BaseFragment {
             e.printStackTrace();
         }
         return false;
-    }
-
-    // Method used to load bitmap into ImageView showing picture
-    private void updatePhotoView()
-    {
-        if (mPhotoFile == null || !mPhotoFile.exists())
-        {
-            mPhotoView.setImageDrawable(null);
-        } else
-        {
-            Bitmap bitmap = PictureUtils.getScaledBitmap(
-                    mPhotoFile.getPath(), getActivity());
-            mPhotoView.setImageBitmap(bitmap);
-        }
-    }
-
-    private void updateDate()
-    {
-        String simpleDate = simplifyDateFormatDisplay(mThing.getDate());
-        mDateButton.setText(simpleDate);
-    }
-
-    private String simplifyDateFormatDisplay(Date date)
-    {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "yyyy-MM-dd", Locale.getDefault());
-        return dateFormat.format(date);
     }
 
 }

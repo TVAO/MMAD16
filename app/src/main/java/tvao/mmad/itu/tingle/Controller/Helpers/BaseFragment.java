@@ -13,11 +13,6 @@ import android.widget.Toast;
 public class BaseFragment extends Fragment
 {
 
-//    protected ActionBar getActionBar()
-//    {
-//        return ((AppCompatActivity) getActivity()).getSupportActionBar();
-//    }
-
     protected void makeToast(String string)
     {
         Context context = getActivity().getApplicationContext();

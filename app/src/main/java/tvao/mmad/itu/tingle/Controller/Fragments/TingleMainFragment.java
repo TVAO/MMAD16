@@ -128,30 +128,6 @@ public class TingleMainFragment extends BaseFragment {
         return v;
     }
 
-//    /**
-//     * Used to search for an item in database.
-//     * @param item - item to search for
-//     * @return - where item is located
-//     */
-//    public String searchItems(String item) // Todo replace with private search class using AsyncTask
-//    {
-//        String searchItem = item.toLowerCase().trim();
-//        String result = null;
-//
-//        for (Thing i : sThingRepository.getThings())
-//        {
-//            if(i.getWhat().toLowerCase().trim().equals(searchItem))
-//            {
-//                result = i.getWhere(); // Return specific item per default
-//            }
-//            else if (i.getWhat().toLowerCase().trim().contains(searchItem))
-//            {
-//                result = i.getWhere(); // Return item containing
-//            }
-//        }
-//        return result;
-//    }
-
     // Setup text fields
     private void setTextFields(View view)
     {
