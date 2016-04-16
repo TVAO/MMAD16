@@ -21,8 +21,14 @@ import tvao.mmad.itu.tingle.Model.Thing;
  */
 public class SelectionSort extends GenericSort implements ISort {
 
+    /**
+     * Sort a list of items using the selection sort algorithm.
+     * @param items - items to sort.
+     * @param sortingParameter - parameter used to determine what to sort on (name, location or date).
+     */
     @Override
-    public void sort(Thing[] items, sortingParameter sortingParameter) {
+    public void sort(Thing[] items, sortingParameter sortingParameter)
+    {
 
         mSortingParameter = sortingParameter; // What, where or date
 
