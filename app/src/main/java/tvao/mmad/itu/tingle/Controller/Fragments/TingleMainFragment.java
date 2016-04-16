@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -18,8 +17,8 @@ import android.widget.Toast;
 
 import java.util.UUID;
 
-import tvao.mmad.itu.tingle.Controller.Helpers.BaseFragment;
-import tvao.mmad.itu.tingle.Controller.Helpers.SearchClass;
+import tvao.mmad.itu.tingle.Helpers.BaseFragment;
+import tvao.mmad.itu.tingle.Search.SearchClass;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.Network.FetchOutpanTask;

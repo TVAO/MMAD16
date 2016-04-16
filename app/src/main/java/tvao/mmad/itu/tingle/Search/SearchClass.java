@@ -1,11 +1,10 @@
-package tvao.mmad.itu.tingle.Controller.Helpers;
+package tvao.mmad.itu.tingle.Search;
 
 import android.os.AsyncTask;
 
 import java.util.List;
 
 import tvao.mmad.itu.tingle.Model.Thing;
-import tvao.mmad.itu.tingle.Model.ThingRepository;
 
 /**
  * This class is used to search for items in the database asynchronously using AsyncTask.

@@ -9,7 +9,7 @@ import tvao.mmad.itu.tingle.Controller.Fragments.ThingListFragment;
 import tvao.mmad.itu.tingle.Controller.Fragments.ThingListFragment.onBackPressedListener;
 import tvao.mmad.itu.tingle.Controller.Fragments.TingleMainFragment;
 import tvao.mmad.itu.tingle.Controller.Fragments.TingleMainFragment.eventListener;
-import tvao.mmad.itu.tingle.Controller.Helpers.SingleFragmentActivity;
+import tvao.mmad.itu.tingle.Helpers.SingleFragmentActivity;
 import tvao.mmad.itu.tingle.R;
 
 

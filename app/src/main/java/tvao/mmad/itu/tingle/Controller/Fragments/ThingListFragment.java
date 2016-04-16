@@ -2,7 +2,6 @@ package tvao.mmad.itu.tingle.Controller.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,7 +25,7 @@ import com.bignerdranch.android.multiselector.SwappingHolder;
 import java.util.List;
 
 import tvao.mmad.itu.tingle.Controller.Activities.ThingPagerActivity;
-import tvao.mmad.itu.tingle.Controller.Helpers.BaseFragment;
+import tvao.mmad.itu.tingle.Helpers.BaseFragment;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.R;

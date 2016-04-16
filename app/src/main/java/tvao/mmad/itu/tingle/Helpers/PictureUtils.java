@@ -1,4 +1,4 @@
-package tvao.mmad.itu.tingle.Controller.Helpers;
+package tvao.mmad.itu.tingle.Helpers;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
