@@ -128,15 +128,16 @@ public class ThingListFragment extends BaseFragment {
         setHasOptionsMenu(true); // Tell FM that fragment receives menu callbacks
         getActivity().setTitle(R.string.things_title);
         mSubtitleVisible = false;
-        mSearchHandler = new SearchHandler(ThingRepository.get(getContext()).getThings(), sortingParameter,
-                new SearchHandler.AsyncResponse()
-                {
-                    @Override
-                    public void processFinish(String searchResult)
-                    {
-                        // Todo get result of search and do something
-                    }
-                });
+        mSearchHandler = new SearchHandler(sortingParameter);
+//        mSearchHandler = new SearchHandler(ThingRepository.get(getContext()).getThings(), sortingParameter,
+//                new SearchHandler.AsyncResponse()
+//                {
+//                    @Override
+//                    public void processFinish(String searchResult)
+//                    {
+//                        // Todo get result of search and do something
+//                    }
+//                });
     }
 
     /**
@@ -287,22 +288,26 @@ public class ThingListFragment extends BaseFragment {
     private void setSearchView(MenuItem searchItem)
     {
         final SearchView searchView = (SearchView) searchItem.getActionView();
+        final List<Thing> listToSearch = ThingRepository.get(getActivity()).getThings();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener()
         {
             @Override
             public boolean onQueryTextSubmit(String query)
             {
-                List<Thing> result = mSearchHandler.search(query.toLowerCase().trim(),
-                                                           ThingRepository.get(getContext()).getThings());
-                if (result == null)
+                if (!listToSearch.isEmpty())
                 {
-                    makeToast(getString(R.string.item_notFound_toast));
-                    return false;
+                    List<Thing> result = mSearchHandler.search(query.toLowerCase().trim(), listToSearch);
+                    if (result == null)
+                    {
+                        makeToast(getString(R.string.item_notFound_toast));
+                        return false;
+                    }
+                    mAdapter.setThings(result);
+                    mAdapter.notifyDataSetChanged(); // Todo consider more specific refresh
+                    return true;
                 }
-                mAdapter.setThings(result);
-                mAdapter.notifyDataSetChanged(); // Todo consider more specific refresh
-                return true;
+                return false;
             }
 
             @Override
@@ -311,17 +316,21 @@ public class ThingListFragment extends BaseFragment {
                 if (newText.length() == 0)
                 {
                     updateList(); // Reset list
-                } else {
-                    List<Thing> result = mSearchHandler.search(newText.toLowerCase().trim(),
-                                                               ThingRepository.get(getContext()).getThings());
-                    if (result == null)
+                } else
+                {
+                    if (!listToSearch.isEmpty())
                     {
-                        return false;
+                        List<Thing> result = mSearchHandler.search(newText.toLowerCase().trim(), listToSearch);
+                        if (result == null)
+                        {
+                            return false;
+                        }
+                        mAdapter.setThings(result);
+                        mAdapter.notifyDataSetChanged();
                     }
-                    mAdapter.setThings(result);
-                    mAdapter.notifyDataSetChanged();
+                    return true;
                 }
-                return true;
+                return false;
             }
         });
     }
@@ -401,7 +410,8 @@ public class ThingListFragment extends BaseFragment {
     // Go back to list if in portrait mode
     private void goBack()
     {
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+        {
             mCallback.onBackPressed();
         }
     }
@@ -427,13 +437,18 @@ public class ThingListFragment extends BaseFragment {
     {
         ThingRepository thingRepository = ThingRepository.get(getActivity());
         List<Thing> things = thingRepository.getThings();
-        mSearchHandler.sortDefault(things);
+
+        if(!things.isEmpty())
+        {
+            mSearchHandler.sortDefault(things);
+        }
 
         if (mAdapter == null)
         {
             mAdapter = new ThingAdapter(things);
             mThingRecyclerView.setAdapter(mAdapter);
-        } else
+        }
+        else
         {
             mAdapter.setThings(things);
             mAdapter.notifyDataSetChanged(); // Only reload items when going back from detailed screen so no real overhead
@@ -600,6 +615,8 @@ public class ThingListFragment extends BaseFragment {
         {
             mThings = things;
         }
+
+        public List<Thing> getThings() { return mThings; }
     }
 
 }

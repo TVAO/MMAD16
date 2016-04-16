@@ -49,6 +49,13 @@ public class SearchHandler extends AsyncTask<String, Void, String> {
         void processFinish(String searchResult);
     }
 
+    public SearchHandler(ISort sortHandler)
+    {
+        this.mSortHandler = sortHandler;
+        setSearchType(Type.WHAT);//set what as default
+
+    }
+
     public SearchHandler(List<Thing> things, AsyncResponse delegate)
     {
         this.delegate = delegate;
@@ -94,7 +101,7 @@ public class SearchHandler extends AsyncTask<String, Void, String> {
      */
     public List sort(List<Thing> things, ISort.sortingParameter type)
     {
-        Thing[] thingArr = things.toArray(new Thing[things.size()]); //convert list to array
+        Thing[] thingArr = things.toArray(new Thing[things.size()]); // convert list to array
         mSortHandler.sort(thingArr, type);
         return Arrays.asList(thingArr);
     }
