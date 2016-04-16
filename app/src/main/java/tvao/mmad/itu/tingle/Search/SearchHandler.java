@@ -55,7 +55,7 @@ public class SearchHandler extends AsyncTask<String, Void, String> {
         mThings = things;
     }
 
-    public SearchHandler(List<Thing> things, AsyncResponse delegate, ISort sortHandler)
+    public SearchHandler(List<Thing> things, ISort sortHandler, AsyncResponse delegate)
     {
         this.delegate = delegate;
         mThings = things;
@@ -134,11 +134,13 @@ public class SearchHandler extends AsyncTask<String, Void, String> {
 
         // Binary search until char is lower by one than charToCompare
         int i = 0;
-        while (!found && start <= end) {
+        while (!found && start <= end)
+        {
             i = (start + end) / 2;
             thing = things.get(i);
 
-            switch (mSearchType) {
+            switch (mSearchType)
+            {
                 case WHAT:
                     locatedChar = thing.getWhat().charAt(0);
                     break;

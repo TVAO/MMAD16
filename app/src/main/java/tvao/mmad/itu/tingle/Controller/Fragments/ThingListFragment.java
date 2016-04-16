@@ -29,6 +29,8 @@ import tvao.mmad.itu.tingle.Helpers.BaseFragment;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.R;
+import tvao.mmad.itu.tingle.Search.ISort;
+import tvao.mmad.itu.tingle.Search.SearchHandler;
 
 
 /**
@@ -44,6 +46,8 @@ public class ThingListFragment extends BaseFragment {
     private RecyclerView mThingRecyclerView;
     private ThingAdapter mAdapter;
     private boolean mSubtitleVisible; // Keep track of subtitle visibility
+    private SearchHandler mSearchHandler; // Search and sort content of items
+    ISort sortingParameter;
 
     // Used to allow multi selection and deletion of selected items
     private MultiSelector mMultiSelector = new MultiSelector();
@@ -120,6 +124,15 @@ public class ThingListFragment extends BaseFragment {
         setHasOptionsMenu(true); // Tell FM that fragment receives menu callbacks
         getActivity().setTitle(R.string.things_title);
         mSubtitleVisible = false;
+        mSearchHandler = new SearchHandler(ThingRepository.get(getContext()).getThings(), sortingParameter,
+                new SearchHandler.AsyncResponse()
+                {
+                    @Override
+                    public void processFinish(String searchResult)
+                    {
+                        // Todo get result of search and do something
+                    }
+                });
     }
 
     /**
@@ -307,6 +320,7 @@ public class ThingListFragment extends BaseFragment {
     {
         ThingRepository thingRepository = ThingRepository.get(getActivity());
         List<Thing> things = thingRepository.getThings();
+        mSearchHandler.sortDefault(things);
 
         if (mAdapter == null)
         {
