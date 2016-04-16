@@ -35,4 +35,5 @@
     <string name="wifi_connected">Wifi is connected.</string>
     <string name="lost_connection">Connection was lost</string>
     <string name="thing_title_label">Title</string>
+    <string name="ok">Ok</string>
 </resources>

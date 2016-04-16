@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import java.util.UUID;
 
+import tvao.mmad.itu.tingle.Controller.Helpers.BaseFragment;
 import tvao.mmad.itu.tingle.Controller.Helpers.SearchClass;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
@@ -29,10 +30,13 @@ import tvao.mmad.itu.tingle.R;
  * This class represents the fragment of main page.
  * The TingleMainFragment is hosted by the activity TingleActivity.
  */
-public class TingleMainFragment extends Fragment {
+public class TingleMainFragment extends BaseFragment {
 
     private static final String ARG_THING_ID = "thing_id"; // Fragment argument used by host activity
     public static final String TAG = "TingleMainFragment";
+
+    private static final int REQUEST_PHOTO = 2;
+    private static final int REQUEST_SCAN = 3;
 
     private Button mAddButton, mListButton, mSearchButton, mScanButton; // GUI variables
     private TextView mLastAdded, mWhatField, mWhereField;
@@ -125,29 +129,29 @@ public class TingleMainFragment extends Fragment {
         return v;
     }
 
-    /**
-     * Used to search for an item in database.
-     * @param item - item to search for
-     * @return - where item is located
-     */
-    public String searchItems(String item) // Todo replace with private search class using AsyncTask
-    {
-        String searchItem = item.toLowerCase().trim();
-        String result = null;
-
-        for (Thing i : sThingRepository.getThings())
-        {
-            if(i.getWhat().toLowerCase().trim().equals(searchItem))
-            {
-                result = i.getWhere(); // Return specific item per default
-            }
-            else if (i.getWhat().toLowerCase().trim().contains(searchItem))
-            {
-                result = i.getWhere(); // Return item containing
-            }
-        }
-        return result;
-    }
+//    /**
+//     * Used to search for an item in database.
+//     * @param item - item to search for
+//     * @return - where item is located
+//     */
+//    public String searchItems(String item) // Todo replace with private search class using AsyncTask
+//    {
+//        String searchItem = item.toLowerCase().trim();
+//        String result = null;
+//
+//        for (Thing i : sThingRepository.getThings())
+//        {
+//            if(i.getWhat().toLowerCase().trim().equals(searchItem))
+//            {
+//                result = i.getWhere(); // Return specific item per default
+//            }
+//            else if (i.getWhat().toLowerCase().trim().contains(searchItem))
+//            {
+//                result = i.getWhere(); // Return item containing
+//            }
+//        }
+//        return result;
+//    }
 
     // Setup text fields
     private void setTextFields(View view)
@@ -267,53 +271,55 @@ public class TingleMainFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        if (requestCode == 0)
+        switch (requestCode)
         {
-            if (resultCode == getActivity().RESULT_OK)
-            {
-                String contents = data.getStringExtra("SCAN_RESULT");
-                String format = data.getStringExtra("SCAN_RESULT_FORMAT");
+            case Activity.RESULT_OK :
+                makeToast(getString(R.string.ok));
 
-                // Handle successful scan
-                Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.TOP, 25, 400);
-                toast.show();
-
-                Log.d("onActivityResult", "contents: " + contents);
-
-                // Lookup item from barcode if user has connection
-                if(new NetworkUtils(getContext()).isOnline())
-                {
-                    FetchOutpanTask lookupBarcodeTask = new FetchOutpanTask(new FetchOutpanTask.AsyncResponse()
-                    {
-                        @Override
-                        public void processFinish(Thing output)
-                        {
-                            // Set barcode info based on lookup result from OnPostExecute() in AsyncTask
-                            mBarcodeField.setText(output.getBarcode());
-                            mWhatField.setText(output.getWhat());
-                            Log.d("Lookup", "barcode: " + output.getBarcode());
-                            Log.d("Lookup", "what: " + output.getWhat());
-                            // Todo could just add Thing directly to items with name, barcode and optionally attributed in new field
-                        }
-                    });
-
-                    lookupBarcodeTask.execute(contents);
-                }
-                else
-                {
-                    makeToast("You are not connected to a network... Please try again.");
-                }
-
-
-            }
-            else if (resultCode == getActivity().RESULT_CANCELED)
-            {   // Handle cancel
-                Toast toast = Toast.makeText(getContext(), "Scan was Cancelled!", Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.TOP, 25, 400);
-                toast.show();
+            case Activity.RESULT_CANCELED :
+                makeToast("Scan was cancelled!");
                 Log.d("onActivityResult", "RESULT_CANCELED");
-            }
+
+            case REQUEST_SCAN :
+                handleScanData(data);
+        }
+    }
+
+    // Lookup item from barcode and save information
+    private void handleScanData(Intent data)
+    {
+        String contents = data.getStringExtra("SCAN_RESULT");
+        String format = data.getStringExtra("SCAN_RESULT_FORMAT");
+
+        // Handle successful scan
+        Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.TOP, 25, 400);
+        toast.show();
+
+        Log.d("onActivityResult", "contents: " + contents);
+
+        // Lookup item from barcode if user has connection
+        if(new NetworkUtils(getContext()).isOnline())
+        {
+            FetchOutpanTask lookupBarcodeTask = new FetchOutpanTask(new FetchOutpanTask.AsyncResponse()
+            {
+                @Override
+                public void processFinish(Thing output)
+                {
+                    // Set barcode info based on lookup result from OnPostExecute() in AsyncTask
+                    mBarcodeField.setText(output.getBarcode());
+                    mWhatField.setText(output.getWhat());
+                    Log.d("Lookup", "barcode: " + output.getBarcode());
+                    Log.d("Lookup", "what: " + output.getWhat());
+                    // Todo could just add Thing directly to items with name, barcode and optionally attributed in new field
+                }
+            });
+
+            lookupBarcodeTask.execute(contents);
+        }
+        else
+        {
+            makeToast("You are not connected to a network... Please try again.");
         }
     }
 
@@ -328,23 +334,5 @@ public class TingleMainFragment extends Fragment {
         }
         else this.mLastAdded.setText(getString(R.string.item_notFound_toast));
     }
-
-    private void makeToast(String string)
-    {
-        Context context = getActivity().getApplicationContext();
-        Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
-    }
-
-//    // Class used to run barcode lookup on network in separate threads
-//    private class FetchOutpanTask extends AsyncTask<String, Void, Thing>
-//    {
-//
-//
-//        @Override
-//        protected Thing doInBackground(String... params) {
-//            return null;
-//        }
-//
-//    }
 
 }

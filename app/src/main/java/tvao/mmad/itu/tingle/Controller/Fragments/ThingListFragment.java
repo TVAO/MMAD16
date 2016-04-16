@@ -26,6 +26,7 @@ import com.bignerdranch.android.multiselector.SwappingHolder;
 import java.util.List;
 
 import tvao.mmad.itu.tingle.Controller.Activities.ThingPagerActivity;
+import tvao.mmad.itu.tingle.Controller.Helpers.BaseFragment;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.R;
@@ -35,7 +36,7 @@ import tvao.mmad.itu.tingle.R;
  * This class represents a fragment used to display all items in list.
  * The fragment is hosted by the activity TingleActivity.
  */
-public class ThingListFragment extends Fragment {
+public class ThingListFragment extends BaseFragment {
 
     // Used to safe pager and count of things upon change of configuration (rotation)
     private static final String TAG = "thingListFragment";

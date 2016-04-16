@@ -1,5 +1,6 @@
 package tvao.mmad.itu.tingle.Controller.Fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -26,6 +27,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.util.UUID;
 
+import tvao.mmad.itu.tingle.Controller.Helpers.BaseFragment;
 import tvao.mmad.itu.tingle.Controller.Helpers.PictureUtils;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
@@ -37,12 +39,13 @@ import tvao.mmad.itu.tingle.R;
  * This class represents the fragment of a detailed page for a given item.
  * The TingleMainFragment is hosted by the activity TinglePagerActivity.
  */
-public class ThingDetailFragment extends Fragment {
+public class ThingDetailFragment extends BaseFragment {
 
     public static final String EXTRA_THING_ID = "thingintent.THING_ID";
     public static final String TAG = "ThingDetailFragment";
 
-    private static final int REQUEST_PHOTO= 2;
+    private static final int REQUEST_PHOTO = 2;
+    private static final int REQUEST_SCAN = 3;
 
     private Thing mThing;
     private Button mAddButton, mScanButton;
@@ -99,6 +102,69 @@ public class ThingDetailFragment extends Fragment {
     {
         View v = inflater.inflate(R.layout.fragment_thing, parent, false);
 
+        setTextFields(v);
+        setAddButton(v);
+
+        mScanButton = (Button) v.findViewById(R.id.barcode_scanner);
+        mScanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+                startActivityForResult(intent, REQUEST_SCAN);
+            }
+        });
+
+        setupCameraButton(v);
+
+        return v;
+    }
+
+    private void setupCameraButton(View v) {
+        // Only show camera functionality in portrait mode (removed in landscape)
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+        {
+            mPhotoButton = (ImageButton) v.findViewById(R.id.thing_camera);
+
+            // Intent used to fire up camera application using action "ACTION_IMAGE_CAPTURE"
+            final Intent captureImage = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+            boolean isCanTakePhoto = isCanTakePhoto(captureImage);
+
+            mPhotoButton.setEnabled(isCanTakePhoto(captureImage));
+
+            if (isCanTakePhoto)
+            {
+                Uri uri = Uri.fromFile(mPhotoFile);
+                captureImage.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+            }
+
+            mPhotoButton.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                  startActivityForResult(captureImage, REQUEST_PHOTO); // Todo get SecurityException due to permission issue ???
+                }
+            });
+
+            mPhotoView = (ImageView) v.findViewById(R.id.thing_photo);
+
+            updatePhotoView(); // Load image into image view
+        }
+    }
+
+    // Check if camera is available
+    private boolean isCanTakePhoto(Intent captureImage)
+    {
+        // Check if camera is available, else disable camera button
+        PackageManager packageManager = getActivity().getPackageManager();
+
+        return mPhotoFile != null &&
+                        captureImage.resolveActivity(packageManager) != null;
+    }
+
+    private void setAddButton(View v)
+    {
         // Find add button
         mAddButton = (Button) v.findViewById(R.id.thing_details_add_button);
         mAddButton.setOnClickListener(new View.OnClickListener()
@@ -122,22 +188,15 @@ public class ThingDetailFragment extends Fragment {
                         // Update existing item
                         ThingRepository.get(getActivity()).updateThing(mThing);
                     }
-                    NavUtils.navigateUpFromSameTask(getActivity()); // Navigate to parent activity (ThingListFragment)
+                    getActivity().finish(); // Done and close activity
+                    //NavUtils.navigateUpFromSameTask(getActivity()); // Navigate to parent activity (ThingListFragment)
                 }
             }
         });
+    }
 
-        mScanButton = (Button) v.findViewById(R.id.barcode_scanner);
-        mScanButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-                startActivityForResult(intent, 0);
-            }
-        });
-
+    private void setTextFields(View v)
+    {
         mWhatField = (EditText) v.findViewById(R.id.thing_details_what);
         mWhatField.setText(mThing.getWhat());
 
@@ -146,54 +205,6 @@ public class ThingDetailFragment extends Fragment {
 
         mBarcodeField = (EditText) v.findViewById(R.id.barcode_text);
         mBarcodeField.setText(mThing.getBarcode());
-
-        // Only show camera functionality in portrait mode (removed in landscape)
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-        {
-            mPhotoButton = (ImageButton) v.findViewById(R.id.thing_camera);
-
-            // Intent used to fire up camera application using action "ACTION_IMAGE_CAPTURE"
-            final Intent captureImage = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-            // Check if camera is available, else disable camera button
-            PackageManager packageManager = getActivity().getPackageManager();
-//            if (packageManager.resolveActivity(captureImage,
-//                    PackageManager.MATCH_DEFAULT_ONLY) == null)
-//            {
-//                mPhotoButton.setEnabled(false);
-//            }
-
-            boolean canTakePhoto = mPhotoFile != null &&
-                    captureImage.resolveActivity(packageManager) != null;
-            mPhotoButton.setEnabled(canTakePhoto);
-
-            if (canTakePhoto)
-            {
-                Uri uri = Uri.fromFile(mPhotoFile);
-                captureImage.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-            }
-
-            mPhotoButton.setOnClickListener(new View.OnClickListener()
-            {
-                @Override
-                public void onClick(View v)
-                {
-                    // Check for camera permissions at runtime before starting camera intent
-//                    if(!hasPermissionInManifest(getContext(), android.Manifest.permission.CAMERA.toString()))
-//                    {
-//                        requestPermissions(new String[]{android.Manifest.permission.CAMERA},
-//                                REQUEST_PHOTO);
-//                    }
-                    startActivityForResult(captureImage, REQUEST_PHOTO); // Todo get SecurityException due to permission issue ???
-                }
-            });
-
-            mPhotoView = (ImageView) v.findViewById(R.id.thing_photo);
-            updatePhotoView(); // Load image into image view
-
-        }
-
-        return v;
     }
 
     // Todo onActivityResult is duplicated in ThingDetailFragment and TingleMainFragment
@@ -208,64 +219,59 @@ public class ThingDetailFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        if (requestCode == 0)
+        switch (requestCode)
         {
-            if (resultCode == getActivity().RESULT_OK)
-            {
-                String contents = data.getStringExtra("SCAN_RESULT");
-                String format = data.getStringExtra("SCAN_RESULT_FORMAT");
+            case Activity.RESULT_OK :
+                makeToast(getString(R.string.ok));
 
-                // Handle successful scan
-                Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.TOP, 25, 400);
-                toast.show();
-
-                Log.d("onActivityResult", "contents: " + contents);
-
-                // Lookup item from barcode if user has connection
-                if(new NetworkUtils(getContext()).isOnline())
-                {
-                    FetchOutpanTask lookupBarcodeTask = new FetchOutpanTask(new FetchOutpanTask.AsyncResponse()
-                    {
-                        @Override
-                        public void processFinish(Thing output)
-                        {
-                            // Set barcode info based on lookup result from OnPostExecute() in AsyncTask
-                            mBarcodeField.setText(output.getBarcode());
-                            mWhatField.setText(output.getWhat());
-                            Log.d("Lookup", "barcode: " + output.getBarcode());
-                            Log.d("Lookup", "what: " + output.getWhat());
-                            // Todo could just add Thing directly to items with name, barcode and optionally attributed in new field
-                        }
-                    });
-
-                    lookupBarcodeTask.execute(contents);
-                }
-                else
-                {
-                    makeToast("You are not connected to a network... Please try again.");
-                }
-            }
-            else if (resultCode == getActivity().RESULT_CANCELED)
-            {   // Handle cancel
-                Toast toast = Toast.makeText(getContext(), "Scan was Cancelled!", Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.TOP, 25, 400);
-                toast.show();
+            case Activity.RESULT_CANCELED :
+                makeToast("Scan was cancelled!");
                 Log.d("onActivityResult", "RESULT_CANCELED");
-            }
-        }
-        else if(requestCode == REQUEST_PHOTO)
-        {
-            updatePhotoView(); // Show bitmap photo in ImageView
-        }
 
+            case REQUEST_SCAN :
+                handleScanData(data);
+
+            case REQUEST_PHOTO :
+                updatePhotoView();
+        }
     }
 
-    // Todo remove duplicated in ThingDetailFragment and TingleMainFragment
-    private void makeToast(String string)
+    // Lookup item from barcode and save information
+    private void handleScanData(Intent data)
     {
-        Context context = getActivity().getApplicationContext();
-        Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
+        String contents = data.getStringExtra("SCAN_RESULT");
+        String format = data.getStringExtra("SCAN_RESULT_FORMAT");
+
+        // Handle successful scan
+        Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.TOP, 25, 400);
+        toast.show();
+
+        Log.d("onActivityResult", "contents: " + contents);
+
+        // Lookup item from barcode if user has connection
+        if(new NetworkUtils(getContext()).isOnline())
+        {
+            FetchOutpanTask lookupBarcodeTask = new FetchOutpanTask(new FetchOutpanTask.AsyncResponse()
+            {
+                @Override
+                public void processFinish(Thing output)
+                {
+                    // Set barcode info based on lookup result from OnPostExecute() in AsyncTask
+                    mBarcodeField.setText(output.getBarcode());
+                    mWhatField.setText(output.getWhat());
+                    Log.d("Lookup", "barcode: " + output.getBarcode());
+                    Log.d("Lookup", "what: " + output.getWhat());
+                    // Todo could just add Thing directly to items with name, barcode and optionally attributed in new field
+                }
+            });
+
+            lookupBarcodeTask.execute(contents);
+        }
+        else
+        {
+            makeToast("You are not connected to a network... Please try again.");
+        }
     }
 
     /**
