@@ -110,22 +110,4 @@ public class ThingPagerActivity extends AppCompatActivity {
 
     }
 
-    // Todo remove ?
-    public static ActivityOptions getTransition(Activity activity, View thingView)
-    {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-        {
-            thingView.setTransitionName("thing");
-
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(activity,
-                    thingView, "thing");
-
-            return options;
-        }
-        else
-        {
-            return null;
-        }
-    }
-
 }
