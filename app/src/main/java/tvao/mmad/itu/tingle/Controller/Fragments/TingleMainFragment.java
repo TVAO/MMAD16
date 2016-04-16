@@ -35,7 +35,6 @@ public class TingleMainFragment extends BaseFragment {
     private static final String ARG_THING_ID = "thing_id"; // Fragment argument used by host activity
     public static final String TAG = "TingleMainFragment";
 
-    private static final int REQUEST_PHOTO = 2;
     private static final int REQUEST_SCAN = 3;
 
     private Button mAddButton, mListButton, mSearchButton, mScanButton; // GUI variables
