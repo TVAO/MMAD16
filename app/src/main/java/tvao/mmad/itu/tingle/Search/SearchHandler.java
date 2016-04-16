@@ -10,7 +10,7 @@ import tvao.mmad.itu.tingle.Model.Thing;
  * This class is used to search for items in the database asynchronously using AsyncTask.
  * The Async task takes a search string item as input and returns a string of the name of item if it exists.
  */
-public class SearchClass extends AsyncTask<String, Void, String> {
+public class SearchHandler extends AsyncTask<String, Void, String> {
 
     private String response = "????";
     private Boolean found = false;
@@ -26,7 +26,7 @@ public class SearchClass extends AsyncTask<String, Void, String> {
         void processFinish(String searchResult);
     }
 
-    public SearchClass(List<Thing> things, AsyncResponse delegate)
+    public SearchHandler(List<Thing> things, AsyncResponse delegate)
     {
         this.delegate = delegate;
         mThings = things;

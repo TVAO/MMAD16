@@ -10,6 +10,8 @@ import tvao.mmad.itu.tingle.Helpers.SingleFragmentActivity;
 @Deprecated
 public class ThingListActivity extends SingleFragmentActivity {
 
+    // Todo add fragment methods common from abstract class in base activity and use instead of TingDetailFragment directly
+
     @Override
     protected Fragment createFragment()
     {
