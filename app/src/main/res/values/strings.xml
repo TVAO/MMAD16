@@ -36,4 +36,7 @@
     <string name="lost_connection">Connection was lost</string>
     <string name="thing_title_label">Title</string>
     <string name="ok">Ok</string>
+    <string name="date_picker_title">Most recent date</string>
+    <string name="heading_date">Choose date</string>
+    <string name="heading_save">Save</string>
 </resources>

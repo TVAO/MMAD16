@@ -1,5 +1,7 @@
 package tvao.mmad.itu.tingle.Model;
 
+import java.util.Date;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -9,6 +11,7 @@ public class Thing {
 
     private String mWhat, mWhere, mBarcode = null;
     private UUID mId;
+    private Date mDate;
 
     // Used to add empty Things in ThingPager
     public Thing()
@@ -17,6 +20,7 @@ public class Thing {
         mWhere = "";
         mBarcode = "";
         mId = UUID.randomUUID();
+        mDate = new Date();
     }
 
     // Item without barcode
@@ -26,6 +30,7 @@ public class Thing {
         mWhere = where;
         mBarcode = "";
         mId = UUID.randomUUID(); // Generate unique identifier
+        mDate = new Date();
     }
 
     // Item with barcode
@@ -35,6 +40,7 @@ public class Thing {
         mWhere = where;
         mBarcode = barcode;
         mId = UUID.randomUUID(); // Generate unique identifier
+        mDate = new Date();
     }
 
     // Return Thing with appropriate id in query
@@ -85,4 +91,8 @@ public class Thing {
     {
         return "IMG_" + getId().toString() + ".jpg";
     }
+
+    public Date getDate() { return mDate; }
+
+    public void setDate(Date date) { mDate = date; }
 }

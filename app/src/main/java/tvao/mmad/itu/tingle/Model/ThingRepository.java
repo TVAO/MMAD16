@@ -7,8 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Database.DatabaseManager;
@@ -53,6 +56,7 @@ public class ThingRepository implements IRepository {
         values.put(ThingTable.Cols.WHAT, thing.getWhat());
         values.put(ThingTable.Cols.WHERE, thing.getWhere());
         values.put(ThingTable.Cols.BARCODE, thing.getBarcode());
+        values.put(ThingTable.Cols.DATE, getDateTimeString(thing.getDate()));
 
         return values;
     }
@@ -168,6 +172,14 @@ public class ThingRepository implements IRepository {
         );
 
         return new ThingCursorWrapper(cursor);
+    }
+
+    // Returns datetime value used to set content value as string in SQLite
+    public static String getDateTimeString(Date date)
+    {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        return dateFormat.format(date);
     }
 
     public int size()
