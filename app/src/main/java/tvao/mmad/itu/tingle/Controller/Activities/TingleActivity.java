@@ -21,7 +21,7 @@ import tvao.mmad.itu.tingle.R;
 public class TingleActivity extends SingleFragmentActivity implements onBackPressedListener, eventListener {
 
     /**
-     * Used to call fragment displaying main page.
+     * Used to call fragment displaying main page and go back.
      */
     @Override
     public void onBackPressed()

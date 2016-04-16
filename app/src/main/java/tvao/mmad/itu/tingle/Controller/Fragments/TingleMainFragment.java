@@ -48,7 +48,7 @@ public class TingleMainFragment extends BaseFragment {
      * Interface is encapsulated in fragment to avoid use in other activities.
      * Interface is implemented by host activity determining what happens upon triggering the listener.
      */
-    public interface eventListener // Todo remove ?
+    public interface eventListener
     {
         void onShowItems(); // See list of items
         void onAddItems(); // Update list in landscape after adding item
@@ -61,7 +61,7 @@ public class TingleMainFragment extends BaseFragment {
      * @param context - context of host activity
      */
     @Override
-    public void onAttach(Context context) // Todo remove ?
+    public void onAttach(Context context)
     {
         super.onAttach(context);
         Activity activity = new Activity();
@@ -127,30 +127,6 @@ public class TingleMainFragment extends BaseFragment {
 
         return v;
     }
-
-//    /**
-//     * Used to search for an item in database.
-//     * @param item - item to search for
-//     * @return - where item is located
-//     */
-//    public String searchItems(String item) // Todo replace with private search class using AsyncTask
-//    {
-//        String searchItem = item.toLowerCase().trim();
-//        String result = null;
-//
-//        for (Thing i : sThingRepository.getThings())
-//        {
-//            if(i.getWhat().toLowerCase().trim().equals(searchItem))
-//            {
-//                result = i.getWhere(); // Return specific item per default
-//            }
-//            else if (i.getWhat().toLowerCase().trim().contains(searchItem))
-//            {
-//                result = i.getWhere(); // Return item containing
-//            }
-//        }
-//        return result;
-//    }
 
     // Setup text fields
     private void setTextFields(View view)

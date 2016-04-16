@@ -79,14 +79,15 @@ public class ThingPagerActivity extends AppCompatActivity {
 
         });
 
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
+        {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
 
             // Change title to name of thing
             @Override
-            public void onPageSelected(int position) {
+            public void onPageSelected(int position)
+            {
                 Thing thing = mThings.get(position);
                 if (thing.getWhat() != null)
                 {
@@ -108,24 +109,6 @@ public class ThingPagerActivity extends AppCompatActivity {
             }
         }
 
-    }
-
-    // Todo remove ?
-    public static ActivityOptions getTransition(Activity activity, View thingView)
-    {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-        {
-            thingView.setTransitionName("thing");
-
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(activity,
-                    thingView, "thing");
-
-            return options;
-        }
-        else
-        {
-            return null;
-        }
     }
 
 }

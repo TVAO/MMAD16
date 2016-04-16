@@ -107,11 +107,11 @@ public class NetworkActivity extends Activity {
                 || ((sPref.equals(WIFI)) && (wifiConnected)))
         {
             // AsyncTask subclass
-            new FetchOutpanTask().execute(URL);
+            //new FetchOutpanTask().execute(URL);
         }
         else
         {
-            // showErrorPage(); Todo error
+            System.out.println("Error");
         }
     }
 
