@@ -12,8 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include layout="@layout/view_camera_and_title" />
-
         <!-- What -->
 
         <TextView
@@ -88,6 +86,8 @@
                 android:layout_weight="1"/>
 
         </LinearLayout>
+
+        <include layout="@layout/view_camera" />
 
     </LinearLayout>
 

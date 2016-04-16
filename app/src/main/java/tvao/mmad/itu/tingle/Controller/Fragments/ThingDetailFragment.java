@@ -250,11 +250,9 @@ public class ThingDetailFragment extends BaseFragment {
     {
         mDateButton = (Button) v.findViewById(R.id.thing_details_date_button);
         updateDate();
-        mDateButton.setOnClickListener(new View.OnClickListener()
-        {
+        mDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 FragmentManager manager = getFragmentManager();
                 DatePickerFragment dialog = DatePickerFragment.newInstance(mThing.getDate());
                 dialog.setTargetFragment(ThingDetailFragment.this, REQUEST_DATE);
@@ -349,8 +347,11 @@ public class ThingDetailFragment extends BaseFragment {
 
     private void updateDate()
     {
-        String simpleDate = simplifyDateFormatDisplay(mThing.getDate());
-        mDateButton.setText(simpleDate);
+        if(mThing.getDate() != null)
+        {
+            String simpleDate = simplifyDateFormatDisplay(mThing.getDate());
+            mDateButton.setText(simpleDate);
+        }
     }
 
     private String simplifyDateFormatDisplay(Date date)

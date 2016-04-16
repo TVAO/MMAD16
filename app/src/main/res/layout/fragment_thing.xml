@@ -1,76 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- This layout is used by TingleMainFragment to show a detailed description of the item. -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical" >
+<!-- Layout container for a view hierarchy scrolled by the user, allowing it to be larger than the physical display and fit all UI components -->
 
-    <include layout="@layout/view_camera_and_title" />
-
-    <!-- What -->
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/what_thing"
-        style="?android:listSeparatorTextViewStyle"/>
-
-    <EditText android:id="@+id/thing_details_what"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:hint="@string/thing_what_hint"
-              android:singleLine="true"/>
-
-    <!-- Where -->
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/where_thing"
-        style="?android:listSeparatorTextViewStyle"/>
-
-    <EditText android:id="@+id/thing_details_where"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:hint="@string/thing_where_hint"
-              android:singleLine="true"/>
-
-    <!-- Barcode -->
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/barcode_thing"/>
-
-    <EditText
-        android:id="@+id/barcode_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:hint="@string/barcode_hint"
-        android:editable="false"/>
-
-    <!-- Date picker button -->
-
-    <Button android:id="@+id/thing_details_date_button"
-            android:text="@string/heading_date"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-        />
+            android:padding="5dp">
 
-    <!-- Button so scan barcode from items -->
-    <Button
-        android:id="@+id/barcode_scanner"
-        android:text="@string/heading_scan"
+    <!-- This layout is used by TingleMainFragment to show a detailed description of the item. -->
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
 
-    <!-- Button to save thing -->
-    <Button
-        android:id="@+id/thing_details_add_button"
-        android:text="@string/heading_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <!-- What -->
 
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/what_thing"
+            style="?android:listSeparatorTextViewStyle"/>
+
+        <EditText android:id="@+id/thing_details_what"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:hint="@string/thing_what_hint"
+                  android:singleLine="true"/>
+
+        <!-- Where -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/where_thing"
+            style="?android:listSeparatorTextViewStyle"/>
+
+        <EditText android:id="@+id/thing_details_where"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:hint="@string/thing_where_hint"
+                  android:singleLine="true"/>
+
+        <!-- Barcode -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/barcode_thing"/>
+
+        <EditText
+            android:id="@+id/barcode_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:hint="@string/barcode_hint"
+            android:editable="false"/>
+
+        <!-- Date picker button -->
+
+        <Button android:id="@+id/thing_details_date_button"
+                android:text="@string/heading_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+            />
+
+        <!-- Button so scan barcode from items -->
+        <Button
+            android:id="@+id/barcode_scanner"
+            android:text="@string/heading_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Button to save thing -->
+        <Button
+            android:id="@+id/thing_details_add_button"
+            android:text="@string/heading_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <include layout="@layout/view_camera" />
+
+    </LinearLayout>
+
+</ScrollView>

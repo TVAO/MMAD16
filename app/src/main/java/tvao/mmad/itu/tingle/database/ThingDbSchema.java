@@ -15,6 +15,7 @@ public class ThingDbSchema {
             public static final String WHAT = "what";
             public static final String WHERE = "location";
             public static final String BARCODE = "barcode";
+            public static final String DATE = "date";
         }
 
     }

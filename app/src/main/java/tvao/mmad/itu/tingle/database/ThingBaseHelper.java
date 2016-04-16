@@ -30,6 +30,12 @@ public class ThingBaseHelper extends SQLiteOpenHelper {
         return sThingBaseHelper;
     }
 
+    /**
+     * Called when the database is created for the first time. This is where the
+     * creation of tables and the initial population of the tables should happen.
+     *
+     * @param db The database.
+     */
     @Override
     public void onCreate(SQLiteDatabase db)
     {
@@ -38,15 +44,21 @@ public class ThingBaseHelper extends SQLiteOpenHelper {
                         ThingTable.Cols.UUID + ", " +
                         ThingTable.Cols.WHAT + ", " +
                         ThingTable.Cols.WHERE + ", " +
-                        ThingTable.Cols.BARCODE +
+                        ThingTable.Cols.BARCODE + ", " +
+                        ThingTable.Cols.DATE +
                 ")"
         );
     }
 
+    /**
+     * Called when the database needs to be upgraded. The implementation
+     * should use this method to drop tables, add tables, or do anything else it
+     * needs to upgrade to the new schema version.
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
-
+        db.execSQL("DROP TABLE IF EXISTS" + ThingTable.NAME);
     }
 
 }
