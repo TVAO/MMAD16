@@ -63,12 +63,17 @@ public class DatePickerFragment extends DialogFragment {
     {
         Date date = (Date) getArguments().getSerializable(ARG_DATE);
 
+
         // Use current time as default values for picker
         Calendar calender = Calendar.getInstance();
-        calender.setTime(date);
+        if (date != null)
+        {
+            calender.setTime(date);
+        }
         int year = calender.get(Calendar.YEAR);
         int month = calender.get(Calendar.MONTH);
         int day = calender.get(Calendar.DAY_OF_MONTH);
+
 
         View v = LayoutInflater.from(getActivity())
                 .inflate(R.layout.dialog_date,null);
