@@ -1,11 +1,13 @@
 package tvao.mmad.itu.tingle.Controller.Fragments;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -42,6 +44,8 @@ public class ThingListFragment extends BaseFragment {
     // Used to safe pager and count of things upon change of configuration (rotation)
     private static final String TAG = "thingListFragment";
     private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
+
+    onBackPressedListener mCallback; // Used to go back
 
     private RecyclerView mThingRecyclerView;
     private ThingAdapter mAdapter;
@@ -183,9 +187,10 @@ public class ThingListFragment extends BaseFragment {
     {
         View view = inflater.inflate(R.layout.fragment_thing_list, container, false);
 
+        // Set items list
         mThingRecyclerView = (RecyclerView) view.findViewById(R.id.thing_recycler_view);
         mThingRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity())); // RecyclerView requires a LayoutManager
-        //mThingRecyclerView.setAdapter(new ThingAdapter(ThingRepository.get(getActivity()).getThings()));
+
         mThingRecyclerView.setAdapter(mAdapter);
 
         if (savedInstanceState != null)
@@ -193,7 +198,7 @@ public class ThingListFragment extends BaseFragment {
             mSubtitleVisible = savedInstanceState.getBoolean(SAVED_SUBTITLE_VISIBLE);
         }
 
-        updateUI();
+        updateList();
 
         return view;
     }
@@ -230,7 +235,7 @@ public class ThingListFragment extends BaseFragment {
     public void onResume()
     {
         super.onResume();
-        updateUI();
+        updateList();
     }
 
     /**
@@ -260,6 +265,14 @@ public class ThingListFragment extends BaseFragment {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_thing_list, menu);
 
+        //Set groups
+        MenuItem defaultSearchItem = menu.findItem(R.id.search_what);
+        defaultSearchItem.setChecked(true);
+
+        // Set search view used to search for items
+        final MenuItem searchItem = menu.findItem(R.id.menu_item_search);
+        setSearchView(searchItem);
+
         MenuItem subtitleItem = menu.findItem(R.id.menu_item_show_subtitle);
         if (mSubtitleVisible) //&& subtitleItem != null)
         {
@@ -269,6 +282,48 @@ public class ThingListFragment extends BaseFragment {
         {
             subtitleItem.setTitle(R.string.show_subtitle);
         }
+    }
+
+    private void setSearchView(MenuItem searchItem)
+    {
+        final SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener()
+        {
+            @Override
+            public boolean onQueryTextSubmit(String query)
+            {
+                List<Thing> result = mSearchHandler.search(query.toLowerCase().trim(),
+                                                           ThingRepository.get(getContext()).getThings());
+                if (result == null)
+                {
+                    makeToast(getString(R.string.item_notFound_toast));
+                    return false;
+                }
+                mAdapter.setThings(result);
+                mAdapter.notifyDataSetChanged(); // Todo consider more specific refresh
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText)
+            {
+                if (newText.length() == 0)
+                {
+                    updateList(); // Reset list
+                } else {
+                    List<Thing> result = mSearchHandler.search(newText.toLowerCase().trim(),
+                                                               ThingRepository.get(getContext()).getThings());
+                    if (result == null)
+                    {
+                        return false;
+                    }
+                    mAdapter.setThings(result);
+                    mAdapter.notifyDataSetChanged();
+                }
+                return true;
+            }
+        });
     }
 
     /**
@@ -282,6 +337,7 @@ public class ThingListFragment extends BaseFragment {
     {
         switch (item.getItemId())
         {
+
             case R.id.menu_item_new_thing: // Add new thing
                 Thing thing = new Thing();
                 addNewThing(thing); // Go to detailed screen with new thing
@@ -293,10 +349,61 @@ public class ThingListFragment extends BaseFragment {
                 updateSubtitle();
                 return true;
 
+//            case R.id.delete_Button:
+//                deleteItem();
+//                return true;
+//
+//            case R.id.back_button:
+//                goBack();
+//                return true;
+
+            case R.id.search_what:
+                item.setChecked(true);
+                mSearchHandler.setSearchType(SearchHandler.Type.WHAT);
+                return true;
+
+            case R.id.search_where:
+                item.setChecked(true);
+                mSearchHandler.setSearchType(SearchHandler.Type.WHERE);
+                return true;
+
+            case R.id.sortWhat:
+                setSortedList(ISort.sortingParameter.WHAT);
+                return true;
+
+            case R.id.sortWhere:
+                setSortedList(ISort.sortingParameter.WHERE);
+                return true;
+
+            case R.id.sortDate:
+                setSortedList(ISort.sortingParameter.DATE);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    /**
+     * Callback to be invoked when the context menu for this view is being built.
+     * Shows delete action item in menu bar.
+     * @param menu - context menu to call that is built.
+     * @param view - the view for which menu is built.
+     * @param menuInfo - extra information about menu.
+     */
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo)
+    {
+        getActivity().getMenuInflater().inflate(R.menu.thing_list_item_context, menu);
+    }
+
+    // Go back to list if in portrait mode
+    private void goBack()
+    {
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            mCallback.onBackPressed();
+        }
     }
 
     // Set subtitle in toolbar showing number of things in total
@@ -316,7 +423,7 @@ public class ThingListFragment extends BaseFragment {
     }
 
     // Get data from singleton repository and setup adapter with reloaded items
-    private void updateUI()
+    private void updateList()
     {
         ThingRepository thingRepository = ThingRepository.get(getActivity());
         List<Thing> things = thingRepository.getThings();
@@ -336,15 +443,15 @@ public class ThingListFragment extends BaseFragment {
     }
 
     /**
-     * Callback to be invoked when the context menu for this view is being built.
-     * Shows delete action item in menu bar.
-     * @param menu - context menu to call that is built.
-     * @param view - the view for which menu is built.
-     * @param menuInfo - extra information about menu.
+     * Sorts list of items and update view.
+     * @param sortingParameter - parameter used to sort (name or location).
      */
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
-        getActivity().getMenuInflater().inflate(R.menu.thing_list_item_context, menu);
+    private void setSortedList(ISort.sortingParameter sortingParameter)
+    {
+        if (mAdapter.mThings.size() == 0) return;
+        List<Thing> result = mSearchHandler.sort(mAdapter.mThings, sortingParameter);
+        mAdapter.setThings(result);
+        mAdapter.notifyDataSetChanged(); // Todo consider more specific notify due to performance
     }
 
     /**

@@ -39,4 +39,10 @@
     <string name="date_picker_title">Most recent date</string>
     <string name="heading_date">Choose date</string>
     <string name="heading_save">Save</string>
+    <string name="search">Search</string>
+    <string name="sort_date">Sort By Date</string>
+    <string name="sort_what">Sort By Name</string>
+    <string name="sort_where">Sort By Location</string>
+    <string name="search_what">Search On Name</string>
+    <string name="search_where">Search On Location</string>
 </resources>
