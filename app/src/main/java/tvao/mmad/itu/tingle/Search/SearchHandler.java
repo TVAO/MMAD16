@@ -100,13 +100,13 @@ public class SearchHandler extends AsyncTask<String, Void, String> {
     }
 
     /**
-     * Default sorting. Sorts based on what
-     *
-     * @param things thing
-     * @return sorted list
+     * Default sorting based on name of item.
+     * @param things - items to be sorted.
+     * @return sorted list - new list in sorted order based on name.
      */
-    public List sortDefault(List<Thing> things) {
-        return sort(things, ISort.type.SORT_WHAT);
+    public List sortDefault(List<Thing> things)
+    {
+        return sort(things, ISort.sortingParameter.WHAT);
     }
 
     /**
@@ -161,7 +161,8 @@ public class SearchHandler extends AsyncTask<String, Void, String> {
             {
                 thing = things.get(i);
 
-                switch (mSearchType) {
+                switch (mSearchType)
+                {
                     case WHAT :
                         locatedChar = thing.getWhat().charAt(0);
                         break;
@@ -210,7 +211,7 @@ public class SearchHandler extends AsyncTask<String, Void, String> {
                 auxThings = sort(auxThings, ISort.sortingParameter.WHAT);
                 break;
             case WHERE :
-                auxThings = sort(auxThings, ISort.sortingParameter.WHERE;
+                auxThings = sort(auxThings, ISort.sortingParameter.WHERE);
                 break;
         }
 
@@ -223,7 +224,6 @@ public class SearchHandler extends AsyncTask<String, Void, String> {
 
         //Define resulting list of matches
         List<Thing> result = new ArrayList<>();
-
 
         // Compare and insert
         while (toCompare.charAt(0) <= searchString.charAt(0) && i < auxThings.size()) //Do not compare Strings greater than input
