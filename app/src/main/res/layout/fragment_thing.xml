@@ -51,6 +51,14 @@
         android:hint="@string/barcode_hint"
         android:editable="false"/>
 
+    <!-- Date picker button -->
+
+    <Button android:id="@+id/thing_details_date_button"
+            android:text="@string/heading_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        />
+
     <!-- Button so scan barcode from items -->
     <Button
         android:id="@+id/barcode_scanner"

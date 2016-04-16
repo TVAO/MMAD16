@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -25,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.Date;
 import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Controller.Helpers.BaseFragment;
@@ -42,13 +44,14 @@ import tvao.mmad.itu.tingle.R;
 public class ThingDetailFragment extends BaseFragment {
 
     public static final String EXTRA_THING_ID = "thingintent.THING_ID";
-    public static final String TAG = "ThingDetailFragment";
-
+    //public static final String TAG = "ThingDetailFragment";
+    private static final String DIALOG_DATE = "DialogDate";
+    private static final int REQUEST_DATE = -1;
     private static final int REQUEST_PHOTO = 2;
     private static final int REQUEST_SCAN = 3;
 
     private Thing mThing;
-    private Button mAddButton, mScanButton;
+    private Button mAddButton, mScanButton, mDateButton;
     private EditText mWhatField, mWhereField, mBarcodeField;
 
     private ImageButton mPhotoButton;
@@ -104,6 +107,7 @@ public class ThingDetailFragment extends BaseFragment {
 
         setTextFields(v);
         setAddButton(v);
+        setDateButton(v);
 
         mScanButton = (Button) v.findViewById(R.id.barcode_scanner);
         mScanButton.setOnClickListener(new View.OnClickListener() {
@@ -119,7 +123,8 @@ public class ThingDetailFragment extends BaseFragment {
         return v;
     }
 
-    private void setupCameraButton(View v) {
+    private void setupCameraButton(View v)
+    {
         // Only show camera functionality in portrait mode (removed in landscape)
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
         {
@@ -195,6 +200,21 @@ public class ThingDetailFragment extends BaseFragment {
         });
     }
 
+    private void setDateButton(View v)
+    {
+        mDateButton = (Button) v.findViewById(R.id.thing_details_date_button);
+        updateDate();
+        mDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getFragmentManager();
+                DatePickerFragment dialog = DatePickerFragment.newInstance(mThing.getDate());
+                dialog.setTargetFragment(ThingDetailFragment.this,REQUEST_DATE);
+                dialog.show(manager,DIALOG_DATE);
+            }
+        });
+    }
+
     private void setTextFields(View v)
     {
         mWhatField = (EditText) v.findViewById(R.id.thing_details_what);
@@ -221,8 +241,8 @@ public class ThingDetailFragment extends BaseFragment {
     {
         switch (requestCode)
         {
-            case Activity.RESULT_OK :
-                makeToast(getString(R.string.ok));
+            //case Activity.RESULT_OK :
+            //    makeToast(getString(R.string.ok));
 
             case Activity.RESULT_CANCELED :
                 makeToast("Scan was cancelled!");
@@ -233,6 +253,11 @@ public class ThingDetailFragment extends BaseFragment {
 
             case REQUEST_PHOTO :
                 updatePhotoView();
+
+            case REQUEST_DATE :
+                Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
+                mThing.setDate(date);
+                updateDate();
         }
     }
 
@@ -340,5 +365,9 @@ public class ThingDetailFragment extends BaseFragment {
         }
     }
 
+    private void updateDate()
+    {
+        mDateButton.setText(mThing.getDate().toString());
+    }
 
 }
