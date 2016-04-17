@@ -38,5 +38,8 @@ Test sequences (add item, delete item, multi and single selection, scan item, ba
 - UML class and package diagram showing dependencies 
 - UI Changes using custom logos and ScrollView to fit image view 
 
+Problems:
+New search functionality and search makes it hard to update only specific parts of content in list (previously used adapter.notifyItemChanged(i) but items now swap positions based on sort and I thus refresh the whole list using adapter.NotifyDataSetChanged()).
+
 	
 \end{document}
