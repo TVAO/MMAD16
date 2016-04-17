@@ -29,4 +29,7 @@ dependencies {
     compile 'com.bignerdranch.android:recyclerview-multiselect:+'
     androidTestCompile 'junit:junit:4.12'
     compile 'org.mockito:mockito-core:2.0.47-beta'
+    testCompile 'org.robolectric:robolectric:3.0'
+    compile 'com.google.dexmaker:dexmaker:1.2'
+    compile 'com.google.dexmaker:dexmaker-mockito:1.2'
 }
