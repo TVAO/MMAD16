@@ -284,14 +284,14 @@ public class ThingListFragment extends BaseFragment {
     private void setSearchView(MenuItem searchItem)
     {
         final SearchView searchView = (SearchView) searchItem.getActionView();
-        final List<Thing> listToSearch = ThingRepository.get(getActivity()).getThings();
+        //final List<Thing> listToSearch = ThingRepository.get(getActivity()).getThings();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener()
         {
             @Override
             public boolean onQueryTextSubmit(String query)
             {
-                    List<Thing> result = mSearchHandler.search(query.toLowerCase().trim(), listToSearch);
+                    List<Thing> result = mSearchHandler.search(query.toLowerCase().trim(), ThingRepository.get(getActivity()).getThings());
                     if (result == null)
                     {
                         makeToast(getString(R.string.item_notFound_toast));
@@ -311,7 +311,7 @@ public class ThingListFragment extends BaseFragment {
                 }
                 else
                 {
-                        List<Thing> result = mSearchHandler.search(newText.toLowerCase().trim(), listToSearch);
+                        List<Thing> result = mSearchHandler.search(newText.toLowerCase().trim(), ThingRepository.get(getActivity()).getThings());
                         if (result == null)
                         {
                             return false;
@@ -430,11 +430,11 @@ public class ThingListFragment extends BaseFragment {
         if(!things.isEmpty())
         {
             mSearchHandler.sortDefault(things);
-            if (mAdapter != null)
-            {
-                mAdapter.setThings(things); // Todo check
-                mAdapter.notifyDataSetChanged();
-            }
+//            if (mAdapter != null)
+//            {
+//                mAdapter.setThings(things); // Todo check
+//                mAdapter.notifyDataSetChanged();
+//            }
         }
 
         if (mAdapter == null)

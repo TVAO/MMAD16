@@ -75,6 +75,7 @@ public class SearchHandler extends AsyncTask<String, Void, List<Thing>> {
     }
 
     @Override
+    @Deprecated
     protected void onPostExecute(List<Thing> result)
     {
         delegate.processFinish(result);
@@ -120,7 +121,7 @@ public class SearchHandler extends AsyncTask<String, Void, List<Thing>> {
     private int searchFirstElement(char charInput, List<Thing> things)
     {
         int start = 0;
-        int end = things.size(); //- 1; // Todo check ???
+        int end = things.size() - 1;
         boolean found = false;
         Thing thing;
         int locatedChar = 0;
@@ -142,7 +143,7 @@ public class SearchHandler extends AsyncTask<String, Void, List<Thing>> {
                     }
                     break;
                 case WHERE:
-                    if (thing.getWhere() != null && !thing.getWhat().isEmpty())
+                    if (thing.getWhere() != null && !thing.getWhere().isEmpty())
                     {
                         locatedChar = thing.getWhere().charAt(0);
                     }
