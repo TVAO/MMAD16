@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -18,8 +17,7 @@ import android.widget.Toast;
 
 import java.util.UUID;
 
-import tvao.mmad.itu.tingle.Controller.Helpers.BaseFragment;
-import tvao.mmad.itu.tingle.Controller.Helpers.SearchClass;
+import tvao.mmad.itu.tingle.Helpers.BaseFragment;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.Network.FetchOutpanTask;
@@ -37,7 +35,7 @@ public class TingleMainFragment extends BaseFragment {
 
     private static final int REQUEST_SCAN = 3;
 
-    private Button mAddButton, mListButton, mSearchButton, mScanButton; // GUI variables
+    private Button mAddButton, mListButton, mScanButton; // GUI variables
     private TextView mLastAdded, mWhatField, mWhereField;
     private EditText mBarcodeField;
     private static ThingRepository sThingRepository; // Database
@@ -177,47 +175,17 @@ public class TingleMainFragment extends BaseFragment {
             }
         });
 
-        // Setup search button used to search for item denoted in "What" field
-        mSearchButton = (Button) view.findViewById(R.id.search_button);
-        mSearchButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                if (mWhatField.getText().length() > 0)
-                {
-                    SearchClass searchClass = new SearchClass(ThingRepository.get(getContext()).getThings(), new SearchClass.AsyncResponse()
-                    {
-                        @Override
-                        public void processFinish(String searchResult)
-                        {
-                            if (searchResult != null) makeToast(getString(R.string.item_locationIs_toast) + " " + searchResult); // Item found
-                            else makeToast(getString(R.string.item_notFound_toast)); // Item not found
-                        }
-                    });
-
-                    searchClass.execute(mWhatField.getText().toString());
-                    //String searchResult = searchItems(mWhatField.getText().toString());
-
-                    //if (searchResult != null) makeToast(getString(R.string.item_locationIs_toast) + " " + searchResult); // Item found
-                    //else makeToast(getString(R.string.item_notFound_toast)); // Item not found
-                }
-                // makeToast(getString(R.string.item_notSpecified_toast));
-            }
-        });
-
         // Only show item list button when in portrait mode (removed in landscape)
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
         {
             mListButton = (Button) view.findViewById(R.id.item_list_button);
-            mListButton.setOnClickListener(new View.OnClickListener()
-            {
+            mListButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v)
-                {
+                public void onClick(View v) {
                     mCallBackToActivity.onShowItems(); // Callback to activity
                 }
             });
+        }
 
             mScanButton = (Button) view.findViewById(R.id.barcode_scanner);
             mScanButton.setOnClickListener(new View.OnClickListener()
@@ -231,7 +199,7 @@ public class TingleMainFragment extends BaseFragment {
             });
 
             mBarcodeField = (EditText) view.findViewById(R.id.barcode_text);
-        }
+
 
     }
 

@@ -33,13 +33,6 @@ tools:context=".Controller.Activities.TingleActivity">
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <!-- Button to search for item -->
-    <Button
-        android:id="@+id/search_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/heading_search"/>
-
     <!-- Button so see list of items -->
     <Button
     android:id="@+id/item_list_button"
