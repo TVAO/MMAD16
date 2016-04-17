@@ -41,5 +41,8 @@ Test sequences (add item, delete item, multi and single selection, scan item, ba
 Problems:
 New search functionality and search makes it hard to update only specific parts of content in list (previously used adapter.notifyItemChanged(i) but items now swap positions based on sort and I thus refresh the whole list using adapter.NotifyDataSetChanged()).
 
+Bug: add new items to list, sort them so they change order in recycler view and then try to delete them (crashes because you change array position but view holder position remains). 
+
+
 	
 \end{document}
