@@ -255,7 +255,7 @@ public class ThingRepositoryTest {
         when(_sut.removeThing(thing.getId())).thenReturn(true);
 
         // Act
-        _sut.removeThing(thing);
+        _sut.removeThing(thing.getId());
 
         // Assert
         verify(_sut, atLeastOnce()).removeThing(thing.getId());
