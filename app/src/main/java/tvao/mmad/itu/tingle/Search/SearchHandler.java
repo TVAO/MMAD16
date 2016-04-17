@@ -7,16 +7,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import tvao.mmad.itu.tingle.Model.Thing;
+import tvao.mmad.itu.tingle.Network.FetchOutpanTask;
 
 /**
  * This class is used to search for items in the database asynchronously using AsyncTask.
  * The Async task takes a search string item as input and returns a string of the name of item if it exists.
  */
-public class SearchHandler extends AsyncTask<String, Void, String> {
+public class SearchHandler extends AsyncTask<String, Void, List<Thing>> {
 
-    private String response = "????";
-    private Boolean found = false;
-    private String mWhat;
     private List<Thing> mThings;
 
     // Determine how to sort and on what parameter to sort content
@@ -44,51 +42,40 @@ public class SearchHandler extends AsyncTask<String, Void, String> {
 
     // Interface used to get result of OnPostExecute() in main fragment 'TingleMainFragment'
     // This has been done to avoid this class being a private inner class since it may be used in both 'TingleMainFragment' and 'ThingDetailFragment'
+    @Deprecated
     public interface AsyncResponse
     {
-        void processFinish(String searchResult);
+        void processFinish(List<Thing> searchResult);
     }
 
     public SearchHandler(ISort sortHandler)
     {
-        this.mSortHandler = sortHandler;
-        setSearchType(Type.WHAT);//set what as default
+        mSortHandler = sortHandler;
+        setSearchType(Type.WHAT); //set name as default search parameter
 
     }
 
-    public SearchHandler(List<Thing> things, AsyncResponse delegate)
+    // Previously used for async search
+    @Deprecated
+    public SearchHandler(List<Thing> things, ISort sortHandler, AsyncResponse searchResult)
     {
-        this.delegate = delegate;
-        mThings = things;
-    }
-
-    public SearchHandler(List<Thing> things, ISort sortHandler, AsyncResponse delegate)
-    {
-        this.delegate = delegate;
         mThings = things;
         mSortHandler = sortHandler;
-        setSearchType(Type.WHAT); // Name of item is default search parameter
+        setSearchType(Type.WHAT);
+        delegate = searchResult;
     }
 
     @Override
-    protected String doInBackground(String... param)
+    @Deprecated
+    protected List<Thing> doInBackground(String... param)
     {
-        int i = 0;
-        Boolean found = false;
-        mWhat = param[0].trim();
-        int size = mThings.size();
-        while (!found && i < size)
-        {
-            found = mThings.get(i).getWhat().equals(mWhat);
-            i++;
-        }
-        // Return where item is located if found
-        return (found) ? mThings.get(i - 1).getWhere() : "????";
+        String searchString = param[0].toLowerCase().trim();
+        return search(searchString, mThings);
 
     }
 
     @Override
-    protected void onPostExecute(String result)
+    protected void onPostExecute(List<Thing> result)
     {
         delegate.processFinish(result);
     }

@@ -133,17 +133,7 @@ public class ThingListFragment extends BaseFragment {
         setHasOptionsMenu(true); // Tell FM that fragment receives menu callbacks
         getActivity().setTitle(R.string.things_title);
         mSubtitleVisible = false;
-
         mSearchHandler = new SearchHandler(new SelectionSort());
-//        mSearchHandler = new SearchHandler(ThingRepository.get(getContext()).getThings(), sortingParameter,
-//                new SearchHandler.AsyncResponse()
-//                {
-//                    @Override
-//                    public void processFinish(String searchResult)
-//                    {
-//                        // Todo get result of search and do something
-//                    }
-//                });
     }
 
     /**
