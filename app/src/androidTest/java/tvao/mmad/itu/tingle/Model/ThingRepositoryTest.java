@@ -9,8 +9,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
+
+import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Test that repository performs CRUD operations correctly using SQLite.
@@ -30,8 +35,12 @@ public class ThingRepositoryTest extends TestCase {
     @Test
     public void testNewRepository_IsEmpty_True() throws Exception
     {
-        // Arrange and act
+        // Arrange
+        when(_sut.getThings()).thenReturn(Collections.EMPTY_LIST);
+
+        // Act
         List<Thing> initialItems = _sut.getThings();
+
 
         // Assert
         Assert.assertTrue(initialItems.isEmpty());
@@ -47,7 +56,8 @@ public class ThingRepositoryTest extends TestCase {
         _sut.addThing(testData);
 
         // Assert
-        Assert.assertNotNull("Valid item was not added", _sut.getThing(testData.getId()));
+        verify(_sut, atLeastOnce()).addThing(testData);
+        //Assert.assertNotNull("Valid item was not added", _sut.getThing(testData.getId()));
     }
 
     @Test
@@ -62,22 +72,6 @@ public class ThingRepositoryTest extends TestCase {
         // Assert
         Assert.assertNull("Valid item was not added", _sut.getThing(testData.getId()));
     }
-
-//    public void testGet_ItemExists_IsReturned() throws Exception {
-//
-//    }
-//
-//    public void testGet_ItemDoesNotExist_ThrowsException() throws Exception {
-//
-//    }
-
-//    public void testAddThing_NullObject_NotInserted() throws Exception {
-//
-//    }
-//
-//    public void testAddThing_ValidITem_IsInserted() throws Exception {
-//
-//    }
 
     public void testGetThings_Returns_AllItems() throws Exception {
 
