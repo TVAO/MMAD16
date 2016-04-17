@@ -78,7 +78,7 @@ public class ThingListFragment extends BaseFragment {
          * Selecting an item will turn multi choice on and activate an Action mode representing the multi select interaction.
          * @param actionMode - set of option mode callbacks that are only called for multi select action mode.
          * @param menuItem - menu item that was clicked.
-         * @return
+         * @return true if item was deleted
          */
         @Override
         public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem)
@@ -93,13 +93,17 @@ public class ThingListFragment extends BaseFragment {
                 {
                     if (mMultiSelector.isSelected(i, 0))
                     {
-                        Thing thing = ThingRepository.get(getActivity()).getThings().get(i);
+                        Thing thing = mAdapter.getThings().get(i);
+                        //Thing thing = ThingRepository.get(getActivity()).getThings().get(i);
                         ThingRepository.get(getActivity()).removeThing(thing.getId());
-                        mAdapter.removeAt(i);
+
+                        //mAdapter.removeAt(i);
+                        //mAdapter.mThings.remove(thing);
                     }
                 }
-
                 mMultiSelector.clearSelections();
+                updateList();
+
                 return true;
 
             }
@@ -297,8 +301,6 @@ public class ThingListFragment extends BaseFragment {
             @Override
             public boolean onQueryTextSubmit(String query)
             {
-                //if (!listToSearch.isEmpty())
-                //{
                     List<Thing> result = mSearchHandler.search(query.toLowerCase().trim(), listToSearch);
                     if (result == null)
                     {
@@ -308,8 +310,6 @@ public class ThingListFragment extends BaseFragment {
                     mAdapter.setThings(result);
                     mAdapter.notifyDataSetChanged(); // Todo consider more specific refresh
                     return true;
-                //}
-                //return false;
             }
 
             @Override
@@ -318,10 +318,9 @@ public class ThingListFragment extends BaseFragment {
                 if (newText.length() == 0)
                 {
                     updateList(); // Reset list
-                } else
+                }
+                else
                 {
-                    //if (!listToSearch.isEmpty())
-                    //{
                         List<Thing> result = mSearchHandler.search(newText.toLowerCase().trim(), listToSearch);
                         if (result == null)
                         {
@@ -331,8 +330,6 @@ public class ThingListFragment extends BaseFragment {
                         mAdapter.notifyDataSetChanged();
                     }
                     return true;
-                //}
-                //return false;
             }
         });
     }
@@ -410,13 +407,13 @@ public class ThingListFragment extends BaseFragment {
     }
 
     // Go back to list if in portrait mode
-    private void goBack()
-    {
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-        {
-            mCallback.onBackPressed();
-        }
-    }
+//    private void goBack()
+//    {
+//        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+//        {
+//            mCallback.onBackPressed();
+//        }
+//    }
 
     // Set subtitle in toolbar showing number of things in total
     private void updateSubtitle()
@@ -443,6 +440,11 @@ public class ThingListFragment extends BaseFragment {
         if(!things.isEmpty())
         {
             mSearchHandler.sortDefault(things);
+            if (mAdapter != null)
+            {
+                mAdapter.setThings(things); // Todo check
+                mAdapter.notifyDataSetChanged();
+            }
         }
 
         if (mAdapter == null)
@@ -608,6 +610,7 @@ public class ThingListFragment extends BaseFragment {
 
         public void removeAt(int position)
         {
+            //Thing itemToRemove = mThings.get(position);
             mThings.remove(position);
             notifyItemRemoved(position);
             notifyItemRangeChanged(position, mThings.size());
