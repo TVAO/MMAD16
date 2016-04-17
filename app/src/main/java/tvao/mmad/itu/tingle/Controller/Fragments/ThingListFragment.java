@@ -33,6 +33,7 @@ import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.R;
 import tvao.mmad.itu.tingle.Search.ISort;
 import tvao.mmad.itu.tingle.Search.SearchHandler;
+import tvao.mmad.itu.tingle.Search.SelectionSort;
 
 
 /**
@@ -51,7 +52,7 @@ public class ThingListFragment extends BaseFragment {
     private ThingAdapter mAdapter;
     private boolean mSubtitleVisible; // Keep track of subtitle visibility
     private SearchHandler mSearchHandler; // Search and sort content of items
-    ISort sortingParameter;
+    //ISort sortingParameter;
 
     // Used to allow multi selection and deletion of selected items
     private MultiSelector mMultiSelector = new MultiSelector();
@@ -128,7 +129,8 @@ public class ThingListFragment extends BaseFragment {
         setHasOptionsMenu(true); // Tell FM that fragment receives menu callbacks
         getActivity().setTitle(R.string.things_title);
         mSubtitleVisible = false;
-        mSearchHandler = new SearchHandler(sortingParameter);
+
+        mSearchHandler = new SearchHandler(new SelectionSort());
 //        mSearchHandler = new SearchHandler(ThingRepository.get(getContext()).getThings(), sortingParameter,
 //                new SearchHandler.AsyncResponse()
 //                {
@@ -295,8 +297,8 @@ public class ThingListFragment extends BaseFragment {
             @Override
             public boolean onQueryTextSubmit(String query)
             {
-                if (!listToSearch.isEmpty())
-                {
+                //if (!listToSearch.isEmpty())
+                //{
                     List<Thing> result = mSearchHandler.search(query.toLowerCase().trim(), listToSearch);
                     if (result == null)
                     {
@@ -306,8 +308,8 @@ public class ThingListFragment extends BaseFragment {
                     mAdapter.setThings(result);
                     mAdapter.notifyDataSetChanged(); // Todo consider more specific refresh
                     return true;
-                }
-                return false;
+                //}
+                //return false;
             }
 
             @Override
@@ -318,8 +320,8 @@ public class ThingListFragment extends BaseFragment {
                     updateList(); // Reset list
                 } else
                 {
-                    if (!listToSearch.isEmpty())
-                    {
+                    //if (!listToSearch.isEmpty())
+                    //{
                         List<Thing> result = mSearchHandler.search(newText.toLowerCase().trim(), listToSearch);
                         if (result == null)
                         {
@@ -329,8 +331,8 @@ public class ThingListFragment extends BaseFragment {
                         mAdapter.notifyDataSetChanged();
                     }
                     return true;
-                }
-                return false;
+                //}
+                //return false;
             }
         });
     }

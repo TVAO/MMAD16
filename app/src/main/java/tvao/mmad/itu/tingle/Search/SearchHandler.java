@@ -133,7 +133,7 @@ public class SearchHandler extends AsyncTask<String, Void, String> {
     private int searchFirstElement(char charInput, List<Thing> things)
     {
         int start = 0;
-        int end = things.size() - 1;
+        int end = things.size(); //- 1; // Todo check ???
         boolean found = false;
         Thing thing;
         int locatedChar = 0;
@@ -149,10 +149,16 @@ public class SearchHandler extends AsyncTask<String, Void, String> {
             switch (mSearchType)
             {
                 case WHAT:
-                    locatedChar = thing.getWhat().charAt(0);
+                    if(thing.getWhat() != null && !thing.getWhat().isEmpty())
+                    {
+                        locatedChar = thing.getWhat().charAt(0);
+                    }
                     break;
                 case WHERE:
-                    locatedChar = thing.getWhere().charAt(0);
+                    if (thing.getWhere() != null && !thing.getWhat().isEmpty())
+                    {
+                        locatedChar = thing.getWhere().charAt(0);
+                    }
                     break;
             }
 
@@ -173,10 +179,16 @@ public class SearchHandler extends AsyncTask<String, Void, String> {
                 switch (mSearchType)
                 {
                     case WHAT :
-                        locatedChar = thing.getWhat().charAt(0);
+                        if(thing.getWhat() != null && !thing.getWhat().isEmpty())
+                        {
+                            locatedChar = thing.getWhat().charAt(0);
+                        }
                         break;
                     case WHERE :
-                        locatedChar = thing.getWhere().charAt(0);
+                        if(thing.getWhere() != null && !thing.getWhere().isEmpty())
+                        {
+                            locatedChar = thing.getWhere().charAt(0);
+                        }
                         break;
                 }
 
@@ -210,7 +222,10 @@ public class SearchHandler extends AsyncTask<String, Void, String> {
         // Add items in auxiliary list to avoid modifying original
         for (Thing t : things)
         {
-            auxThings.add(t);
+            if (t.getWhat() != null && !t.getWhat().isEmpty() && t.getWhere() != null && !t.getWhere().isEmpty())
+            {
+                auxThings.add(t);
+            }
         }
 
         // Sort list based on search parameter (name or location)
@@ -229,7 +244,7 @@ public class SearchHandler extends AsyncTask<String, Void, String> {
 
         // Define search result as strings
         Thing thing = auxThings.get(i);
-        String toCompare = getSearchResultString(thing);
+        String toCompare = getCurrentSearchResultString(thing);
 
         //Define resulting list of matches
         List<Thing> result = new ArrayList<>();
@@ -238,7 +253,7 @@ public class SearchHandler extends AsyncTask<String, Void, String> {
         while (toCompare.charAt(0) <= searchString.charAt(0) && i < auxThings.size()) //Do not compare Strings greater than input
         {
             thing = auxThings.get(i);
-            toCompare = getSearchResultString(thing);
+            toCompare = getCurrentSearchResultString(thing);
 
             if (toCompare.startsWith(searchString))
             {
@@ -252,7 +267,7 @@ public class SearchHandler extends AsyncTask<String, Void, String> {
     }
 
     // Returns string based on sorting parameter (name or location).
-    private String getSearchResultString(Thing thing)
+    private String getCurrentSearchResultString(Thing thing)
     {
         switch (mSearchType)
         {
