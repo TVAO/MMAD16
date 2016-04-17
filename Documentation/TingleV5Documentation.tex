@@ -43,6 +43,7 @@ New search functionality and search makes it hard to update only specific parts 
 
 Bug: add new items to list, sort them so they change order in recycler view and then try to delete them (crashes because you change array position but view holder position remains). 
 
+Noticed that unit tests are slow due to setup of emulator, SDK and recourses. Solution is to use Roboelectric test framework that mocks all the Android dependencies. 
 
 	
 \end{document}

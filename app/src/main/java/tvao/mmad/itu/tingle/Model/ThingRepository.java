@@ -20,7 +20,7 @@ import tvao.mmad.itu.tingle.Database.ThingCursorWrapper;
 import tvao.mmad.itu.tingle.Database.ThingDbSchema.ThingTable;
 
 /**
- * ThingDB is an in-memory database implemented using the singleton pattern and is used to hold a list of things.
+ * ThingDB is a SQLite database implemented using the singleton pattern and is used to hold a list of things.
  */
 public class ThingRepository implements IRepository {
 
@@ -129,11 +129,6 @@ public class ThingRepository implements IRepository {
         }
 
         return new File(externalFilesDir, thing.getPhotoFilename());
-    }
-
-    public Thing getThingAt(int position)
-    {
-        return getThings().get(position);
     }
 
     // Delete a particular thing based on unique identifier
