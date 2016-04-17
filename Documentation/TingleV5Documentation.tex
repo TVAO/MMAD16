@@ -45,5 +45,9 @@ Bug: add new items to list, sort them so they change order in recycler view and 
 
 Noticed that unit tests are slow due to setup of emulator, SDK and recourses. Solution is to use Roboelectric test framework that mocks all the Android dependencies. 
 
+Added tests of Thing model and tests of ThingRepository using Mockito Testing Framework. 
+Should consider using Robolectric testing framework to remove Android dependency and need for emulator and SDK upon running tests.
+Could also consider using Dagger2 or Guice for dependency injection. 
+
 	
 \end{document}
