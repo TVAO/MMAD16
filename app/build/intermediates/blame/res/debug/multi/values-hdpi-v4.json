@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/Users/TVANO/Documents/Tingle/C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\intermediates\\res\\merged\\debug\\values-hdpi-v4\\values-hdpi-v4.xml",
+        "outputFile": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\res\\merged\\debug\\values-hdpi-v4\\values-hdpi-v4.xml",
         "map": [
             {
                 "to": {
@@ -12,7 +12,7 @@
                     "endOffset": 327
                 },
                 "from": {
-                    "file": "/Users/TVANO/Documents/Tingle/C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "file": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -52,7 +52,7 @@
         ]
     },
     {
-        "outputFile": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\res\\merged\\debug\\values-hdpi-v4\\values-hdpi-v4.xml",
+        "outputFile": "/Users/TVANO/Documents/Tingle/C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\intermediates\\res\\merged\\debug\\values-hdpi-v4\\values-hdpi-v4.xml",
         "map": [
             {
                 "to": {
@@ -64,7 +64,7 @@
                     "endOffset": 327
                 },
                 "from": {
-                    "file": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "file": "/Users/TVANO/Documents/Tingle/C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

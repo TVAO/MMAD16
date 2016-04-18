@@ -2,18 +2,6 @@
 <manifest package="tvao.mmad.itu.tingle"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Dialogue shown to user about below permissions when downloading app-->
-    <!-- Camera is used to register bar code-->
-    <!-- Internet and access is used for network operations -->
-    <!-- External storage is used for photos -->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
-                     android:maxSdkVersion="18"/>
-    <uses-feature android:name="android.hardware.camera"
-                  android:required="false"/>
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -34,7 +22,25 @@
             <!--</intent-filter>-->
         <!--</activity>-->
         <!--<activity android:name=".Controller.Activities.ThingListActivity"/>-->
-
     </application>
+
+    <!-- Permissions prompted to user when downloading app-->
+
+    <!-- Camera is used to register bar code-->
+    <!-- Internet and access is used for network operations -->
+    <!-- External storage is used for photos -->
+    <!-- Fine and course location is used for location functionality using GPS or WIFI -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+                     android:maxSdkVersion="18"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+
+    <!-- Features that app relies on, e.g. camera -->
+
+    <uses-feature android:name="android.hardware.camera"
+                  android:required="false" />
 
 </manifest>

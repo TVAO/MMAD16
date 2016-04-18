@@ -32,4 +32,5 @@ dependencies {
     testCompile 'org.robolectric:robolectric:3.0'
     compile 'com.google.dexmaker:dexmaker:1.2'
     compile 'com.google.dexmaker:dexmaker-mockito:1.2'
+    compile 'com.google.android.gms:play-services:8.4.0'
 }
