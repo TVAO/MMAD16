@@ -9,7 +9,7 @@ import tvao.mmad.itu.tingle.Model.Thing;
  */
 public abstract class GenericSort {
 
-    protected ISort.sortingParameter mSortingParameter; // What, where or date
+    protected ISort.SortingOrder mSortingOrder; // What, where or date
 
     /**
      * Helper sorting function used to sort a list of items to correct alphabetical ordering or ordering according to registered date.
@@ -21,9 +21,9 @@ public abstract class GenericSort {
     protected void exch(Thing[] items, int i, int j)
     {
         // Exchange a[i] and a[j]
-        Thing thing = items[i];
+        Thing thingToSwap = items[i];
         items[i] = items[j];
-        items[j] = thing;
+        items[j] = thingToSwap;
     }
 
     /**
@@ -35,7 +35,7 @@ public abstract class GenericSort {
      */
     protected boolean less(Thing item1, Thing item2)
     {
-        switch (mSortingParameter)
+        switch (mSortingOrder)
         {
             case WHAT : // Sort alphabetically by name
                 return (item1.getWhat().toLowerCase().trim().compareTo(item2.getWhat().toLowerCase().trim()) < 0);

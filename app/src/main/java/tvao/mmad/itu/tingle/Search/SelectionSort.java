@@ -24,27 +24,29 @@ public class SelectionSort extends GenericSort implements ISort {
     /**
      * Sort a list of items using the selection sort algorithm.
      * @param items - items to sort.
-     * @param sortingParameter - parameter used to determine what to sort on (name, location or date).
+     * @param SortingOrder - parameter used to determine the order, what to sort on (name, location or date).
      */
     @Override
-    public void sort(Thing[] items, sortingParameter sortingParameter)
+    public void sort(Thing[] items, SortingOrder SortingOrder)
     {
 
-        mSortingParameter = sortingParameter; // What, where or date
+        mSortingOrder = SortingOrder; // What, where or date
 
         int N = items.length; // Determine size of list
 
         for (int i = 0; i < N; i++)
         {
             int min = i; // Find smallest element
+
             for (int j = i + 1; j < N; j++)
             {
                 if (less(items[j], items[min]))
                 {
                     min = j; // New minimum item
                 }
-                exch(items, i, min); // Exchange compared greater item with new lesser item
             }
+            exch(items, i, min); // Exchange compared greater item with new lesser item
         }
     }
+
 }

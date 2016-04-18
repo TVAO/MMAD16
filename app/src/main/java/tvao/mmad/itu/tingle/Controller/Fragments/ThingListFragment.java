@@ -1,7 +1,6 @@
 package tvao.mmad.itu.tingle.Controller.Fragments;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
@@ -52,7 +51,7 @@ public class ThingListFragment extends BaseFragment {
     private ThingAdapter mAdapter;
     private boolean mSubtitleVisible; // Keep track of subtitle visibility
     private SearchHandler mSearchHandler; // Search and sort content of items
-    //ISort sortingParameter;
+    //ISort SortingOrder;
 
     // Used to allow multi selection and deletion of selected items
     private MultiSelector mMultiSelector = new MultiSelector();
@@ -284,14 +283,13 @@ public class ThingListFragment extends BaseFragment {
     private void setSearchView(MenuItem searchItem)
     {
         final SearchView searchView = (SearchView) searchItem.getActionView();
-        final List<Thing> listToSearch = ThingRepository.get(getActivity()).getThings();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener()
         {
             @Override
             public boolean onQueryTextSubmit(String query)
             {
-                    List<Thing> result = mSearchHandler.search(query.toLowerCase().trim(), listToSearch);
+                    List<Thing> result = mSearchHandler.search(query.toLowerCase().trim(), mAdapter.getThings());
                     if (result == null)
                     {
                         makeToast(getString(R.string.item_notFound_toast));
@@ -311,7 +309,7 @@ public class ThingListFragment extends BaseFragment {
                 }
                 else
                 {
-                        List<Thing> result = mSearchHandler.search(newText.toLowerCase().trim(), listToSearch);
+                        List<Thing> result = mSearchHandler.search(newText.toLowerCase().trim(), mAdapter.getThings());
                         if (result == null)
                         {
                             return false;
@@ -357,24 +355,24 @@ public class ThingListFragment extends BaseFragment {
 
             case R.id.search_what:
                 item.setChecked(true);
-                mSearchHandler.setSearchType(SearchHandler.Type.WHAT);
+                mSearchHandler.setSearchType(SearchHandler.SearchType.SEARCH_WHAT);
                 return true;
 
             case R.id.search_where:
                 item.setChecked(true);
-                mSearchHandler.setSearchType(SearchHandler.Type.WHERE);
+                mSearchHandler.setSearchType(SearchHandler.SearchType.SEARCH_WHERE);
                 return true;
 
             case R.id.sortWhat:
-                setSortedList(ISort.sortingParameter.WHAT);
+                setSortedList(ISort.SortingOrder.WHAT);
                 return true;
 
             case R.id.sortWhere:
-                setSortedList(ISort.sortingParameter.WHERE);
+                setSortedList(ISort.SortingOrder.WHERE);
                 return true;
 
             case R.id.sortDate:
-                setSortedList(ISort.sortingParameter.DATE);
+                setSortedList(ISort.SortingOrder.DATE);
                 return true;
 
             default:
@@ -427,14 +425,9 @@ public class ThingListFragment extends BaseFragment {
         ThingRepository thingRepository = ThingRepository.get(getActivity());
         List<Thing> things = thingRepository.getThings();
 
-        if(!things.isEmpty())
+        if (!things.isEmpty()) // Only sort if database contains items
         {
             mSearchHandler.sortDefault(things);
-            if (mAdapter != null)
-            {
-                mAdapter.setThings(things); // Todo check
-                mAdapter.notifyDataSetChanged();
-            }
         }
 
         if (mAdapter == null)
@@ -453,12 +446,12 @@ public class ThingListFragment extends BaseFragment {
 
     /**
      * Sorts list of items and update view.
-     * @param sortingParameter - parameter used to sort (name or location).
+     * @param SortingOrder - parameter used to sort (name or location).
      */
-    private void setSortedList(ISort.sortingParameter sortingParameter)
+    private void setSortedList(ISort.SortingOrder SortingOrder)
     {
         if (mAdapter.mThings.size() == 0) return;
-        List<Thing> result = mSearchHandler.sort(mAdapter.mThings, sortingParameter);
+        List<Thing> result = mSearchHandler.sort(mAdapter.mThings, SortingOrder);
         mAdapter.setThings(result);
         mAdapter.notifyDataSetChanged(); // Todo consider more specific notify due to performance
     }
