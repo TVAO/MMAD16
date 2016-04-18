@@ -1,4 +1,9 @@
-package tvao.mmad.itu.tingle.Helpers.Network;
+package tvao.mmad.itu.tingle.Helpers.Location;
+
+import android.content.Intent;
+import android.location.Geocoder;
+
+import java.util.Locale;
 
 /**
  * Lookup service used to get the address of the user's location to know where an item was registered.
@@ -12,6 +17,18 @@ package tvao.mmad.itu.tingle.Helpers.Network;
  */
 public class FetchAddressIntentService {
 
+
+    /**
+     * Invoked on worker thread with request to process, only one Intent at the time.
+     * Creates a Geocoder object to handle reverse geocoding and fetch the current address of the user.
+     * @param intent
+     */
+    @Override
+    protected void onHandleIntent(Intent intent)
+    {
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+
+    }
 
 
 }
