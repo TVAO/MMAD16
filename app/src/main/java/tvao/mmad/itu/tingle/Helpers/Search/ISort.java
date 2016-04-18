@@ -1,4 +1,4 @@
-package tvao.mmad.itu.tingle.Search;
+package tvao.mmad.itu.tingle.Helpers.Search;
 
 import tvao.mmad.itu.tingle.Model.Thing;
 

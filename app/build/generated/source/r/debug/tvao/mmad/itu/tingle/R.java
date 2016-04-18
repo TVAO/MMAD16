@@ -1919,9 +1919,9 @@ containing a value of this type.
         public static final int activity_thing_pager=0x7f04001a;
         public static final int activity_tingle=0x7f04001b;
         public static final int dialog_date=0x7f04001c;
-        public static final int fragment_thing_detail =0x7f04001d;
+        public static final int fragment_thing_detail=0x7f04001d;
         public static final int fragment_thing_list=0x7f04001e;
-        public static final int fragment_tingle_main =0x7f04001f;
+        public static final int fragment_tingle_main=0x7f04001f;
         public static final int notification_media_action=0x7f040020;
         public static final int notification_media_cancel_action=0x7f040021;
         public static final int notification_template_big_media=0x7f040022;

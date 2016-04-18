@@ -14,10 +14,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
-import tvao.mmad.itu.tingle.Database.DatabaseManager;
-import tvao.mmad.itu.tingle.Database.ThingBaseHelper;
-import tvao.mmad.itu.tingle.Database.ThingCursorWrapper;
-import tvao.mmad.itu.tingle.Database.ThingDbSchema.ThingTable;
+import tvao.mmad.itu.tingle.Helpers.Database.DatabaseManager;
+import tvao.mmad.itu.tingle.Helpers.Database.ThingBaseHelper;
+import tvao.mmad.itu.tingle.Helpers.Database.ThingCursorWrapper;
+import tvao.mmad.itu.tingle.Helpers.Database.ThingDbSchema.ThingTable;
 
 /**
  * ThingDB is a SQLite database implemented using the singleton pattern and is used to hold a list of things.

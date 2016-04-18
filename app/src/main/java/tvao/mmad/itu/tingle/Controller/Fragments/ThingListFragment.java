@@ -30,9 +30,9 @@ import tvao.mmad.itu.tingle.Helpers.BaseFragment;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
 import tvao.mmad.itu.tingle.R;
-import tvao.mmad.itu.tingle.Search.ISort;
-import tvao.mmad.itu.tingle.Search.SearchHandler;
-import tvao.mmad.itu.tingle.Search.SelectionSort;
+import tvao.mmad.itu.tingle.Helpers.Search.ISort;
+import tvao.mmad.itu.tingle.Helpers.Search.SearchHandler;
+import tvao.mmad.itu.tingle.Helpers.Search.SelectionSort;
 
 
 /**
@@ -45,7 +45,7 @@ public class ThingListFragment extends BaseFragment {
     private static final String TAG = "thingListFragment";
     private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
 
-    ThingListFragmentEventListener mCallback; // Used to go back
+    ThingListFragmentEventListener mCallback; // Used to go back // Todo consider removing
 
     private RecyclerView mThingRecyclerView;
     private ThingAdapter mAdapter;
@@ -110,6 +110,7 @@ public class ThingListFragment extends BaseFragment {
         }
     };
 
+    // Todo consider removing
     /**
      * This interface allows TingleMainFragment to communicate to host TingleActivity.
      * Interface is encapsulated in fragment to avoid use in other activities.
@@ -199,23 +200,6 @@ public class ThingListFragment extends BaseFragment {
         return view;
     }
 
-    // Toggle item and navigate to detailed screen
-    private void selectThing(Thing thing)
-    {
-        Intent intent = ThingPagerActivity
-                .newIntent(getActivity(), thing.getId());
-        startActivity(intent);
-    }
-
-    // Create new thing and navigate to detailed screen activity
-    private void addNewThing(Thing thing)
-    {
-        ThingRepository.get(getActivity()).addThing(thing);
-        Intent intent = ThingPagerActivity
-                .newIntent(getActivity(), thing.getId());
-        startActivity(intent);
-    }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
@@ -278,48 +262,6 @@ public class ThingListFragment extends BaseFragment {
         {
             subtitleItem.setTitle(R.string.show_subtitle);
         }
-    }
-
-    private void setSearchView(MenuItem searchItem)
-    {
-        final SearchView searchView = (SearchView) searchItem.getActionView();
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener()
-        {
-            @Override
-            public boolean onQueryTextSubmit(String query)
-            {
-                    List<Thing> result = mSearchHandler.search(query.toLowerCase().trim(), mAdapter.getThings());
-                    if (result == null)
-                    {
-                        makeToast(getString(R.string.item_notFound_toast));
-                        return false;
-                    }
-                    mAdapter.setThings(result);
-                    mAdapter.notifyDataSetChanged(); // Todo consider more specific refresh
-                    return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText)
-            {
-                if (newText.length() == 0)
-                {
-                    updateList(); // Reset list
-                }
-                else
-                {
-                        List<Thing> result = mSearchHandler.search(newText.toLowerCase().trim(), mAdapter.getThings());
-                        if (result == null)
-                        {
-                            return false;
-                        }
-                        mAdapter.setThings(result);
-                        mAdapter.notifyDataSetChanged();
-                    }
-                    return true;
-            }
-        });
     }
 
     /**
@@ -394,6 +336,23 @@ public class ThingListFragment extends BaseFragment {
         getActivity().getMenuInflater().inflate(R.menu.thing_list_item_context, menu);
     }
 
+    // Toggle item and navigate to detailed screen
+    private void selectThing(Thing thing)
+    {
+        Intent intent = ThingPagerActivity
+                .newIntent(getActivity(), thing.getId());
+        startActivity(intent);
+    }
+
+    // Create new thing and navigate to detailed screen activity
+    private void addNewThing(Thing thing)
+    {
+        ThingRepository.get(getActivity()).addThing(thing);
+        Intent intent = ThingPagerActivity
+                .newIntent(getActivity(), thing.getId());
+        startActivity(intent);
+    }
+
     // Go back to list if in portrait mode
 //    private void goBack()
 //    {
@@ -402,6 +361,48 @@ public class ThingListFragment extends BaseFragment {
 //            mCallback.onBackPressed();
 //        }
 //    }
+
+    private void setSearchView(MenuItem searchItem)
+    {
+        final SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener()
+        {
+            @Override
+            public boolean onQueryTextSubmit(String query)
+            {
+                List<Thing> result = mSearchHandler.search(query.toLowerCase().trim(), mAdapter.getThings());
+                if (result == null)
+                {
+                    makeToast(getString(R.string.item_notFound_toast));
+                    return false;
+                }
+                mAdapter.setThings(result);
+                mAdapter.notifyDataSetChanged(); // Todo consider more specific refresh
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText)
+            {
+                if (newText.length() == 0)
+                {
+                    updateList(); // Reset list
+                }
+                else
+                {
+                    List<Thing> result = mSearchHandler.search(newText.toLowerCase().trim(), mAdapter.getThings());
+                    if (result == null)
+                    {
+                        return false;
+                    }
+                    mAdapter.setThings(result);
+                    mAdapter.notifyDataSetChanged();
+                }
+                return true;
+            }
+        });
+    }
 
     // Set subtitle in toolbar showing number of things in total
     private void updateSubtitle()

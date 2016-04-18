@@ -653,9 +653,9 @@ int layout activity_list 0x7f040019
 int layout activity_thing_pager 0x7f04001a
 int layout activity_tingle 0x7f04001b
 int layout dialog_date 0x7f04001c
-int layout fragment_thing 0x7f04001d
+int layout fragment_thing_detail 0x7f04001d
 int layout fragment_thing_list 0x7f04001e
-int layout fragment_tingle 0x7f04001f
+int layout fragment_tingle_main 0x7f04001f
 int layout notification_media_action 0x7f040020
 int layout notification_media_cancel_action 0x7f040021
 int layout notification_template_big_media 0x7f040022

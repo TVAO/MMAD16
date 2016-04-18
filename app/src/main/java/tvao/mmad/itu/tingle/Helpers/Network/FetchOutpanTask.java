@@ -1,9 +1,7 @@
-package tvao.mmad.itu.tingle.Network;
+package tvao.mmad.itu.tingle.Helpers.Network;
 
 import android.os.AsyncTask;
 import android.util.Log;
-
-import java.io.IOException;
 
 import tvao.mmad.itu.tingle.Model.Thing;
 

@@ -33,8 +33,8 @@ import tvao.mmad.itu.tingle.Helpers.BaseFragment;
 import tvao.mmad.itu.tingle.Helpers.PictureUtils;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
-import tvao.mmad.itu.tingle.Network.FetchOutpanTask;
-import tvao.mmad.itu.tingle.Network.NetworkUtils;
+import tvao.mmad.itu.tingle.Helpers.Network.FetchOutpanTask;
+import tvao.mmad.itu.tingle.Helpers.Network.NetworkUtils;
 import tvao.mmad.itu.tingle.R;
 
 /**

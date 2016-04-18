@@ -1,4 +1,4 @@
-package tvao.mmad.itu.tingle.Network;
+package tvao.mmad.itu.tingle.Helpers.Network;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

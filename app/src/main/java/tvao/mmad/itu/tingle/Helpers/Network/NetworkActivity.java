@@ -1,4 +1,4 @@
-package tvao.mmad.itu.tingle.Network;
+package tvao.mmad.itu.tingle.Helpers.Network;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,6 +16,7 @@ import android.preference.PreferenceManager;
  * (for example, if the setting is "Wi-Fi" and the device has a Wi-Fi connection),
  * the app should download product information for all existing products and refresh their content in display.
  */
+@Deprecated
 public class NetworkActivity extends Activity {
 
     public static final String WIFI = "Wi-Fi";

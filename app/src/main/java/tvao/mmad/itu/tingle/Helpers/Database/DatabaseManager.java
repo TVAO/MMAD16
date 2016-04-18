@@ -1,4 +1,4 @@
-package tvao.mmad.itu.tingle.Database;
+package tvao.mmad.itu.tingle.Helpers.Database;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;

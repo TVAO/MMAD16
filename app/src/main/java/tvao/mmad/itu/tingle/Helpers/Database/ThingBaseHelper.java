@@ -1,9 +1,9 @@
-package tvao.mmad.itu.tingle.Database;
+package tvao.mmad.itu.tingle.Helpers.Database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import tvao.mmad.itu.tingle.Database.ThingDbSchema.ThingTable;
+import tvao.mmad.itu.tingle.Helpers.Database.ThingDbSchema.ThingTable;
 
 
 /**

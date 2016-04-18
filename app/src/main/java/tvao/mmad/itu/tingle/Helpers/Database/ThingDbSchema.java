@@ -1,4 +1,4 @@
-package tvao.mmad.itu.tingle.Database;
+package tvao.mmad.itu.tingle.Helpers.Database;
 
 /**
  * Schema used to represent Thing model in database.

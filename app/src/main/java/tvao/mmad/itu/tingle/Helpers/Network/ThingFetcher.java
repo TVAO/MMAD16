@@ -1,9 +1,8 @@
-package tvao.mmad.itu.tingle.Network;
+package tvao.mmad.itu.tingle.Helpers.Network;
 
 import android.net.Uri;
 import android.util.Log;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 

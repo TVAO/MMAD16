@@ -1,4 +1,4 @@
-package tvao.mmad.itu.tingle.Database;
+package tvao.mmad.itu.tingle.Helpers.Database;
 
 import android.database.Cursor;
 import android.database.CursorWrapper;
@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.UUID;
-import tvao.mmad.itu.tingle.Database.ThingDbSchema.ThingTable;
+import tvao.mmad.itu.tingle.Helpers.Database.ThingDbSchema.ThingTable;
 import tvao.mmad.itu.tingle.Model.Thing;
 
 /**
