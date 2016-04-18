@@ -283,7 +283,6 @@ public class ThingListFragment extends BaseFragment {
     private void setSearchView(MenuItem searchItem)
     {
         final SearchView searchView = (SearchView) searchItem.getActionView();
-        //final List<Thing> listToSearch = ThingRepository.get(getActivity()).getThings();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener()
         {
@@ -425,17 +424,11 @@ public class ThingListFragment extends BaseFragment {
     {
         ThingRepository thingRepository = ThingRepository.get(getActivity());
         List<Thing> things = thingRepository.getThings();
-        mSearchHandler.sortDefault(things);
-        //List<Thing> things = mSearchHandler.sortDefault(thingRepository.getThings());
-        //if(!things.isEmpty())
-        //{
-        //    mSearchHandler.sortDefault(things);
-//            if (mAdapter != null)
-//            {
-//                mAdapter.setThings(things); // Todo check
-//                mAdapter.notifyDataSetChanged();
-//            }
-        //}
+
+        if (!things.isEmpty()) // Only sort if database contains items
+        {
+            mSearchHandler.sortDefault(things);
+        }
 
         if (mAdapter == null)
         {

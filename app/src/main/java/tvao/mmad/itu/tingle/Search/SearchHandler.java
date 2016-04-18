@@ -93,19 +93,6 @@ public class SearchHandler extends AsyncTask<String, Void, List<Thing>> {
         return Arrays.asList(thingArr);
     }
 
-//    /**
-//     * Sorts a given list of items based on a sorting parameter.
-//     * @param things - list of items.
-//     * @param type - sorting parameter (name, location or date)
-//     * @return true if list is sorted.
-//     */
-//    public boolean sort(List<Thing> things)
-//    {
-//        Thing[] thingArr = things.toArray(new Thing[things.size()]); // convert list to array
-//        mSortHandler.sort(thingArr, ISort.SortingOrder.SEARCH_WHAT);
-//        return mSortHandler.isSorted(thingArr);
-//    }
-
     /**
      * Default sorting based on name of item.
      * @param things - items to be sorted.
