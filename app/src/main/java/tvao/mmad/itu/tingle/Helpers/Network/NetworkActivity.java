@@ -21,7 +21,7 @@ public class NetworkActivity extends Activity {
 
     public static final String WIFI = "Wi-Fi";
     public static final String ANY = "Any";
-    private static final String URL = "www.outpan.com/"; // Todo replace with outpan
+    private static final String URL = "www.outpan.com/";
 
     // Whether there is a Wi-Fi connection.
     private static boolean wifiConnected = false;
@@ -100,7 +100,7 @@ public class NetworkActivity extends Activity {
         }
     }
 
-    // Uses AsyncTask subclass to download the XML feed from stackoverflow.com.
+    // Uses AsyncTask subclass to download the XML feed from www.outpan.com
     public void loadPage()
     {
         if (((sPref.equals(ANY)) && (wifiConnected

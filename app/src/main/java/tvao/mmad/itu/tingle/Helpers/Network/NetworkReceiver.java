@@ -10,7 +10,7 @@ import tvao.mmad.itu.tingle.R;
 
 /**
  * This class is used to register and unregister the NetworkReceiver within the main activity,
- * you ensure that the app won't be woken up after the user leaves the app to avoid draining system resources.
+ * to ensure that the app won't be woken up after the user leaves the app to avoid draining system resources.
  * When the device's network connection changes, NetworkReceiver intercepts the action CONNECTIVITY_ACTION,
  * determines what the network connection status is, and sets the flags wifiConnected and mobileConnected to true/false accordingly.
  * The upshot is that the next time the user returns to the app,

@@ -10,7 +10,7 @@ import tvao.mmad.itu.tingle.Model.Thing;
  * This inner class override AsyncTask.doInBackground to get product data from Outpan website and log it.
  * First parameter is input parameters (e.g. barcode),
  * Second parameter is a specific type for sending progress updates (not used),
- * Third parameter is the result from fetching data (e.g. JSON object with product info)
+ * Third parameter is the result from fetching data (e.g. Thing object with product info fetched from JSON object).
  */
 public class FetchOutpanTask extends AsyncTask<String, Void, Thing> {
 

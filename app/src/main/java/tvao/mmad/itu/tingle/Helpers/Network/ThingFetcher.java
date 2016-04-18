@@ -3,6 +3,7 @@ package tvao.mmad.itu.tingle.Helpers.Network;
 import android.net.Uri;
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -119,11 +120,7 @@ public class ThingFetcher {
     {
         String barcode = jsonBody.getString("gtin");
         String name = jsonBody.getString("name");
-
-        // Todo consider using attributes
-        //JSONArray attributes = jsonBody.getJSONArray("attributes"); // Multiple values in same object
-        //String specificAttribute = jsonBody.getJSONObject("attributes").getString("manufacturer"); // One specific value
-
+        JSONArray attributes = jsonBody.getJSONArray("attributes"); // Multiple values in same object Todo add attributes
         thing.setBarcode(barcode);
         thing.setWhat(name);
     }
