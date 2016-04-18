@@ -126,6 +126,31 @@ public class TingleMainFragment extends BaseFragment {
         return v;
     }
 
+    // Todo code is duplicated in TingleMainFragment and ThingDetailFragment, use BarcodeActivity instead and remove code duplication
+    /**
+     * This method is used to get the result back from scanning a barcode and save it in the barcode field.
+     * Called whenever Scanner exits, giving requestCode you started it with, the resultCode it returned, and any additional data from it.
+     * @param requestCode - integer request code to identify where result came from in startActivityForResult called when clicking Scan button.
+     * @param resultCode - integer result code returned by the child activity through its setResult()/
+     * @param data - intent with result data to the caller.
+     */
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        switch (requestCode)
+        {
+            case Activity.RESULT_OK :
+                makeToast(getString(R.string.ok));
+
+            case Activity.RESULT_CANCELED :
+                makeToast("Scan was cancelled!");
+                Log.d("onActivityResult", "RESULT_CANCELED");
+
+            case REQUEST_SCAN :
+                handleScanData(data);
+        }
+    }
+
     // Setup text fields
     private void setTextFields(View view)
     {
@@ -201,31 +226,6 @@ public class TingleMainFragment extends BaseFragment {
             mBarcodeField = (EditText) view.findViewById(R.id.barcode_text);
 
 
-    }
-
-    // Todo code is duplicated in TingleMainFragment and ThingDetailFragment, use BarcodeActivity instead and remove code duplication
-    /**
-     * This method is used to get the result back from scanning a barcode and save it in the barcode field.
-     * Called whenever Scanner exits, giving requestCode you started it with, the resultCode it returned, and any additional data from it.
-     * @param requestCode - integer request code to identify where result came from in startActivityForResult called when clicking Scan button.
-     * @param resultCode - integer result code returned by the child activity through its setResult()/
-     * @param data - intent with result data to the caller.
-     */
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        switch (requestCode)
-        {
-            case Activity.RESULT_OK :
-                makeToast(getString(R.string.ok));
-
-            case Activity.RESULT_CANCELED :
-                makeToast("Scan was cancelled!");
-                Log.d("onActivityResult", "RESULT_CANCELED");
-
-            case REQUEST_SCAN :
-                handleScanData(data);
-        }
     }
 
     // Lookup item from barcode and save information
