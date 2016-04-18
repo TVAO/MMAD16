@@ -26,8 +26,7 @@
 
     <uses-feature
         android:name="android.hardware.camera.front"
-        android:required="false" />
- <!-- TODO replace above two with next line after Android 4.2 -->
+        android:required="false" /> <!-- TODO replace above two with next line after Android 4.2 -->
     <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
     <uses-feature
         android:name="android.hardware.camera.autofocus"

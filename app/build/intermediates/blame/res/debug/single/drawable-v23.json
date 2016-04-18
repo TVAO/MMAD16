@@ -1,10 +1,14 @@
 [
     {
-        "merged": "C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v23\\abc_control_background_material.xml",
-        "source": "C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.0\\res\\drawable-v23\\abc_control_background_material.xml"
+        "merged": "/Users/TVANO/Documents/Tingle/C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v23\\abc_control_background_material.xml",
+        "source": "/Users/TVANO/Documents/Tingle/C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.0\\res\\drawable-v23\\abc_control_background_material.xml"
     },
     {
-        "merged": "C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v23\\abc_control_background_material.xml",
-        "source": "C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.0\\res\\drawable-v23\\abc_control_background_material.xml"
+        "merged": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v23\\abc_control_background_material.xml",
+        "source": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.0\\res\\drawable-v23\\abc_control_background_material.xml"
+    },
+    {
+        "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/drawable-v23/abc_control_background_material.xml",
+        "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/drawable-v23/abc_control_background_material.xml"
     }
 ]
