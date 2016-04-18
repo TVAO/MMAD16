@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import tvao.mmad.itu.tingle.Model.Thing;
-import tvao.mmad.itu.tingle.Network.FetchOutpanTask;
 
 /**
  * This class is used to search for items in the database asynchronously using AsyncTask.
@@ -19,23 +18,23 @@ public class SearchHandler extends AsyncTask<String, Void, List<Thing>> {
 
     // Determine how to sort and on what parameter to sort content
     ISort mSortHandler;
-    Type mSearchType;
+    SearchType mSearchType;
 
     /**
      * Set the current parameter to search on.
      * Can either be name of item, location of item or date of when item was registered.
      * @param searchType - parameter used to search items.
      */
-    public void setSearchType(Type searchType)
+    public void setSearchType(SearchType searchType)
     {
         mSearchType = searchType;
     }
 
-    // Type of search either based on name or location
-    public enum Type
+    // SearchType of search either based on name or location
+    public enum SearchType
     {
-        WHAT,
-        WHERE
+        SEARCH_WHAT,
+        SEARCH_WHERE
     }
 
     public AsyncResponse delegate = null;
@@ -51,7 +50,7 @@ public class SearchHandler extends AsyncTask<String, Void, List<Thing>> {
     public SearchHandler(ISort sortHandler)
     {
         mSortHandler = sortHandler;
-        setSearchType(Type.WHAT); //set name as default search parameter
+        setSearchType(SearchType.SEARCH_WHAT); //set name as default search parameter
 
     }
 
@@ -61,7 +60,7 @@ public class SearchHandler extends AsyncTask<String, Void, List<Thing>> {
     {
         mThings = things;
         mSortHandler = sortHandler;
-        setSearchType(Type.WHAT);
+        setSearchType(SearchType.SEARCH_WHAT);
         delegate = searchResult;
     }
 
@@ -84,15 +83,28 @@ public class SearchHandler extends AsyncTask<String, Void, List<Thing>> {
     /**
      * Sorts a given list of items based on a sorting parameter.
      * @param things - list of items.
-     * @param type - sorting parameter (name, location or date)
+     * @param sortingOrder - sorting parameter (name, location or date)
      * @return sorted list - new list in sorted order.
      */
-    public List sort(List<Thing> things, ISort.sortingParameter type)
+    public List sort(List<Thing> things, ISort.SortingOrder sortingOrder)
     {
         Thing[] thingArr = things.toArray(new Thing[things.size()]); // convert list to array
-        mSortHandler.sort(thingArr, type);
+        mSortHandler.sort(thingArr, sortingOrder);
         return Arrays.asList(thingArr);
     }
+
+//    /**
+//     * Sorts a given list of items based on a sorting parameter.
+//     * @param things - list of items.
+//     * @param type - sorting parameter (name, location or date)
+//     * @return true if list is sorted.
+//     */
+//    public boolean sort(List<Thing> things)
+//    {
+//        Thing[] thingArr = things.toArray(new Thing[things.size()]); // convert list to array
+//        mSortHandler.sort(thingArr, ISort.SortingOrder.SEARCH_WHAT);
+//        return mSortHandler.isSorted(thingArr);
+//    }
 
     /**
      * Default sorting based on name of item.
@@ -101,7 +113,7 @@ public class SearchHandler extends AsyncTask<String, Void, List<Thing>> {
      */
     public List sortDefault(List<Thing> things)
     {
-        return sort(things, ISort.sortingParameter.WHAT);
+        return sort(things, ISort.SortingOrder.WHAT);
     }
 
     /**
@@ -136,13 +148,13 @@ public class SearchHandler extends AsyncTask<String, Void, List<Thing>> {
 
             switch (mSearchType)
             {
-                case WHAT:
+                case SEARCH_WHAT:
                     if(thing.getWhat() != null && !thing.getWhat().isEmpty())
                     {
                         locatedChar = thing.getWhat().charAt(0);
                     }
                     break;
-                case WHERE:
+                case SEARCH_WHERE:
                     if (thing.getWhere() != null && !thing.getWhere().isEmpty())
                     {
                         locatedChar = thing.getWhere().charAt(0);
@@ -166,13 +178,13 @@ public class SearchHandler extends AsyncTask<String, Void, List<Thing>> {
 
                 switch (mSearchType)
                 {
-                    case WHAT :
+                    case SEARCH_WHAT:
                         if(thing.getWhat() != null && !thing.getWhat().isEmpty())
                         {
                             locatedChar = thing.getWhat().charAt(0);
                         }
                         break;
-                    case WHERE :
+                    case SEARCH_WHERE:
                         if(thing.getWhere() != null && !thing.getWhere().isEmpty())
                         {
                             locatedChar = thing.getWhere().charAt(0);
@@ -219,11 +231,11 @@ public class SearchHandler extends AsyncTask<String, Void, List<Thing>> {
         // Sort list based on search parameter (name or location)
         switch (mSearchType)
         {
-            case WHAT :
-                auxThings = sort(auxThings, ISort.sortingParameter.WHAT);
+            case SEARCH_WHAT:
+                auxThings = sort(auxThings, ISort.SortingOrder.WHAT);
                 break;
-            case WHERE :
-                auxThings = sort(auxThings, ISort.sortingParameter.WHERE);
+            case SEARCH_WHERE:
+                auxThings = sort(auxThings, ISort.SortingOrder.WHERE);
                 break;
         }
 
@@ -259,14 +271,12 @@ public class SearchHandler extends AsyncTask<String, Void, List<Thing>> {
     {
         switch (mSearchType)
         {
-            case WHAT:
+            case SEARCH_WHAT:
                 return thing.getWhat().toLowerCase().trim();
-            case WHERE:
+            case SEARCH_WHERE:
                 return thing.getWhere().toLowerCase().trim();
         }
         return null;
     }
-
-
 
 }

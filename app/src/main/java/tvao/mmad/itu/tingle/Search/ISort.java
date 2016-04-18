@@ -7,9 +7,11 @@ import tvao.mmad.itu.tingle.Model.Thing;
  */
 public interface ISort {
 
-    void sort(Thing[] items, sortingParameter t);
+    void sort(Thing[] items, SortingOrder sortOrder);
 
-    enum sortingParameter
+    //boolean isSorted(Thing[] items);
+
+    enum SortingOrder
     {
         WHAT,
         WHERE,
