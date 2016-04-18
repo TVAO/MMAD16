@@ -458,7 +458,7 @@ public class ThingListFragment extends BaseFragment {
     private void setSortedList(ISort.SortingOrder SortingOrder)
     {
         if (mAdapter.mThings.size() == 0) return;
-        List<Thing> result = mSearchHandler.sort(mAdapter.mThings, SortingOrder); // Todo BUG wrong sort
+        List<Thing> result = mSearchHandler.sort(mAdapter.mThings, SortingOrder);
         mAdapter.setThings(result);
         mAdapter.notifyDataSetChanged(); // Todo consider more specific notify due to performance
     }
