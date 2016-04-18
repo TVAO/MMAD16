@@ -45,4 +45,5 @@
     <string name="sort_where">Sort By Location</string>
     <string name="search_what">Search On Name</string>
     <string name="search_where">Search On Location</string>
+    <string name="back">Back</string>
 </resources>

@@ -4,12 +4,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Button to go back to home page -->
+
+    <item
+        android:id="@+id/back_button"
+        android:icon="@drawable/ic_menu_back"
+        android:title="@string/back"
+        app:showAsAction="always"/>
+
     <!-- Add menu in toolbar -->
     <item
     android:id="@+id/menu_item_new_thing"
     android:icon="@drawable/ic_menu_add"
     android:title="@string/new_thing"
-    app:showAsAction="ifRoom|withText"/>
+    app:showAsAction="always"/>
     <!-- showAsAction attribute refers to whether item will appear in toolbar -->
 
     <!-- Show subtitle for given thing in menu if space -->
@@ -22,29 +30,23 @@
         android:id="@+id/menu_item_search"
         android:title="@string/search"
         app:actionViewClass="android.support.v7.widget.SearchView"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
 
-    <!--<item-->
-        <!--android:id="@id/back_button"-->
-        <!--android:icon="@drawable/ic_back"-->
-        <!--android:title="@string/back"-->
-        <!--app:showAsAction="ifRoom|withText"/>-->
-
-    <!--<item-->
-        <!--android:id="@+id/delete_Button"-->
-        <!--android:icon="@drawable/ic_menu_delete"-->
-        <!--android:title="@string/delete"-->
-        <!--app:showAsAction="ifRoom|withText"/>-->
+    <!-- Button to sort items by date -->
 
     <item
         android:id="@+id/sortDate"
         android:title="@string/sort_date"
         app:showAsAction="collapseActionView"/>
 
+    <!-- Button to sort items by name -->
+
     <item
         android:id="@+id/sortWhat"
         android:title="@string/sort_what"
         app:showAsAction="collapseActionView"/>
+
+    <!-- Button to sort items by location -->
 
     <item
         android:id="@+id/sortWhere"

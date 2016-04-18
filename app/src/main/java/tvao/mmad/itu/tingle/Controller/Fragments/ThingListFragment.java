@@ -1,6 +1,9 @@
 package tvao.mmad.itu.tingle.Controller.Fragments;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
@@ -45,7 +48,7 @@ public class ThingListFragment extends BaseFragment {
     private static final String TAG = "thingListFragment";
     private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
 
-    ThingListFragmentEventListener mCallback; // Used to go back // Todo consider removing
+    ThingListFragmentEventListener mCallback; // Used to go back
 
     private RecyclerView mThingRecyclerView;
     private ThingAdapter mAdapter;
@@ -110,7 +113,6 @@ public class ThingListFragment extends BaseFragment {
         }
     };
 
-    // Todo consider removing
     /**
      * This interface allows TingleMainFragment to communicate to host TingleActivity.
      * Interface is encapsulated in fragment to avoid use in other activities.
@@ -119,6 +121,30 @@ public class ThingListFragment extends BaseFragment {
     public interface ThingListFragmentEventListener
     {
         void onBackPressed(); // Used to go back to main page from list
+    }
+
+    /**
+     * The fragment captures the interface implementation in the activity TingleActivity during onAttach() lifecycle method.
+     * This method calls the interface methods in order to communicate with the activity TingleActivity.
+     * The method checks if the container activity has implemented the callback interface, otherwise throws an exception.
+     * @param context - context of host activity
+     */
+    @Override
+    public void onAttach(Context context)
+    {
+        super.onAttach(context);
+        Activity activity = new Activity();
+
+        try
+        {
+            activity = (Activity) context;
+            mCallback = (ThingListFragmentEventListener) activity;
+        }
+        catch (ClassCastException e)
+        {
+            throw new ClassCastException(activity.toString()
+                    + " must implement TingleMainFragmentEventListener");
+        }
     }
 
     /**
@@ -291,9 +317,9 @@ public class ThingListFragment extends BaseFragment {
 //                deleteItem();
 //                return true;
 //
-//            case R.id.back_button:
-//                goBack();
-//                return true;
+            case R.id.back_button:
+                goBack();
+                return true;
 
             case R.id.search_what:
                 item.setChecked(true);
@@ -354,13 +380,13 @@ public class ThingListFragment extends BaseFragment {
     }
 
     // Go back to list if in portrait mode
-//    private void goBack()
-//    {
-//        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-//        {
-//            mCallback.onBackPressed();
-//        }
-//    }
+    private void goBack()
+    {
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+        {
+            mCallback.onBackPressed();
+        }
+    }
 
     private void setSearchView(MenuItem searchItem)
     {

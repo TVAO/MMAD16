@@ -243,6 +243,7 @@
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="app_name">Tingle</string>
+    <string name="back">Back</string>
     <string name="back_button">Back</string>
     <string name="barcode_hint">Scan to get barcode</string>
     <string name="barcode_thing">Barcode</string>
