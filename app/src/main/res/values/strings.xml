@@ -46,4 +46,8 @@
     <string name="search_what">Search On Name</string>
     <string name="search_where">Search On Location</string>
     <string name="back">Back</string>
+    <string name="service_not_available">Service Not Available</string>
+    <string name="invalid_lat_long_used">Invalid Coordinates</string>
+    <string name="no_address_found">No Address Found</string>
+    <string name="address_found">Address Found</string>
 </resources>
