@@ -45,7 +45,7 @@ public class ThingListFragment extends BaseFragment {
     private static final String TAG = "thingListFragment";
     private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
 
-    onBackPressedListener mCallback; // Used to go back
+    ThingListFragmentEventListener mCallback; // Used to go back
 
     private RecyclerView mThingRecyclerView;
     private ThingAdapter mAdapter;
@@ -115,7 +115,7 @@ public class ThingListFragment extends BaseFragment {
      * Interface is encapsulated in fragment to avoid use in other activities.
      * Interface is implemented by host activity determining what happens upon triggering the listener.
      */
-    public interface onBackPressedListener
+    public interface ThingListFragmentEventListener
     {
         void onBackPressed(); // Used to go back to main page from list
     }

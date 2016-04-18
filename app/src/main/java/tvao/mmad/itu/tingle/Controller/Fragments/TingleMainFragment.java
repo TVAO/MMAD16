@@ -39,17 +39,17 @@ public class TingleMainFragment extends BaseFragment {
     private TextView mLastAdded, mWhatField, mWhereField;
     private EditText mBarcodeField;
     private static ThingRepository sThingRepository; // Database
-    private eventListener mCallBackToActivity; // Used to call host activity TingleActivity
+    private TingleMainFragmentEventListener mCallBackToActivity; // Used to call host activity TingleActivity
 
     /**
      * This interface allows TingleMainFragment to communicate to host TingleActivity.
      * Interface is encapsulated in fragment to avoid use in other activities.
      * Interface is implemented by host activity determining what happens upon triggering the listener.
      */
-    public interface eventListener
+    public interface TingleMainFragmentEventListener
     {
-        void onShowItems(); // See list of items
-        void onAddItems(); // Update list in landscape after adding item
+        void onShowItemsPressed(); // See list of items
+        void onAddItemPressed(); // Update list in landscape after adding item
     }
 
     /**
@@ -67,12 +67,12 @@ public class TingleMainFragment extends BaseFragment {
         try
         {
             activity = (Activity) context;
-            mCallBackToActivity = (eventListener) activity;
+            mCallBackToActivity = (TingleMainFragmentEventListener) activity;
         }
         catch (ClassCastException e)
         {
             throw new ClassCastException(activity.toString()
-                    + " must implement eventListener");
+                    + " must implement TingleMainFragmentEventListener");
         }
     }
 
@@ -170,7 +170,7 @@ public class TingleMainFragment extends BaseFragment {
                     mWhatField.setText("");
                     mWhereField.setText("");
                     updateUI();
-                    mCallBackToActivity.onAddItems(); // Used to update list in landscape after adding item
+                    mCallBackToActivity.onAddItemPressed(); // Used to update list in landscape after adding item
                 }
             }
         });
@@ -182,7 +182,7 @@ public class TingleMainFragment extends BaseFragment {
             mListButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mCallBackToActivity.onShowItems(); // Callback to activity
+                    mCallBackToActivity.onShowItemsPressed(); // Callback to activity
                 }
             });
         }

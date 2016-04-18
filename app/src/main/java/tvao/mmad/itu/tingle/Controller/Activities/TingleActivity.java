@@ -6,9 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import tvao.mmad.itu.tingle.Controller.Fragments.ThingListFragment;
-import tvao.mmad.itu.tingle.Controller.Fragments.ThingListFragment.onBackPressedListener;
+import tvao.mmad.itu.tingle.Controller.Fragments.ThingListFragment.ThingListFragmentEventListener;
 import tvao.mmad.itu.tingle.Controller.Fragments.TingleMainFragment;
-import tvao.mmad.itu.tingle.Controller.Fragments.TingleMainFragment.eventListener;
+import tvao.mmad.itu.tingle.Controller.Fragments.TingleMainFragment.TingleMainFragmentEventListener;
 import tvao.mmad.itu.tingle.Helpers.SingleFragmentActivity;
 import tvao.mmad.itu.tingle.R;
 
@@ -18,7 +18,7 @@ import tvao.mmad.itu.tingle.R;
  * The class uses the TingleMainFragment and ThingListFragment to add, removeAt and show items.
  * The activity communicates with fragments by implementing listeners on them.
  */
-public class TingleActivity extends SingleFragmentActivity implements onBackPressedListener, eventListener {
+public class TingleActivity extends SingleFragmentActivity implements ThingListFragmentEventListener, TingleMainFragmentEventListener {
 
     /**
      * Used to call fragment displaying main page and go back.
@@ -33,7 +33,7 @@ public class TingleActivity extends SingleFragmentActivity implements onBackPres
      * Used to call fragment displaying list.
      */
     @Override
-    public void onShowItems()
+    public void onShowItemsPressed()
     {
         changeFragment(new ThingListFragment());
     }
@@ -42,7 +42,7 @@ public class TingleActivity extends SingleFragmentActivity implements onBackPres
      *  Refresh fragments to update list in landscape after adding item.
      */
     @Override
-    public void onAddItems()
+    public void onAddItemPressed()
     {
         setFragment();
     }
@@ -55,7 +55,7 @@ public class TingleActivity extends SingleFragmentActivity implements onBackPres
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
+    protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tingle);
