@@ -103,7 +103,7 @@ public class ThingDetailFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState)
     {
-        View v = inflater.inflate(R.layout.fragment_thing, parent, false);
+        View v = inflater.inflate(R.layout.fragment_thing_detail, parent, false);
 
         setTextFields(v);
         setAddButton(v);

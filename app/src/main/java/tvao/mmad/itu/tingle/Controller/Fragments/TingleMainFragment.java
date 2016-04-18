@@ -117,7 +117,7 @@ public class TingleMainFragment extends BaseFragment {
                              ViewGroup container,
                              Bundle savedInstanceState)
     {
-        View v = inflater.inflate(R.layout.fragment_tingle, container, false);
+        View v = inflater.inflate(R.layout.fragment_tingle_main, container, false);
 
         setButtons(v);
         setTextFields(v);
