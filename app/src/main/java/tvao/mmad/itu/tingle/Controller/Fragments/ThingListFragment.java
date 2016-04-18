@@ -290,7 +290,7 @@ public class ThingListFragment extends BaseFragment {
             @Override
             public boolean onQueryTextSubmit(String query)
             {
-                    List<Thing> result = mSearchHandler.search(query.toLowerCase().trim(), ThingRepository.get(getActivity()).getThings());
+                    List<Thing> result = mSearchHandler.search(query.toLowerCase().trim(), mAdapter.getThings());
                     if (result == null)
                     {
                         makeToast(getString(R.string.item_notFound_toast));
@@ -310,7 +310,7 @@ public class ThingListFragment extends BaseFragment {
                 }
                 else
                 {
-                        List<Thing> result = mSearchHandler.search(newText.toLowerCase().trim(), ThingRepository.get(getActivity()).getThings());
+                        List<Thing> result = mSearchHandler.search(newText.toLowerCase().trim(), mAdapter.getThings());
                         if (result == null)
                         {
                             return false;
