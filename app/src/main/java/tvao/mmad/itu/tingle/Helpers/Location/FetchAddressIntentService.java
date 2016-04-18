@@ -30,12 +30,22 @@ import tvao.mmad.itu.tingle.R;
 public class FetchAddressIntentService extends IntentService {
 
 
-    private static final String TAG = "FetchAddressIntentService";
+    private static final String TAG = "AddressIntentService";
     private ResultReceiver mReceiver;
+
+    /**
+     * Creates the IntentService invoked by subclass constructor.
+     *
+     * @param name Used to name the worker thread, important only for debugging.
+     */
+    public FetchAddressIntentService(String name) {
+        super(name);
+    }
 
     /**
      * Invoked on worker thread with request to process, only one Intent at the time.
      * Creates a Geocoder object to handle reverse geocoding and fetch the current address of the user.
+     * Shuts down automatically when all intents have been processed.
      * @param intent - operation to be performed.
      */
     @Override
