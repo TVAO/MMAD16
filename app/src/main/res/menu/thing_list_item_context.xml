@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- This menu item is used to delete selected items in list -->
+<!-- This menu item is used to show contextual menu bar upon selecting items to be deleted -->
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/menu_item_delete_thing"
         android:icon="@android:drawable/ic_menu_delete"

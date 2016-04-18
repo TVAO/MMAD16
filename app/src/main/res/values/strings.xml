@@ -20,7 +20,7 @@
     <string name="thing_where_hint">Enter the location of the item.</string>
 
     <!-- Toolbar menu resources -->
-    <string name="new_thing">New Thing</string>
+    <string name="new_thing">Add Item</string>
     <string name="show_subtitle">Show subtitle</string>
     <string name="hide_subtitle">Hide Subtitle</string>
     <string name="subtitle_format">%1$s crimes</string>

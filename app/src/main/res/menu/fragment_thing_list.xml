@@ -17,7 +17,7 @@
     android:id="@+id/menu_item_new_thing"
     android:icon="@drawable/ic_menu_add"
     android:title="@string/new_thing"
-    app:showAsAction="always"/>
+    app:showAsAction="ifRoom"/>
     <!-- showAsAction attribute refers to whether item will appear in toolbar -->
 
     <!-- Show subtitle for given thing in menu if space -->
