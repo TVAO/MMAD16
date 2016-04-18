@@ -6,11 +6,15 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.location.Geocoder;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.NavUtils;
+import android.support.v4.os.ResultReceiver;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -23,6 +27,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,6 +37,8 @@ import java.util.Locale;
 import java.util.UUID;
 
 import tvao.mmad.itu.tingle.Helpers.BaseFragment;
+import tvao.mmad.itu.tingle.Helpers.Location.Constants;
+import tvao.mmad.itu.tingle.Helpers.Location.FetchAddressIntentService;
 import tvao.mmad.itu.tingle.Helpers.PictureUtils;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
@@ -44,7 +53,7 @@ import tvao.mmad.itu.tingle.R;
 public class ThingDetailFragment extends BaseFragment {
 
     public static final String EXTRA_THING_ID = "thingintent.THING_ID";
-    //public static final String TAG = "ThingDetailFragment";
+    public static final String TAG = "ThingDetailFragment";
     private static final String DIALOG_DATE = "DialogDate";
     private static final int REQUEST_DATE = -1;
     private static final int REQUEST_PHOTO = 2;
@@ -57,6 +66,101 @@ public class ThingDetailFragment extends BaseFragment {
     private ImageButton mPhotoButton;
     private ImageView mPhotoView;
     private File mPhotoFile;
+
+    protected Location mLastLocation;
+    private AddressResultReceiver mResultReceiver;
+    private String mAddressOutput;
+    private boolean mAddressRequested;
+    private GoogleApiClient mGoogleApiClient;
+    private Button mLocationButton;
+
+    // Start intent service used to fetch user address location
+    protected void startIntentService()
+    {
+        Intent intent = new Intent(this.getActivity(), FetchAddressIntentService.class);
+        intent.putExtra(Constants.RECEIVER, mResultReceiver);
+        intent.putExtra(Constants.LOCATION_DATA_EXTRA, mLastLocation);
+        getActivity().startService(intent);
+    }
+
+    /**
+     * Calls the startIntentService() method when user takes an action that requires a geocoding address lookup.
+     * Checks that the connection to Google Play services is present before starting the intent service.
+     * @param view
+     */
+    public void fetchAddressButtonHandler(View view)
+    {
+        // Only start service to fetch address if GoogleApiClient is connected
+        if (mGoogleApiClient.isConnected() && mLastLocation != null)
+        {
+            startIntentService();
+        }
+        // Else process user request by setting mAddressRequested to true
+        // Later, launch service to fetch address when Google API Client connects
+
+        mAddressRequested = true;
+        //updateUIWidgets();
+    }
+
+    //@Override
+    public void onConnected(Bundle connectionHint)
+    {
+        // Gets the best and most recent location currently available,
+        // which may be null in rare cases when a location is not available.
+        try
+        {
+            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                    mGoogleApiClient);
+        }
+
+        catch (SecurityException ex)
+        {
+            ex.printStackTrace();
+            Log.d(TAG, ex.getMessage());
+        }
+
+        if (mLastLocation != null)
+        {
+            // Determine whether a Geocoder is available.
+            if (!Geocoder.isPresent())
+            {
+                Toast.makeText(this.getActivity(), R.string.no_geocoder_available,
+                        Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            if (mAddressRequested)
+            {
+                startIntentService();
+            }
+        }
+    }
+
+    // Class used to handle response from FetchAddressIntentService
+    private class AddressResultReceiver extends ResultReceiver {
+
+        public AddressResultReceiver(Handler handler)
+        {
+            super(handler);
+        }
+
+        @Override
+        protected void onReceiveResult(int resultCode, Bundle resultData)
+        {
+
+            // Set the address or display an error message sent from the intent service.
+            mAddressOutput = resultData.getString(Constants.RESULT_DATA_KEY);
+            mWhereField.setText(mAddressOutput); //displayAddressOutput();
+
+            // Show a toast message if an address was found.
+            if (resultCode == Constants.SUCCESS_RESULT)
+            {
+                makeToast(getString(R.string.address_found));
+            }
+            else makeToast(getString(R.string.no_address_found));
+
+        }
+    }
 
     /**
      * This method is used to instantiate a new Fragment used to display a detailed screen.
@@ -110,11 +214,23 @@ public class ThingDetailFragment extends BaseFragment {
         setDateButton(v);
 
         mScanButton = (Button) v.findViewById(R.id.barcode_scanner);
-        mScanButton.setOnClickListener(new View.OnClickListener() {
+        mScanButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent intent = new Intent("com.google.zxing.client.android.SCAN");
                 startActivityForResult(intent, REQUEST_SCAN);
+            }
+        });
+
+        mLocationButton = (Button) v.findViewById(R.id.location);
+        mLocationButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                fetchAddressButtonHandler(v);
             }
         });
 
@@ -171,9 +287,6 @@ public class ThingDetailFragment extends BaseFragment {
 
     private void setupCameraButton(View v)
     {
-        // Only show camera functionality in portrait mode (removed in landscape)
-        //if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-        //{
             mPhotoView = (ImageView) v.findViewById(R.id.thing_photo);
 
             mPhotoButton = (ImageButton) v.findViewById(R.id.thing_camera);
@@ -201,7 +314,6 @@ public class ThingDetailFragment extends BaseFragment {
             });
 
             updatePhotoView(); // Load image into image view
-        //}
     }
 
     // Check if camera is available

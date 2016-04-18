@@ -69,6 +69,7 @@
                     android:layout_weight="1"
                 />
 
+
             <!-- Button so scan barcode from items -->
             <Button
                 android:id="@+id/barcode_scanner"

@@ -50,4 +50,6 @@
     <string name="invalid_lat_long_used">Invalid Coordinates</string>
     <string name="no_address_found">No Address Found</string>
     <string name="address_found">Address Found</string>
+    <string name="no_geocoder_available">No Geocoder</string>
+    <string name="heading_location">Get Location</string>
 </resources>

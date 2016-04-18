@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.support.v4.os.ResultReceiver;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
+
+import com.google.android.gms.location.LocationServices;
 
 import java.io.IOException;
 import java.util.ArrayList;

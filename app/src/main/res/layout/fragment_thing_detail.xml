@@ -72,6 +72,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <!-- Button to get user location -->
+        <Button
+            android:id="@+id/location"
+            android:text="@string/heading_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <!-- Button to save thing -->
         <Button
             android:id="@+id/thing_details_add_button"

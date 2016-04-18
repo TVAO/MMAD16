@@ -308,6 +308,7 @@
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="accept">Accept</string>
+    <string name="address_found">Address Found</string>
     <string name="app_name">Tingle</string>
     <string name="auth_google_play_services_client_facebook_display_name">Facebook</string>
     <string name="auth_google_play_services_client_google_display_name">Google</string>
@@ -355,12 +356,14 @@
     <string name="delete_thing">Delete</string>
     <string name="heading_create">Add new thing</string>
     <string name="heading_date">Choose date</string>
+    <string name="heading_location">Get Location</string>
     <string name="heading_save">Save</string>
     <string name="heading_scan">Scan Item</string>
     <string name="heading_search">Search items</string>
     <string name="heading_showAllItems">See items</string>
     <string name="headline">Last thing added</string>
     <string name="hide_subtitle">Hide Subtitle</string>
+    <string name="invalid_lat_long_used">Invalid Coordinates</string>
     <string name="item_deleted_toast">The following item was deleted:</string>
     <string name="item_found_toast">You have selected the item</string>
     <string name="item_locationIs_toast">Located in:</string>
@@ -379,6 +382,8 @@
     <string name="mr_system_route_name">System</string>
     <string name="mr_user_route_category_name">Devices</string>
     <string name="new_thing">Add Item</string>
+    <string name="no_address_found">No Address Found</string>
+    <string name="no_geocoder_available">No Geocoder</string>
     <string name="ok">Ok</string>
     <string name="place_autocomplete_clear_button">Clear search</string>
     <string name="place_autocomplete_search_hint">Search</string>
@@ -386,6 +391,7 @@
     <string name="search">Search</string>
     <string name="search_what">Search On Name</string>
     <string name="search_where">Search On Location</string>
+    <string name="service_not_available">Service Not Available</string>
     <string name="show_subtitle">Show subtitle</string>
     <string name="sort_date">Sort By Date</string>
     <string name="sort_what">Sort By Name</string>
