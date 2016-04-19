@@ -81,6 +81,7 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
     private Button mLocationButton;
     private LocationRequest mLocationRequest;
     private FusedLocationProviderApi mFusedLocationProviderAPI;
+    private Intent mAddressIntent;
 
     // Start intent service used to fetch user address location
     protected void startIntentService()
@@ -91,9 +92,7 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
         getActivity().startService(intent);
     }
 
-    /**
-     * Initialize GoogleApiClient Builder to fetch required Google Services
-     */
+    // Initialize GoogleApiClient Builder to fetch required Google Services
     protected synchronized void buildGoogleApiClient()
     {
         mGoogleApiClient = new GoogleApiClient.Builder(this.getActivity())
@@ -103,35 +102,13 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
                 .build();
     }
 
-
-    private void getLocation()
-    {
-        mLocationRequest = LocationRequest.create();
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        mLocationRequest.setInterval(LOCATION_INTERVAL);
-        mLocationRequest.setFastestInterval(LOCATION_INTERVAL);
-        mFusedLocationProviderAPI = LocationServices.FusedLocationApi;
-
-        //buildGoogleApiClient();
-//        googleApiClient = new GoogleApiClient.Builder(this)
-//                .addApi(LocationServices.API)
-//                .addConnectionCallbacks(this)
-//                .addOnConnectionFailedListener(this)
-//                .build();
-        //if (mGoogleApiClient != null)
-        //{
-        //   mGoogleApiClient.connect();
-        //}
-    }
-
     /**
      * Calls the startIntentService() method when user takes an action that requires a geocoding address lookup.
      * Checks that the connection to Google Play services is present before starting the intent service.
-     * @param view - view of activity
+     * @param view - view of activity.
      */
     public void fetchAddressButtonHandler(View view)
     {
-        //mGoogleApiClient.connect();
         // Only start service to fetch address if GoogleApiClient is connected
         //if (mGoogleApiClient.isConnected() && mLastLocation != null)
         if(mGoogleApiClient.isConnected())
@@ -140,7 +117,6 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
         }
         // Else process user request by setting mAddressRequested to true
         // Later, launch service to fetch address when Google API Client connects
-
         mAddressRequested = true;
         //updateUIWidgets();
     }
@@ -170,14 +146,20 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
     @Override
     public void onConnected(Bundle connectionHint)
     {
-        // Gets the best and most recent location currently available,
-        // which may be null in rare cases when a location is not available.
+        // Fetch most recent location available, null if not available
         try
         {
-            getLocation(); // Create location request
-            //mFusedLocationProviderAPI.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this.getActivity()); // Await result of latest location
+            // Create location request
+            mLocationRequest = LocationRequest.create();
+            mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+            mLocationRequest.setInterval(LOCATION_INTERVAL);
+            mLocationRequest.setFastestInterval(LOCATION_INTERVAL);
+            mFusedLocationProviderAPI = LocationServices.FusedLocationApi;
 
-            mLastLocation = mFusedLocationProviderAPI.getLastLocation(mGoogleApiClient);
+            // Await result of latest location
+            //mFusedLocationProviderAPI.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this.);
+
+            mLastLocation = mFusedLocationProviderAPI.getLastLocation(mGoogleApiClient); // Todo null returned due to timeout
             //mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
             //        mGoogleApiClient);
         }
@@ -212,13 +194,10 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult)
     {
-        // An unresolvable error has occurred and a connection to Google APIs
-        // could not be established. Display an error message, or handle
-        // the failure silently
         makeToast("Error occurred during connection to Google API");
     }
 
-    // Class used to handle response from FetchAddressIntentService
+    // Class used to handle address location response from FetchAddressIntentService
     @SuppressLint("ParcelCreator")
     private class AddressResultReceiver extends ResultReceiver {
 
@@ -333,12 +312,9 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
         });
 
         mLocationButton = (Button) v.findViewById(R.id.location);
-        mLocationButton.setOnClickListener(new View.OnClickListener()
-        {
+        mLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                //buildGoogleApiClient();
+            public void onClick(View v) {
                 fetchAddressButtonHandler(v);
                 Log.d("my", " Initialized google plus api client");
             }
@@ -419,7 +395,7 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
                 @Override
                 public void onClick(View v)
                 {
-                  startActivityForResult(captureImage, REQUEST_PHOTO); // Todo get SecurityException due to permission issue ???
+                  startActivityForResult(captureImage, REQUEST_PHOTO); // Todo get SecurityException due to permission issue on rooted phone
                 }
             });
 
@@ -579,40 +555,6 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
         SimpleDateFormat dateFormat = new SimpleDateFormat(
                 "yyyy-MM-dd", Locale.getDefault());
         return dateFormat.format(date);
-    }
-
-    /**
-     * This method is used to check if a permission exists in the manifest file.
-     * Specifically, this is used for the camera permission that needs to be requested during runtime.
-     * See link: http://stackoverflow.com/questions/32789027/android-m-camera-intent-permission-bug
-     * @param context - context of fragment.
-     * @param permissionName - name of permission, e.g. Manifest.permission.CAMERA
-     * @return
-     */
-    public boolean hasPermissionInManifest(Context context, String permissionName)
-    {
-        final String packageName = context.getPackageName();
-        try
-        {
-            final PackageInfo packageInfo = context.getPackageManager()
-                    .getPackageInfo(packageName, PackageManager.GET_PERMISSIONS);
-            final String[] declaredPermisisons = packageInfo.requestedPermissions;
-            if (declaredPermisisons != null && declaredPermisisons.length > 0)
-            {
-                for (String p : declaredPermisisons)
-                {
-                    if (p.equals(permissionName))
-                    {
-                        return true;
-                    }
-                }
-            }
-        }
-        catch (PackageManager.NameNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-        return false;
     }
 
 }
