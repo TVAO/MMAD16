@@ -14,13 +14,13 @@
     <!-- Camera is used to register bar code -->
     <!-- Internet and access is used for network operations -->
     <!-- External storage is used for photos -->
-    <!-- Fine and course location is used for location functionality using GPS or WIFI -->
+    <!-- Fine and course location is used for location functionality using GPS or WIFI respectively -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <!-- Features that app relies on, e.g. camera -->

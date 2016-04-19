@@ -2,9 +2,7 @@ package tvao.mmad.itu.tingle.Controller.Fragments;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.location.Geocoder;
@@ -30,7 +28,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.FusedLocationProviderApi;
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
@@ -43,18 +41,22 @@ import java.util.UUID;
 import tvao.mmad.itu.tingle.Helpers.BaseFragment;
 import tvao.mmad.itu.tingle.Helpers.Location.Constants;
 import tvao.mmad.itu.tingle.Helpers.Location.FetchAddressIntentService;
+import tvao.mmad.itu.tingle.Helpers.Network.FetchOutpanTask;
+import tvao.mmad.itu.tingle.Helpers.Network.NetworkUtils;
 import tvao.mmad.itu.tingle.Helpers.PictureUtils;
 import tvao.mmad.itu.tingle.Model.Thing;
 import tvao.mmad.itu.tingle.Model.ThingRepository;
-import tvao.mmad.itu.tingle.Helpers.Network.FetchOutpanTask;
-import tvao.mmad.itu.tingle.Helpers.Network.NetworkUtils;
 import tvao.mmad.itu.tingle.R;
+
+import static com.google.android.gms.common.api.GoogleApiClient.Builder;
+import static com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
+import static com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 
 /**
  * This class represents the fragment of a detailed page for a given item.
  * The TingleMainFragment is hosted by the activity TinglePagerActivity.
  */
-public class ThingDetailFragment extends BaseFragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class ThingDetailFragment extends BaseFragment implements ConnectionCallbacks, OnConnectionFailedListener, LocationListener {
 
     public static final String EXTRA_THING_ID = "thingintent.THING_ID";
     public static final String TAG = "ThingDetailFragment";
@@ -74,14 +76,11 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
 
     protected Location mLastLocation;
     private AddressResultReceiver mResultReceiver;
-    //private ResultReceiver mResultReceiver;
     private String mAddressOutput;
     private boolean mAddressRequested;
     private GoogleApiClient mGoogleApiClient;
     private Button mLocationButton;
     private LocationRequest mLocationRequest;
-    private FusedLocationProviderApi mFusedLocationProviderAPI;
-    private Intent mAddressIntent;
 
     // Start intent service used to fetch user address location
     protected void startIntentService()
@@ -95,11 +94,14 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
     // Initialize GoogleApiClient Builder to fetch required Google Services
     protected synchronized void buildGoogleApiClient()
     {
-        mGoogleApiClient = new GoogleApiClient.Builder(this.getActivity())
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build();
+        if(mGoogleApiClient == null)
+        {
+            mGoogleApiClient = new Builder(this.getActivity())
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(LocationServices.API)
+                    .build();
+        }
     }
 
     /**
@@ -140,13 +142,12 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
      * You must also start the intent service when the connection to Google Play services is established,
      * if the user has already clicked the button on your app's UI.
      * The following code snippet shows the call to the startIntentService() method in the onConnected() callback
-     * provided by the Google API Client
+     * provided by the Google API Client and is used to fetch the most recent location if available.
      * @param connectionHint - content defined by FetchAddressIntentService
      */
     @Override
     public void onConnected(Bundle connectionHint)
     {
-        // Fetch most recent location available, null if not available
         try
         {
             // Create location request
@@ -154,14 +155,12 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
             mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
             mLocationRequest.setInterval(LOCATION_INTERVAL);
             mLocationRequest.setFastestInterval(LOCATION_INTERVAL);
-            mFusedLocationProviderAPI = LocationServices.FusedLocationApi;
+            //mFusedLocationProviderAPI = LocationServices.FusedLocationApi;
 
             // Await result of latest location
-            //mFusedLocationProviderAPI.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this.);
+            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
 
-            mLastLocation = mFusedLocationProviderAPI.getLastLocation(mGoogleApiClient); // Todo null returned due to timeout
-            //mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
-            //        mGoogleApiClient);
+            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient); // Todo null returned due to timeout?
         }
 
         catch (SecurityException ex)
@@ -195,6 +194,16 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
     public void onConnectionFailed(ConnectionResult connectionResult)
     {
         makeToast("Error occurred during connection to Google API");
+    }
+
+    /**
+     * Used for receiving notifications from LocationManager when the location has changed.
+     * @param location
+     */
+    @Override
+    public void onLocationChanged(Location location)
+    {
+        makeToast("location: " + location.getLatitude() + " ," + location.getLongitude());
     }
 
     // Class used to handle address location response from FetchAddressIntentService
