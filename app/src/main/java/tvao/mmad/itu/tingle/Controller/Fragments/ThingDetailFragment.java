@@ -2,11 +2,13 @@ package tvao.mmad.itu.tingle.Controller.Fragments;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -150,20 +152,11 @@ public class ThingDetailFragment extends BaseFragment implements ConnectionCallb
     {
         try
         {
-            // Create location request
-            mLocationRequest = LocationRequest.create();
-            mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-            mLocationRequest.setInterval(LOCATION_INTERVAL);
-            mLocationRequest.setFastestInterval(LOCATION_INTERVAL);
-            //mFusedLocationProviderAPI = LocationServices.FusedLocationApi;
-
             // Await result of latest location
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
-
+            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this); // Todo SecurityException
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient); // Todo null returned due to timeout?
         }
-
-        catch (SecurityException ex)
+        catch(SecurityException ex)
         {
             ex.printStackTrace();
             Log.d(TAG, ex.getMessage());
@@ -184,6 +177,7 @@ public class ThingDetailFragment extends BaseFragment implements ConnectionCallb
                 startIntentService();
             }
         }
+
     }
 
     /**

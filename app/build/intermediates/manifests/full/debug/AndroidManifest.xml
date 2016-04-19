@@ -20,13 +20,17 @@
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
-    <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <!-- Features that app relies on, e.g. camera -->
-
     <uses-feature
         android:name="android.hardware.camera"
+        android:required="false" />
+
+    <!-- App may use GPS og Network to fetch user current location -->
+    <uses-feature
+        android:name="android.hardware.location"
         android:required="false" />
 
     <uses-permission android:name="android.permission.CAMERA" />
