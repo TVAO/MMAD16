@@ -30,6 +30,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.FusedLocationProviderApi;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
 import java.io.File;
@@ -60,6 +62,7 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
     private static final int REQUEST_DATE = -1;
     private static final int REQUEST_PHOTO = 2;
     private static final int REQUEST_SCAN = 3;
+    private static final int LOCATION_INTERVAL = 30000; // 30 seconds interval for fetching user location
 
     private Thing mThing;
     private Button mAddButton, mScanButton, mDateButton;
@@ -76,6 +79,8 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
     private boolean mAddressRequested;
     private GoogleApiClient mGoogleApiClient;
     private Button mLocationButton;
+    private LocationRequest mLocationRequest;
+    private FusedLocationProviderApi mFusedLocationProviderAPI;
 
     // Start intent service used to fetch user address location
     protected void startIntentService()
@@ -96,6 +101,27 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
+    }
+
+
+    private void getLocation()
+    {
+        mLocationRequest = LocationRequest.create();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setInterval(LOCATION_INTERVAL);
+        mLocationRequest.setFastestInterval(LOCATION_INTERVAL);
+        mFusedLocationProviderAPI = LocationServices.FusedLocationApi;
+
+        //buildGoogleApiClient();
+//        googleApiClient = new GoogleApiClient.Builder(this)
+//                .addApi(LocationServices.API)
+//                .addConnectionCallbacks(this)
+//                .addOnConnectionFailedListener(this)
+//                .build();
+        //if (mGoogleApiClient != null)
+        //{
+        //   mGoogleApiClient.connect();
+        //}
     }
 
     /**
@@ -148,8 +174,12 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
         // which may be null in rare cases when a location is not available.
         try
         {
-            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
-                    mGoogleApiClient);
+            getLocation(); // Create location request
+            //mFusedLocationProviderAPI.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this.getActivity()); // Await result of latest location
+
+            mLastLocation = mFusedLocationProviderAPI.getLastLocation(mGoogleApiClient);
+            //mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+            //        mGoogleApiClient);
         }
 
         catch (SecurityException ex)
@@ -251,13 +281,25 @@ public class ThingDetailFragment extends BaseFragment implements GoogleApiClient
         buildGoogleApiClient();
     }
 
+    /**
+     * Called when you are no longer visible to the user.
+     * You will next receive either onRestart(), onDestroy(), or nothing, depending on later user activity.
+     * Note that this method may never be called, in low memory situations
+     * ,where the system does not have enough memory to keep your activity's process running after its onPause() method is called.
+     * Disconnects from the Google API Client used to fetch user location.
+     */
     @Override
     public void onStop()
     {
-        super.onStop();
         mGoogleApiClient.disconnect();
+        super.onStop();
     }
 
+    /**
+     * Called after onCreate(Bundle) — or after onRestart() when the activity had been stopped,
+     * but is now again being displayed to the user. It will be followed by onResume().
+     * Connects to the Google API Client used to fetch the latest location of the user.
+     */
     @Override
     public void onStart()
     {
