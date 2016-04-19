@@ -313,10 +313,6 @@ public class ThingListFragment extends BaseFragment {
                 updateSubtitle();
                 return true;
 
-//            case R.id.delete_Button:
-//                deleteItem();
-//                return true;
-//
             case R.id.back_button:
                 goBack();
                 return true;

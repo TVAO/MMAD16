@@ -354,6 +354,7 @@
     <string name="decline">Decline</string>
     <string name="delete_button">Delete</string>
     <string name="delete_thing">Delete</string>
+    <string name="google_app_id">tvao.mmad.itu.tingle</string>
     <string name="heading_create">Add new thing</string>
     <string name="heading_date">Choose date</string>
     <string name="heading_location">Get Location</string>

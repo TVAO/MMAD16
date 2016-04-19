@@ -28,6 +28,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 
@@ -51,7 +52,7 @@ import tvao.mmad.itu.tingle.R;
  * This class represents the fragment of a detailed page for a given item.
  * The TingleMainFragment is hosted by the activity TinglePagerActivity.
  */
-public class ThingDetailFragment extends BaseFragment {
+public class ThingDetailFragment extends BaseFragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     public static final String EXTRA_THING_ID = "thingintent.THING_ID";
     public static final String TAG = "ThingDetailFragment";
@@ -86,14 +87,28 @@ public class ThingDetailFragment extends BaseFragment {
     }
 
     /**
+     * Initialize GoogleApiClient Builder to fetch required Google Services
+     */
+    protected synchronized void buildGoogleApiClient()
+    {
+        mGoogleApiClient = new GoogleApiClient.Builder(this.getActivity())
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+    }
+
+    /**
      * Calls the startIntentService() method when user takes an action that requires a geocoding address lookup.
      * Checks that the connection to Google Play services is present before starting the intent service.
-     * @param view
+     * @param view - view of activity
      */
     public void fetchAddressButtonHandler(View view)
     {
+        //mGoogleApiClient.connect();
         // Only start service to fetch address if GoogleApiClient is connected
-        if (mGoogleApiClient.isConnected() && mLastLocation != null)
+        //if (mGoogleApiClient.isConnected() && mLastLocation != null)
+        if(mGoogleApiClient.isConnected())
         {
             startIntentService();
         }
@@ -104,39 +119,74 @@ public class ThingDetailFragment extends BaseFragment {
         //updateUIWidgets();
     }
 
-    //@Override
-//    public void onConnected(Bundle connectionHint)
-//    {
-//        // Gets the best and most recent location currently available,
-//        // which may be null in rare cases when a location is not available.
-//        try
-//        {
-//            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
-//                    mGoogleApiClient);
-//        }
-//
-//        catch (SecurityException ex)
-//        {
-//            ex.printStackTrace();
-//            Log.d(TAG, ex.getMessage());
-//        }
-//
-//        if (mLastLocation != null)
-//        {
-//            // Determine whether a Geocoder is available.
-//            if (!Geocoder.isPresent())
-//            {
-//                Toast.makeText(this.getActivity(), R.string.no_geocoder_available,
-//                        Toast.LENGTH_LONG).show();
-//                return;
-//            }
-//
-//            if (mAddressRequested)
-//            {
-//                startIntentService();
-//            }
-//        }
-//    }
+    /**
+     * Called when the client is temporarily in a disconnected state.
+     * This can happen if there is a problem with the remote service
+     * (e.g. a crash or resource problem causes it to be killed by the system).
+     * @param i - numeric describing success or failure of service
+     */
+    @Override
+    public void onConnectionSuspended(int cause)
+    {
+        Log.d(TAG, "onConnectionSuspended() called. Trying to reconnect.");
+        makeToast("onConnectionSuspended() called. Trying to reconnect.");
+        mGoogleApiClient.connect();
+    }
+
+    /**
+     * After calling connect(), this method will be invoked asynchronously when the connect request has successfully completed.
+     * You must also start the intent service when the connection to Google Play services is established,
+     * if the user has already clicked the button on your app's UI.
+     * The following code snippet shows the call to the startIntentService() method in the onConnected() callback
+     * provided by the Google API Client
+     * @param connectionHint - content defined by FetchAddressIntentService
+     */
+    @Override
+    public void onConnected(Bundle connectionHint)
+    {
+        // Gets the best and most recent location currently available,
+        // which may be null in rare cases when a location is not available.
+        try
+        {
+            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                    mGoogleApiClient);
+        }
+
+        catch (SecurityException ex)
+        {
+            ex.printStackTrace();
+            Log.d(TAG, ex.getMessage());
+        }
+
+        if (mLastLocation != null)
+        {
+            // Determine whether a Geocoder is available.
+            if (!Geocoder.isPresent())
+            {
+                Toast.makeText(this.getActivity(), R.string.no_geocoder_available,
+                        Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            if (mAddressRequested)
+            {
+                startIntentService();
+            }
+        }
+    }
+
+    /**
+     * Called when there was an error connecting the client to the service.
+     * @param connectionResult - used for resolving the error, and deciding what sort of error occurred.
+     */
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult)
+    {
+        // An unresolvable error has occurred and a connection to Google APIs
+        // could not be established. Display an error message, or handle
+        // the failure silently
+        makeToast("Error occurred during connection to Google API");
+    }
 
     // Class used to handle response from FetchAddressIntentService
     @SuppressLint("ParcelCreator")
@@ -198,6 +248,21 @@ public class ThingDetailFragment extends BaseFragment {
         mThing = ThingRepository.get(getActivity()).getThing(thingId);
         mPhotoFile = ThingRepository.get(getContext()).getPhotoFile(mThing);
         setHasOptionsMenu(true);
+        buildGoogleApiClient();
+    }
+
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+        mGoogleApiClient.disconnect();
+    }
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+        mGoogleApiClient.connect();
     }
 
     /**
@@ -217,11 +282,9 @@ public class ThingDetailFragment extends BaseFragment {
         setDateButton(v);
 
         mScanButton = (Button) v.findViewById(R.id.barcode_scanner);
-        mScanButton.setOnClickListener(new View.OnClickListener()
-        {
+        mScanButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 Intent intent = new Intent("com.google.zxing.client.android.SCAN");
                 startActivityForResult(intent, REQUEST_SCAN);
             }
@@ -233,7 +296,9 @@ public class ThingDetailFragment extends BaseFragment {
             @Override
             public void onClick(View v)
             {
+                //buildGoogleApiClient();
                 fetchAddressButtonHandler(v);
+                Log.d("my", " Initialized google plus api client");
             }
         });
 
