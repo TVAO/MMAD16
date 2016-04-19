@@ -210,6 +210,7 @@ MERGED from [com.journeyapps:zxing-android-embedded:3.2.0] /Users/TVANO/Document
 		ADDED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml:43:19-57
 uses-sdk
 INJECTED from /Users/TVANO/Documents/Tingle/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:multidex:1.0.1] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/multidex/1.0.1/AndroidManifest.xml:18:5-42
 MERGED from [com.journeyapps:zxing-android-embedded:3.2.0] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.journeyapps/zxing-android-embedded/3.2.0/AndroidManifest.xml:19:5-43
 MERGED from [com.android.support:appcompat-v7:23.2.0] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:support-v4:23.2.0] /Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:20:5-43

@@ -1,5 +1,6 @@
 package tvao.mmad.itu.tingle.Controller.Fragments;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -69,6 +70,7 @@ public class ThingDetailFragment extends BaseFragment {
 
     protected Location mLastLocation;
     private AddressResultReceiver mResultReceiver;
+    //private ResultReceiver mResultReceiver;
     private String mAddressOutput;
     private boolean mAddressRequested;
     private GoogleApiClient mGoogleApiClient;
@@ -103,40 +105,41 @@ public class ThingDetailFragment extends BaseFragment {
     }
 
     //@Override
-    public void onConnected(Bundle connectionHint)
-    {
-        // Gets the best and most recent location currently available,
-        // which may be null in rare cases when a location is not available.
-        try
-        {
-            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
-                    mGoogleApiClient);
-        }
-
-        catch (SecurityException ex)
-        {
-            ex.printStackTrace();
-            Log.d(TAG, ex.getMessage());
-        }
-
-        if (mLastLocation != null)
-        {
-            // Determine whether a Geocoder is available.
-            if (!Geocoder.isPresent())
-            {
-                Toast.makeText(this.getActivity(), R.string.no_geocoder_available,
-                        Toast.LENGTH_LONG).show();
-                return;
-            }
-
-            if (mAddressRequested)
-            {
-                startIntentService();
-            }
-        }
-    }
+//    public void onConnected(Bundle connectionHint)
+//    {
+//        // Gets the best and most recent location currently available,
+//        // which may be null in rare cases when a location is not available.
+//        try
+//        {
+//            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+//                    mGoogleApiClient);
+//        }
+//
+//        catch (SecurityException ex)
+//        {
+//            ex.printStackTrace();
+//            Log.d(TAG, ex.getMessage());
+//        }
+//
+//        if (mLastLocation != null)
+//        {
+//            // Determine whether a Geocoder is available.
+//            if (!Geocoder.isPresent())
+//            {
+//                Toast.makeText(this.getActivity(), R.string.no_geocoder_available,
+//                        Toast.LENGTH_LONG).show();
+//                return;
+//            }
+//
+//            if (mAddressRequested)
+//            {
+//                startIntentService();
+//            }
+//        }
+//    }
 
     // Class used to handle response from FetchAddressIntentService
+    @SuppressLint("ParcelCreator")
     private class AddressResultReceiver extends ResultReceiver {
 
         public AddressResultReceiver(Handler handler)
