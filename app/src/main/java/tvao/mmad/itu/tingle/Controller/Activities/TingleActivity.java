@@ -47,13 +47,20 @@ public class TingleActivity extends SingleFragmentActivity implements ThingListF
         setFragment();
     }
 
-    // Not currently used
+    /**
+     * Used to create a fragment displaying UI content of main page.
+     * @return fragment with main page content.
+     */
     @Override
     protected Fragment createFragment()
     {
         return new TingleMainFragment();
     }
 
+    /**
+     * Called when the activity is starting where the activity UI is inflated and setup.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -73,12 +80,8 @@ public class TingleActivity extends SingleFragmentActivity implements ThingListF
     {
         // If orientation is portrait
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-
         {
-
         FragmentManager fragmentManager = getSupportFragmentManager();
-        //Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container_left);
-
             Fragment fragment = new TingleMainFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.fragment_container_left, fragment) // Replace current fragment instead of new fragment each time
@@ -87,16 +90,14 @@ public class TingleActivity extends SingleFragmentActivity implements ThingListF
 
         // If orientation is landscape
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
-
         {
             FragmentManager fragmentManager = getSupportFragmentManager();
             Fragment tingleFragment = new TingleMainFragment();
             Fragment listFragment = new ThingListFragment();
 
-
                 fragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container_left, tingleFragment) // Left side showing Tingle main page
-                        .replace(R.id.fragment_container_right, listFragment) // Right side showing list
+                        .replace(R.id.fragment_container_left, tingleFragment) // Left side showing main page
+                        .replace(R.id.fragment_container_right, listFragment) // Right side showing itemClC list
                         .commit();
         }
 
