@@ -10,11 +10,8 @@ import tvao.mmad.itu.tingle.Model.Thing;
 
 /**
  * This class is used to search for items in the database asynchronously using AsyncTask.
- * The Async task takes a search string item as input and returns a string of the name of item if it exists.
  */
-public class SearchHandler extends AsyncTask<String, Void, List<Thing>> {
-
-    private List<Thing> mThings;
+public class SearchHandler {
 
     // Determine how to sort and on what parameter to sort content
     ISort mSortHandler;
@@ -37,47 +34,11 @@ public class SearchHandler extends AsyncTask<String, Void, List<Thing>> {
         SEARCH_WHERE
     }
 
-    public AsyncResponse delegate = null;
-
-    // Interface used to get result of OnPostExecute() in main fragment 'TingleMainFragment'
-    // This has been done to avoid this class being a private inner class since it may be used in both 'TingleMainFragment' and 'ThingDetailFragment'
-    @Deprecated
-    public interface AsyncResponse
-    {
-        void processFinish(List<Thing> searchResult);
-    }
-
     public SearchHandler(ISort sortHandler)
     {
         mSortHandler = sortHandler;
         setSearchType(SearchType.SEARCH_WHAT); //set name as default search parameter
 
-    }
-
-    // Previously used for async search
-    @Deprecated
-    public SearchHandler(List<Thing> things, ISort sortHandler, AsyncResponse searchResult)
-    {
-        mThings = things;
-        mSortHandler = sortHandler;
-        setSearchType(SearchType.SEARCH_WHAT);
-        delegate = searchResult;
-    }
-
-    @Override
-    @Deprecated
-    protected List<Thing> doInBackground(String... param)
-    {
-        String searchString = param[0].toLowerCase().trim();
-        return search(searchString, mThings);
-
-    }
-
-    @Override
-    @Deprecated
-    protected void onPostExecute(List<Thing> result)
-    {
-        delegate.processFinish(result);
     }
 
     /**
