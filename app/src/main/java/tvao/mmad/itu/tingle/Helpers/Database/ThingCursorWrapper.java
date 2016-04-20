@@ -23,6 +23,10 @@ public class ThingCursorWrapper extends CursorWrapper {
     super(cursor);
     }
 
+    /**
+     * Retrieve thing from SqLite database.
+     * @return - converted thing from database.
+     */
     public Thing getThing()
     {
         // Get columns
@@ -42,6 +46,11 @@ public class ThingCursorWrapper extends CursorWrapper {
         return thing;
     }
 
+    /**
+     * Retrieve date object from string representation in SQLite database.
+     * @param dateText - string representation of date.
+     * @return - date object.
+     */
     private Date getDateFromString(String dateText)
     {
         Date dateFromText = null;
