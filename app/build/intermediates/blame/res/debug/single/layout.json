@@ -12,16 +12,16 @@
         "source": "/Users/TVANO/Documents/Tingle/app/src/main/res/layout/dialog_date.xml"
     },
     {
-        "merged": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
-        "source": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.0\\res\\layout\\notification_template_part_chronometer.xml"
+        "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/notification_template_lines.xml",
+        "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/notification_template_lines.xml"
     },
     {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
         "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/abc_list_menu_item_checkbox.xml"
     },
     {
-        "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/notification_template_lines.xml",
-        "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/notification_template_lines.xml"
+        "merged": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.0\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
         "merged": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_tingle.xml",
@@ -56,12 +56,12 @@
         "source": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.0\\res\\layout\\abc_action_bar_title_item.xml"
     },
     {
-        "merged": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\res\\merged\\debug\\layout\\zxing_barcode_scanner.xml",
-        "source": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\exploded-aar\\com.journeyapps\\zxing-android-embedded\\3.2.0\\res\\layout\\zxing_barcode_scanner.xml"
-    },
-    {
         "merged": "/Users/TVANO/Documents/Tingle/C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
         "source": "/Users/TVANO/Documents/Tingle/C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.0\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\res\\merged\\debug\\layout\\zxing_barcode_scanner.xml",
+        "source": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\exploded-aar\\com.journeyapps\\zxing-android-embedded\\3.2.0\\res\\layout\\zxing_barcode_scanner.xml"
     },
     {
         "merged": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_thing_list.xml",
@@ -88,12 +88,12 @@
         "source": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.0\\res\\layout\\abc_action_mode_bar.xml"
     },
     {
-        "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
-        "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/notification_template_media.xml"
-    },
-    {
         "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
         "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/abc_screen_content_include.xml"
+    },
+    {
+        "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
+        "source": "/Users/TVANO/Documents/Tingle/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/notification_template_media.xml"
     },
     {
         "merged": "/Users/TVANO/Documents/Tingle/C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_thing_detail.xml",
@@ -174,10 +174,6 @@
     {
         "merged": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_list.xml",
         "source": "/Users/TVANO/Documents/Tingle/C:\\Users\\TVANO\\Documents\\Tingle\\app\\src\\main\\res\\layout\\activity_list.xml"
-    },
-    {
-        "merged": "/Users/TVANO/Documents/Tingle/app/build/intermediates/res/merged/debug/layout/activity_list.xml",
-        "source": "/Users/TVANO/Documents/Tingle/app/src/main/res/layout/activity_list.xml"
     },
     {
         "merged": "/Users/TVANO/Documents/Tingle/C:\\Users\\tol.OMADA\\StudioProjects\\MMAD16\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",

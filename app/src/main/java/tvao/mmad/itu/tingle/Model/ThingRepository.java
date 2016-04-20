@@ -61,6 +61,10 @@ public class ThingRepository implements IRepository {
         return values;
     }
 
+    /**
+     * Add a thing to the database.
+     * @param thing - thing to add.
+     */
     public void addThing(Thing thing)
     {
         ContentValues values = getContentValues(thing);
@@ -88,6 +92,11 @@ public class ThingRepository implements IRepository {
         return things;
     }
 
+    /**
+     * Retrieve a thing based on its id.
+     * @param id - item id.
+     * @return thing with associated id.
+     */
     public Thing getThing(UUID id)
     {
         ThingCursorWrapper cursor = queryThings(
@@ -131,16 +140,23 @@ public class ThingRepository implements IRepository {
         return new File(externalFilesDir, thing.getPhotoFilename());
     }
 
-    // Delete a particular thing based on unique identifier
+    /**
+     * Delete a particular thing based on unique identifier
+     * @param id - id of item
+     * @return - true of item was deleted.
+     */
     public boolean removeThing(UUID id)
     {
         return mDatabase.delete(ThingTable.NAME,
                         ThingTable.Cols.UUID + " = ?",
                         new String[] { id.toString() }
                 ) > 0;
-        // return mDatabase.delete(ThingTable.NAME, ThingTable.Cols.UUID + "=" + id, null) > 0;
     }
 
+    /**
+     * Update item in database.
+     * @param thing - thing to update.
+     */
     public void updateThing(Thing thing)
     {
         String uuidString = thing.getId().toString();
@@ -165,11 +181,14 @@ public class ThingRepository implements IRepository {
                 null, // having
                 null  // orderBy
         );
-
         return new ThingCursorWrapper(cursor);
     }
 
-    // Returns datetime value used to set content value as string in SQLite
+    /**
+     * Returns datetime value used to set content value as string in SQLite
+     * @param date - date to convert.
+     * @return - string representation of date to be stored.
+     */
     public static String getDateTimeString(Date date)
     {
         SimpleDateFormat dateFormat = new SimpleDateFormat(
@@ -177,6 +196,10 @@ public class ThingRepository implements IRepository {
         return dateFormat.format(date);
     }
 
+    /**
+     * Returns size of items in database.
+     * @return - size of items.
+     */
     public int size()
     {
         return getThings().size();

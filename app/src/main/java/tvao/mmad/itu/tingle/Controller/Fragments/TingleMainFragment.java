@@ -31,15 +31,14 @@ import tvao.mmad.itu.tingle.R;
 public class TingleMainFragment extends BaseFragment {
 
     private static final String ARG_THING_ID = "thing_id"; // Fragment argument used by host activity
-    public static final String TAG = "TingleMainFragment";
-
     private static final int REQUEST_SCAN = 3;
+
+    private static ThingRepository sThingRepository; // Database
+    private TingleMainFragmentEventListener mCallBackToActivity; // Used to call host activity TingleActivity
 
     private Button mAddButton, mListButton, mScanButton; // GUI variables
     private TextView mLastAdded, mWhatField, mWhereField;
     private EditText mBarcodeField;
-    private static ThingRepository sThingRepository; // Database
-    private TingleMainFragmentEventListener mCallBackToActivity; // Used to call host activity TingleActivity
 
     /**
      * This interface allows TingleMainFragment to communicate to host TingleActivity.
@@ -77,24 +76,8 @@ public class TingleMainFragment extends BaseFragment {
     }
 
     /**
-     * Attach fragment argument with thing id used by host activity to get TingleMainFragment with specific Thing id
-     * Creates an arguments bundle, creates a fragment instance, and then attaches the arguments to the fragment.
-     * @param thingId - id of Thing to be displayed in fragment
-     * @return - fragment displaying thing
-     */
-    public static TingleMainFragment newInstance(UUID thingId) // Todo use in TingleActivity
-    {
-        Bundle args = new Bundle();
-        args.putSerializable(ARG_THING_ID, thingId);
-        TingleMainFragment fragment = new TingleMainFragment();
-        fragment.setArguments(args);
-
-        return fragment;
-    }
-
-    /**
-     * Call to do initial creation of fragment
-     * @param savedInstanceState - fragment rebuilt from saved state if not null
+     * Call to do initial creation of fragment.
+     * @param savedInstanceState - fragment rebuilt from saved state if not null.
      */
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -106,11 +89,11 @@ public class TingleMainFragment extends BaseFragment {
     }
 
     /**
-     *  Creates and returns the view hierarchy associated with the fragment
-     * @param inflater - used to inflate view in fragment
-     * @param container - parent view that fragment is attached to
-     * @param savedInstanceState - fragment rebuilt from saved state if not null
-     * @return - fragment view
+     *  Creates and returns the view hierarchy associated with the fragment.
+     * @param inflater - used to inflate view in fragment.
+     * @param container - parent view that fragment is attached to.
+     * @param savedInstanceState - fragment rebuilt from saved state if not null.
+     * @return - fragment view.
      */
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -126,7 +109,6 @@ public class TingleMainFragment extends BaseFragment {
         return v;
     }
 
-    // Todo code is duplicated in TingleMainFragment and ThingDetailFragment, use BarcodeActivity instead and remove code duplication
     /**
      * This method is used to get the result back from scanning a barcode and save it in the barcode field.
      * Called whenever Scanner exits, giving requestCode you started it with, the resultCode it returned, and any additional data from it.
@@ -212,18 +194,22 @@ public class TingleMainFragment extends BaseFragment {
             });
         }
 
-            mScanButton = (Button) view.findViewById(R.id.barcode_scanner);
-            mScanButton.setOnClickListener(new View.OnClickListener()
+        mScanButton = (Button) view.findViewById(R.id.barcode_scanner);
+        mScanButton.setOnClickListener(new View.OnClickListener()
+        {
+            /**
+             * Fire an intent to open barcode scanning activity
+             * @param v
+             */
+            @Override
+            public void onClick(View v)
             {
-                @Override
-                public void onClick(View v)
-                {
-                    Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-                    startActivityForResult(intent, 0);
-                }
-            });
+                Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+                startActivityForResult(intent, 0);
+            }
+        });
 
-            mBarcodeField = (EditText) view.findViewById(R.id.barcode_text);
+        mBarcodeField = (EditText) view.findViewById(R.id.barcode_text);
 
 
     }
@@ -233,14 +219,9 @@ public class TingleMainFragment extends BaseFragment {
     {
         if (data != null && data.getExtras() != null) // Scan data received
         {
-            String contents = data.getStringExtra("SCAN_RESULT");
-            String format = data.getStringExtra("SCAN_RESULT_FORMAT");
-
             // Handle successful scan
-            Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format, Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.TOP, 25, 400);
-            toast.show();
-
+            String contents = data.getStringExtra("SCAN_RESULT");
+            makeToast("Content:" + contents);
             Log.d("onActivityResult", "contents: " + contents);
 
             // Lookup item from barcode if user has connection
@@ -256,12 +237,12 @@ public class TingleMainFragment extends BaseFragment {
                         mWhatField.setText(output.getWhat());
                         Log.d("Lookup", "barcode: " + output.getBarcode());
                         Log.d("Lookup", "what: " + output.getWhat());
-                        // Todo could just add Thing directly to items with name, barcode and optionally attributed in new field
                     }
                 });
 
-                lookupBarcodeTask.execute(contents);
-            } else
+                lookupBarcodeTask.execute(contents); // Execute barcode info task async
+            }
+            else
             {
                 makeToast("You are not connected to a network... Please try again.");
             }

@@ -57,12 +57,16 @@ public class DatePickerFragment extends DialogFragment {
         super.onCreate(savedInstanceState);
     }
 
-
+    /**
+     * Overrided to build custom Dialog container shown as an AlertDialog instead of a generic dialog.
+     * Called after onCreate() and before onCreateView().
+     * @param savedInstanceState - fragment rebuilt from saved state if not null.
+     * @return - new custom Alert Dialogue.
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
         Date date = (Date) getArguments().getSerializable(ARG_DATE);
-
 
         // Use current time as default values for picker
         Calendar calender = Calendar.getInstance();

@@ -9,14 +9,15 @@
         android:targetSdkVersion="23" />
 
     <!-- Dialogue shown to user about below permissions when downloading app -->
-    <!-- Camera is used to register bar code -->
     <!-- Internet and access is used for network operations -->
-    <!-- External storage is used for photos -->
+    <!-- External storage is used for storing photos -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
+
+    <!-- Camera feature used by app -->
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -39,8 +40,7 @@
         android:required="false" />
     <uses-feature
         android:name="android.hardware.wifi"
-        android:required="false" />
-
+        android:required="false" /> <!-- Application declaring components and and attributes -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -55,14 +55,6 @@
             </intent-filter>
         </activity>
         <activity android:name="tvao.mmad.itu.tingle.Controller.Activities.ThingPagerActivity" />
-        <!-- <activity android:label="SettingsActivity" android:name=".SettingsActivity"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" /> -->
-        <!-- <category android:name="android.intent.category.DEFAULT" /> -->
-        <!-- </intent-filter> -->
-        <!-- </activity> -->
-        <!-- <activity android:name=".Controller.Activities.ThingListActivity"/> -->
-
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:clearTaskOnLaunch="true"

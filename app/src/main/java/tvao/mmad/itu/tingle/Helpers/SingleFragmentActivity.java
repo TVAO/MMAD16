@@ -14,13 +14,21 @@ import tvao.mmad.itu.tingle.R;
  */
 public abstract class SingleFragmentActivity extends AppCompatActivity {
 
+    /**
+     * Method used by all fragments for setup.
+     * @return - new fragment.
+     */
     protected abstract Fragment createFragment();
 
+    /**
+     * Initialize fragment component and inflate UI with defined layout resource programmed widgets to interact with.
+     * @param savedInstanceState - contains data supplied from onSaveInstanceState() if reinitialized.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tingle); // Proper layout?
+        setContentView(R.layout.activity_tingle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container_left);

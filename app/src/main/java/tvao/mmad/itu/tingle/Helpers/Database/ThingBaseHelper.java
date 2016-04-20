@@ -22,6 +22,11 @@ public class ThingBaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, VERSION);
     }
 
+    /**
+     * Call get to get an instance of the SqLiteOpenHelper instance that is synchronized (thread-safe).
+     * @param context
+     * @return
+     */
     public static synchronized ThingBaseHelper get(Context context)
     {
         if (sThingBaseHelper == null)

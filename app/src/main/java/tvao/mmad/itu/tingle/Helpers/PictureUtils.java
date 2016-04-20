@@ -16,7 +16,7 @@ import android.graphics.Point;
 public class PictureUtils {
 
     /**
-     *
+     * Scale image to specific size with new dimensions specified in parameters.
      * @param path - file path.
      * @param destWidth - downscaled new width
      * @param destHeight - downscaled new height
@@ -54,7 +54,7 @@ public class PictureUtils {
     }
 
     /**
-     * Scale bitmap for particular activty.
+     * Scale bitmap for particular activity.
      * @param path - path of file in filesystem.
      * @param activity - activity to scale photo in.
      * @return scaled bitmap.

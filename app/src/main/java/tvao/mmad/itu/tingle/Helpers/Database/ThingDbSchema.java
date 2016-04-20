@@ -5,11 +5,13 @@ package tvao.mmad.itu.tingle.Helpers.Database;
  */
 public class ThingDbSchema {
 
-    // Name of table in db
+    // Database table
     public static final class ThingTable {
 
+        // Name of table in db
         public static final String NAME = "things";
 
+        // Columns in database
         public static final class Cols {
             public static final String UUID = "uuid";
             public static final String WHAT = "what";

@@ -44,7 +44,6 @@ import tvao.mmad.itu.tingle.R;
 public class ThingDetailFragment extends BaseFragment {
 
     public static final String EXTRA_THING_ID = "thingintent.THING_ID";
-    //public static final String TAG = "ThingDetailFragment";
     private static final String DIALOG_DATE = "DialogDate";
     private static final int REQUEST_DATE = -1;
     private static final int REQUEST_PHOTO = 2;
@@ -135,8 +134,6 @@ public class ThingDetailFragment extends BaseFragment {
     {
         switch (requestCode)
         {
-            //case Activity.RESULT_OK :
-
             case Activity.RESULT_CANCELED :
 
             case REQUEST_SCAN :
@@ -171,9 +168,6 @@ public class ThingDetailFragment extends BaseFragment {
 
     private void setupCameraButton(View v)
     {
-        // Only show camera functionality in portrait mode (removed in landscape)
-        //if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-        //{
             mPhotoView = (ImageView) v.findViewById(R.id.thing_photo);
 
             mPhotoButton = (ImageButton) v.findViewById(R.id.thing_camera);
@@ -196,15 +190,13 @@ public class ThingDetailFragment extends BaseFragment {
                 @Override
                 public void onClick(View v)
                 {
-                  startActivityForResult(captureImage, REQUEST_PHOTO); // Todo get SecurityException due to permission issue ???
+                  startActivityForResult(captureImage, REQUEST_PHOTO); // Note: throws SecurityException on rooted phones
                 }
             });
 
             updatePhotoView(); // Load image into image view
-        //}
     }
 
-    // Check if camera is available
     private boolean isCanTakePhoto(Intent captureImage)
     {
         // Check if camera is available, else disable camera button
@@ -216,8 +208,8 @@ public class ThingDetailFragment extends BaseFragment {
 
     private void setAddButton(View v)
     {
-        // Find add button
-        mAddButton = (Button) v.findViewById(R.id.thing_details_add_button);
+        mAddButton = (Button) v.findViewById(R.id.thing_details_add_button); // Find add button
+
         mAddButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -230,15 +222,13 @@ public class ThingDetailFragment extends BaseFragment {
 
                     if (ThingRepository.get(getActivity()).getThing(mThing.getId()) == null)
                     {
-                        // Add new item from menu bar
-                        ThingRepository.get(getActivity()).addThing(mThing);
-                    } else
-                    {
-                        // Update existing item
-                        ThingRepository.get(getActivity()).updateThing(mThing);
+                        ThingRepository.get(getActivity()).addThing(mThing); // Add new item from menu bar
                     }
-                    getActivity().finish(); // Done and close activity
-                    //NavUtils.navigateUpFromSameTask(getActivity()); // Navigate to parent activity (ThingListFragment)
+                    else
+                    {
+                        ThingRepository.get(getActivity()).updateThing(mThing); // Update existing item
+                    }
+                    getActivity().finish(); // Close activity and navigate back to list
                 }
             }
         });
@@ -248,9 +238,11 @@ public class ThingDetailFragment extends BaseFragment {
     {
         mDateButton = (Button) v.findViewById(R.id.thing_details_date_button);
         updateDate();
-        mDateButton.setOnClickListener(new View.OnClickListener() {
+        mDateButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 FragmentManager manager = getFragmentManager();
                 DatePickerFragment dialog = DatePickerFragment.newInstance(mThing.getDate());
                 dialog.setTargetFragment(ThingDetailFragment.this, REQUEST_DATE);
@@ -286,14 +278,9 @@ public class ThingDetailFragment extends BaseFragment {
     {
         if (data != null && data.getExtras() != null) // Scan data received
         {
-            String contents = data.getStringExtra("SCAN_RESULT");
-            String format = data.getStringExtra("SCAN_RESULT_FORMAT");
-
             // Handle successful scan
-            Toast toast = Toast.makeText(getContext(), "Content:" + contents + " Format:" + format, Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.TOP, 25, 400);
-            toast.show();
-
+            String contents = data.getStringExtra("SCAN_RESULT");
+            makeToast("Content:" + contents);
             Log.d("onActivityResult", "contents: " + contents);
 
             // Lookup item from barcode if user has connection
@@ -309,7 +296,6 @@ public class ThingDetailFragment extends BaseFragment {
                         mWhatField.setText(output.getWhat());
                         Log.d("Lookup", "barcode: " + output.getBarcode());
                         Log.d("Lookup", "what: " + output.getWhat());
-                        // Todo could just add Thing directly to items with name, barcode and optionally attributed in new field
                     }
                 });
 
@@ -320,6 +306,7 @@ public class ThingDetailFragment extends BaseFragment {
                 makeToast("You are not connected to a network... Please try again.");
             }
         }
+
         else
         {
             // Cancel scan
@@ -334,7 +321,8 @@ public class ThingDetailFragment extends BaseFragment {
         if (mPhotoFile == null || !mPhotoFile.exists())
         {
             mPhotoView.setImageDrawable(null);
-        } else
+        }
+        else
         {
             // Scale image before insert
             Bitmap bitmap = PictureUtils.getScaledBitmap(
@@ -357,40 +345,6 @@ public class ThingDetailFragment extends BaseFragment {
         SimpleDateFormat dateFormat = new SimpleDateFormat(
                 "yyyy-MM-dd", Locale.getDefault());
         return dateFormat.format(date);
-    }
-
-    /**
-     * This method is used to check if a permission exists in the manifest file.
-     * Specifically, this is used for the camera permission that needs to be requested during runtime.
-     * See link: http://stackoverflow.com/questions/32789027/android-m-camera-intent-permission-bug
-     * @param context - context of fragment.
-     * @param permissionName - name of permission, e.g. Manifest.permission.CAMERA
-     * @return
-     */
-    public boolean hasPermissionInManifest(Context context, String permissionName)
-    {
-        final String packageName = context.getPackageName();
-        try
-        {
-            final PackageInfo packageInfo = context.getPackageManager()
-                    .getPackageInfo(packageName, PackageManager.GET_PERMISSIONS);
-            final String[] declaredPermisisons = packageInfo.requestedPermissions;
-            if (declaredPermisisons != null && declaredPermisisons.length > 0)
-            {
-                for (String p : declaredPermisisons)
-                {
-                    if (p.equals(permissionName))
-                    {
-                        return true;
-                    }
-                }
-            }
-        }
-        catch (PackageManager.NameNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-        return false;
     }
 
 }

@@ -31,12 +31,27 @@ public class FetchOutpanTask extends AsyncTask<String, Void, Thing> {
         this.delegate = delegate;
     }
 
+    /**
+     * Runs on the UI thread after doInBackground().
+     * The specified result is the value returned by doInBackground().
+     * Not invoked if task is cancelled.
+     * @param result - result of the operation computed by doInBackground().
+     */
     @Override
     protected void onPostExecute(Thing result)
     {
         delegate.processFinish(result);
     }
 
+    /**
+     * Overwritten to perform a computation on a background thread.
+     * The specified parameters are the parameters passed to execute() by the caller of this task.
+     * Method may call {@link #publishProgress} to publish updates on the UI thread.
+     *
+     * @param params - task parameters.
+     *
+     * @return result defined by subclass of this task used in main and detail fragment to fetch barcode data.
+     */
     @Override
     protected Thing doInBackground(String... params)
     {

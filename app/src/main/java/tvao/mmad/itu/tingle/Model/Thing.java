@@ -67,6 +67,15 @@ public class Thing {
         return pre + mWhat + " " + post + mWhere;
     }
 
+    /**
+     * Method used to get filename for a given thing knowing what holder photo is stored in on phone
+     * @return filename of thing.
+     */
+    public String getPhotoFilename()
+    {
+        return "IMG_" + getId().toString() + ".jpg";
+    }
+
     // Getters and setters for fields
 
     public String getWhat() { return mWhat; }
@@ -82,15 +91,6 @@ public class Thing {
     public String getBarcode() { return mBarcode; }
 
     public void setBarcode(String barcode) { mBarcode = barcode; }
-
-    /**
-     * Method used to get filename for a given thing knowing what holder photo is stored in on phone
-     * @return filename of thing.
-     */
-    public String getPhotoFilename()
-    {
-        return "IMG_" + getId().toString() + ".jpg";
-    }
 
     public Date getDate() { return mDate; }
 

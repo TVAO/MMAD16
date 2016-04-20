@@ -44,23 +44,20 @@ import tvao.mmad.itu.tingle.Helpers.Search.SelectionSort;
  */
 public class ThingListFragment extends BaseFragment {
 
-    // Used to safe pager and count of things upon change of configuration (rotation)
+    // Tags used to save pager and count of things upon change of configuration (rotation)
     private static final String TAG = "thingListFragment";
     private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
 
-    ThingListFragmentEventListener mCallback; // Used to go back
-
+    private ThingListFragmentEventListener mCallback; // Used to go back to main activity
     private RecyclerView mThingRecyclerView;
     private ThingAdapter mAdapter;
     private boolean mSubtitleVisible; // Keep track of subtitle visibility
     private SearchHandler mSearchHandler; // Search and sort content of items
-    //ISort SortingOrder;
 
     // Used to allow multi selection and deletion of selected items
     private MultiSelector mMultiSelector = new MultiSelector();
     private ModalMultiSelectorCallback mDeleteMode = new ModalMultiSelectorCallback(mMultiSelector)
     {
-
         /**
          * Called when action mode is first created. The menu supplied will be used to generate action buttons for the action mode.
          * @param actionMode - set of option mode callbacks that are only called for multi select action mode.
@@ -76,19 +73,18 @@ public class ThingListFragment extends BaseFragment {
         }
 
         /**
-         * This method is used to implement multi select with a contextual action mode.
+         * This method is used to implement multi selection with a contextual action mode.
          * Selecting an item will turn multi choice on and activate an Action mode representing the multi select interaction.
          * @param actionMode - set of option mode callbacks that are only called for multi select action mode.
          * @param menuItem - menu item that was clicked.
-         * @return true if item was deleted
+         * @return true if item was deleted.
          */
         @Override
         public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem)
         {
             if (menuItem.getItemId() == R.id.menu_item_delete_thing)
             {
-                // Need to finish the action mode before doing the following,
-                // not after. No idea why, but it crashes.
+                // Need to finish the action mode before selecting items or app crashes
                 actionMode.finish();
 
                 for (int i = ThingRepository.get(getActivity()).size(); i >= 0; i--)
@@ -96,11 +92,7 @@ public class ThingListFragment extends BaseFragment {
                     if (mMultiSelector.isSelected(i, 0))
                     {
                         Thing thing = mAdapter.getThings().get(i);
-                        //Thing thing = ThingRepository.get(getActivity()).getThings().get(i);
                         ThingRepository.get(getActivity()).removeThing(thing.getId());
-
-                        //mAdapter.removeAt(i);
-                        //mAdapter.mThings.remove(thing);
                     }
                 }
                 mMultiSelector.clearSelections();
@@ -127,7 +119,7 @@ public class ThingListFragment extends BaseFragment {
      * The fragment captures the interface implementation in the activity TingleActivity during onAttach() lifecycle method.
      * This method calls the interface methods in order to communicate with the activity TingleActivity.
      * The method checks if the container activity has implemented the callback interface, otherwise throws an exception.
-     * @param context - context of host activity
+     * @param context - context of host activity.
      */
     @Override
     public void onAttach(Context context)
@@ -148,9 +140,8 @@ public class ThingListFragment extends BaseFragment {
     }
 
     /**
-     * Call to do initial creation of fragment
-     *
-     * @param savedInstanceState - fragment rebuilt from saved state if not null
+     * Call to do initial creation of fragment.
+     * @param savedInstanceState - fragment rebuilt from saved state if not null.
      */
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -164,15 +155,14 @@ public class ThingListFragment extends BaseFragment {
 
     /**
      * Note: since the fragment is retained. the bundle passed in after state is restored is null.
-     * THe only way to pass parcelable objects is through the activities onSavedInstanceState and appropriate startup lifecycle
+     * The only way to pass parcelable objects is through the activities onSavedInstanceState and appropriate startup lifecycle
      * However after having second thoughts, since the fragment is retained then all the states and instance variables are
-     * retained as well. no need to make the selection states percelable therefore just check for the selectionState
-     * from the MultiSelector
+     * retained as well. No need to make the selection states parcelable, therefore just check for the selectionState
+     * from the MultiSelector.
      */
     @Override
     public void onActivityCreated(Bundle savedInstanceState)
     {
-
         if (mMultiSelector != null)
         {
             Bundle bundle = savedInstanceState;
@@ -191,17 +181,15 @@ public class ThingListFragment extends BaseFragment {
 
             }
         }
-
         super.onActivityCreated(savedInstanceState);
     }
 
     /**
      * Creates and returns the view hierarchy associated with the fragment
-     *
      * @param inflater           - used to inflate view in fragment
      * @param container          - parent view that fragment is attached to
      * @param savedInstanceState - fragment rebuilt from saved state if not null
-     * @return - fragment view
+     * @return - fragment view displaying items in a list.
      */
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -209,9 +197,7 @@ public class ThingListFragment extends BaseFragment {
                              Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_thing_list, container, false);
-
-        // Set items list
-        mThingRecyclerView = (RecyclerView) view.findViewById(R.id.thing_recycler_view);
+        mThingRecyclerView = (RecyclerView) view.findViewById(R.id.thing_recycler_view);  // Set items list
         mThingRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity())); // RecyclerView requires a LayoutManager
 
         mThingRecyclerView.setAdapter(mAdapter);
@@ -226,10 +212,17 @@ public class ThingListFragment extends BaseFragment {
         return view;
     }
 
+    /**
+     * Used to refresh the list of items upon resuming the list fragment.
+     * Otherwise called when launched activity exits returning request code, result code that the activity was started with and additional data.
+     * The resultCode will be RESULT_CANCELED if the activity explicitly returned that, didn't return any result, or crashed during its operation.
+     * @param requestCode - integer request code supplied to startActivityForResult(), allowing to identify where result came from.
+     * @param resultCode - integer result code returned by the child activity through its setResult().
+     * @param data - intent which can return data.
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        //mThingAdapter.notifyDataSetChanged();
         mThingRecyclerView.getAdapter().notifyDataSetChanged();
     }
 
@@ -259,7 +252,6 @@ public class ThingListFragment extends BaseFragment {
 
     /**
      * This method is used to inflate a custom menu with actions bars used to add and delete things.
-     *
      * @param menu     - toolbar menu in top right corner
      * @param inflater - instantiate menu layout items into menu objects
      */
@@ -313,10 +305,6 @@ public class ThingListFragment extends BaseFragment {
                 updateSubtitle();
                 return true;
 
-//            case R.id.delete_Button:
-//                deleteItem();
-//                return true;
-//
             case R.id.back_button:
                 goBack();
                 return true;
@@ -394,6 +382,12 @@ public class ThingListFragment extends BaseFragment {
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener()
         {
+            /**
+             * Called when the user submits the query.
+             * This could be due to a key press on the keyboard or due to pressing a submit button.
+             * @param query - search string.
+             * @return - true if item was found.
+             */
             @Override
             public boolean onQueryTextSubmit(String query)
             {
@@ -404,10 +398,15 @@ public class ThingListFragment extends BaseFragment {
                     return false;
                 }
                 mAdapter.setThings(result);
-                mAdapter.notifyDataSetChanged(); // Todo consider more specific refresh
+                mAdapter.notifyDataSetChanged(); // Could use notifyItemChanged() for performance
                 return true;
             }
 
+            /**
+             * Called when the query text is changed by the user.
+             * @param newText - new content of the query
+             * @return true if action was handled and items were found.
+             */
             @Override
             public boolean onQueryTextChange(String newText)
             {
@@ -480,7 +479,7 @@ public class ThingListFragment extends BaseFragment {
         if (mAdapter.mThings.size() == 0) return;
         List<Thing> result = mSearchHandler.sort(mAdapter.mThings, SortingOrder);
         mAdapter.setThings(result);
-        mAdapter.notifyDataSetChanged(); // Todo consider more specific notify due to performance
+        mAdapter.notifyDataSetChanged(); // Do not use notifyItemChanged() for performance due to sorting feature
     }
 
     /**
@@ -507,7 +506,6 @@ public class ThingListFragment extends BaseFragment {
         public ThingHolder(View itemView)
         {
             super(itemView, mMultiSelector); // multi selector communicates with ViewHolder
-            //mTextView = (TextView) itemView; // findViewById(R.id.list_item_thing_title_text_view)
 
             itemView.setOnClickListener(this);
             itemView.setLongClickable(true);
@@ -518,8 +516,7 @@ public class ThingListFragment extends BaseFragment {
 
         /**
          * When given a Thing, ThingHolder will update content of TextView to reflect state of Thing
-         *
-         * @param thing
+         * @param thing - thing to bind.
          */
         public void bindThing(Thing thing)
         {
@@ -542,8 +539,7 @@ public class ThingListFragment extends BaseFragment {
             }
             if (!mMultiSelector.tapSelection(ThingHolder.this)) // Simulate tapping an item
             {
-                // Toggle selection of item and navigate to detailed screen
-                selectThing(mThing);
+                selectThing(mThing); // Toggle selection of item and navigate to detailed screen
             }
         }
 
@@ -555,7 +551,7 @@ public class ThingListFragment extends BaseFragment {
         @Override
         public boolean onLongClick(View view)
         {
-            ((AppCompatActivity) getActivity()).startSupportActionMode(mDeleteMode); // Turn on delete action mode.
+            ((AppCompatActivity) getActivity()).startSupportActionMode(mDeleteMode); // Turn on delete action mode
             mMultiSelector.setSelected(this, true);
             return true;
         }
@@ -563,7 +559,6 @@ public class ThingListFragment extends BaseFragment {
     }
 
     /**
-     *
      * This Adapter is used to communicate with the RecyclerView,
      * when a ViewHolder needs to be created or connected with a Thing object.
      * RecyclerView does not know about Thing object but Thing Adapter knows about Thing model.
@@ -596,9 +591,9 @@ public class ThingListFragment extends BaseFragment {
         }
 
         /**
-         * Bind ViewHolder view to model object (Thing data to view holder with text view on screen)
-         * @param holder
-         * @param position
+         * Bind ViewHolder view to model object (thing data to view holder with text view on screen)
+         * @param holder - view holder describing item view.
+         * @param position - position of view holder.
          */
         @Override
         public void onBindViewHolder(ThingHolder holder, int position)
@@ -609,8 +604,8 @@ public class ThingListFragment extends BaseFragment {
         }
 
         /**
-         * Get total amount of items to display
-         * @return amount of items
+         * Get total amount of items to display.
+         * @return amount of items.
          */
         @Override
         public int getItemCount()
@@ -618,9 +613,14 @@ public class ThingListFragment extends BaseFragment {
             return mThings.size();
         }
 
+        /**
+         * Previously used to remove items on specific positions.
+         * No longer used due to sorting functionality that moves around item orders and requires complete refresh of item views.
+         * @param position - position if item.
+         */
+        @Deprecated
         public void removeAt(int position)
         {
-            //Thing itemToRemove = mThings.get(position);
             mThings.remove(position);
             notifyItemRemoved(position);
             notifyItemRangeChanged(position, mThings.size());
